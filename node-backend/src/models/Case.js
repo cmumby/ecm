@@ -320,8 +320,35 @@ var Case = new Schema({
       }//end documentation
     }, //end requirments
     research:{
+      caseReasearch:{
+        issueDescription: String,
+        exceptionExemptionAndExit: String,
+        lobResponse: String,
+        wfcrcResponse: String
+      }, //end caseReasearch
+      dataQaulityExceptions:{
+        exception: String
+      },// end dataQaulityExceptions
+      customerOutreachReasons:{
+        reason: String,
+        extension: String
+      }, //end customerOutreachReasons
+      financialInstitutionTracking:{
+        crmsOverride: Boolean,
+        fiIdentified: Boolean
+      }, // end financialInstitutionTracking
+      forProgramUseOnly:{
+        disputeTo: String,
+        dateDisupteRaised: Date,
+        dateDisputeSettled: Date,
+        dateOfDisposition: Date,
+        artifactUploaded: Boolean,
+        isSharedCustomer: Boolean
+      }, // end forProgramUseOnly
+    }, // end research
+    history:{
 
-    } // end research
+    }// end history
   },
 
 },{
