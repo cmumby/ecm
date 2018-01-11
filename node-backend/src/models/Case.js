@@ -317,7 +317,19 @@ var Case = new Schema({
           complete: Boolean
         },
         sectionComplete: Boolean
-      }//end documentation
+      },//end documentation
+      transportationSarf:{
+        transportationSarf{
+          handlesSouthwestTrucks: Boolean,
+          highRiskTransportation: Boolean,
+          CountryOfCitizenship: String,
+          attachments : Array,
+          raCorrectionRequired: Boolean,
+          comments: String,
+          complete: Boolean
+        },
+        sectionComplete: Boolean
+      }, // end transportationSarf
     }, //end requirments
     research:{
       caseReasearch:{
