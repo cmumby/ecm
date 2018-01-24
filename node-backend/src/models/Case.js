@@ -13,16 +13,32 @@ var Case = new Schema({
     status: String,
     notes: String,
     requirments: {
-      attachments : Array,
+      attachments : [{
+                      icon: String,
+                      fileName: String,
+                      filePath: String,
+                      fileType: String,
+                      uploader: String,
+                      section: String,
+                      comment: String
+                    }],
       proxyRR: {
         registerdAddress:[{
-          firstLine: String,
+          firstLine:String,
           secondLine: String,
           city: String,
           state: String,
           country: String,
           postalCode: Number,
-          attachments : Array,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
           raCorrectionRequired: Boolean,
           comments: String,
           complete: Boolean
@@ -35,49 +51,105 @@ var Case = new Schema({
           state: String,
           country: String,
           postalCode: Number,
-          attachments : Array,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
           raCorrectionRequired: Boolean,
           comments: String,
           complete: Boolean
         }],
         legalEntity:{
           entityType: String,
-          attachments : Array,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
           raCorrectionRequired: Boolean,
           comments: String,
           complete: Boolean
         },
         legalFormation:{
           countryOfRegistration: String,
-          attachments : Array,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
           raCorrectionRequired: Boolean,
           comments: String,
           complete: Boolean
         },
         natureOfBusiness:{
           naics: String,
-          attachments : Array,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
           raCorrectionRequired: Boolean,
           comments: String,
           complete: Boolean
         },
         marketsServed:{
           countries: Array,
-          attachments : Array,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
           raCorrectionRequired: Boolean,
           comments: String,
           complete: Boolean
         },
         relatedParties:{
           anyForeignParties: Boolean,
-          attachments : Array,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
           raCorrectionRequired: Boolean,
           comments: String,
           complete: Boolean
         },
         pep:{
           isPep: Boolean,
-          attachments : Array,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
           raCorrectionRequired: Boolean,
           comments: String,
           complete: Boolean
@@ -85,7 +157,15 @@ var Case = new Schema({
         productsAndServices:{
           currentProducts: Array,
           userProducts: Array,
-          attachments : Array,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
           raCorrectionRequired: Boolean,
           comments: String,
           complete: Boolean
@@ -96,7 +176,15 @@ var Case = new Schema({
         customerName:{
           legalName: Boolean,
           dbaName: String,
-          attachments : Array,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
           raCorrectionRequired: Boolean,
           comments: String,
           complete: Boolean
@@ -105,7 +193,15 @@ var Case = new Schema({
           IdType: String,
           id: Number,
           tinType: String,
-          attachments : Array,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
           raCorrectionRequired: Boolean,
           comments: String,
           complete: Boolean
@@ -117,14 +213,30 @@ var Case = new Schema({
           isInvestment: Boolean,
           relatedEntityFunds: Boolean,
           secRiaNumber: Number,
-          attachments : Array,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
           raCorrectionRequired: Boolean,
           comments: String,
           complete: Boolean
         },
         customerDetails:{
           organizationType: String,
-          attachments : Array,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
           raCorrectionRequired: Boolean,
           comments: String,
           complete: Boolean
@@ -270,7 +382,15 @@ var Case = new Schema({
           stateOfRegistration: String,
           cddiTaskRequest: String,
           isPep: Boolean,
-          attachments : Array,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
           raCorrectionRequired: Boolean,
           comments: String,
           complete: Boolean
@@ -280,14 +400,30 @@ var Case = new Schema({
       screening:{
         ccdiTaskRequest:{
           taskRequest: String,
-          attachments : Array,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
           raCorrectionRequired: Boolean,
           comments: String,
           complete: Boolean
         },
         screening:[{
           investagationId: String,
-          attachments : Array,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
           raCorrectionRequired: Boolean,
           comments: String,
           complete: Boolean
@@ -299,7 +435,15 @@ var Case = new Schema({
           bsaHotlistComments: String,
           negativeNewsScreening: Boolean,
           negativeNewsComments:String,
-          attachments : Array,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
           raCorrectionRequired: Boolean,
           comments: String,
           complete: Boolean
@@ -311,7 +455,15 @@ var Case = new Schema({
           formationDocuments: Boolean,
           evidenceOfFiling: Boolean,
           signedBoForm: Boolean,
-          attachments : Array,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
           raCorrectionRequired: Boolean,
           comments: String,
           complete: Boolean
@@ -323,13 +475,111 @@ var Case = new Schema({
           handlesSouthwestTrucks: Boolean,
           highRiskTransportation: Boolean,
           CountryOfCitizenship: String,
-          attachments : Array,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
           raCorrectionRequired: Boolean,
           comments: String,
           complete: Boolean
         },
         sectionComplete: Boolean
       }, // end transportationSarf
+      harEdd:{
+        harEdd:{
+          eddRequired: Boolean,
+          addTracking: Boolean,
+          rationale: String,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
+          raCorrectionRequired: Boolean,
+          comments: String,
+          complete: Boolean
+        }
+        sectionComplete: Boolean
+      }, // end hraEdd
+      qcChecklist:{
+        qcInformation:{
+          qcName: String,
+          dateReceived: Date,
+          firstReview: Boolean,
+          secondReview: Boolean,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
+          complete: Boolean
+        },
+        qcReview:{
+          spellingAndLanguage:String,
+          reasonableness: Boolean,
+          documentation: Boolean,
+          completeSarf: Boolean,
+          completeFields: Boolean,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }],
+          comments: String,
+          complete: Boolean
+        },
+
+      },//end qcChecklist
+      ousEntity:{
+        ousEntity:{
+          hasOus: Boolean,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }]
+        },
+        sectionComplete: Boolean
+      }, // end ousEntity
+      mmb:{
+        managedReportingAttributes:{
+          customer: String,
+          divison: String,
+          rcbo: String,
+          div: String,
+          attachments : [{
+                icon: String,
+                fileName: String,
+                filePath: String,
+                fileType: String,
+                uploader: String,
+                section: String,
+                comment: String
+              }]
+        },
+        sectionComplete: Boolean
+      } //end mmb
     }, //end requirments
     research:{
       caseReasearch:{
