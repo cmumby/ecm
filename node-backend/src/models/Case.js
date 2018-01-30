@@ -607,6 +607,31 @@ var Case = new Schema({
         artifactUploaded: Boolean,
         isSharedCustomer: Boolean
       }, // end forProgramUseOnly
+      wfrcRejectReason:{
+        administrative: Boolean,
+        ccdNotMet: Boolean,
+        missingBo: Boolean,
+        sharedCustomer: Boolean,
+        incompleteInfo: Boolean,
+        incorrectCustomerType: Boolean,
+        screeningAndDispositioning: Boolean,
+        missingHraForm: Boolean,
+        badAmlFactors: Boolean,
+        badAmlRisk: Boolean,
+        escalations: Boolean
+      },// end wfrcRejectReason
+      middleOfficeFlags:{
+         raiseQuestion: Boolean,
+         generalScopeQuestion: Boolean,
+         lobDispute: Boolean,
+         disregardedEntity: Boolean,
+         incorrectInvestment: Boolean,
+         crossLobEscalation: Boolean,
+         pendingDisposition: Boolean,
+         riskChange: Boolean,
+         fund: Boolean,
+         pendingMerge: Boolean
+      }, //end middleOfficeFlags
     }, // end research
     history:{
 
