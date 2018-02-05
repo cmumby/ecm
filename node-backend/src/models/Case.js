@@ -632,6 +632,67 @@ var Case = new Schema({
          fund: Boolean,
          pendingMerge: Boolean
       }, //end middleOfficeFlags
+      lobFlags:{
+        pepEscalation: Boolean,
+        sarfNegativeNews: Boolean,
+        systemOfRecordUpdateRequired: Boolean,
+        sarfOther: Boolean
+      }, // end LobFlags
+      wfcrcFlags:{
+        bearerShareIssuingEntity: Boolean,
+        exemptionRequested: Boolean,
+        referredToExit: Boolean,
+        exceptionRquested: Boolean,
+        customerTypeQuestion: Boolean,
+        materialNegativeNews: Boolean,
+        restrictedCustomer: Boolean
+      }, // end wfcrcFlags
+      primaryLobTracking:{
+        primaryLob: String,
+        receivedDate: Date,
+        requestDate: Date,
+        escalationRequired: Boolean,
+        escalationDate: Date,
+        primaryRm: String,
+        primaryRmRequestDate: Date,
+        primaryLob: String,
+        primaryLobReceiveDate: Date,
+        primaryLobEscalationContact: String
+      }, //end primaryLobTracking
+      customerInformation:{
+        reportDate: Date,
+        fullLegalNameOfCustomer: String,
+        fullLegalAddressOfCustomer: String,
+        relationshipName: String,
+        reviewPeriodFrom: Date,
+        reviewPeriodTo: Date,
+        customerType: String,
+      }, // end customerInformation
+      summaryOfCustomerRelationShip:{
+        customerBusinessModel: String,
+        wcisRelationship: String,
+        customerRelationship: String
+      }, // end summaryOfCustomerRelationShip
+      highRiskCustomerFactors:{
+        countryRisk: String,
+        highRiskCustomerFactors: String,
+        industryRisk: String,
+        ownershipAndOperationalRisk: String,
+        bsaRiskRatingAndRiskCode: String
+      }, //end highRiskCustomerFactors
+      relationshipOverview:{
+        products: String,
+        productsAndServicesOverview: String,
+        avaAlerts: String,
+        highRiskProductUsageAnalysis: String,
+        transactionRisk: String
+      }, // end relationshipOverview
+      productAnalysisAndHighRiskProducts:{
+        cashVault: String,
+        internationalWires: String,
+        desktopDeposit: String,
+        achDomestic: String
+      }, // end productAnalysisAndHighRiskProducts
     }, // end research
     history:{
 
