@@ -1,13 +1,13 @@
 //Case.js
 
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 //schema
 var Case = new Schema({
   desc: {
     ecmId: Number,
-    assignee: ObjectId,
+    assignee: String,
     type: String,
     name: String,
     status: String,
@@ -172,7 +172,7 @@ var Case = new Schema({
         },
         sectionComplete: Boolean
       }, // end ProxyRR
-      cip{
+      cip:{
         customerName:{
           legalName: Boolean,
           dbaName: String,
@@ -348,11 +348,6 @@ var Case = new Schema({
           attachments: Array,
           complete: Boolean
         },
-        relatedPartiesAuthorizedPersons:{
-          anyNonUlimitmadeBo: Boolean,
-          attachments: Array,
-          complete: Boolean
-        },
         beneficialOwner:[{
           isIndividual: Boolean,
           firstName: String,
@@ -369,7 +364,7 @@ var Case = new Schema({
           postalCode: Number,
           dateOfBirth: Date,
           idType: String,
-          tin:, Number,
+          tin: Number,
           tinType: String,
           countryOfIussuance: String,
           expirationDate: Date,
@@ -471,7 +466,7 @@ var Case = new Schema({
         sectionComplete: Boolean
       },//end documentation
       transportationSarf:{
-        transportationSarf{
+        transportationSarf:{
           handlesSouthwestTrucks: Boolean,
           highRiskTransportation: Boolean,
           CountryOfCitizenship: String,
@@ -490,8 +485,8 @@ var Case = new Schema({
         },
         sectionComplete: Boolean
       }, // end transportationSarf
-      harEdd:{
-        harEdd:{
+      hraEdd:{
+        hraEdd:{
           eddRequired: Boolean,
           addTracking: Boolean,
           rationale: String,
@@ -507,7 +502,7 @@ var Case = new Schema({
           raCorrectionRequired: Boolean,
           comments: String,
           complete: Boolean
-        }
+        },
         sectionComplete: Boolean
       }, // end hraEdd
       qcChecklist:{
@@ -544,8 +539,7 @@ var Case = new Schema({
               }],
           comments: String,
           complete: Boolean
-        },
-
+        }
       },//end qcChecklist
       ousEntity:{
         ousEntity:{
@@ -648,14 +642,14 @@ var Case = new Schema({
         restrictedCustomer: Boolean
       }, // end wfcrcFlags
       primaryLobTracking:{
-        primaryLob: String,
+        primaryLobGroup: String,
         receivedDate: Date,
         requestDate: Date,
         escalationRequired: Boolean,
         escalationDate: Date,
         primaryRm: String,
         primaryRmRequestDate: Date,
-        primaryLob: String,
+        primaryLobContactName: String,
         primaryLobReceiveDate: Date,
         primaryLobEscalationContact: String
       }, //end primaryLobTracking
@@ -666,7 +660,7 @@ var Case = new Schema({
         relationshipName: String,
         reviewPeriodFrom: Date,
         reviewPeriodTo: Date,
-        customerType: String,
+        customerType: String
       }, // end customerInformation
       summaryOfCustomerRelationShip:{
         customerBusinessModel: String,
@@ -693,14 +687,36 @@ var Case = new Schema({
         desktopDeposit: String,
         achDomestic: String
       }, // end productAnalysisAndHighRiskProducts
+      dueDiligenceUpdate:{
+        unusualActivitiy: String,
+        totalNumberofUnusualActivity: String,
+        pep: String,
+        adverseNews: String,
+        publicInfo: String,
+        highRiskProductUsage: String,
+        amlRiskSummary: String
+      }, // end dueDiligenceUpdate
+      enhancedDdueDiligence:{
+        highRiskFactors: String,
+        sourceOfWealth: String,
+        adversNewsSearch: String
+      }, //end enhancedDdueDiligence
+      relationShipNameApproval:{
+        rmName: String,
+        primayLobApproverName: String,
+        wfcrcApproverName: String,
+        rmApprovalDate: Date,
+        primaryLobApprovalDate: Date,
+        wfcrcApprovalDate: Date
+      } // end relationShipNameApproval
     }, // end research
     history:{
 
     }// end history
-  },
+  } // end desc
 
 },{
-    collection: 'Tasks'
+    collection: "Tasks"
 });
 
 module.exports = mongoose.model('TodoList', TodoList);
