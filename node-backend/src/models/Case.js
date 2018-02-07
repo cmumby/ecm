@@ -719,4 +719,4 @@ var Case = new Schema({
     collection: "Tasks"
 });
 
-module.exports = mongoose.model('TodoList', TodoList);
+module.exports = mongoose.model('Case', Case);

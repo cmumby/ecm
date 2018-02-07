@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 
 //server configuration
-var basePath = '/todo';
+var basePath = '/ecm';
 var port = 6200;
 
 // Connection to DB

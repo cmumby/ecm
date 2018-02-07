@@ -4,7 +4,7 @@ var router = express.Router();
 
 //Schema
 var TodoList = require('../models/TodoList');
-var Case = require('../models/TodoList');
+var Case = require('../models/Case');
 
 // Get Specific
 router.route('/:id').get(function (req, res) {
@@ -17,6 +17,17 @@ router.route('/:id').get(function (req, res) {
 // Get All Items
 router.route('/').get(function (req, res) {
   TodoList.find(function (err, items){
+    if(err){
+      console.log(err);
+    } else {
+      res.json(items);
+    }
+  });
+});
+
+router.route('/cases/list').get(function (req, res) {
+  Case.find(function (err, items){
+    console.log('HIT!');
     if(err){
       console.log(err);
     } else {
