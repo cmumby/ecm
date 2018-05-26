@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import {Header} from "./components/Header";
 
 import AddTodo from './components/AddTodo';
-import ListTodo from './components/ListTodo';
+import ListCase from './components/ListCase';
 //import ListCase from './components/ListCase';
 import UpdateTodo from './components/UpdateTodo';
 
@@ -26,7 +26,7 @@ ReactDOM.render(
       <div>
       <Route path='/add' component={AddTodo} />
       <Route path='/cases' component={AddTodo} />
-      <Route exact path='/' component={ListTodo} />
+      <Route exact path='/' component={ListCase} />
       <Route path='/update/:id' component={UpdateTodo} />
       </div>
       </Router>
