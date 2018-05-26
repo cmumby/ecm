@@ -27,7 +27,7 @@ router.route('/').get(function (req, res) {
 
 router.route('/cases/list').get(function (req, res) {
   Case.find(function (err, items){
-    console.log('HIT!');
+    //console.log(items);
     if(err){
       console.log(err);
     } else {

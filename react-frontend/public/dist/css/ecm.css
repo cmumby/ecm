@@ -1,0 +1,18 @@
+.corporate-logo{
+    width:3%;
+    padding-bottom:5px;
+}
+.ecm-id{
+    font-size: 2em; 
+    height: 150px;
+    width: 150px;
+    font-weight: bold;
+    display: block;
+    padding-top: 63px;
+}
+.ecm-id-column{
+    width:10%;
+}
+.customer-name-link{
+    font-size: 1.6em;
+}

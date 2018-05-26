@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TodoService from './TodoService';
-import axios from 'axios';
+//import axios from 'axios';
 import ListTodoRow from './ListTodoRow';
 
 export default class IndexItem extends Component {
@@ -56,21 +56,48 @@ export default class IndexItem extends Component {
     render() {
       return (
         <div className="container-todo">
-          <div className="panel panel-default">
-            <div className="panel-heading">List of Tasks</div>
-            <div className="panel-body">
-            <p>Click on the task description to edit</p>
-              <table id="todo-list" className="table table-bordered">
-                <tbody>
-                  {this.tabRow()}
-                </tbody>
-              </table>
+          <div className="box box-info">
+            <div className="box-header with-border">
+              <h3 className="box-title">Assigned Cases</h3>
+
+              {/* <div className="box-tools pull-right">
+                <button type="button" className="btn btn-box-tool" data-widget="collapse"><i className="fa fa-minus"></i>
+                </button>
+                <button type="button" className="btn btn-box-tool" data-widget="remove"><i className="fa fa-times"></i></button>
+      </div> */}
+            </div>
+
+            <div className="box-body">
+              <div className="table-responsive">
+                <table className="table no-margin table-striped">
+                  <thead>
+                    <tr>
+                      <th>ECM Case ID</th>
+                      <th>Customer Info</th>
+                      <th>Actions</th>
+                      <th>Age (Days)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {this.tabRow()}
+                  </tbody>
+                </table>
+              </div>
+
             </div>
             <div className="panel-footer">
               <button onClick={this.handleAdd} className="btn btn-info">New task</button>
             </div>
+            {/*<div className="box-footer clearfix">
+            
+              <a href="javascript:void(0)" className="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+              <a href="javascript:void(0)" className="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+            
+              
+            </div>*/}
           </div>
         </div>
+        
       );
     }
   }

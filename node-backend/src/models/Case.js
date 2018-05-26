@@ -8,6 +8,16 @@ var Case = new Schema({
   desc: {
     ecmId: Number,
     assignee: String,
+  },
+
+}, {
+    collection: 'Cases'
+  });
+/*
+var Case = new Schema({
+  desc: {
+    ecmId: Number,
+    assignee: String,
     type: String,
     name: String,
     status: String,
@@ -716,7 +726,7 @@ var Case = new Schema({
   } // end desc
 
 },{
-    collection: "Tasks"
-});
+    collection: "Cases"
+});*/
 
 module.exports = mongoose.model('Case', Case);

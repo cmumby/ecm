@@ -3,9 +3,10 @@ import axios from 'axios';
 export default class TodoService {
 
   all(callback) {
-    axios.get('http://localhost:6200/todo')
+    axios.get('http://localhost:6200/ecm/cases/list')
     .then((response) => {
       callback(response.data);
+     // console.log(response.data);
     })
     .catch(function (error) {
       console.log(error);

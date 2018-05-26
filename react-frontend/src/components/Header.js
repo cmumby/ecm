@@ -1,6 +1,7 @@
 import React from "react";
 
 export const Header = (props) => {
+
   return (
     <nav className="navbar navbar-default">
         <div className="container-fluid">
@@ -9,7 +10,7 @@ export const Header = (props) => {
               <span className="sr-only">Toggle navigation</span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="#">ReactJS Todo List</a>
+            <a className="navbar-brand" href="/">Current Case List</a>
           </div>
         </div>
       </nav>

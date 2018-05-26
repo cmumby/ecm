@@ -8,7 +8,9 @@ import {Header} from "./components/Header";
 
 import AddTodo from './components/AddTodo';
 import ListTodo from './components/ListTodo';
+//import ListCase from './components/ListCase';
 import UpdateTodo from './components/UpdateTodo';
+
 
 import './index.css';
 
@@ -23,6 +25,7 @@ ReactDOM.render(
       <Router>
       <div>
       <Route path='/add' component={AddTodo} />
+      <Route path='/cases' component={AddTodo} />
       <Route exact path='/' component={ListTodo} />
       <Route path='/update/:id' component={UpdateTodo} />
       </div>
