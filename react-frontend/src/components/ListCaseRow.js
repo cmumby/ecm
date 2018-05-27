@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import {Link} from 'react-router-dom';
 
-export default class ListTodoRow extends Component {
+export default class ListCaseRow extends Component {
 
  /* constructor(props) {
       super(props);
@@ -10,7 +10,7 @@ export default class ListTodoRow extends Component {
 
   handStateLabel(){
     var statusClass = "";
-    switch (this.props.obj.desc.status) {
+    switch (this.props.obj.status) {
       case "Review In Progress":
         statusClass = "label-info";
         break;
@@ -32,27 +32,27 @@ export default class ListTodoRow extends Component {
   
   handleDaysSince() {
     const ONE_DAY = 24 * 60 * 60 * 1000;
-    let statusTimestap = new Date(this.props.obj.desc.statusTimestamp);
+    let statusTimestap = new Date(this.props.obj.statusTimestamp);
     return Math.round(Math.abs((statusTimestap.getTime() - new Date().getTime()) / (ONE_DAY)));
   }
 
   render() {
-    //console.log("cases:",this.props);
+    console.log("cases:",this.props);
         
     return (
       <tr>
         <td className="ecm-id-column">
-          <span className={"ecm-id label " + this.handStateLabel()}>{this.props.obj.desc.ecmId}</span>
+          <span className={"ecm-id label " + this.handStateLabel()}>{this.props.obj.ecmId}</span>
         </td>
         <td>
           <article className="case-details">
             <dl>
               <dt>Name:</dt>
-              <dd><a className="customer-name-link" id={this.props.obj._id} onClick={this.props.onUpdate} href="">{this.props.obj.desc.name}</a></dd>
+              <dd><a className="customer-name-link" id={this.props.obj._id} onClick={this.props.onUpdate} href="">{this.props.obj.name}</a></dd>
               <dt>Type:</dt>
-              <dd><span>{this.props.obj.desc.type}</span></dd>
+              <dd><span>{this.props.obj.type}</span></dd>
               <dt>Status:</dt>
-              <dd><span className={"label " + this.handStateLabel()}>{this.props.obj.desc.status}</span></dd>
+              <dd><span className={"label " + this.handStateLabel()}>{this.props.obj.status}</span></dd>
             </dl>
           </article>
         </td>

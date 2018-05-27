@@ -5,14 +5,20 @@ var Schema = mongoose.Schema;
 
 //schema
 var Case = new Schema({
-  desc: {
-    ecmId: Number,
-    assignee: String,
-  },
+  
+  ecmId: Number,
+  assignee: String,
+  type: String,
+  name: String,
+  status: String,
+  statusTimestamp: Date,
+  notes: String,
+  // Requirements
+  attachments: Array
 
 }, {
     collection: 'Cases'
-  });
+});
 /*
 var Case = new Schema({
   desc: {
