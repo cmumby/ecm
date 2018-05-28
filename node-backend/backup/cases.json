@@ -7,38 +7,112 @@
         "name": "Bob's Bugers LLC",
         "status": "Review In Progress",
         "statusTimestamp": "2018-05-25T16:00:00.000Z",
-        "notes": "Oh-my god..."
-      
-    },
-    {
-        "_id": "5b0850d6be64be1b74814909",
-        "ecmId": 124,
-        "assignee": "u616323",
-        "type": "Operating",
-        "name": "Strickland Propane INC",
-        "status": "Review Pending",
-        "statusTimestamp": "2018-05-24T16:00:00.000Z",
-        "notes": "Taste the Meat, not the heat"
-      
-    },
-    {
-        "_id": "5b0850e0be64be1b7481490a",
-        "ecmId": 125,
-        "assignee": "u616323",
-        "type": "Operating",
-        "name": "Planet Express INC",
-        "status": "Revisions Required",
-        "statusTimestamp": "2018-05-23T16:00:00.000Z",
-        "notes": "Good News!"
-    },
-    {
-        "_id": "5b0850e3be64be1b7481490b",
-        "ecmId": 126,
-        "assignee": "u616323",
-        "type": "Operating",
-        "name": "Mike Tyson Mystery Team LLC",
-        "status": "Requirements Complete",
-        "statusTimestamp": "2018-05-22T16:00:00.000Z",
-        "notes": "Is that a fender bender?"
+        "notes": "Oh-my god...",
+        "requirement": {
+            "proxyRR": {
+                "sectionComplete": true,
+                "productsAndServices": {
+                    "complete": true,
+                    "comments": "",
+                    "raCorrectionRequired": false,
+                    "attachments": [
+                        ""
+                    ],
+                    "userProducts": [
+                        ""
+                    ],
+                    "currentProducts": [
+                        ""
+                    ]
+                },
+                "pep": {
+                    "complete": true,
+                    "comments": "",
+                    "raCorrectionRequired": false,
+                    "attachments": [
+                        ""
+                    ],
+                    "isPep": false
+                },
+                "relatedParties": {
+                    "complete": true,
+                    "comments": "",
+                    "raCorrectionRequired": false,
+                    "attachments": [
+                        ""
+                    ],
+                    "anyForeignParties": false
+                },
+                "marketsServed": {
+                    "complete": true,
+                    "comments": "",
+                    "raCorrectionRequired": false,
+                    "attachments": [
+                        ""
+                    ],
+                    "countries": [
+                        "USA"
+                    ]
+                },
+                "natureOfBusiness": {
+                    "complete": true,
+                    "comments": "",
+                    "raCorrectionRequired": false,
+                    "attachments": [
+                        [
+                            ""
+                        ]
+                    ],
+                    "naics": "722513"
+                },
+                "legalFormation": {
+                    "complete": true,
+                    "comments": "",
+                    "raCorrectionRequired": false,
+                    "attachments": [
+                        ""
+                    ],
+                    "countryOfRegistration": "USA"
+                },
+                "legalEntity": {
+                    "complete": true,
+                    "comments": "",
+                    "raCorrectionRequired": false,
+                    "attachments": [
+                        ""
+                    ],
+                    "entityType": "Limited Liability Company"
+                },
+                "physicalAddress": [
+                    {
+                        "complete": true,
+                        "comments": "",
+                        "raCorrectionRequired": false,
+                        "attachments": [
+                            ""
+                        ],
+                        "country": "USA",
+                        "state": "New Jersey",
+                        "city": "Ocean City",
+                        "secondLine": "Ground FLoor",
+                        "firstLine": "124 Ocean Avenue"
+                    }
+                ],
+                "registeredAddress": {
+                    "complete": true,
+                    "comments": "",
+                    "raCorrectionRequired": false,
+                    "attachments": [
+                        ""
+                    ],
+                    "postalCode": "12345",
+                    "country": "USA",
+                    "state": "New Jersey",
+                    "city": "Ocean City",
+                    "secondLine": "Ground FLoor",
+                    "firstLine": "123 Fake Street"
+                }
+            }
+        }
     }
 ]

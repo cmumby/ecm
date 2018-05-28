@@ -17,7 +17,7 @@ var Case = new Schema({
   notes: String,
   // Requirements
   //attachments: Array,
-  requirement: [Requirement],
+  requirement: Requirement,
   
 
 }, {

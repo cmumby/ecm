@@ -2,30 +2,14 @@
 
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-
+var ProxyRR = require("./ProxyRR");
 
 //schema
 var Requirement = new Schema({
-  firstLine: String,
-  secondLine: String,
-  city: String,
-  state: String,
-  country: String,
-  postalCode: Number
-    //proxyRR: proxyRR
-
+  proxyRR: ProxyRR
 });
 
-/*var proxyRR = new Schema({
-    firstLine: String,
-    secondLine: String,
-    city: String,
-    state: String,
-    country: String,
-    postalCode: Number
-},{
-        collection: 'proxyRRs'
-})*/
+
 /*
 var Case = new Schema({
   desc: {
