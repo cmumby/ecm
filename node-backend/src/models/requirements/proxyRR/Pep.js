@@ -1,9 +1,9 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-var Attachment = require('./Attachment');
+var Attachment = require('../../Attachment');
 
-var MarketsServed = new Schema({
-    countries: Array,
+var Pep = new Schema({
+    isPep: Boolean,
     attachments: [Attachment],
     raCorrectionRequired: Boolean,
     comments: String,

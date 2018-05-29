@@ -1,9 +1,9 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-var Attachment = require('./Attachment');
+var Attachment = require('../../Attachment');
 
-var Pep = new Schema({
-    isPep: Boolean,
+var RelatedParties = new Schema({
+    anyForeignParties: Boolean,
     attachments: [Attachment],
     raCorrectionRequired: Boolean,
     comments: String,

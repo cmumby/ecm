@@ -1,11 +1,10 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-var Attachment = require('./Attachment');
+var Attachment = require('../../Attachment');
 
-var RelatedParties = new Schema({
-    anyForeignParties: Boolean,
+var LegalFormation = new Schema({
+    countryOfRegistration: String,
     attachments: [Attachment],
-    raCorrectionRequired: Boolean,
     comments: String,
     complete: Boolean
 });

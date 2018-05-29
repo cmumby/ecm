@@ -1,10 +1,10 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-var Attachment = require('./Attachment');
+var Attachment = require('../../Attachment');
 
-var ProductsAndServices = new Schema({
-    currentProducts: Array,
-    userProducts: Array,
+var CustomerName = new Schema({
+    legalName: String,
+    dbaName: String,
     attachments: [Attachment],
     raCorrectionRequired: Boolean,
     comments: String,

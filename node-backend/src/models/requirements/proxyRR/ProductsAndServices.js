@@ -1,9 +1,10 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-var Attachment = require('./Attachment');
+var Attachment = require('../../Attachment');
 
-var LegalEntity = new Schema({
-    entityType: String,
+var ProductsAndServices = new Schema({
+    currentProducts: Array,
+    userProducts: Array,
     attachments: [Attachment],
     raCorrectionRequired: Boolean,
     comments: String,

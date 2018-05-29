@@ -2,11 +2,13 @@
 
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-var ProxyRR = require("./ProxyRR");
+var ProxyRR = require("./proxyRR/ProxyRR");
+var Cip = require("./cip/Cip");
 
 //schema
 var Requirement = new Schema({
-  proxyRR: ProxyRR
+  proxyRR: ProxyRR,
+  cip: Cip
 });
 
 

@@ -1,8 +1,8 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-var Attachment = require('./Attachment');
+var Attachment = require('../../Attachment');
 
-var RegisteredAddress = new Schema({
+var PhysicalAddress = new Schema({
     firstLine: String,
     secondLine: String,
     city: String,

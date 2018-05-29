@@ -9,6 +9,30 @@
         "statusTimestamp": "2018-05-25T16:00:00.000Z",
         "notes": "Oh-my god...",
         "requirement": {
+            "cip": {
+                "sectionComplete": true,
+                "taxOrGovernmentId": {
+                    "complete": true,
+                    "comments": "",
+                    "raCorrectionRequired": false,
+                    "attachments": [
+                        ""
+                    ],
+                    "tinType": "Employer Identification Number",
+                    "id": 123456789,
+                    "idType": "Tax Identification Number"
+                },
+                "customerName": {
+                    "complete": true,
+                    "comments": "",
+                    "raCorrectionRequired": false,
+                    "attachments": [
+                        ""
+                    ],
+                    "dbaName": "Bob's Bugers",
+                    "legalName": "Bob's Bugers LLC"
+                }
+            },
             "proxyRR": {
                 "sectionComplete": true,
                 "productsAndServices": {
@@ -113,6 +137,7 @@
                     "firstLine": "123 Fake Street"
                 }
             }
-        }
+        },
+        "attachments": []
     }
 ]

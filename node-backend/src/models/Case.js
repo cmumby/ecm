@@ -2,7 +2,8 @@
 
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-var Requirement = require('./Requirement');
+var Requirement = require('./requirements/Requirement');
+var Attachment = require('./Attachment');
 
 
 //schema
@@ -15,8 +16,7 @@ var Case = new Schema({
   status: String,
   statusTimestamp: Date,
   notes: String,
-  // Requirements
-  //attachments: Array,
+  attachments: [Attachment],
   requirement: Requirement,
   
 
