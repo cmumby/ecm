@@ -8,7 +8,8 @@ var Cip = require("./cip/Cip");
 //schema
 var Requirement = new Schema({
   proxyRR: ProxyRR,
-  cip: Cip
+  cip: Cip,
+  remediation: Remediation
 });
 
 
