@@ -1,210 +1,188 @@
-[
-    {
-        "_id": "5b0844b9a6873e1b74573e19",
-        "ecmId": 123,
-        "assignee": "u616323",
-        "type": "Operating",
-        "name": "Bob's Bugers LLC",
-        "status": "Review In Progress",
-        "statusTimestamp": "2018-05-25T16:00:00.000Z",
-        "notes": "Oh-my god...",
-        "requirement": {
-            "remediation": {
-                "accountRelationship": {
-                    "complete": true,
-                    "comments": "",
-                    "raCorrectionRequired": false,
-                    "attachments": [
-                        ""
-                    ],
-                    "accountType": "Borrower/Account Holder",
-                    "accountPurpose": "Financing (Lending)"
-                },
-                "customerDetails": {
-                    "complete": true,
-                    "comments": "",
-                    "raCorrectionRequired": false,
-                    "attachments": [
-                        ""
-                    ],
-                    "organizationType": "Corporation ~ Corporation"
-                },
-                "investmentVechiclesFunds": {
-                    "complete": true,
-                    "comments": "",
-                    "raCorrectionRequired": false,
-                    "attachments": [
-                        ""
-                    ],
-                    "secRiaNumber": 0,
-                    "relatedEntityFunds": false,
-                    "isInvestment": false
-                }
-            },
-            "cip": {
-                "sectionComplete": true,
-                "taxOrGovernmentId": {
-                    "complete": true,
-                    "comments": "",
-                    "raCorrectionRequired": false,
-                    "attachments": [
-                        ""
-                    ],
-                    "tinType": "Employer Identification Number",
-                    "id": 123456789,
-                    "idType": "Tax Identification Number"
-                },
-                "customerName": {
-                    "complete": true,
-                    "comments": "",
-                    "raCorrectionRequired": false,
-                    "attachments": [
-                        ""
-                    ],
-                    "dbaName": "Bob's Bugers",
-                    "legalName": "Bob's Bugers LLC"
-                }
-            },
-            "proxyRR": {
-                "sectionComplete": true,
-                "productsAndServices": {
-                    "complete": true,
-                    "comments": "",
-                    "raCorrectionRequired": false,
-                    "attachments": [
-                        ""
-                    ],
-                    "userProducts": [
-                        "P34: Loans"
-                    ],
-                    "currentProducts": [
-                        "PD228: ACH Origination",
-                        "PD234: Branch Services",
-                        "PF3: Credit"
-                    ]
-                },
-                "pep": {
-                    "complete": true,
-                    "comments": "",
-                    "raCorrectionRequired": false,
-                    "attachments": [
-                        ""
-                    ],
-                    "isPep": false
-                },
-                "relatedParties": {
-                    "complete": true,
-                    "comments": "",
-                    "raCorrectionRequired": false,
-                    "attachments": [
-                        ""
-                    ],
-                    "anyForeignParties": false
-                },
-                "marketsServed": {
-                    "complete": true,
-                    "comments": "",
-                    "raCorrectionRequired": false,
-                    "attachments": [
-                        ""
-                    ],
-                    "countries": [
-                        "USA"
-                    ]
-                },
-                "natureOfBusiness": {
-                    "complete": true,
-                    "comments": "",
-                    "raCorrectionRequired": false,
-                    "attachments": [
-                        [
-                            ""
-                        ]
-                    ],
-                    "naics": "722513"
-                },
-                "legalFormation": {
-                    "complete": true,
-                    "comments": "",
-                    "raCorrectionRequired": false,
-                    "attachments": [
-                        ""
-                    ],
-                    "countryOfRegistration": "USA"
-                },
-                "legalEntity": {
-                    "complete": true,
-                    "comments": "",
-                    "raCorrectionRequired": false,
-                    "attachments": [
-                        ""
-                    ],
-                    "entityType": "Limited Liability Company"
-                },
-                "physicalAddress": [
-                    {
-                        "complete": true,
-                        "comments": "",
-                        "raCorrectionRequired": false,
-                        "attachments": [
-                            ""
-                        ],
-                        "country": "USA",
-                        "state": "New Jersey",
-                        "city": "Ocean City",
-                        "secondLine": "Ground FLoor",
-                        "firstLine": "124 Ocean Avenue"
-                    }
+[  
+    {  
+       "_id":"5b0844b9a6873e1b74573e19",
+       "ecmId":123,
+       "assignee":"u616323",
+       "type":"Operating",
+       "name":"Bob's Bugers LLC",
+       "status":"Review In Progress",
+       "statusTimestamp":"2018-05-25T16:00:00.000Z",
+       "notes":"Oh-my god...",
+       "requirement":{  
+          "proxyRR":{  
+             "registeredAddress":{  
+                "firstLine":"123 Fake Street",
+                "secondLine":"Ground FLoor",
+                "city":"Ocean City",
+                "state":"New Jersey",
+                "country":"USA",
+                "postalCode":"12345",
+                "attachments":[  
+                   ""
                 ],
-                "registeredAddress": {
-                    "complete": true,
-                    "comments": "",
-                    "raCorrectionRequired": false,
-                    "attachments": [
-                        ""
-                    ],
-                    "postalCode": "12345",
-                    "country": "USA",
-                    "state": "New Jersey",
-                    "city": "Ocean City",
-                    "secondLine": "Ground FLoor",
-                    "firstLine": "123 Fake Street"
+                "raCorrectionRequired":false,
+                "comments":"",
+                "complete":true
+             },
+             "physicalAddress":[  
+                {  
+                   "firstLine":"124 Ocean Avenue",
+                   "secondLine":"Ground FLoor",
+                   "city":"Ocean City",
+                   "state":"New Jersey",
+                   "country":"USA",
+                   "attachments":[  
+                      ""
+                   ],
+                   "raCorrectionRequired":false,
+                   "comments":"",
+                   "complete":true
                 }
-            }
-        },
-        "attachments": []
-    },
-    {
-        "_id": "5b0850d6be64be1b74814909",
-        "ecmId": 124,
-        "assignee": "u616323",
-        "type": "Operating",
-        "name": "Strickland Propane INC",
-        "status": "Review Pending",
-        "statusTimestamp": "2018-05-24T16:00:00.000Z",
-        "notes": "Taste the Meat, not the heat",
-        "attachments": []
-    },
-    {
-        "_id": "5b0850e0be64be1b7481490a",
-        "ecmId": 125,
-        "assignee": "u616323",
-        "type": "Operating",
-        "name": "Planet Express INC",
-        "status": "Revisions Required",
-        "statusTimestamp": "2018-05-23T16:00:00.000Z",
-        "notes": "Good News!",
-        "attachments": []
-    },
-    {
-        "_id": "5b0850e3be64be1b7481490b",
-        "ecmId": 126,
-        "assignee": "u616323",
-        "type": "Operating",
-        "name": "Mike Tyson Mystery Team LLC",
-        "status": "Requirements Complete",
-        "statusTimestamp": "2018-05-22T16:00:00.000Z",
-        "notes": "Is that a fender bender?",
-        "attachments": []
+             ],
+             "legalEntity":{  
+                "entityType":"Limited Liability Company",
+                "attachments":[  
+                   ""
+                ],
+                "raCorrectionRequired":false,
+                "comments":"",
+                "complete":true
+             },
+             "legalFormation":{  
+                "countryOfRegistration":"USA",
+                "attachments":[  
+                   ""
+                ],
+                "raCorrectionRequired":false,
+                "comments":"",
+                "complete":true
+             },
+             "natureOfBusiness":{  
+                "naics":"722513",
+                "attachments":[  
+                   [  
+                      ""
+                   ]
+                ],
+                "raCorrectionRequired":false,
+                "comments":"",
+                "complete":true
+             },
+             "marketsServed":{  
+                "countries":[  
+                   "USA"
+                ],
+                "attachments":[  
+                   ""
+                ],
+                "raCorrectionRequired":false,
+                "comments":"",
+                "complete":true
+             },
+             "relatedParties":{  
+                "anyForeignParties":false,
+                "attachments":[  
+                   ""
+                ],
+                "raCorrectionRequired":false,
+                "comments":"",
+                "complete":true
+             },
+             "pep":{  
+                "isPep":false,
+                "attachments":[  
+                   ""
+                ],
+                "raCorrectionRequired":false,
+                "comments":"",
+                "complete":true
+             },
+             "productsAndServices":{  
+                "currentProducts":[  
+                   "PD228: ACH Origination",
+                   "PD234: Branch Services",
+                   "PF3: Credit"
+                ],
+                "userProducts":[  
+                   "P34: Loans"
+                ],
+                "attachments":[  
+                   ""
+                ],
+                "raCorrectionRequired":false,
+                "comments":"",
+                "complete":true
+             },
+             "sectionComplete":true
+          },
+          "cip":{  
+             "customerName":{  
+                "legalName":"Bob's Bugers LLC",
+                "dbaName":"Bob's Bugers",
+                "attachments":[  
+                   ""
+                ],
+                "raCorrectionRequired":false,
+                "comments":"",
+                "complete":true
+             },
+             "taxOrGovernmentId":{  
+                "idType":"Tax Identification Number",
+                "id":123456789,
+                "tinType":"Employer Identification Number",
+                "attachments":[  
+                   ""
+                ],
+                "raCorrectionRequired":false,
+                "comments":"",
+                "complete":true
+             },
+             "sectionComplete":true
+          },
+          "remediation":{  
+             "investmentVechiclesFunds":{  
+                "isInvestment":false,
+                "relatedEntityFunds":false,
+                "secRiaNumber":0,
+                "attachments":[  
+                   ""
+                ],
+                "raCorrectionRequired":false,
+                "comments":"",
+                "complete":true
+             },
+             "customerDetails":{  
+                "organizationType":"Corporation ~ Corporation",
+                "attachments":[  
+                   ""
+                ],
+                "raCorrectionRequired":false,
+                "comments":"",
+                "complete":true
+             },
+             "accountRelationship":{  
+                "accountPurpose":"Financing (Lending)",
+                "accountType":"Borrower/Account Holder",
+                "attachments":[  
+                   ""
+                ],
+                "raCorrectionRequired":false,
+                "comments":"",
+                "complete":true
+             },
+             "legalFormation":{  
+                "complete":true,
+                "comments":"",
+                "raCorrectionRequired":false,
+                "attachments":[  
+                   ""
+                ],
+                "stateOfRegistration":"New Jersey"
+             }
+          }
+       },
+       "attachments":[  
+ 
+       ]
     }
-]
+ ]
