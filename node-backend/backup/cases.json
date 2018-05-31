@@ -10,6 +10,16 @@
         "notes": "Oh-my god...",
         "requirement": {
             "remediation": {
+                "accountRelationship": {
+                    "complete": true,
+                    "comments": "",
+                    "raCorrectionRequired": false,
+                    "attachments": [
+                        ""
+                    ],
+                    "accountType": "Borrower/Account Holder",
+                    "accountPurpose": "Financing (Lending)"
+                },
                 "customerDetails": {
                     "complete": true,
                     "comments": "",
@@ -65,10 +75,12 @@
                         ""
                     ],
                     "userProducts": [
-                        ""
+                        "P34: Loans"
                     ],
                     "currentProducts": [
-                        ""
+                        "PD228: ACH Origination",
+                        "PD234: Branch Services",
+                        "PF3: Credit"
                     ]
                 },
                 "pep": {
