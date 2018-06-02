@@ -178,11 +178,71 @@
                    ""
                 ],
                 "stateOfRegistration":"New Jersey"
-             }
+             },
+             "customerStructure": {
+                "complete": true,
+                "comments": "",
+                "raCorrectionRequired": false,
+                "attachments": [
+                    ""
+                ],
+                "isPubliclyTraded": false
+            },
+            "sourceOfWealth": {
+                "complete": true,
+                "comments": "",
+                "raCorrectionRequired": false,
+                "attachments": [
+                    ""
+                ],
+                "wealthSource": "Operating Revenue"
+            },
+            "generalDescriptionOfBusiness": {
+                "complete": true,
+                "comments": "",
+                "raCorrectionRequired": false,
+                "attachments": [
+                    ""
+                ],
+                "description": "Bob's burgers, LLC is a Limited Liability Company based in Ocean City, New Jersey the operatiosn a Fast-Food Burger Restaurant."
+            }
           }
        },
        "attachments":[  
  
        ]
+    },
+    {
+        "_id": "5b0850d6be64be1b74814909",
+        "ecmId": 124,
+        "assignee": "u616323",
+        "type": "Operating",
+        "name": "Strickland Propane INC",
+        "status": "Review Pending",
+        "statusTimestamp": "2018-05-24T16:00:00.000Z",
+        "notes": "Taste the Meat, not the heat",
+        "attachments": []
+    },
+    {
+        "_id": "5b0850e0be64be1b7481490a",
+        "ecmId": 125,
+        "assignee": "u616323",
+        "type": "Operating",
+        "name": "Planet Express INC",
+        "status": "Revisions Required",
+        "statusTimestamp": "2018-05-23T16:00:00.000Z",
+        "notes": "Good News!",
+        "attachments": []
+    },
+    {
+        "_id": "5b0850e3be64be1b7481490b",
+        "ecmId": 126,
+        "assignee": "u616323",
+        "type": "Operating",
+        "name": "Mike Tyson Mystery Team LLC",
+        "status": "Requirements Complete",
+        "statusTimestamp": "2018-05-22T16:00:00.000Z",
+        "notes": "Is that a fender bender?",
+        "attachments": []
     }
  ]
