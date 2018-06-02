@@ -205,8 +205,36 @@
                     ""
                 ],
                 "description": "Bob's burgers, LLC is a Limited Liability Company based in Ocean City, New Jersey the operatiosn a Fast-Food Burger Restaurant."
+            },
+            "sourceOfFunds": {
+                "complete": true,
+                "comments": "",
+                "raCorrectionRequired": false,
+                "attachments": [
+                    ""
+                ],
+                "wealthSource": "Operating Revenue"
+            },
+            "participationPurchased": {
+                "complete": true,
+                "comments": "",
+                "raCorrectionRequired": false,
+                "attachments": [
+                    ""
+                ],
+                "isPurchased": false
+            },
+            "cipNotice": {
+                "complete": true,
+                "comments": "",
+                "raCorrectionRequired": false,
+                "attachments": [
+                    ""
+                ],
+                "noticeProvided": true
             }
           }
+
        },
        "attachments":[  
  
