@@ -74,7 +74,7 @@ export default class IndexItem extends Component {
                     <tr>
                       <th>ECM Case ID</th>
                       <th>Customer Info</th>
-                      <th>Actions</th>
+                      <th>Status</th>
                       <th>Age (Days)</th>
                     </tr>
                   </thead>

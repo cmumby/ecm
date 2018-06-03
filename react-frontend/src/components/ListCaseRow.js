@@ -51,14 +51,13 @@ export default class ListCaseRow extends Component {
               <dd><a className="customer-name-link" id={this.props.obj._id} onClick={this.props.onUpdate} href="">{this.props.obj.name}</a></dd>
               <dt>Type:</dt>
               <dd><span>{this.props.obj.type}</span></dd>
-              <dt>Status:</dt>
-              <dd><span className={"label " + this.handStateLabel()}>{this.props.obj.status}</span></dd>
+              <dt>Actions:</dt>
+              <dd><button id={this.props.obj._id} onClick={this.props.onDelete} type="button" value="Delete" className="case-list btn btn-danger btn-xs">Delete This Case</button></dd>
             </dl>
           </article>
         </td>
         <td>
-          <button id={this.props.obj._id} onClick={this.props.onDelete} type="button" value="Delete" className="case-list btn btn-danger btn-xs">Delete This Case</button>
-          
+          <span className={"case-status label " + this.handStateLabel()}>{this.props.obj.status}</span>          
         </td>
         <td>
           <span className="days-since">{this.handleDaysSince()}</span>
