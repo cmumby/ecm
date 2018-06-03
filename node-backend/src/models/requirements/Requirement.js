@@ -5,12 +5,14 @@ var Schema = mongoose.Schema;
 var ProxyRR = require("./proxyRR/ProxyRR");
 var Cip = require("./cip/Cip");
 var Remediation = require("./remediation/Remediation");
+var RelatedParties = require("./related-parties/RelatedParties");
 
 //schema
 var Requirement = new Schema({
   proxyRR: ProxyRR,
   cip: Cip,
-  remediation: Remediation
+  remediation: Remediation,
+  relatedParties: RelatedParties
 });
 
 
