@@ -232,7 +232,62 @@
                     ""
                 ],
                 "noticeProvided": true
+            },
+            "internetGambling": {
+                "complete": true,
+                "comments": "",
+                "raCorrectionRequired": false,
+                "attachments": [
+                    ""
+                ],
+                "isInternetGambling": false
+            },
+            "prohibitedCustomers": {
+                "complete": true,
+                "comments": "",
+                "raCorrectionRequired": false,
+                "attachments": [
+                    ""
+                ],
+                "isMarijunaDistributor": false,
+                "customerHasWarrents": false,
+                "isNonUsMexicanCdc": false,
+                "isUsOwnsMexicanCdc": false,
+                "isShellBank": false,
+                "isVirtualCurrencyExchange": false,
+                "isThroughAccount": false,
+                "isThirdPartyCheckCasher": false,
+                "isPuipidTransactor": false,
+                "isInternationalCurrencyShipper": false
+            },
+            "relationshipManager": {
+                "complete": true,
+                "comments": "",
+                "raCorrectionRequired": false,
+                "attachments": [
+                    ""
+                ],
+                "rm": ""
+            },
+            "cipCddApprovedDate": {
+                "complete": true,
+                "comments": "",
+                "raCorrectionRequired": false,
+                "attachments": [
+                    ""
+                ],
+                "date": ""
+            },
+            "submitter": {
+                "complete": true,
+                "comments": "",
+                "raCorrectionRequired": false,
+                "attachments": [
+                    ""
+                ],
+                "rm": ""
             }
+            
           }
 
        },

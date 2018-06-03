@@ -11,6 +11,11 @@ var GeneralDescriptionOfBusiness = require('./GeneralDescriptionOfBusiness');
 var SourceOfFunds = require('./SourceOfFunds');
 var ParticipationPurchased = require('./ParticipationPurchased');
 var CipNotice = require('./CipNotice');
+var InternetGambling = require('./InternetGambling');
+var ProhibitedCustomers = require('./ProhibitedCustomers');
+var RelationshipManager = require('./RelationshipManager');
+var CipCddApprovedDate = require('./CipCddApprovedDate');
+var Submitter = require('./Submitter');
 
 
 var Remediation = new Schema({
@@ -24,5 +29,10 @@ var Remediation = new Schema({
     sourceOfFunds: SourceOfFunds,
     participationPurchased: ParticipationPurchased,
     cipNotice: CipNotice,
+    internetGambling: InternetGambling,
+    prohibitedCustomers: ProhibitedCustomers,
+    relationshipManager: RelationshipManager,
+    cipCddApprovedDate: CipCddApprovedDate,
+    submitter: Submitter,
     sectionComplete: Boolean
 });
