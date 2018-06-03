@@ -51,13 +51,17 @@ export default class ListCaseRow extends Component {
               <dd><a className="customer-name-link" id={this.props.obj._id} onClick={this.props.onUpdate} href="">{this.props.obj.name}</a></dd>
               <dt>Type:</dt>
               <dd><span>{this.props.obj.type}</span></dd>
-              <dt>Actions:</dt>
-              <dd><button id={this.props.obj._id} onClick={this.props.onDelete} type="button" value="Delete" className="case-list btn btn-danger btn-xs">Delete This Case</button></dd>
+              <dt>Status:</dt>
+              <dd><span className={"case-status label " + this.handStateLabel()}>{this.props.obj.status}</span> </dd>
             </dl>
           </article>
         </td>
         <td>
-          <span className={"case-status label " + this.handStateLabel()}>{this.props.obj.status}</span>          
+          <ul className="case-actions-list">
+            <li><button id={this.props.obj._id} onClick={this.props.onDelete} type="button" value="Delete" className="case-list btn btn-danger btn-xs">Change Case Status</button></li>
+            <li><button id={this.props.obj._id} onClick={this.props.onDelete} type="button" value="Delete" className="case-list btn btn-info btn-xs">Update Case Requirments</button></li>
+            <li><button id={this.props.obj._id} onClick={this.props.onDelete} type="button" value="Delete" className="case-list btn btn-warning btn-xs">Resarch This Case</button> </li>
+          </ul> 
         </td>
         <td>
           <span className="days-since">{this.handleDaysSince()}</span>

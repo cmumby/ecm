@@ -19,3 +19,10 @@
 .case-status{
     font-size:100%;
 }
+.case-actions-list {
+  list-style-type: none;
+  padding-left:0px;
+}
+.case-actions-list li {
+    padding:5px 0;
+}
