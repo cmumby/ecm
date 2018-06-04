@@ -6,13 +6,15 @@ var ProxyRR = require("./proxyRR/ProxyRR");
 var Cip = require("./cip/Cip");
 var Remediation = require("./remediation/Remediation");
 var RelatedParties = require("./related-parties/RelatedParties");
+var Screening = require("./screening/Screening");
 
 //schema
 var Requirement = new Schema({
   proxyRR: ProxyRR,
   cip: Cip,
   remediation: Remediation,
-  relatedParties: RelatedParties
+  relatedParties: RelatedParties,
+  screening: Screening
 });
 
 
