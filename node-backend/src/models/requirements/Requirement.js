@@ -7,6 +7,7 @@ var Cip = require("./cip/Cip");
 var Remediation = require("./remediation/Remediation");
 var RelatedParties = require("./related-parties/RelatedParties");
 var Screening = require("./screening/Screening");
+var Documentation = require("./documentation/Documentation");
 
 //schema
 var Requirement = new Schema({
@@ -14,7 +15,8 @@ var Requirement = new Schema({
   cip: Cip,
   remediation: Remediation,
   relatedParties: RelatedParties,
-  screening: Screening
+  screening: Screening,
+  documentation: Documentation 
 });
 
 
