@@ -464,6 +464,34 @@
                     "complete": true
                 },
                 "sectionComplete": true
+            },
+            "transportationSarf":{
+                "sarf":{
+                    "attachments": [
+                        ""
+                    ],
+                    "raCorrectionRequired": false,
+                    "comments": "",
+                    "complete": true,
+                    "handlesSouthwestTrucks": false,
+                    "highRiskTransportation": false,
+                    "CountryOfCitizenship": "United States"
+                },
+                "sectionComplete": true
+            },
+            "hraEdd":{
+                "edd":{
+                    "attachments": [
+                        ""
+                    ],
+                    "raCorrectionRequired": false,
+                    "comments": "",
+                    "complete": true,
+                    "eddRequired": false,
+                    "addTracking": false,
+                    "rationale": "See Attached HRA form for complete details."
+                },
+                "sectionComplete": true
             }
         },
         "attachments": []

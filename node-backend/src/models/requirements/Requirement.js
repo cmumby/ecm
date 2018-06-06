@@ -9,6 +9,7 @@ var RelatedParties = require("./related-parties/RelatedParties");
 var Screening = require("./screening/Screening");
 var Documentation = require("./documentation/Documentation");
 var TransportationSarf = require("./transportationSarf/TransportationSarf");
+var HraEdd = require("./hraedd/HraEdd");
 
 //schema
 var Requirement = new Schema({
@@ -18,7 +19,8 @@ var Requirement = new Schema({
   relatedParties: RelatedParties,
   screening: Screening,
   documentation: Documentation,
-  transportationSarf: TransportationSarf
+  transportationSarf: TransportationSarf,
+  hraEdd: HraEdd
 });
 
 

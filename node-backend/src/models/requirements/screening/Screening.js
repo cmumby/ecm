@@ -6,7 +6,6 @@ var Reports = require('./Reports');
 var ScreeningCustomer = require('./ScreeningCustomer');
 var ScreeningParty = require('./ScreeningParty');
 
-
 var Screening = new Schema({
     ccdiTaskRequest: CcdiTaskRequest,
     reports: Reports,
