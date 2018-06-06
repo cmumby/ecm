@@ -5,8 +5,5 @@ var RequiredDocuments = require('./RequiredDocuments');
 
 var Documentation = new Schema({
     requiredDocuments: RequiredDocuments,
-    attachments: [Attachment],
-    raCorrectionRequired: Boolean,
-    comments: String,
-    complete: Boolean
+    sectionComplete: Boolean
 });

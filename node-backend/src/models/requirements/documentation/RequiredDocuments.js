@@ -7,4 +7,8 @@ var RequiredDocuments = new Schema({
     formationDocuments: Boolean,
     evidenceOfFiling: Boolean,
     signedBoForm: Boolean,
+    attachments: [Attachment],
+    raCorrectionRequired: Boolean,
+    comments: String,
+    complete: Boolean
 });

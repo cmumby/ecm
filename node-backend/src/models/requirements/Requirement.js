@@ -8,6 +8,7 @@ var Remediation = require("./remediation/Remediation");
 var RelatedParties = require("./related-parties/RelatedParties");
 var Screening = require("./screening/Screening");
 var Documentation = require("./documentation/Documentation");
+var TransportationSarf = require("./transportationSarf/TransportationSarf");
 
 //schema
 var Requirement = new Schema({
@@ -16,7 +17,8 @@ var Requirement = new Schema({
   remediation: Remediation,
   relatedParties: RelatedParties,
   screening: Screening,
-  documentation: Documentation 
+  documentation: Documentation,
+  transportationSarf: TransportationSarf
 });
 
 
