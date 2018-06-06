@@ -492,6 +492,20 @@
                     "rationale": "See Attached HRA form for complete details."
                 },
                 "sectionComplete": true
+            },
+            "qcChecklist":{
+                "qcInformation":{
+                    "qcName": "Hugo Habercore",
+                    "dateReceived": "2018-05-23T16:00:00.000Z",
+                    "firstReview": true,
+                    "secondReview": true,
+                    "attachments": [
+                        ""
+                    ],
+                    "raCorrectionRequired": false,
+                    "comments": ""
+                },
+                "sectionComplete": true
             }
         },
         "attachments": []

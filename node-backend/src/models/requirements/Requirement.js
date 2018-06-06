@@ -10,6 +10,7 @@ var Screening = require("./screening/Screening");
 var Documentation = require("./documentation/Documentation");
 var TransportationSarf = require("./transportationSarf/TransportationSarf");
 var HraEdd = require("./hraedd/HraEdd");
+var QcChecklist = require("./qcchecklist/QcChecklist");
 
 //schema
 var Requirement = new Schema({
@@ -20,7 +21,8 @@ var Requirement = new Schema({
   screening: Screening,
   documentation: Documentation,
   transportationSarf: TransportationSarf,
-  hraEdd: HraEdd
+  hraEdd: HraEdd,
+  qcChecklist: QcChecklist
 });
 
 
