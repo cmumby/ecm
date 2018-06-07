@@ -505,8 +505,41 @@
                     "raCorrectionRequired": false,
                     "comments": ""
                 },
+                "qcReview": {
+                    "spellingAndLanguage": true,
+                    "reasonableness": true,
+                    "documentation": true,
+                    "completeSarf": true,
+                    "completeFields": true,
+                    "attachments": [
+                        ""
+                    ],
+                    "raCorrectionRequired": false,
+                    "comments": ""
+                },
+                "sectionComplete": true
+            },
+            "ousEntity":{
+                "Entity":{
+                    "hasOus": false,
+                    "attachments": [
+                        ""
+                    ]
+                   
+                },
+                "sectionComplete": true
+            },
+            "mmb":{
+                "managedReportingAttributes":{
+                    "customer": "",
+                    "divison": "",
+                    "rcbo": "",
+                    "div": ""
+                   
+                },
                 "sectionComplete": true
             }
+
         },
         "attachments": []
     },

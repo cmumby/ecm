@@ -1,8 +1,11 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
+
 var QcInformation = require('./QcInformation');
+var QcReview = require('./QcReview');
 
 var QcChecklist = new Schema({
     qcInformation: QcInformation,
-    sectionComplete: Boolean,
+    qcReview: QcReview,
+    sectionComplete: Boolean
 });

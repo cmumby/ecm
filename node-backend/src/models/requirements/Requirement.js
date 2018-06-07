@@ -8,9 +8,12 @@ var Remediation = require("./remediation/Remediation");
 var RelatedParties = require("./related-parties/RelatedParties");
 var Screening = require("./screening/Screening");
 var Documentation = require("./documentation/Documentation");
-var TransportationSarf = require("./transportationSarf/TransportationSarf");
+var TransportationSarf = require("./transportationsarf/TransportationSarf");
 var HraEdd = require("./hraedd/HraEdd");
 var QcChecklist = require("./qcchecklist/QcChecklist");
+var Mmb = require("./mmb/Mmb");
+var OusEntity = require("./ousentity/OusEntity");
+
 
 //schema
 var Requirement = new Schema({
@@ -22,7 +25,9 @@ var Requirement = new Schema({
   documentation: Documentation,
   transportationSarf: TransportationSarf,
   hraEdd: HraEdd,
-  qcChecklist: QcChecklist
+  qcChecklist: QcChecklist,
+  ousEntity: OusEntity,
+  mmb: Mmb
 });
 
 
