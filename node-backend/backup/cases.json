@@ -566,6 +566,42 @@
                 "dateOfDisposition": null,
                 "artifactUploaded": false,
                 "isSharedCustomer": false
+            },
+             "crcRejectReason": {
+                "administrative": false,
+                "ccdNotMet": false,
+                "missingBo": false,
+                "sharedCustomer": false,
+                "incompleteInfo": false,
+                "incorrectCustomerType": false,
+                "screeningAndDispositioning": false,
+                "missingHraForm": false,
+                "badAmlFactors": false,
+                "badAmlRisk": false,
+                "escalations": false
+            },
+            "middleOfficeTrackingFields":{
+                "itemNumber": 0,
+                "itemComments": "String",
+                "lobDispute": false,
+                "dateLogged": null,
+                "dateResolved": null
+            },
+            "rejectedFromCornerstoneLoad": {
+                "cornorstoneReject": true,
+                "comments": "2017-07-29:"
+            },
+             "middleOfficeFlags": {
+                "raiseQuestion": false,
+                "generalScopeQuestion": false,
+                "lobDispute": false,
+                "disregardedEntity": false,
+                "incorrectInvestment": false,
+                "crossLobEscalation": false,
+                "pendingDisposition": false,
+                "riskChange": false,
+                "fund": false,
+                "pendingMerge": false
             }
         },
         "attachments": []

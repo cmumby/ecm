@@ -7,8 +7,10 @@ var DataQaulityExceptions = require("./data-qaulity-exceptions/DataQaulityExcept
 var CustomerOutreachReasons = require("./customer-outreach-reasons/CustomerOutreachReasons");
 var FinancialInstitutionTracking = require("./financial-institution-tracking/FinancialInstitutionTracking");
 var ForProgramUseOnly = require("./for-program-use-only/ForProgramUseOnly");
-
-
+var CrcRejectReason = require("./crc-reject-reason/CrcRejectReason");
+var MiddleOfficeTrackingFields = require("./middle-office-tracking-fields/MiddleOfficeTrackingFields");
+var RejectedFromCornerstoneLoad = require("./rejected-from-cornerstone-load/RejectedFromCornerstoneLoad");
+var MiddleOfficeFlags = require("./middle-office-flags/MiddleOfficeFlags");
 
 //schema
 var Researach = new Schema({
@@ -16,7 +18,12 @@ var Researach = new Schema({
     dataQaulityExceptions: DataQaulityExceptions,
     customerOutreachReasons: CustomerOutreachReasons,
     financialInstitutionTracking: FinancialInstitutionTracking,
-    forProgramUseOnly: ForProgramUseOnly
+    forProgramUseOnly: ForProgramUseOnly,
+    crcRejectReason: CrcRejectReason,
+    middleOfficeTrackingFields: MiddleOfficeTrackingFields,
+    rejectedFromCornerstoneLoad: RejectedFromCornerstoneLoad,
+    middleOfficeFlags: MiddleOfficeFlags
+    
 });
 
 
