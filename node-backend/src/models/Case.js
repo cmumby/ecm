@@ -3,6 +3,7 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 var Requirement = require('./requirements/Requirement');
+var Research = require('./research/Research');
 var Attachment = require('./Attachment');
 
 
@@ -18,6 +19,7 @@ var Case = new Schema({
   notes: String,
   attachments: [Attachment],
   requirement: Requirement,
+  research: Research
   
 
 }, {

@@ -541,6 +541,33 @@
             }
 
         },
+        "research":{
+            "caseReasearch": {
+                "issueDescription": "The Market Served Documentation has been attached.",
+                "exceptionExemptionAndExit": "",
+                "lobResponse": "",
+                "wfcrcResponse": ""
+            },
+            "dataQaulityExceptions": {
+                "exception": "45 - Invalid NAICS Code: Not a valid 2017 US North American Industry Classification"
+            },
+            "customerOutreachReasons": {
+                "reason": "",
+                "extension": "Extension Not Required"
+            },
+            "financialInstitutionTracking": {
+                "crmsOverride": false,
+                "fiIdentified": false
+            },
+            "forProgramUseOnly": {
+                "disputeTo": "",
+                "dateDisupteRaised": null,
+                "dateDisputeSettled": null,
+                "dateOfDisposition": null,
+                "artifactUploaded": false,
+                "isSharedCustomer": false
+            }
+        },
         "attachments": []
     },
     {
