@@ -11,6 +11,8 @@ var CrcRejectReason = require("./crc-reject-reason/CrcRejectReason");
 var MiddleOfficeTrackingFields = require("./middle-office-tracking-fields/MiddleOfficeTrackingFields");
 var RejectedFromCornerstoneLoad = require("./rejected-from-cornerstone-load/RejectedFromCornerstoneLoad");
 var MiddleOfficeFlags = require("./middle-office-flags/MiddleOfficeFlags");
+var LobFlags = require("./lob-flags/LobFlags");
+var CrcFlags = require("./crc-flags/CrcFlags");
 
 //schema
 var Researach = new Schema({
@@ -22,7 +24,9 @@ var Researach = new Schema({
     crcRejectReason: CrcRejectReason,
     middleOfficeTrackingFields: MiddleOfficeTrackingFields,
     rejectedFromCornerstoneLoad: RejectedFromCornerstoneLoad,
-    middleOfficeFlags: MiddleOfficeFlags
+    middleOfficeFlags: MiddleOfficeFlags,
+    lobFlags: LobFlags,
+    crcFlags: CrcFlags
     
 });
 

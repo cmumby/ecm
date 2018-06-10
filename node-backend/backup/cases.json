@@ -602,7 +602,22 @@
                 "riskChange": false,
                 "fund": false,
                 "pendingMerge": false
-            }
+            },
+            "lobFlags":{
+                "pepEscalation": false,
+                "sarfNegativeNews": false,
+                "systemOfRecordUpdateRequired": false,
+                "sarfOther": false
+              },
+              "crcFlags":{
+                "bearerShareIssuingEntity": false,
+                "exemptionRequested": false,
+                "referredToExit": false,
+                "exceptionRquested": false,
+                "customerTypeQuestion": false,
+                "materialNegativeNews": false,
+                "restrictedCustomer": false
+              }
         },
         "attachments": []
     },
