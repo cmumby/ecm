@@ -18,7 +18,10 @@ var CustomerInformation = require("./customer-information/CustomerInformation");
 var SummaryOfCustomerRelationship = require("./summary-of-customer-relationship/SummaryOfCustomerRelationship");
 var HighRiskCustomerFactors = require("./high-risk-customer-factors/HighRiskCustomerFactors");
 var RelationshipOverview = require("./relationship-overview/RelationshipOverview");
-
+var ProductAnalysisAndHighRiskProducts = require("./product-analysis-and-high-risk-products/ProductAnalysisAndHighRiskProducts");
+var DueDiligenceUpdate = require("./due-diligence-update/DueDiligenceUpdate");
+var EnhancedDueDiligence = require("./enhanced-due-diligence/EnhancedDueDiligence");
+var RelationshipNameApproval = require("./relationship-name-approval/RelationshipNameApproval");
 
 //schema
 var Researach = new Schema({
@@ -37,8 +40,11 @@ var Researach = new Schema({
     customerInformation: CustomerInformation,
     summaryOfCustomerRelationship: SummaryOfCustomerRelationship,
     highRiskCustomerFactors: HighRiskCustomerFactors,
-    relationshipOverview: RelationshipOverview
-    
+    relationshipOverview: RelationshipOverview,
+    productAnalysisAndHighRiskProducts: ProductAnalysisAndHighRiskProducts,
+    dueDiligenceUpdate: DueDiligenceUpdate,
+    enhancedDueDiligence: EnhancedDueDiligence,
+    relationshipNameApproval: RelationshipNameApproval
 });
 
 

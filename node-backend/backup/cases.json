@@ -661,7 +661,35 @@
                 "avaAlerts": "",
                 "highRiskProductUsageAnalysis": "",
                 "transactionRisk": ""
-            }
+            },
+            "productAnalysisAndHighRiskProducts":{
+                "cashVault": "",
+                "internationalWires": "",
+                "desktopDeposit": "",
+                "achDomestic": ""
+            },
+            "dueDiligenceUpdate":{
+                "unusualActivitiy": "",
+                "totalNumberofUnusualActivity": "",
+                "pep": "",
+                "adverseNews": "",
+                "publicInfo": "",
+                "highRiskProductUsage": "",
+                "amlRiskSummary": ""
+            },
+            "enhancedDdueDiligence":{
+                "highRiskFactors": "",
+                "sourceOfWealth": "",
+                "adversNewsSearch": ""
+            },
+            "relationShipNameApproval":{
+                "rmName": "",
+                "primayLobApproverName": "",
+                "crcApproverName": "",
+                "rmApprovalDate": null,
+                "primaryLobApprovalDate": null,
+                "crcApprovalDate": null
+            } 
         },
         "attachments": []
     },
