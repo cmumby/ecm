@@ -16,7 +16,7 @@
                     "city": "Ocean City",
                     "state": "New Jersey",
                     "country": "USA",
-                    "postalCode": "12345",
+                    "postalCode": "08226",
                     "attachments": [
                         ""
                     ],
@@ -617,7 +617,40 @@
                 "customerTypeQuestion": false,
                 "materialNegativeNews": false,
                 "restrictedCustomer": false
-              }
+              },
+               "primaryLobTracking": {
+                "primaryLobGroup": "BBG",
+                "receivedDate": null,
+                "requestDate": null,
+                "escalationRequired": false,
+                "escalationDate": null,
+                "primaryRm": "",
+                "primaryRmRequestDate": null,
+                "primaryLobContactName": "",
+                "primaryLobReceiveDate": null,
+                "primaryLobEscalationContact": ""
+            },
+            "customerInformation": {
+                "reportDate": null,
+                "fullLegalNameOfCustomer": "Bob's Bugers LLC",
+                "fullLegalAddressOfCustomer": "124 Ocean Avenue OCEAN CITY, New Jersey 08226",
+                "relationshipName": "",
+                "reviewPeriodFrom": null,
+                "reviewPeriodTo": null,
+                "customerType": ""
+            },
+            "summaryOfCustomerRelationship": {
+                "customerBusinessModel": "",
+                "wcisRelationship": "",
+                "customerRelationship": ""
+            },
+             "highRiskCustomerFactors": {
+                "countryRisk": "",
+                "highRiskCustomerFactors": "",
+                "industryRisk": "",
+                "ownershipAndOperationalRisk": "",
+                "bsaRiskRatingAndRiskCode": ""
+            }
         },
         "attachments": []
     },

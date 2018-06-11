@@ -10,7 +10,7 @@ var Case = require('../models/Case');
 router.route('/:id').get(function (req, res) {
   var id = req.params.id;
   Case.find({'ecmId':id}, function (err, item){
-      res.json(item);
+      res.json(item[0]);
   });
 });
 

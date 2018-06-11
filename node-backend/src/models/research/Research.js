@@ -13,6 +13,11 @@ var RejectedFromCornerstoneLoad = require("./rejected-from-cornerstone-load/Reje
 var MiddleOfficeFlags = require("./middle-office-flags/MiddleOfficeFlags");
 var LobFlags = require("./lob-flags/LobFlags");
 var CrcFlags = require("./crc-flags/CrcFlags");
+var PrimaryLobTracking = require("./primary-lob-tracking/PrimaryLobTracking");
+var CustomerInformation = require("./customer-information/CustomerInformation");
+var SummaryOfCustomerRelationship = require("./summary-of-customer-relationship/SummaryOfCustomerRelationship");
+var HighRiskCustomerFactors = require("./high-risk-customer-factors/HighRiskCustomerFactors");
+
 
 //schema
 var Researach = new Schema({
@@ -26,7 +31,11 @@ var Researach = new Schema({
     rejectedFromCornerstoneLoad: RejectedFromCornerstoneLoad,
     middleOfficeFlags: MiddleOfficeFlags,
     lobFlags: LobFlags,
-    crcFlags: CrcFlags
+    crcFlags: CrcFlags,
+    primaryLobTracking: PrimaryLobTracking,
+    customerInformation: CustomerInformation,
+    summaryOfCustomerRelationship: SummaryOfCustomerRelationship,
+    highRiskCustomerFactors: HighRiskCustomerFactors
     
 });
 
