@@ -17,6 +17,7 @@ var PrimaryLobTracking = require("./primary-lob-tracking/PrimaryLobTracking");
 var CustomerInformation = require("./customer-information/CustomerInformation");
 var SummaryOfCustomerRelationship = require("./summary-of-customer-relationship/SummaryOfCustomerRelationship");
 var HighRiskCustomerFactors = require("./high-risk-customer-factors/HighRiskCustomerFactors");
+var RelationshipOverview = require("./relationship-overview/RelationshipOverview");
 
 
 //schema
@@ -35,7 +36,8 @@ var Researach = new Schema({
     primaryLobTracking: PrimaryLobTracking,
     customerInformation: CustomerInformation,
     summaryOfCustomerRelationship: SummaryOfCustomerRelationship,
-    highRiskCustomerFactors: HighRiskCustomerFactors
+    highRiskCustomerFactors: HighRiskCustomerFactors,
+    relationshipOverview: RelationshipOverview
     
 });
 
