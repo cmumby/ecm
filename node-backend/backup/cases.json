@@ -38,8 +38,16 @@
                         "city": "Ocean City",
                         "state": "New Jersey",
                         "country": "USA",
+                        "postalCode": "08226",
                         "attachments": [
-                            ""
+                            {
+                                "icon": "pdf",
+                                "fileName": "BOBS_BURGERS_SOS",
+                                "filePath": "pulblic/files/case-123/BOBS_BURGERS_SOS.pdf",
+                                "fileType": "PDF",
+                                "uploader": "u616323",
+                                "comment": "Uploaded By Case RA"
+                            }
                         ],
                         "raCorrectionRequired": false,
                         "comments": "",
@@ -49,7 +57,14 @@
                 "legalEntity": {
                     "entityType": "Limited Liability Company",
                     "attachments": [
-                        ""
+                        {
+                            "icon": "pdf",
+                            "fileName": "BOBS_BURGERS_SOS",
+                            "filePath": "pulblic/files/case-123/BOBS_BURGERS_SOS.pdf",
+                            "fileType": "PDF",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        }
                     ],
                     "raCorrectionRequired": false,
                     "comments": "",
@@ -58,7 +73,14 @@
                 "legalFormation": {
                     "countryOfRegistration": "USA",
                     "attachments": [
-                        ""
+                        {
+                            "icon": "pdf",
+                            "fileName": "BOBS_BURGERS_SOS",
+                            "filePath": "pulblic/files/case-123/BOBS_BURGERS_SOS.pdf",
+                            "fileType": "PDF",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        }
                     ],
                     "raCorrectionRequired": false,
                     "comments": "",
