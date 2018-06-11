@@ -18,7 +18,14 @@
                     "country": "USA",
                     "postalCode": "08226",
                     "attachments": [
-                        ""
+                        {
+                            "icon": "pdf",
+                            "fileName": "BOBS_BURGERS_SOS",
+                            "filePath": "pulblic/files/case-123/BOBS_BURGERS_SOS.pdf",
+                            "fileType": "PDF",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        }
                     ],
                     "raCorrectionRequired": false,
                     "comments": "",
@@ -394,14 +401,14 @@
                     ],
                     "taskRequest": "none"
                 },
-                "reports":{
+                "reports": {
                     "complete": true,
                     "comments": "",
                     "raCorrectionRequired": false,
                     "attachments": [
                         ""
                     ],
-                    "investagationIds":[
+                    "investagationIds": [
                         {
                             "investagationId": "17868 CHV(M)-DAH(M) 123"
                         },
@@ -410,7 +417,7 @@
                         }
                     ]
                 },
-                "screeningCustomer":{
+                "screeningCustomer": {
                     "complete": true,
                     "comments": "",
                     "raCorrectionRequired": false,
@@ -424,35 +431,36 @@
                     "negativeNewsScreening": false,
                     "negativeNewsComments": "No Screening Results Found for this Customer"
                 },
-                "screeningParty":{
+                "screeningParty": {
                     "complete": true,
                     "comments": "",
                     "raCorrectionRequired": false,
                     "attachments": [
                         ""
                     ],
-                    "parties":[
-                    {
-                        "pepScreening": false,
-                        "pepComments": "No Screening Results Found for this Party",
-                        "bsaHotlistScreeining": false,
-                        "bsaHotlistComments": "No Screening Results Found for this Party",
-                        "negativeNewsScreening": false,
-                        "negativeNewsComments": "No Screening Results Found for this Party"
-                    },
-                    {
-                        "pepScreening": false,
-                        "pepComments": "No Screening Results Found for this Party",
-                        "bsaHotlistScreeining": false,
-                        "bsaHotlistComments": "No Screening Results Found for this Party",
-                        "negativeNewsScreening": false,
-                        "negativeNewsComments": "No Screening Results Found for this Party"
-                    }
-                ]},
+                    "parties": [
+                        {
+                            "pepScreening": false,
+                            "pepComments": "No Screening Results Found for this Party",
+                            "bsaHotlistScreeining": false,
+                            "bsaHotlistComments": "No Screening Results Found for this Party",
+                            "negativeNewsScreening": false,
+                            "negativeNewsComments": "No Screening Results Found for this Party"
+                        },
+                        {
+                            "pepScreening": false,
+                            "pepComments": "No Screening Results Found for this Party",
+                            "bsaHotlistScreeining": false,
+                            "bsaHotlistComments": "No Screening Results Found for this Party",
+                            "negativeNewsScreening": false,
+                            "negativeNewsComments": "No Screening Results Found for this Party"
+                        }
+                    ]
+                },
                 "sectionComplete": true
             },
-            "documentation":{
-                "requiredDocuments":{
+            "documentation": {
+                "requiredDocuments": {
                     "formationDocuments": true,
                     "evidenceOfFiling": true,
                     "signedBoForm": true,
@@ -465,8 +473,8 @@
                 },
                 "sectionComplete": true
             },
-            "transportationSarf":{
-                "sarf":{
+            "transportationSarf": {
+                "sarf": {
                     "attachments": [
                         ""
                     ],
@@ -479,8 +487,8 @@
                 },
                 "sectionComplete": true
             },
-            "hraEdd":{
-                "edd":{
+            "hraEdd": {
+                "edd": {
                     "attachments": [
                         ""
                     ],
@@ -493,8 +501,8 @@
                 },
                 "sectionComplete": true
             },
-            "qcChecklist":{
-                "qcInformation":{
+            "qcChecklist": {
+                "qcInformation": {
                     "qcName": "Hugo Habercore",
                     "dateReceived": "2018-05-23T16:00:00.000Z",
                     "firstReview": true,
@@ -519,29 +527,26 @@
                 },
                 "sectionComplete": true
             },
-            "ousEntity":{
-                "Entity":{
+            "ousEntity": {
+                "Entity": {
                     "hasOus": false,
                     "attachments": [
                         ""
                     ]
-                   
                 },
                 "sectionComplete": true
             },
-            "mmb":{
-                "managedReportingAttributes":{
+            "mmb": {
+                "managedReportingAttributes": {
                     "customer": "",
                     "divison": "",
                     "rcbo": "",
                     "div": ""
-                   
                 },
                 "sectionComplete": true
             }
-
         },
-        "research":{
+        "research": {
             "caseReasearch": {
                 "issueDescription": "The Market Served Documentation has been attached.",
                 "exceptionExemptionAndExit": "",
@@ -567,7 +572,7 @@
                 "artifactUploaded": false,
                 "isSharedCustomer": false
             },
-             "crcRejectReason": {
+            "crcRejectReason": {
                 "administrative": false,
                 "ccdNotMet": false,
                 "missingBo": false,
@@ -580,7 +585,7 @@
                 "badAmlRisk": false,
                 "escalations": false
             },
-            "middleOfficeTrackingFields":{
+            "middleOfficeTrackingFields": {
                 "itemNumber": 0,
                 "itemComments": "String",
                 "lobDispute": false,
@@ -591,7 +596,7 @@
                 "cornorstoneReject": true,
                 "comments": "2017-07-29:"
             },
-             "middleOfficeFlags": {
+            "middleOfficeFlags": {
                 "raiseQuestion": false,
                 "generalScopeQuestion": false,
                 "lobDispute": false,
@@ -603,13 +608,13 @@
                 "fund": false,
                 "pendingMerge": false
             },
-            "lobFlags":{
+            "lobFlags": {
                 "pepEscalation": false,
                 "sarfNegativeNews": false,
                 "systemOfRecordUpdateRequired": false,
                 "sarfOther": false
-              },
-              "crcFlags":{
+            },
+            "crcFlags": {
                 "bearerShareIssuingEntity": false,
                 "exemptionRequested": false,
                 "referredToExit": false,
@@ -617,8 +622,8 @@
                 "customerTypeQuestion": false,
                 "materialNegativeNews": false,
                 "restrictedCustomer": false
-              },
-               "primaryLobTracking": {
+            },
+            "primaryLobTracking": {
                 "primaryLobGroup": "BBG",
                 "receivedDate": null,
                 "requestDate": null,
@@ -644,14 +649,14 @@
                 "wcisRelationship": "",
                 "customerRelationship": ""
             },
-             "highRiskCustomerFactors": {
+            "highRiskCustomerFactors": {
                 "countryRisk": "",
                 "highRiskCustomerFactors": "",
                 "industryRisk": "",
                 "ownershipAndOperationalRisk": "",
                 "bsaRiskRatingAndRiskCode": ""
             },
-            "relationshipOverview":{
+            "relationshipOverview": {
                 "products": [
                     "PD228: ACH Origination",
                     "PD234: Branch Services",
@@ -662,13 +667,13 @@
                 "highRiskProductUsageAnalysis": "",
                 "transactionRisk": ""
             },
-            "productAnalysisAndHighRiskProducts":{
+            "productAnalysisAndHighRiskProducts": {
                 "cashVault": "",
                 "internationalWires": "",
                 "desktopDeposit": "",
                 "achDomestic": ""
             },
-            "dueDiligenceUpdate":{
+            "dueDiligenceUpdate": {
                 "unusualActivitiy": "",
                 "totalNumberofUnusualActivity": "",
                 "pep": "",
@@ -677,19 +682,19 @@
                 "highRiskProductUsage": "",
                 "amlRiskSummary": ""
             },
-            "enhancedDdueDiligence":{
+            "enhancedDdueDiligence": {
                 "highRiskFactors": "",
                 "sourceOfWealth": "",
                 "adversNewsSearch": ""
             },
-            "relationShipNameApproval":{
+            "relationShipNameApproval": {
                 "rmName": "",
                 "primayLobApproverName": "",
                 "crcApproverName": "",
                 "rmApprovalDate": null,
                 "primaryLobApprovalDate": null,
                 "crcApprovalDate": null
-            } 
+            }
         },
         "attachments": []
     },
