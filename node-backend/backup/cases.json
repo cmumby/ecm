@@ -90,7 +90,22 @@
                     "naics": "722513",
                     "attachments": [
                         [
-                            ""
+                            {
+                                "icon": "PDF",
+                                "fileName": "BOBS_BURGERS_RM_RESPONSE",
+                                "filePath": "pulblic/files/case-123/BOBS_BURGERS_RM_RESPONSE.pdf",
+                                "fileType": "Formation Documents - SOS Documentation",
+                                "uploader": "u616323",
+                                "comment": "Uploaded By Case RA"
+                            },
+                            {
+                                "icon": "FDF",
+                                "fileName": "BOBS_BURGERS_RM_NAICS",
+                                "filePath": "pulblic/files/case-123/BOBS_BURGERS_RM_RESPONSE.pdf",
+                                "fileType": "Formation Documents - SOS Documentation",
+                                "uploader": "u616323",
+                                "comment": "Uploaded By Case RA"
+                            }
                         ]
                     ],
                     "raCorrectionRequired": false,
@@ -102,7 +117,14 @@
                         "USA"
                     ],
                     "attachments": [
-                        ""
+                        {
+                            "icon": "PDF",
+                            "fileName": "BOBS_BURGERS_RM_RESPONSE",
+                            "filePath": "pulblic/files/case-123/BOBS_BURGERS_RM_RESPONSE.pdf",
+                            "fileType": "Formation Documents - SOS Documentation",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        }
                     ],
                     "raCorrectionRequired": false,
                     "comments": "",
@@ -111,7 +133,14 @@
                 "relatedParties": {
                     "anyForeignParties": false,
                     "attachments": [
-                        ""
+                        {
+                            "icon": "PDF",
+                            "fileName": "BOBS_BURGERS_BO_FORM",
+                            "filePath": "pulblic/files/case-123/BOBS_BURGERS_BO_FORM.pdf",
+                            "fileType": "Benficial Ownership Form",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        }
                     ],
                     "raCorrectionRequired": false,
                     "comments": "",
@@ -149,7 +178,14 @@
                     "legalName": "Bob's Bugers LLC",
                     "dbaName": "Bob's Bugers",
                     "attachments": [
-                        ""
+                        {
+                            "icon": "PDF",
+                            "fileName": "BOBS_BURGERS_SOS",
+                            "filePath": "pulblic/files/case-123/BOBS_BURGERS_SOS.pdf",
+                            "fileType": "Formation Documents - SOS Documentation",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        }
                     ],
                     "raCorrectionRequired": false,
                     "comments": "",
@@ -160,7 +196,14 @@
                     "id": 123456789,
                     "tinType": "Employer Identification Number",
                     "attachments": [
-                        ""
+                        {
+                            "icon": "PDF",
+                            "fileName": "BOBS_BURGERS_2017_W9",
+                            "filePath": "pulblic/files/case-123/BOBS_BURGERS_2017_W9.pdf",
+                            "fileType": "Formation Documents - SOS Documentation",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        }
                     ],
                     "raCorrectionRequired": false,
                     "comments": "",
@@ -181,9 +224,16 @@
                     "complete": true
                 },
                 "customerDetails": {
-                    "organizationType": "Corporation ~ Corporation",
+                    "organizationType": "Limited Liability Company and Corporations ~ Corporation",
                     "attachments": [
-                        ""
+                       {
+                            "icon": "PDF",
+                            "fileName": "BOBS_BURGERS_SOS",
+                            "filePath": "pulblic/files/case-123/BOBS_BURGERS_SOS.pdf",
+                            "fileType": "Formation Documents - SOS Documentation",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        }
                     ],
                     "raCorrectionRequired": false,
                     "comments": "",
@@ -193,7 +243,14 @@
                     "accountPurpose": "Financing (Lending)",
                     "accountType": "Borrower/Account Holder",
                     "attachments": [
-                        ""
+                        {
+                            "icon": "PDF",
+                            "fileName": "BOBS_BURGERS_SVP",
+                            "filePath": "pulblic/files/case-123/BOBS_BURGERS_SVP.pdf",
+                            "fileType": "Banker Files - StoreVision",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        }
                     ],
                     "raCorrectionRequired": false,
                     "comments": "",
@@ -204,7 +261,14 @@
                     "comments": "",
                     "raCorrectionRequired": false,
                     "attachments": [
-                        ""
+                        {
+                            "icon": "PDF",
+                            "fileName": "BOBS_BURGERS_SOS",
+                            "filePath": "pulblic/files/case-123/BOBS_BURGERS_SOS.pdf",
+                            "fileType": "PDF",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        }
                     ],
                     "stateOfRegistration": "New Jersey"
                 },
@@ -222,7 +286,14 @@
                     "comments": "",
                     "raCorrectionRequired": false,
                     "attachments": [
-                        ""
+                        {
+                            "icon": "PDF",
+                            "fileName": "BOBS_BURGERS_SOS",
+                            "filePath": "pulblic/files/case-123/BOBS_BURGERS_SOS.pdf",
+                            "fileType": "PDF",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        }
                     ],
                     "wealthSource": "Operating Revenue"
                 },
@@ -231,7 +302,22 @@
                     "comments": "",
                     "raCorrectionRequired": false,
                     "attachments": [
-                        ""
+                        {
+                            "icon": "PDF",
+                            "fileName": "BOBS_BURGERS_RESPONSE",
+                            "filePath": "pulblic/files/case-123/BOBS_BURGERS_RM_RESPONSE.pdf",
+                            "fileType": "Customer Due Diligence - RM Response",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        },
+                        {
+                            "icon": "PDF",
+                            "fileName": "BOBS_BURGERS_SOS",
+                            "filePath": "pulblic/files/case-123/BOBS_BURGERS_SOS.pdf",
+                            "fileType": "Formation Documents - SOS Documentation",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        }
                     ],
                     "description": "Bob's burgers, LLC is a Limited Liability Company based in Ocean City, New Jersey the operatiosn a Fast-Food Burger Restaurant."
                 },
@@ -342,7 +428,14 @@
                     "comments": "",
                     "complete": true,
                     "attachments": [
-                        ""
+                        {
+                            "icon": "PDF",
+                            "fileName": "BOBS_BURGERS_BO_FORM",
+                            "filePath": "pulblic/files/case-123/BOBS_BURGERS_BO_FORM.pdf",
+                            "fileType": "Benficial Ownership Form",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        }
                     ],
                     "beneficialOwners": [
                         {
@@ -428,7 +521,22 @@
                     "comments": "",
                     "raCorrectionRequired": false,
                     "attachments": [
-                        ""
+                        {
+                            "icon": "PDF",
+                            "fileName": "17868 CHV(M)-DAH(M) 123",
+                            "filePath": "pulblic/files/case-123/17868 CHV(M)-DAH(M) 123.pdf",
+                            "fileType": "Screening Rpeort",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        },
+                        {
+                            "icon": "PDF",
+                            "fileName": "17868 CHV(M)-DAH(M) 123",
+                            "filePath": "pulblic/files/case-123/17868 CHV(M)-DAH(M) 123-2.pdf",
+                            "fileType": "Screening Rpeort",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        }
                     ],
                     "investagationIds": [
                         {
@@ -444,7 +552,14 @@
                     "comments": "",
                     "raCorrectionRequired": false,
                     "attachments": [
-                        ""
+                        {
+                            "icon": "PDF",
+                            "fileName": "17868 CHV(M)-DAH(M) 123",
+                            "filePath": "pulblic/files/case-123/17868 CHV(M)-DAH(M) 123.pdf",
+                            "fileType": "Screening Rpeort",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        }
                     ],
                     "pepScreening": false,
                     "pepComments": "No Screening Results Found for this Customer",
@@ -458,7 +573,14 @@
                     "comments": "",
                     "raCorrectionRequired": false,
                     "attachments": [
-                        ""
+                        {
+                            "icon": "PDF",
+                            "fileName": "17868 CHV(M)-DAH(M) 123",
+                            "filePath": "pulblic/files/case-123/17868 CHV(M)-DAH(M) 123.pdf",
+                            "fileType": "Screening Rpeort",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        }
                     ],
                     "parties": [
                         {
@@ -487,7 +609,30 @@
                     "evidenceOfFiling": true,
                     "signedBoForm": true,
                     "attachments": [
-                        ""
+                        {
+                            "icon": "PDF",
+                            "fileName": "BOBS_BURGERS_SOS",
+                            "filePath": "pulblic/files/case-123/BOBS_BURGERS_SOS.pdf",
+                            "fileType": "Formation Documents - SOS Documentation",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        },
+                        {
+                            "icon": "PDF",
+                            "fileName": "BOBS_BURGERS_ARTICLES_OF_ORG",
+                            "filePath": "pulblic/files/case-123/BOBS_BURGERS_ARTICLES_OF_ORG.pdf",
+                            "fileType": "Formation Documents - Articles of Organization",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        },
+                        {
+                            "icon": "PDF",
+                            "fileName": "BOBS_BURGERS_BO_FORM",
+                            "filePath": "pulblic/files/case-123/BOBS_BURGERS_BO_FORM.pdf",
+                            "fileType": "Benficial Ownership Form",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        }
                     ],
                     "raCorrectionRequired": false,
                     "comments": "",
@@ -512,7 +657,14 @@
             "hraEdd": {
                 "edd": {
                     "attachments": [
-                        ""
+                        {
+                            "icon": "PDF",
+                            "fileName": "BOBS_BURGERS_HRA_FORM",
+                            "filePath": "pulblic/files/case-123/BOBS_BURGERS_HRA_FORM.pdf",
+                            "fileType": "Customer Due Dillegence - HRA FORM",
+                            "uploader": "u616323",
+                            "comment": "Uploaded By Case RA"
+                        }
                     ],
                     "raCorrectionRequired": false,
                     "comments": "",
@@ -718,7 +870,80 @@
                 "crcApprovalDate": null
             }
         },
-        "attachments": []
+        "attachments": [
+            {
+                "icon": "pdf",
+                "fileName": "BOBS_BURGERS_SOS",
+                "filePath": "pulblic/files/case-123/BOBS_BURGERS_SOS.pdf",
+                "fileType": "PDF",
+                "uploader": "u616323",
+                "comment": "Uploaded By Case RA"
+            },
+            {
+                "icon": "PDF",
+                "fileName": "BOBS_BURGERS_RM_RESPONSE",
+                "filePath": "pulblic/files/case-123/BOBS_BURGERS_RM_RESPONSE.pdf",
+                "fileType": "Formation Documents - SOS Documentation",
+                "uploader": "u616323",
+                "comment": "Uploaded By Case RA"
+            },
+            {
+                "icon": "PDF",
+                "fileName": "BOBS_BURGERS_BO_FORM",
+                "filePath": "pulblic/files/case-123/BOBS_BURGERS_BO_FORM.pdf",
+                "fileType": "Benficial Ownership Form",
+                "uploader": "u616323",
+                "comment": "Uploaded By Case RA"
+            },
+            {
+                "icon": "PDF",
+                "fileName": "BOBS_BURGERS_2017_W9",
+                "filePath": "pulblic/files/case-123/BOBS_BURGERS_2017_W9.pdf",
+                "fileType": "Formation Documents - SOS Documentation",
+                "uploader": "u616323",
+                "comment": "Uploaded By Case RA"
+            },
+            {
+                "icon": "PDF",
+                "fileName": "BOBS_BURGERS_SVP",
+                "filePath": "pulblic/files/case-123/BOBS_BURGERS_SVP.pdf",
+                "fileType": "Banker Files - StoreVision",
+                "uploader": "u616323",
+                "comment": "Uploaded By Case RA"
+            },
+            {
+                "icon": "PDF",
+                "fileName": "17868 CHV(M)-DAH(M) 123",
+                "filePath": "pulblic/files/case-123/17868 CHV(M)-DAH(M) 123.pdf",
+                "fileType": "Screening Rpeort",
+                "uploader": "u616323",
+                "comment": "Uploaded By Case RA"
+            },
+            {
+                "icon": "PDF",
+                "fileName": "17868 CHV(M)-DAH(M) 123",
+                "filePath": "pulblic/files/case-123/17868 CHV(M)-DAH(M) 123-2.pdf",
+                "fileType": "Screening Rpeort",
+                "uploader": "u616323",
+                "comment": "Uploaded By Case RA"
+            },
+            {
+                "icon": "PDF",
+                "fileName": "BOBS_BURGERS_ARTICLES_OF_ORG",
+                "filePath": "pulblic/files/case-123/BOBS_BURGERS_ARTICLES_OF_ORG.pdf",
+                "fileType": "Formation Documents - Articles of Organization",
+                "uploader": "u616323",
+                "comment": "Uploaded By Case RA"
+            },
+            {
+                "icon": "PDF",
+                "fileName": "BOBS_BURGERS_HRA_FORM",
+                "filePath": "pulblic/files/case-123/BOBS_BURGERS_HRA_FORM.pdf",
+                "fileType": "Customer Due Dillegence - HRA FORM",
+                "uploader": "u616323",
+                "comment": "Uploaded By Case RA"
+            }
+        ]
     },
     {
         "_id": "5b0850d6be64be1b74814909",
@@ -773,6 +998,15 @@
         "status": "Revisions Required",
         "statusTimestamp": "2018-05-22T16:00:00.000Z",
         "notes": "Live is just one disapointment after another until you just wish flandes was dead.",
-        "attachments": []
+        "attachments": [
+            {
+                "icon": "pdf",
+                "fileName": "BOBS_BURGERS_SOS",
+                "filePath": "pulblic/files/case-123/BOBS_BURGERS_SOS.pdf",
+                "fileType": "PDF",
+                "uploader": "u616323",
+                "comment": "Uploaded By Case RA"
+            }
+        ]
     }
 ]
