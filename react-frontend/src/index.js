@@ -10,6 +10,7 @@ import AddTodo from './components/AddTodo';
 import ListCase from './components/ListCase';
 //import ListCase from './components/ListCase';
 import UpdateTodo from './components/UpdateTodo';
+import Case from './components/Case';
 
 
 import './index.css';
@@ -28,6 +29,7 @@ ReactDOM.render(
       <Route path='/cases' component={AddTodo} />
       <Route exact path='/' component={ListCase} />
       <Route path='/update/:id' component={UpdateTodo} />
+      <Route path='/case/:ecmId/requirements' component={Case} />
       </div>
       </Router>
     </div>

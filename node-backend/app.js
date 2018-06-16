@@ -19,7 +19,7 @@ mongoose.connect('mongodb://mongodb')
     });
 
 // Routes and Backend Funcioncalities
-var todoListRoutes = require('./src/routes/todoListRoutes');
+var caseRoutes = require('./src/routes/caseRoutes');
 
 
 // App Instance
@@ -28,7 +28,7 @@ app.use(express.static('public'));
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(basePath, todoListRoutes);
+app.use(basePath, caseRoutes);
 
 // Execute App
 app.listen(port, () => {
