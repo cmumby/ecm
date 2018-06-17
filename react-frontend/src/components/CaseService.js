@@ -41,7 +41,7 @@ export default class CaseService {
 
     update(data, id, callback) {
         axios.post('http://localhost:6200/ecm/update/' + id, {
-            desc: data
+            data: data
         })
             .then(function (response) {
                 console.log('Updated');

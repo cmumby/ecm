@@ -48,7 +48,7 @@ export default class ListCaseRow extends Component {
           <article className="case-details">
             <dl>
               <dt>Name:</dt>
-              <dd><a className="customer-name-link" id={this.props.obj._id} onClick={this.props.onUpdate} href="">{this.props.obj.name}</a></dd>
+              <dd><a className="customer-name-link" id={this.props.obj._id} href={"/case/" + this.props.obj.ecmId + "/requirements"}>{this.props.obj.name}</a></dd>
               <dt>Type:</dt>
               <dd><span>{this.props.obj.type}</span></dd>
               <dt>Status:</dt>

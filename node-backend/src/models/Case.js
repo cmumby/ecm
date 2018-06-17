@@ -8,8 +8,7 @@ var Attachment = require('./Attachment');
 
 
 //schema
-var Case = new Schema({
-  
+var Case = new Schema({ 
   ecmId: Number,
   assignee: String,
   type: String,
