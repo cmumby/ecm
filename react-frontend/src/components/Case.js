@@ -47,36 +47,6 @@ export default class Case extends Component {
     }
     
 
-    handStateLabel() {
-        var statusClass = "";
-        switch (this.props.obj.status) {
-            case "Review In Progress":
-                statusClass = "label-info";
-                break;
-            case 'Review Pending':
-                statusClass = "label-warning";
-                break;
-            case 'Revisions Required':
-                statusClass = "label-danger";
-                break;
-            case 'Requirements Complete':
-                statusClass = "label-success";
-                break;
-            default:
-                statusClass = "label-info";
-        }
-        return statusClass;
-    }
-
-
-
-
-    handleDaysSince() {
-        const ONE_DAY = 24 * 60 * 60 * 1000;
-        let statusTimestap = new Date(this.props.obj.statusTimestamp);
-        return Math.round(Math.abs((statusTimestap.getTime() - new Date().getTime()) / (ONE_DAY)));
-    }
-   
     //Routes the changed information to the right poperty
     handleFormDataRouting(event, name){
         switch (name) {
@@ -88,6 +58,12 @@ export default class Case extends Component {
                 break;
             case "ra-city":
                 this.caseData.requirement.proxyRR.registeredAddress.city = event.target.value;
+                break;
+            case "ra-state":
+                this.caseData.requirement.proxyRR.registeredAddress.state = event.target.value;
+                break;
+            case "ra-country":
+                this.caseData.requirement.proxyRR.registeredAddress.country = event.target.value;
                 break;
             case "ra-postalCode":
                 this.caseData.requirement.proxyRR.registeredAddress.postalCode = event.target.value;
@@ -133,7 +109,7 @@ export default class Case extends Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="customerState">State/Province</label>
-                            <select id="customerState" className="form-control" value={this.state.case.requirement.proxyRR.registeredAddress.state}>
+                            <select onChange={(e) => this.updateForm(e, 'ra-state')} id="customerState" className="form-control" value={this.state.case.requirement.proxyRR.registeredAddress.state}>
                                 <option value="0">Select a State</option>
                             {usStates.map((state,index) =>
                                    
@@ -143,7 +119,7 @@ export default class Case extends Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="country">Country</label>
-                            <select id="customerState" className="form-control" value={this.state.case.requirement.proxyRR.registeredAddress.country} disabled>
+                            <select onChange={(e) => this.updateForm(e, 'ra-country')} id="customerState" className="form-control" value={this.state.case.requirement.proxyRR.registeredAddress.country} >
                                 <option value="0">Select a Country</option>
                                 {countries.map((country, index) =>
 
