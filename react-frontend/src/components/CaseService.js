@@ -44,7 +44,7 @@ export default class CaseService {
             data: data
         })
             .then(function (response) {
-                console.log('Updated');
+                
                 callback();
             })
             .catch(function (response) {
