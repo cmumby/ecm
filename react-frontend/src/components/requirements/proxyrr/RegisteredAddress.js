@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
 import Location from '../../../util/Location';
-import RegisteredAddress from '../../requirements/proxyrr/RegisteredAddress';
+
 
 export default class Case extends Component {
     
@@ -17,7 +17,7 @@ export default class Case extends Component {
     }
 
     fillData() { 
-        var thisRef = this;
+      //  var thisRef = this;
         this.caseData = this.props.case;
         
     }
@@ -49,23 +49,25 @@ export default class Case extends Component {
     handleFormDataRouting(event, name){
         switch (name) { 
             case "ra-firsLine":
-                this.caseData.requirement.proxyRR.registeredAddress.firstLine = this.props.case.requirement.proxyRR.registeredAddress.firstLine = event.target.value;
-                console.log("new?: ", event.target.value );
+                this.props.case.requirement.proxyRR.registeredAddress.firstLine = event.target.value;
                 break;
             case "ra-secondLine":
-                this.caseData.requirement.proxyRR.registeredAddress.secondLine = event.target.value;
+                this.props.case.requirement.proxyRR.registeredAddress.secondLine = event.target.value;
                 break;
             case "ra-city":
-                this.caseData.requirement.proxyRR.registeredAddress.city = event.target.value;
+                this.props.case.requirement.proxyRR.registeredAddress.city = event.target.value;
                 break;
             case "ra-state":
-                this.caseData.requirement.proxyRR.registeredAddress.state = event.target.value;
+                this.props.case.requirement.proxyRR.registeredAddress.state = event.target.value;
                 break;
             case "ra-country":
-                this.caseData.requirement.proxyRR.registeredAddress.country = event.target.value;
+                this.props.case.requirement.proxyRR.registeredAddress.country = event.target.value;
                 break;
             case "ra-postalCode":
-                this.caseData.requirement.proxyRR.registeredAddress.postalCode = event.target.value;
+                this.props.case.requirement.proxyRR.registeredAddress.postalCode = event.target.value;
+                break;
+            case "ra-comments":
+                this.props.case.requirement.proxyRR.registeredAddress.comments = event.target.value;
                 break;
             default:
                 return false;
@@ -115,7 +117,7 @@ export default class Case extends Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="country">Country</label>
-                            <select onChange={(e) => this.updateForm(e, 'ra-country')} id="customerState" className="form-control" value={this.props.case.requirement.proxyRR.registeredAddress.country} >
+                            <select onChange={(e) => this.updateForm(e, 'ra-country')} id="customerState" className="form-control" value={this.props.case.requirement.proxyRR.registeredAddress.country} disabled>
                                 <option value="0">Select a Country</option>
                                 {countries.map((country, index) =>
 
@@ -130,8 +132,12 @@ export default class Case extends Component {
                         </div>
                         <div className="checkbox">
                             <label>
-                                <input type="checkbox" /> Check me out
+                                <input type="checkbox" /> Analyst Correction Required
                             </label>
+                        </div>
+                        <div class="form-group">
+                            <label>Comments</label>
+                            <textarea onChange={(e) => this.updateForm(e, 'ra-comments')} class="form-control" rows="3" placeholder="" value={this.props.case.requirement.proxyRR.registeredAddress.comments}></textarea>
                         </div>
                     </div>               
             

@@ -3,6 +3,7 @@ import CaseService from './CaseService';
 import CaseStructure from './structures/CaseStructure';
 import Location from '../util/Location';
 import RegisteredAddress from './requirements/proxyrr/RegisteredAddress';
+import PhysicalAddress from './requirements/proxyrr/PhysicalAddress';
 
 export default class Case extends Component {
 
@@ -40,7 +41,7 @@ export default class Case extends Component {
         })
     }
     updateData(data) {
-        var thisRef = this;
+       // var thisRef = this;
         this.caseService.update(data, this.props.match.params.ecmId, (data) => {
            // this.caseData = data;
            // thisRef.setState({ case: data });
@@ -84,8 +85,8 @@ export default class Case extends Component {
 
     render() { console.log("render: " , this.state.case)
         
-        var usStates = this.usStates;
-        var countries = this.countries;
+       // var usStates = this.usStates;
+       // var countries = this.countries;
 
         return (
             <div className="box box-primary">
@@ -94,7 +95,8 @@ export default class Case extends Component {
                 </div>
                 <form>
                     <RegisteredAddress case={this.state.case} />
-                    <div className="box-body">
+                    <PhysicalAddress case={this.state.case} />
+                   { /* <div className="box-body">
                         <label>
                             <input type="checkbox" checked={this.state.case.requirement.proxyRR.registeredAddress.complete ? 'checked':''} /> Registered / Residential Address
                         </label>
@@ -140,7 +142,7 @@ export default class Case extends Component {
                                 <input type="checkbox" /> Check me out
                             </label>
                         </div>
-                    </div>               
+                            </div>   */}            
                 </form>
             </div>
         );
