@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import CaseService from './CaseService';
-import CaseStructure from './structures/CaseStructure';
-import Location from '../util/Location';
-import RegisteredAddress from './requirements/proxyrr/RegisteredAddress';
+import CaseService from '../../CaseService';
+import CaseStructure from '../../structures/CaseStructure';
+import Location from '../../../util/Location';
+import RegisteredAddress from '../../requirements/proxyrr/RegisteredAddress';
 
 export default class Case extends Component {
-
+    
     constructor(props) {
         super(props);
         this.caseService = new CaseService();
@@ -14,15 +14,29 @@ export default class Case extends Component {
         this.state = this.caseStructure.getStructure();
         this.usStates = this.locations.getStates();
         this.countries = this.locations.getCountries();
-     }
+    }
+
+    fillData() { 
+        var thisRef = this;
+        this.caseData = this.props.case;
+        
+    }
+    updateData(data) {
+        var thisRef = this; console.log("update: ", thisRef);
+        this.caseService.update(data, this.props.case.ecmId, (data) => {
+           // this.caseData = data;
+           // thisRef.setState({ case: data });
+        })
+    }
 
     componentWillMount() {
         this.fillData();
     }
 
-   componentDidUpdate(prevProps, prevState, snapshot){
+    componentDidUpdate(prevProps, prevState, snapshot){ 
         var updatedCase = prevState.case;
-        console.log("bottom:" , prevState.case);
+        console.log("top:" , prevState.case);
+        this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
             this.updateData(updatedCase);
        } else {
@@ -30,31 +44,13 @@ export default class Case extends Component {
        }
 
     }
-    
-
-    fillData() { 
-        var thisRef = this;
-        this.caseService.get(this.props.match.params.ecmId, (data) => {
-            this.caseData = data;
-            thisRef.setState({ case: data });
-        })
-    }
-    updateData(data) {
-        var thisRef = this;
-        this.caseService.update(data, this.props.match.params.ecmId, (data) => {
-           // this.caseData = data;
-           // thisRef.setState({ case: data });
-        })
-    }
-    
 
     //Routes the changed information to the right poperty
     handleFormDataRouting(event, name){
-        switch (name) {
+        switch (name) { 
             case "ra-firsLine":
-                alert('???');
-                this.caseData.requirement.proxyRR.registeredAddress.firstLine = event.target.value;
-                console.log("new??: " );
+                this.caseData.requirement.proxyRR.registeredAddress.firstLine = this.props.case.requirement.proxyRR.registeredAddress.firstLine = event.target.value;
+                console.log("new?: ", event.target.value );
                 break;
             case "ra-secondLine":
                 this.caseData.requirement.proxyRR.registeredAddress.secondLine = event.target.value;
@@ -81,38 +77,35 @@ export default class Case extends Component {
         this.handleFormDataRouting(event, name);
         this.setState({[name]: event.target.value});
     }
+  
 
-    render() { console.log("render: " , this.state.case)
+    render() {  console.log("renderb: " , this.props.case)
         
         var usStates = this.usStates;
         var countries = this.countries;
 
         return (
-            <div className="box box-primary">
-                <div className="box-header with-border">
-                    <h3 className="box-title">Requirements for Case: {this.state.case.name}</h3>
-                </div>
-                <form>
-                    <RegisteredAddress case={this.state.case} />
+
+                   
                     <div className="box-body">
                         <label>
-                            <input type="checkbox" checked={this.state.case.requirement.proxyRR.registeredAddress.complete ? 'checked':''} /> Registered / Residential Address
+                            <input type="checkbox" checked={this.props.case.requirement.proxyRR.registeredAddress.complete ? 'checked':''} /> Registered / Residential Address
                         </label>
                         <div className="form-group">
                             <label htmlFor="registeredAddress-firstLine">Address Line 1</label>
-                            <input onChange={(e) => this.updateForm(e,'ra-firsLine')} type="text" className="form-control" id="registeredAddress-firstLine" placeholder="No P.O Boxes" value={this.state.case.requirement.proxyRR.registeredAddress.firstLine} />
+                            <input onChange={(e) => this.updateForm(e,'ra-firsLine')} type="text" className="form-control" id="registeredAddress-firstLine" placeholder="No P.O Boxes" value={this.props.case.requirement.proxyRR.registeredAddress.firstLine} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="registeredAddress-secondLine">Address Line 2</label>
-                            <input onChange={(e) => this.updateForm(e, 'ra-secondLine')} type="text" className="form-control" id="registeredAddress-secondLine" value={this.state.case.requirement.proxyRR.registeredAddress.secondLine}  />
+                            <input onChange={(e) => this.updateForm(e, 'ra-secondLine')} type="text" className="form-control" id="registeredAddress-secondLine" value={this.props.case.requirement.proxyRR.registeredAddress.secondLine}  />
                         </div>
                         <div className="form-group">
                             <label htmlFor="city">City</label>
-                            <input onChange={(e) => this.updateForm(e, 'ra-city')}type="text" className="form-control" id="city" placeholder="Exactly As it is Written in Attached Document, Misspellings and all." value={this.state.case.requirement.proxyRR.registeredAddress.city} />
+                            <input onChange={(e) => this.updateForm(e, 'ra-city')}type="text" className="form-control" id="city" placeholder="Exactly As it is Written in Attached Document, Misspellings and all." value={this.props.case.requirement.proxyRR.registeredAddress.city} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="customerState">State/Province</label>
-                            <select onChange={(e) => this.updateForm(e, 'ra-state')} id="customerState" className="form-control" value={this.state.case.requirement.proxyRR.registeredAddress.state}>
+                            <select onChange={(e) => this.updateForm(e, 'ra-state')} id="customerState" className="form-control" value={this.props.case.requirement.proxyRR.registeredAddress.state}>
                                 <option value="0">Select a State</option>
                             {usStates.map((state,index) =>
                                    
@@ -122,7 +115,7 @@ export default class Case extends Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="country">Country</label>
-                            <select onChange={(e) => this.updateForm(e, 'ra-country')} id="customerState" className="form-control" value={this.state.case.requirement.proxyRR.registeredAddress.country} >
+                            <select onChange={(e) => this.updateForm(e, 'ra-country')} id="customerState" className="form-control" value={this.props.case.requirement.proxyRR.registeredAddress.country} >
                                 <option value="0">Select a Country</option>
                                 {countries.map((country, index) =>
 
@@ -133,7 +126,7 @@ export default class Case extends Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="city">Postal Code</label>
-                            <input onChange={(e) => this.updateForm(e, 'ra-postalCode')} type="text" className="form-control" id="ra-postal-code" placeholder="For Best Practice, please only use the first 5 digits of the Postal Code" value={this.state.case.requirement.proxyRR.registeredAddress.postalCode} />
+                            <input onChange={(e) => this.updateForm(e, 'ra-postalCode')} type="text" className="form-control" id="ra-postal-code" placeholder="For Best Practice, please only use the first 5 digits of the Postal Code" value={this.props.case.requirement.proxyRR.registeredAddress.postalCode} />
                         </div>
                         <div className="checkbox">
                             <label>
@@ -141,8 +134,7 @@ export default class Case extends Component {
                             </label>
                         </div>
                     </div>               
-                </form>
-            </div>
+            
         );
     }
 }

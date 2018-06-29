@@ -58,7 +58,7 @@ router.route('/update/:id').post(function (req, res) {
     else {
       item.requirement = req.body.data.requirement;//= req.body.data.requirement.proxyRR.registeredAddress.firstLine;
       item.markModified('requirement');
-     
+     ///console.log("case:", item.requirement.proxyRR.registeredAddress);
      item.save().then(item => {
         res.json('Updated');
       })
