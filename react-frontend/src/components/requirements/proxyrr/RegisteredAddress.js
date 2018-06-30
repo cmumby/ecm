@@ -69,6 +69,10 @@ export default class Case extends Component {
             case "ra-comments":
                 this.props.case.requirement.proxyRR.registeredAddress.comments = event.target.value;
                 break;
+            case "ra-correction-required":
+                console.log("checked?: ", event.target.checked);
+                this.props.case.requirement.proxyRR.registeredAddress.raCorrectionRequired = event.target.checked;
+                break;
             default:
                 return false;
 
@@ -81,7 +85,7 @@ export default class Case extends Component {
     }
   
 
-    render() {  console.log("renderb: " , this.props.case)
+    render() {  
         
         var usStates = this.usStates;
         var countries = this.countries;
@@ -132,12 +136,12 @@ export default class Case extends Component {
                         </div>
                         <div className="checkbox">
                             <label>
-                                <input type="checkbox" /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'ra-correction-required')} type="checkbox" defaultChecked={this.props.case.requirement.proxyRR.registeredAddress.raCorrectionRequired } /> Analyst Correction Required
                             </label>
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'ra-comments')} class="form-control" rows="3" placeholder="" value={this.props.case.requirement.proxyRR.registeredAddress.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'ra-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.proxyRR.registeredAddress.comments}></textarea>
                         </div>
                     </div>               
             

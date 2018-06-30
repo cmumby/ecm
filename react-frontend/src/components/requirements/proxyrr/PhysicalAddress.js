@@ -28,7 +28,7 @@ export default class Case extends Component {
             var thisRef = this;
             //return this.props.case.requirement.proxyRR.physicalAddress.map(function (object, i) 
             return this.props.case.requirement.proxyRR.physicalAddress.map(function (object, i) { 
-                return <div className="box-body">
+                return <div key={i} className="box-body">
                     <div className="form-group">
                         <label htmlFor="physicalAddress-firstLine">Address Line 1</label>
                         <input onChange={(e) => thisRef.updateForm(e, 'pa-firsLine', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder="No P.O Boxes" value={object.firstLine} />
@@ -68,12 +68,12 @@ export default class Case extends Component {
                     </div>
                     <div className="checkbox">
                         <label>
-                            <input type="checkbox" /> Analyst Correction Required
-                            </label>
+                            <input onChange={(e) => thisRef.updateForm(e, 'pa-correction-required', i)} type="checkbox" defaultChecked={object.raCorrectionRequired } /> Analyst Correction Required
+                        </label>
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                         <label>Comments</label>
-                        <textarea onChange={(e) => thisRef.updateForm(e, 'pa-comments', i)} class="form-control" rows="3" placeholder="" value={object.comments}></textarea>
+                        <textarea onChange={(e) => thisRef.updateForm(e, 'pa-comments', i)} className="form-control" rows="3" placeholder="" value={object.comments}></textarea>
                     </div>
                 </div>
             })
@@ -129,6 +129,10 @@ export default class Case extends Component {
             case "pa-comments":
                 this.props.case.requirement.proxyRR.physicalAddress[index].comments = event.target.value;
                 break;
+            case "pa-correction-required":
+                console.log("checked?: ", event.target.checked);
+                this.props.case.requirement.proxyRR.physicalAddress[index].raCorrectionRequired = event.target.checked;
+                break;
             default:
                 return false;
 
@@ -152,7 +156,7 @@ export default class Case extends Component {
 
                    
                     <div className="box-body">
-                        <label>
+                        <label> 
                             <input type="checkbox" checked={this.props.case.requirement.proxyRR.registeredAddress.complete ? 'checked' : ''} /> Physical / Mailing Address
                         </label>
                     {this.tabRow()}

@@ -10,8 +10,8 @@ export default class CaseStructure {
                             city: "",
                             state: "",
                             country:"",
-                            postalCode:""
-
+                            postalCode:"",
+                            comments:""
                         }
 
                     }
