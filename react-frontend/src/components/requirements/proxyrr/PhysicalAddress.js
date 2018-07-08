@@ -82,7 +82,7 @@ export default class Case extends Component {
 
     
     updateData(data) {
-        var thisRef = this; console.log("update: ", thisRef);
+        var thisRef = this;
         this.caseService.update(data, this.props.case.ecmId, (data) => {
            // this.caseData = data;
            // thisRef.setState({ case: data });
@@ -95,7 +95,7 @@ export default class Case extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
         var updatedCase = prevState.case;
-        console.log("top:" , prevState.case);
+        
         this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
             this.updateData(updatedCase);
@@ -130,7 +130,6 @@ export default class Case extends Component {
                 this.props.case.requirement.proxyRR.physicalAddress[index].comments = event.target.value;
                 break;
             case "pa-correction-required":
-                console.log("checked?: ", event.target.checked);
                 this.props.case.requirement.proxyRR.physicalAddress[index].raCorrectionRequired = event.target.checked;
                 break;
             default:
@@ -146,11 +145,6 @@ export default class Case extends Component {
   
 
     render() {
-        console.log("phs: ", this.props.case.requirement.proxyRR.physicalAddress);
-        
-        var usStates = this.usStates;
-        var countries = this.countries;
-
         
         return (
 

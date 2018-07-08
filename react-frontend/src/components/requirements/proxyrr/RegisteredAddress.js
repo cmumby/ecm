@@ -20,9 +20,10 @@ export default class Case extends Component {
       //  var thisRef = this;
         this.caseData = this.props.case;
         
+        
     }
     updateData(data) {
-        var thisRef = this; console.log("update: ", thisRef);
+        //var thisRef = this; 
         this.caseService.update(data, this.props.case.ecmId, (data) => {
            // this.caseData = data;
            // thisRef.setState({ case: data });
@@ -35,10 +36,9 @@ export default class Case extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
         var updatedCase = prevState.case;
-        console.log("top:" , prevState.case);
         this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
-            this.updateData(updatedCase);
+            //this.updateData(updatedCase);
        } else {
          return false;
        }
@@ -70,7 +70,6 @@ export default class Case extends Component {
                 this.props.case.requirement.proxyRR.registeredAddress.comments = event.target.value;
                 break;
             case "ra-correction-required":
-                console.log("checked?: ", event.target.checked);
                 this.props.case.requirement.proxyRR.registeredAddress.raCorrectionRequired = event.target.checked;
                 break;
             default:
@@ -81,7 +80,12 @@ export default class Case extends Component {
 
     updateForm = (event, name) => {
         this.handleFormDataRouting(event, name);
-        this.setState({[name]: event.target.value});
+        if(name === "ra-correction-required"){
+            this.setState({[name]: event.target.checked});
+        }  else{
+            this.setState({[name]: event.target.value});
+        }
+        
     }
   
 
@@ -89,7 +93,7 @@ export default class Case extends Component {
         
         var usStates = this.usStates;
         var countries = this.countries;
-
+       
         return (
 
                    
@@ -136,7 +140,7 @@ export default class Case extends Component {
                         </div>
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'ra-correction-required')} type="checkbox" defaultChecked={this.props.case.requirement.proxyRR.registeredAddress.raCorrectionRequired } /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'ra-correction-required')} type="checkbox" checked={this.props.case.requirement.proxyRR.registeredAddress.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">

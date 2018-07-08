@@ -11,7 +11,8 @@ export default class CaseStructure {
                             state: "",
                             country:"",
                             postalCode:"",
-                            comments:""
+                            comments:"",
+                            raCorrectionRequired:Boolean
                         }
 
                     }
