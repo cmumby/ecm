@@ -28,10 +28,22 @@ export default class Case extends Component {
             var thisRef = this;
             //return this.props.case.requirement.proxyRR.physicalAddress.map(function (object, i) 
             return this.props.case.requirement.proxyRR.physicalAddress.map(function (object, i) { 
-                return <div key={i} className="box-body">
+                return <div key={i} className="box-body" >
+                        <h3> Physical / Mail Address # {i + 1 }</h3>
+                        <hr/>
+                            {(i > 0)?
+                                (<p className="pull-right">
+                                <button onClick={(e) => {thisRef.removeAddress(e,i)}}  className="btn btn-danger btn-sm ad-click-event">
+                                    Remove this Physical / Mailing Address 
+                                </button>
+                            </p>)
+                            :
+                                ""
+                            }
+                             
                     <div className="form-group">
                         <label htmlFor="physicalAddress-firstLine">Address Line 1</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'pa-firsLine', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder="No P.O Boxes" value={object.firstLine} />
+                        <input onChange={(e) => thisRef.updateForm(e, 'pa-firsLine', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder={(i == 0 )?"No P.O Boxes In First Address" :"Add P.O Boxes here"} value={object.firstLine} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="physicalAddress-secondLine">Address Line 2</label>
@@ -118,7 +130,7 @@ export default class Case extends Component {
                 this.props.case.requirement.proxyRR.physicalAddress[index].city = event.target.value;
                 break;
             case "pa-state":
-                this.props.case.requirement.proxyRR.physicalAddress[index] = event.target.value;
+                this.props.case.requirement.proxyRR.physicalAddress[index].state = event.target.value;
                 break;
             case "pa-country":
                 this.props.case.requirement.proxyRR.physicalAddress[index].country = event.target.value;
@@ -145,9 +157,14 @@ export default class Case extends Component {
     
     addAddress(event){
         event.preventDefault();
-        let newAddressField = {"firstLine":"","secondLine":"","city":"","state":"","country":"","postalCode":"",
+        let newAddressField = {"firstLine":"","secondLine":"","city":"","state":"","country":"United States","postalCode":"",
                                "comments":"","attachments":null,"raCorrectionRequired":false,"complete":false};
         this.props.case.requirement.proxyRR.physicalAddress.push(newAddressField);
+        this.setState(this.state);
+    }
+    removeAddress(event, key){ 
+        event.preventDefault();
+        this.props.case.requirement.proxyRR.physicalAddress.splice(key,1);
         this.setState(this.state);
     }
 
@@ -157,6 +174,7 @@ export default class Case extends Component {
 
                    
                     <div className="box-body">
+                   
                         <label> 
                             <input type="checkbox" checked={this.props.case.requirement.proxyRR.registeredAddress.complete ? 'checked' : ''} /> Physical / Mailing Address
                         </label>
