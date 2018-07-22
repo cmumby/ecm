@@ -82,7 +82,7 @@ export default class Case extends Component {
 
     
     updateData(data) {
-        var thisRef = this;
+        //var thisRef = this;
         this.caseService.update(data, this.props.case.ecmId, (data) => {
            // this.caseData = data;
            // thisRef.setState({ case: data });
@@ -142,7 +142,14 @@ export default class Case extends Component {
         this.handleFormDataRouting(event, name, index);
         this.setState({[name]: event.target.value});
     }
-  
+    
+    addAddress(event){
+        event.preventDefault();
+        let newAddressField = {"firstLine":"","secondLine":"","city":"","state":"","country":"","postalCode":"",
+                               "comments":"","attachments":null,"raCorrectionRequired":false,"complete":false};
+        this.props.case.requirement.proxyRR.physicalAddress.push(newAddressField);
+        this.setState(this.state);
+    }
 
     render() {
         
@@ -159,9 +166,14 @@ export default class Case extends Component {
                             <label>
                                 <input type="checkbox" /> Check me out
                             </label>
+                            <p className="pull-right">
+                                <button onClick={(e) => {this.addAddress(e)}} href="https://themequarry.com/theme/ample-admin-the-ultimate-dashboard-template-ASFEDA95" className="btn btn-success btn-sm ad-click-event">
+                                    Add Another Physical / Mailing Address 
+                                </button>
+                            </p>
                         </div>
                     </div>               
-            
+             
         );
     }
 }
