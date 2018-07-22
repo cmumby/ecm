@@ -4,6 +4,7 @@ import CaseStructure from './structures/CaseStructure';
 import Location from '../util/Location';
 import RegisteredAddress from './requirements/proxyrr/RegisteredAddress';
 import PhysicalAddress from './requirements/proxyrr/PhysicalAddress';
+import LegalEntity from './requirements/proxyrr/LegalEntity';
 
 export default class Case extends Component {
 
@@ -94,8 +95,9 @@ export default class Case extends Component {
                     <h3 className="box-title">Requirements for Case: {this.state.case.name}</h3>
                 </div>
                 <form>
-                    <RegisteredAddress case={this.state.case} />
-                    <PhysicalAddress case={this.state.case} />
+                    <RegisteredAddress case={this.state.case} color="light" />
+                    <PhysicalAddress case={this.state.case} color="dark"/>
+                    <LegalEntity case={this.state.case} color="light"/>
                    { /* <div className="box-body">
                         <label>
                             <input type="checkbox" checked={this.state.case.requirement.proxyRR.registeredAddress.complete ? 'checked':''} /> Registered / Residential Address

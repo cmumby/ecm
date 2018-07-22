@@ -93,11 +93,14 @@ export default class Case extends Component {
         
         var usStates = this.usStates;
         var countries = this.countries;
+        var componentClass = 
+        (this.props.color == "light")?"box-body box-component-light":
+        (this.props.color == "dark")?"box-body box-component-dark":"";
        
         return (
 
                    
-                    <div className="box-body">
+                    <div className={componentClass}>
                         <label>
                             <input type="checkbox" checked={this.props.case.requirement.proxyRR.registeredAddress.complete ? 'checked':''} /> Registered / Residential Address
                         </label>

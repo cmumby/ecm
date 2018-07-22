@@ -13,6 +13,9 @@ export default class CaseStructure {
                             postalCode:"",
                             comments:"",
                             raCorrectionRequired:Boolean
+                        },
+                        legalEntity:{
+                            
                         }
 
                     }
