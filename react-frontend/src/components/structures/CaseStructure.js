@@ -16,6 +16,9 @@ export default class CaseStructure {
                         },
                         legalEntity:{
                             
+                        },
+                        legalFormation:{
+                            
                         }
 
                     }

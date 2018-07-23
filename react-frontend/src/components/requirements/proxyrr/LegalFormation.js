@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
 import EntityType from '../../../util/EntityType';
+import Location from '../../../util/Location';
 
 
 export default class Case extends Component {
@@ -11,8 +12,10 @@ export default class Case extends Component {
         this.caseService = new CaseService();
         this.caseStructure = new CaseStructure();
         this.entitTypes = new EntityType();
+        this.locations = new Location();
         this.state = this.caseStructure.getStructure();
         this.entites = this.entitTypes.getEntities();
+        this.countries = this.locations.getCountries();
     }
 
     fillData() { 
@@ -40,15 +43,15 @@ export default class Case extends Component {
     //Routes the changed information to the right poperty
     handleFormDataRouting(event, name){
         switch (name) { 
-            case "le-entity":
-                this.props.case.requirement.proxyRR.legalEntity.entityType = event.target.value;
+            case "lf-country-registration":
+                this.props.case.requirement.proxyRR.legalFormation.countryOfRegistration = event.target.value;
                 break;
             
-            case "le-comments":
-                this.props.case.requirement.proxyRR.legalEntity.comments = event.target.value;
+            case "lf-comments":
+                this.props.case.requirement.proxyRR.legalFormation.comments = event.target.value;
                 break;
-            case "le-correction-required":
-                this.props.case.requirement.proxyRR.legalEntity.raCorrectionRequired = event.target.checked;
+            case "lf-correction-required":
+                this.props.case.requirement.proxyRR.legalFormation.raCorrectionRequired = event.target.checked;
                 break;
             default:
                 return false;
@@ -58,7 +61,7 @@ export default class Case extends Component {
 
     updateForm = (event, name) => {
         this.handleFormDataRouting(event, name);
-        if(name === "le-correction-required"){
+        if(name === "lf-correction-required"){
             this.setState({[name]: event.target.checked});
         }  else{
             this.setState({[name]: event.target.value});
@@ -72,33 +75,34 @@ export default class Case extends Component {
         var componentClass = 
         (this.props.color == "light")?"box-body box-component-light":
         (this.props.color == "dark")?"box-body box-component-dark":"";
+        var countries = this.countries;
         return (
 
                    
                     <div className={componentClass}>
                         <label>
-                            <input type="checkbox" checked={this.props.case.requirement.proxyRR.legalEntity.complete ? 'checked':''} />  Legal Entity Type
+                            <input type="checkbox" checked={this.props.case.requirement.proxyRR.legalEntity.complete ? 'checked':''} />  Legal Formation
                         </label>
                         <div className="form-group">
-                            <label htmlFor="city">What is the Legal Entity Type</label>
+                            <label htmlFor="city">Country of Registration</label>
                     
-                            <select onChange={(e) => this.updateForm(e, 'le-entity')} id="customerState" className="form-control" value={this.props.case.requirement.proxyRR.legalEntity.entityType}>
-                                <option value="0">Select the proper entity for this customer</option>
-                            {entitySelections.map((state,index) =>
-                                   
-                                    <option key={index} value={state} >{state}</option>
-                            )}
+                            <select onChange={(e) => this.updateForm(e, 'lf-country-registration')} id="customerState" className="form-control" value={this.props.case.requirement.proxyRR.legalFormation.countryOfRegistration}>
+                                <option value="0">Select a Country</option>
+                                {countries.map((country, index) =>
+
+                                    <option key={index} value={country} >{country}</option>
+                                )}
                             </select>
                         </div>
                        
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'le-correction-required')} type="checkbox" checked={this.props.case.requirement.proxyRR.legalEntity.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'lf-correction-required')} type="checkbox" checked={this.props.case.requirement.proxyRR.legalFormation.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'le-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.proxyRR.legalEntity.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'lf-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.proxyRR.legalFormation.comments}></textarea>
                         </div>
                     </div>               
             

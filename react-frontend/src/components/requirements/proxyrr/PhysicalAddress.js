@@ -43,7 +43,7 @@ export default class Case extends Component {
                              
                     <div className="form-group">
                         <label htmlFor="physicalAddress-firstLine">Address Line 1</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'pa-firsLine', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder={(i == 0 )?"No P.O Boxes In First Address" :"Add P.O Boxes here"} value={object.firstLine} />
+                        <input onChange={(e) => thisRef.updateForm(e, 'pa-firsLine', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder={(i === 0 )?"No P.O Boxes In First Address" :"Add P.O Boxes here"} value={object.firstLine} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="physicalAddress-secondLine">Address Line 2</label>
@@ -170,8 +170,8 @@ export default class Case extends Component {
 
     render() {
         var componentClass = 
-        (this.props.color == "light")?"box-body box-component-light":
-        (this.props.color == "dark")?"box-body box-component-dark":"";
+        (this.props.color === "light")?"box-body box-component-light":
+        (this.props.color === "dark")?"box-body box-component-dark":"";
         
         return (
 
