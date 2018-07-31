@@ -5,7 +5,7 @@ import EntityType from '../../../util/EntityType';
 import Location from '../../../util/Location';
 
 
-export default class Case extends Component {
+export default class LegalFormation extends Component {
     
     constructor(props) {
         super(props);

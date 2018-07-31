@@ -6,6 +6,7 @@ var Requirement = require('../models/requirements/Requirement');
 //Schema
 var TodoList = require('../models/TodoList');
 var Case = require('../models/Case');
+var Naics = require('../models/Naics');
 
 // Get Specific
 router.route('/:id').get(function (req, res) {
@@ -36,6 +37,17 @@ router.route('/cases/list').get(function (req, res) {
     }
   });
 });
+router.route('/naics/list').get(function (req, res) {
+  Naics.find(function (err, items) {
+    //console.log(items);
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(items);
+    }
+  });
+});
+
 
 // Add item
 router.route('/add').post(function (req, res) {

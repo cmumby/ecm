@@ -4,7 +4,7 @@ import CaseStructure from '../../structures/CaseStructure';
 import EntityType from '../../../util/EntityType';
 
 
-export default class LegalEntity extends Component {
+export default class NatureOfBusiness extends Component {
     
     constructor(props) {
         super(props);
@@ -16,7 +16,13 @@ export default class LegalEntity extends Component {
     }
 
     fillData() { 
+        var thisRef = this;
         this.caseData = this.props.case;   
+        this.caseService.naics((data)=>{
+            thisRef.naicsCodes = data;
+            thisRef.setState({ naics: data });
+           
+        })
     }
 
     updateData(data) {
@@ -65,10 +71,22 @@ export default class LegalEntity extends Component {
         }
         
     }
+
+    tabRow(){
+        if(this.state.naics instanceof Array){
+  
+          var thisRef = this;
+          return this.state.naics.map(function(object, i){
+              return  <option key={i} value={object.code} >{object.code} - {object.title}</option>;
+          })
+        }
+      }
   
 
     render() {  
         var entitySelections = this.entites;
+        var usNaicsCodes = this.state.naics;
+        console.log('nc',this.state.naics);
         var componentClass = 
         (this.props.color == "light")?"box-body box-component-light":
         (this.props.color == "dark")?"box-body box-component-dark":"";
@@ -77,10 +95,10 @@ export default class LegalEntity extends Component {
                    
                     <div className={componentClass}>
                         <label>
-                            <input type="checkbox" checked={this.props.case.requirement.proxyRR.legalEntity.complete ? 'checked':''} />  Legal Entity Type
+                            <input type="checkbox" checked={this.props.case.requirement.proxyRR.legalEntity.complete ? 'checked':''} />  Nature of Business
                         </label>
                         <div className="form-group">
-                            <label htmlFor="city">What is the Legal Entity Type</label>
+                            <label htmlFor="city">Filter the codes</label>
                     
                             <select onChange={(e) => this.updateForm(e, 'le-entity')} id="customerState" className="form-control" value={this.props.case.requirement.proxyRR.legalEntity.entityType}>
                                 <option value="0">Select the proper entity for this customer</option>
@@ -90,7 +108,12 @@ export default class LegalEntity extends Component {
                             )}
                             </select>
                         </div>
-                       
+                        <div className="form-group">
+                            <label>Nature of the Customer's Business / NAICS Code</label>
+                            <select multiple={true}  className="form-control naics-form">
+                            {this.tabRow()}
+                            </select>
+                        </div>
                         <div className="checkbox">
                             <label>
                                 <input onChange={(e) => this.updateForm(e, 'le-correction-required')} type="checkbox" checked={this.props.case.requirement.proxyRR.legalEntity.raCorrectionRequired ?'checked':''} /> Analyst Correction Required

@@ -14,6 +14,18 @@ export default class CaseService {
             });
     }
 
+    naics(callback) {
+        axios.get('http://localhost:6200/ecm/naics/list')
+            .then((response) => {
+                callback(response.data);
+                // console.log(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+                callback(null);
+            });
+    }
+
     get(id, callback) {
         axios.get('http://localhost:6200/ecm/' + id)
             .then((response) => {

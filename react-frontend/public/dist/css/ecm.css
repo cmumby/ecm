@@ -31,3 +31,7 @@
     border-top: 1px solid #DDD;
     border-bottom: 1px solid #DDD;
 }
+
+select.naics-form{
+    height:226px;
+}

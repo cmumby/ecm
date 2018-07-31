@@ -4,7 +4,7 @@ import CaseStructure from '../../structures/CaseStructure';
 import Location from '../../../util/Location';
 
 
-export default class Case extends Component {
+export default class RegisteredAddress extends Component {
     
     constructor(props) {
         super(props);
