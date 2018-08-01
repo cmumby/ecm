@@ -19,6 +19,9 @@ export default class CaseStructure {
                         },
                         legalFormation:{
                             
+                        },
+                        natureOfBusiness:{
+                            naics:Number
                         }
 
                     }

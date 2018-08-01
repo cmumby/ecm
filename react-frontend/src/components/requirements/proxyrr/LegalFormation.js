@@ -71,10 +71,10 @@ export default class LegalFormation extends Component {
   
 
     render() {  
-        var entitySelections = this.entites;
+        
         var componentClass = 
-        (this.props.color == "light")?"box-body box-component-light":
-        (this.props.color == "dark")?"box-body box-component-dark":"";
+        (this.props.color === "light")?"box-body box-component-light":
+        (this.props.color === "dark")?"box-body box-component-dark":"";
         var countries = this.countries;
         return (
 
