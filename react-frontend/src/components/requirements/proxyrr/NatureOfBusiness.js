@@ -49,7 +49,10 @@ export default class NatureOfBusiness extends Component {
             case "nc-naics":
                 this.props.case.requirement.proxyRR.natureOfBusiness.naics = event.target.value;
                 break;
-            
+            case "nc-filter":
+                this.props.case.requirement.proxyRR.natureOfBusiness.naics = event.target.value;
+                
+                break;
             case "nc-comments":
                 this.props.case.requirement.proxyRR.natureOfBusiness.comments = event.target.value;
                 break;
@@ -73,7 +76,7 @@ export default class NatureOfBusiness extends Component {
               }
             }
            // this.props.case.requirement.proxyRR.natureOfBusiness(value);
-           this.setState({[name]: value}); console.log('v:',this.state)
+           this.setState({[name]: value}); 
         }  else{
             this.setState({[name]: event.target.value});
         }
@@ -84,7 +87,7 @@ export default class NatureOfBusiness extends Component {
         if(this.state.naics instanceof Array){
   
           return this.state.naics.map(function(object, i){
-              return  <option key={i} value={[object.code]} >{object.code} - {object.title}</option>;
+              return  <option id={'naics-' + object.code} key={i} value={[object.code]} >{object.code} - {object.title}</option>;
           })
         }
       }
