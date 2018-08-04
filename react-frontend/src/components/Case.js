@@ -96,7 +96,7 @@ export default class Case extends Component {
                 <div className="box-header with-border">
                     <h3 className="box-title">Requirements for Case: {this.state.case.name}</h3>
                 </div>
-                <form>
+                <form name="reqForm">
                     <RegisteredAddress case={this.state.case} color="light" />
                     <PhysicalAddress case={this.state.case} color="dark"/>
                     <LegalEntity case={this.state.case} color="light"/>
