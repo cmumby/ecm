@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
 import EntityType from '../../../util/EntityType';
-import Select from 'react-select';
+
 
 
 export default class NatureOfBusiness extends Component {

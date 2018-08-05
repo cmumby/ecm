@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
 import EntityType from '../../../util/EntityType';
+import Location from '../../../util/Location';
 import Select from 'react-select';
+
 
 
 export default class NatureOfBusiness extends Component {
@@ -11,7 +13,9 @@ export default class NatureOfBusiness extends Component {
         super(props);
         this.caseService = new CaseService();
         this.caseStructure = new CaseStructure();
+        this.locations = new Location();
         this.entitTypes = new EntityType();
+        this.usCountries = this.locations.getCountries();
         this.state = this.caseStructure.getStructure();
         this.entites = this.entitTypes.getEntities();
     }
@@ -19,17 +23,13 @@ export default class NatureOfBusiness extends Component {
     fillData() { 
         var thisRef = this;
         this.caseData = this.props.case;   
-        this.caseService.naics((data)=>{
-            thisRef.naicsCodes = data;
-            thisRef.codelist = [];
-            thisRef.setState({ naics: data });
-            for(var d of data){
-                var nacsDropdownTitle =  d.code  + " - " + d.title
-                thisRef.codelist[d.code] = { label: nacsDropdownTitle, value: d.code };
-            }
-            thisRef.setState({ codeList: thisRef.codelist });
+        thisRef.countriesDropdown = [];
+        
+        for(var c of thisRef.usCountries){
            
-        })
+            thisRef.countriesDropdown.push({ label: c, value: c });
+        }
+        thisRef.setState({ countriesDropdown: thisRef.countriesDropdown });
     }
 
     updateData(data) {
@@ -56,8 +56,9 @@ export default class NatureOfBusiness extends Component {
             case "nc-naics":
                 this.props.case.requirement.proxyRR.natureOfBusiness.naics = event.target.value;
                 break;
-            case "nc-filter":
-                this.props.case.requirement.proxyRR.natureOfBusiness.naics = event.value;
+            case "ms-filter":
+               
+                this.props.case.requirement.proxyRR.marketsServed.countries = this.formatMarketsForSave(event);
                 break;
             case "nc-comments":
                 this.props.case.requirement.proxyRR.natureOfBusiness.comments = event.target.value;
@@ -71,15 +72,24 @@ export default class NatureOfBusiness extends Component {
         }
     }
 
-    getNaicsTitle(naics){
-        var defaultNaicsTitle = "Type the proper code or search from the dropdown for the correct NAICS...";
-        for(let nc in this.codelist){
-            if(this.codelist[nc].value === naics){
-                this.codelist[nc].selected = true;
-                return this.codelist[nc].label;
-            }
+    getSlectedMarkets(markets){
+        var marketList = [];
+        marketList['key'] = 0;
+        for(let m in markets){
+           
+            marketList[m] = {label:markets[m],value:markets[m]};
         }
-        return defaultNaicsTitle;
+        return marketList;
+    }
+
+    formatMarketsForSave(markets){
+        var marketList = [];
+       
+        for(let m in markets){
+            marketList.push(markets[m].label);
+        }
+        
+        return marketList;
     }
 
     updateForm = (event, name) => {
@@ -94,15 +104,27 @@ export default class NatureOfBusiness extends Component {
               }
             }
            this.setState({[name]: value}); 
-        } else if("nc-filter"){
-            this.setState({"naicsValue": event});
+        } else if("ms-filter"){
+           
+            this.setState({[name]: event.value});
         } else{
             this.setState({[name]: event.target.value});
         }
         
     }
 
+    tabRow(){
+        if(this.state.naics instanceof Array){
+  
+          return this.state.naics.map(function(object, i){
+              return  <option id={'naics-' + object.code} key={i} value={[object.code]} >{object.code} - {object.title}</option>;
+          })
+        }
+      }
+  
+
     render() {  
+        var usStates = this.usStates;
        
         var componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
@@ -112,11 +134,11 @@ export default class NatureOfBusiness extends Component {
                    
                     <div className={componentClass}>
                         <label>
-                            <input type="checkbox" checked={this.props.case.requirement.proxyRR.natureOfBusiness.complete ? 'checked':''} />  Nature of Business
+                            <input type="checkbox" checked={this.props.case.requirement.proxyRR.natureOfBusiness.complete ? 'checked':''} />  Markets Served
                         </label>
                         <div className="form-group">
-                            <label htmlFor="naics-filter">Nature of the Customer's Business / NAICS Code</label>
-                            <Select name="naicsFilter" onChange={(e) => this.updateForm(e, 'nc-filter')} options={this.state.codeList}  value={{label: this.getNaicsTitle(this.props.case.requirement.proxyRR.natureOfBusiness.naics)} } />
+                            <label htmlFor="markets-filter">Primary Markets Served</label>
+                            <Select name="marketsFilter" onChange={(e) => this.updateForm(e, 'ms-filter')} options={this.state.countriesDropdown} isMulti  value={this.getSlectedMarkets(this.props.case.requirement.proxyRR.marketsServed.countries)} />
                             
                         </div>
                         

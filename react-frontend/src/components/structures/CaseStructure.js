@@ -23,10 +23,12 @@ export default class CaseStructure {
                         natureOfBusiness:{
                             naics:Number
                         },
+                        marketsServed:{
+
+                        },
                         relatedParties:{
                             
                         }
-
                     }
                 }
             }
