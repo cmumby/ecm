@@ -124,8 +124,6 @@ export default class NatureOfBusiness extends Component {
   
 
     render() {  
-        var usStates = this.usStates;
-       
         var componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";

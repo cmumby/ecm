@@ -7,8 +7,10 @@ import PhysicalAddress from './requirements/proxyrr/PhysicalAddress';
 import LegalEntity from './requirements/proxyrr/LegalEntity';
 import LegalFormation from './requirements/proxyrr/LegalFormation';
 import NatureOfBusiness from './requirements/proxyrr/NatureOfBusiness';
-import RelatedParties from './requirements/proxyrr/RelatedParties';
 import MarketServed from './requirements/proxyrr/MarketServed';
+import RelatedParties from './requirements/proxyrr/RelatedParties';
+import Pep from './requirements/proxyrr/Pep';
+
 export default class Case extends Component {
 
     constructor(props) {
@@ -105,6 +107,7 @@ export default class Case extends Component {
                     <NatureOfBusiness case={this.state.case} color="light"/> 
                     <MarketServed case={this.state.case} color="dark"/> 
                     <RelatedParties case={this.state.case} color="light"/>
+                    <Pep case={this.state.case} color="dark"/>
                    { /* <div className="box-body">
                         <label>
                             <input type="checkbox" checked={this.state.case.requirement.proxyRR.registeredAddress.complete ? 'checked':''} /> Registered / Residential Address

@@ -28,6 +28,9 @@ export default class CaseStructure {
                         },
                         relatedParties:{
                             
+                        },
+                        pep:{
+                            
                         }
                     }
                 }
