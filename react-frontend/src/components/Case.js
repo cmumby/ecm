@@ -10,6 +10,7 @@ import NatureOfBusiness from './requirements/proxyrr/NatureOfBusiness';
 import MarketServed from './requirements/proxyrr/MarketServed';
 import RelatedParties from './requirements/proxyrr/RelatedParties';
 import Pep from './requirements/proxyrr/Pep';
+import ProductsAndServices from './requirements/proxyrr/ProductsAndServices';
 
 export default class Case extends Component {
 
@@ -29,13 +30,11 @@ export default class Case extends Component {
 
    componentDidUpdate(prevProps, prevState, snapshot){
         var updatedCase = prevState.case;
-        console.log("bottom:" , prevState.case);
-       if (updatedCase.requirement.hasOwnProperty('cip')){
+        if (updatedCase.requirement.hasOwnProperty('cip')){
             this.updateData(updatedCase);
-       } else {
-         return false;
-       }
-
+        } else {
+            return false;
+        }
     }
     
 
@@ -89,7 +88,7 @@ export default class Case extends Component {
         this.setState({[name]: event.target.value});
     }
 
-    render() { console.log("render: " , this.state.case)
+    render() {
         
        // var usStates = this.usStates;
        // var countries = this.countries;
@@ -108,6 +107,7 @@ export default class Case extends Component {
                     <MarketServed case={this.state.case} color="dark"/> 
                     <RelatedParties case={this.state.case} color="light"/>
                     <Pep case={this.state.case} color="dark"/>
+                    <ProductsAndServices case={this.state.case} color="light"/>
                    { /* <div className="box-body">
                         <label>
                             <input type="checkbox" checked={this.state.case.requirement.proxyRR.registeredAddress.complete ? 'checked':''} /> Registered / Residential Address
