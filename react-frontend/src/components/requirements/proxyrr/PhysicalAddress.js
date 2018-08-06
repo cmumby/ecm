@@ -144,6 +144,9 @@ export default class PhysicalAddress extends Component {
             case "pa-correction-required":
                 this.props.case.requirement.proxyRR.physicalAddress[index].raCorrectionRequired = event.target.checked;
                 break;
+            case "pa-complete":
+                this.props.case.requirement.proxyRR.physicalAddress[0].complete = event.target.checked;
+                break;
             default:
                 return false;
 
@@ -152,7 +155,12 @@ export default class PhysicalAddress extends Component {
 
     updateForm = (event, name, index) => {
         this.handleFormDataRouting(event, name, index);
-        this.setState({[name]: event.target.value});
+        if(name === "pa-complete"){
+            this.setState({[name]: event.target.checked});
+        } else {
+            this.setState({[name]: event.target.value});
+        }
+        
     }
     
     addAddress(event){
@@ -179,7 +187,7 @@ export default class PhysicalAddress extends Component {
                     <div className={componentClass}>
                    
                         <label> 
-                            <input type="checkbox" checked={this.props.case.requirement.proxyRR.registeredAddress.complete ? 'checked' : ''} /> Physical / Mailing Address
+                            <input onChange={(e) => this.updateForm(e, 'pa-complete', 0)} type="checkbox" checked={this.props.case.requirement.proxyRR.physicalAddress[0].complete ? 'checked' : ''} /> Physical / Mailing Address
                         </label>
                     {this.tabRow()}
                        

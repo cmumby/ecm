@@ -53,6 +53,9 @@ export default class LegalFormation extends Component {
             case "lf-correction-required":
                 this.props.case.requirement.proxyRR.legalFormation.raCorrectionRequired = event.target.checked;
                 break;
+            case "lf-complete":
+                this.props.case.requirement.proxyRR.legalFormation.complete = event.target.checked;
+                break;
             default:
                 return false;
 
@@ -61,7 +64,7 @@ export default class LegalFormation extends Component {
 
     updateForm = (event, name) => {
         this.handleFormDataRouting(event, name);
-        if(name === "lf-correction-required"){
+        if(name === "lf-correction-required" || name === "lf-complete"){
             this.setState({[name]: event.target.checked});
         }  else{
             this.setState({[name]: event.target.value});
@@ -81,7 +84,7 @@ export default class LegalFormation extends Component {
                    
                     <div className={componentClass}>
                         <label>
-                            <input type="checkbox" checked={this.props.case.requirement.proxyRR.legalEntity.complete ? 'checked':''} />  Legal Formation
+                            <input onChange={(e) => this.updateForm(e, 'lf-complete')} type="checkbox" checked={this.props.case.requirement.proxyRR.legalFormation.complete ? 'checked':''} />  Legal Formation
                         </label>
                         <div className="form-group">
                             <label htmlFor="city">Country of Registration</label>

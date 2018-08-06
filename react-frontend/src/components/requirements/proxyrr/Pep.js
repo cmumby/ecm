@@ -62,6 +62,9 @@ export default class NatureOfBusiness extends Component {
             case "pe-correction-required":
                 this.props.case.requirement.proxyRR.pep.raCorrectionRequired = event.target.checked;
                 break;
+            case "pe-complete":
+                this.props.case.requirement.proxyRR.pep.complete = event.target.checked;
+                break;
             default:
                 return false;
 
@@ -95,7 +98,7 @@ export default class NatureOfBusiness extends Component {
                    
                     <div className={componentClass}>
                         <label>
-                            <input type="checkbox" checked={this.props.case.requirement.proxyRR.natureOfBusiness.complete ? 'checked':''} /> PEP
+                            <input type="checkbox" onChange={(e) => this.updateForm(e, 'pe-complete')} checked={this.props.case.requirement.proxyRR.pep.complete ? 'checked':''} /> PEP
                         </label>
                         <div className="form-group">
                             <label htmlFor="customerState">Is the Customer Classified as a PEP?</label>

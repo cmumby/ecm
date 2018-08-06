@@ -73,6 +73,9 @@ export default class NatureOfBusiness extends Component {
             case "cp-correction-required":
                 this.props.case.requirement.proxyRR.productsAndServices.raCorrectionRequired = event.target.checked;
                 break;
+            case "cp-complete":
+                this.props.case.requirement.proxyRR.productsAndServices.complete = event.target.checked;
+                break;
             default:
                 return false;
 
@@ -138,7 +141,7 @@ export default class NatureOfBusiness extends Component {
                    
                     <div className={componentClass}>
                         <label>
-                            <input type="checkbox" checked={this.props.case.requirement.proxyRR.natureOfBusiness.complete ? 'checked':''} />  Products and Services
+                            <input type="checkbox" onChange={(e) => this.updateForm(e, 'cp-complete')} checked={this.props.case.requirement.proxyRR.productsAndServices.complete ? 'checked':''} />  Products and Services
                         </label>
                         <div className="form-group">
                             <label htmlFor="productsFilter">Current Products</label>

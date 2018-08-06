@@ -60,11 +60,14 @@ export default class NatureOfBusiness extends Component {
                
                 this.props.case.requirement.proxyRR.marketsServed.countries = this.formatMarketsForSave(event);
                 break;
-            case "nc-comments":
-                this.props.case.requirement.proxyRR.natureOfBusiness.comments = event.target.value;
+            case "ms-comments":
+                this.props.case.requirement.proxyRR.marketsServed.comments = event.target.value;
                 break;
-            case "nc-correction-required":
-                this.props.case.requirement.proxyRR.natureOfBusiness.raCorrectionRequired = event.target.checked;
+            case "ms-correction-required":
+                this.props.case.requirement.proxyRR.marketsServed.raCorrectionRequired = event.target.checked;
+                break;
+            case "ms-complete":
+                this.props.case.requirement.proxyRR.marketsServed.complete = event.target.checked;
                 break;
             default:
                 return false;
@@ -132,7 +135,7 @@ export default class NatureOfBusiness extends Component {
                    
                     <div className={componentClass}>
                         <label>
-                            <input type="checkbox" checked={this.props.case.requirement.proxyRR.natureOfBusiness.complete ? 'checked':''} />  Markets Served
+                            <input type="checkbox" onChange={(e) => this.updateForm(e, 'ms-complete')} checked={this.props.case.requirement.proxyRR.marketsServed.complete ? 'checked':''} />  Markets Served
                         </label>
                         <div className="form-group">
                             <label htmlFor="markets-filter">Primary Markets Served</label>
@@ -150,12 +153,12 @@ export default class NatureOfBusiness extends Component {
                         </div>*/ }
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'nc-correction-required')} type="checkbox" checked={this.props.case.requirement.proxyRR.natureOfBusiness.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'ms-correction-required')} type="checkbox" checked={this.props.case.requirement.proxyRR.marketsServed.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'nc-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.proxyRR.natureOfBusiness.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'ms-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.proxyRR.marketsServed.comments}></textarea>
                         </div>
                     </div>               
             

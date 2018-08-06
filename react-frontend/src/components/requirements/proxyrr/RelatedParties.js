@@ -62,6 +62,9 @@ export default class NatureOfBusiness extends Component {
             case "rp-correction-required":
                 this.props.case.requirement.proxyRR.relatedParties.raCorrectionRequired = event.target.checked;
                 break;
+            case "rp-complete":
+                this.props.case.requirement.proxyRR.relatedParties.complete = event.target.checked;
+                break;
             default:
                 return false;
 
@@ -96,7 +99,7 @@ export default class NatureOfBusiness extends Component {
                    
                     <div className={componentClass}>
                         <label>
-                            <input type="checkbox" checked={this.props.case.requirement.proxyRR.natureOfBusiness.complete ? 'checked':''} />  Related Parties
+                            <input type="checkbox" onChange={(e) => this.updateForm(e, 'rp-complete')} checked={this.props.case.requirement.proxyRR.relatedParties.complete ? 'checked':''} />  Related Parties
                         </label>
                         <div className="form-group">
                             <label htmlFor="customerState">Are any of the entity's princapals, beneficial oweners, or gurantors permanent residents of a different country then whe the entity's products/service accunts are booked?</label>

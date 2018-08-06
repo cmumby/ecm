@@ -50,6 +50,9 @@ export default class LegalEntity extends Component {
             case "le-correction-required":
                 this.props.case.requirement.proxyRR.legalEntity.raCorrectionRequired = event.target.checked;
                 break;
+            case "le-complete":
+                this.props.case.requirement.proxyRR.legalEntity.complete = event.target.checked;
+                break;
             default:
                 return false;
 
@@ -58,7 +61,7 @@ export default class LegalEntity extends Component {
 
     updateForm = (event, name) => {
         this.handleFormDataRouting(event, name);
-        if(name === "le-correction-required"){
+        if(name === "le-correction-required" || name === "le-complete"){
             this.setState({[name]: event.target.checked});
         }  else{
             this.setState({[name]: event.target.value});
@@ -77,7 +80,7 @@ export default class LegalEntity extends Component {
                    
                     <div className={componentClass}>
                         <label>
-                            <input type="checkbox" checked={this.props.case.requirement.proxyRR.legalEntity.complete ? 'checked':''} />  Legal Entity Type
+                            <input type="checkbox" onChange={(e) => this.updateForm(e, 'le-complete')} checked={this.props.case.requirement.proxyRR.legalEntity.complete ? 'checked':''} />  Legal Entity Type
                         </label>
                         <div className="form-group">
                             <label htmlFor="city">What is the Legal Entity Type</label>

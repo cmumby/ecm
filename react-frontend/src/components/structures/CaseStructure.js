@@ -14,6 +14,18 @@ export default class CaseStructure {
                             comments:"",
                             raCorrectionRequired:Boolean
                         },
+                        physicalAddress:[
+                            {
+                                firstLine: "",
+                                secondLine: "",
+                                city: "",
+                                state: "",
+                                country:"",
+                                postalCode:"",
+                                comments:"",
+                                raCorrectionRequired:Boolean
+                            }
+                        ],
                         legalEntity:{
                             
                         },
@@ -33,7 +45,7 @@ export default class CaseStructure {
 
                         },
                         productsAndServices:{
-                            
+
                         }
                     }
                 }
