@@ -72,6 +72,9 @@ export default class RegisteredAddress extends Component {
             case "ra-correction-required":
                 this.props.case.requirement.proxyRR.registeredAddress.raCorrectionRequired = event.target.checked;
                 break;
+            case "ra-complete":
+                this.props.case.requirement.proxyRR.registeredAddress.complete = event.target.checked;
+                break;
             default:
                 return false;
 
@@ -80,7 +83,7 @@ export default class RegisteredAddress extends Component {
 
     updateForm = (event, name) => {
         this.handleFormDataRouting(event, name);
-        if(name === "ra-correction-required"){
+        if(name === "ra-correction-required" || "ra-complete"){
             this.setState({[name]: event.target.checked});
         }  else{
             this.setState({[name]: event.target.value});
@@ -102,7 +105,7 @@ export default class RegisteredAddress extends Component {
                    
                     <div className={componentClass}>
                         <label>
-                            <input type="checkbox" checked={this.props.case.requirement.proxyRR.registeredAddress.complete ? 'checked':''} /> Registered / Residential Address
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'ra-complete')} checked={this.props.case.requirement.proxyRR.registeredAddress.complete ? 'checked':''} /> Registered / Residential Address
                         </label>
                         <div className="form-group">
                             <label htmlFor="registeredAddress-firstLine">Address Line 1</label>
