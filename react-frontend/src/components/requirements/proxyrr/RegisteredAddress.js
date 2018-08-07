@@ -99,7 +99,10 @@ export default class RegisteredAddress extends Component {
         var componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
-       
+        if(this.props.case.requirement.proxyRR.registeredAddress.complete){
+            componentClass += " complete";
+        }
+        
         return (
 
                    

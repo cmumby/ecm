@@ -35,3 +35,28 @@
 select.naics-form{
     height:226px;
 }
+.box-component-light.complete {
+    background-color: #323c48 ;
+}
+
+.box-component-dark.complete{
+    background-color: #2a323c;
+}
+
+.box-component-light.complete label, .box-component-light.complete h3, .complete .help-block {
+    color: #e3e3e3;
+}
+
+.box-component-dark.complete label, .box-component-dark.complete h3 {
+    color: #e7e7e7;
+}
+
+.complete textarea, .complete select , .complete input, 
+.complete .requirement-filter__value-container, 
+.complete .requirement-filter__control{
+    background-color: #CCC !important;
+}
+
+.complete .requirement-filter__multi-value{
+    border: 1px solid #323c48;
+}

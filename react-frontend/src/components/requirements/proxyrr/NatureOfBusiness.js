@@ -110,6 +110,9 @@ export default class NatureOfBusiness extends Component {
         var componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
+        if(this.props.case.requirement.proxyRR.natureOfBusiness.complete){
+            componentClass += " complete";
+        }
         return (
 
                    
@@ -119,7 +122,7 @@ export default class NatureOfBusiness extends Component {
                         </label>
                         <div className="form-group">
                             <label htmlFor="naics-filter">Nature of the Customer's Business / NAICS Code</label>
-                            <Select name="naicsFilter" onChange={(e) => this.updateForm(e, 'nc-filter')} options={this.state.codeList}  value={{label: this.getNaicsTitle(this.props.case.requirement.proxyRR.natureOfBusiness.naics)} } />
+                            <Select className="requirement-filter" name="naicsFilter" onChange={(e) => this.updateForm(e, 'nc-filter')} options={this.state.codeList}  value={{label: this.getNaicsTitle(this.props.case.requirement.proxyRR.natureOfBusiness.naics)} } />
                             
                         </div>
                         

@@ -75,6 +75,9 @@ export default class LegalEntity extends Component {
         var componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
+        if(this.props.case.requirement.proxyRR.legalEntity.complete){
+            componentClass += " complete";
+        }
         return (
 
                    

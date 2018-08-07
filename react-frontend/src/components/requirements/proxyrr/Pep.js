@@ -48,6 +48,7 @@ export default class NatureOfBusiness extends Component {
         } else {
             return false;
         }
+        
     }
 
     //Routes the changed information to the right poperty
@@ -93,6 +94,9 @@ export default class NatureOfBusiness extends Component {
         var componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
+        if(this.props.case.requirement.proxyRR.pep.complete){
+            componentClass += " complete";
+        }
         return (
 
                    

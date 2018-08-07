@@ -130,6 +130,9 @@ export default class NatureOfBusiness extends Component {
         var componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
+        if(this.props.case.requirement.proxyRR.marketsServed.complete){
+            componentClass += " complete";
+        }
         return (
 
                    
@@ -139,7 +142,7 @@ export default class NatureOfBusiness extends Component {
                         </label>
                         <div className="form-group">
                             <label htmlFor="markets-filter">Primary Markets Served</label>
-                            <Select name="marketsFilter" onChange={(e) => this.updateForm(e, 'ms-filter')} options={this.state.countriesDropdown} isMulti  value={this.getSlectedMarkets(this.props.case.requirement.proxyRR.marketsServed.countries)} />
+                            <Select className="requirement-filter" name="marketsFilter" onChange={(e) => this.updateForm(e, 'ms-filter')} options={this.state.countriesDropdown} isMulti  value={this.getSlectedMarkets(this.props.case.requirement.proxyRR.marketsServed.countries)} />
                             
                         </div>
                         

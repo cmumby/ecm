@@ -136,6 +136,9 @@ export default class NatureOfBusiness extends Component {
         var componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
+        if(this.props.case.requirement.proxyRR.productsAndServices.complete){
+            componentClass += " complete";
+        }
         return (
 
                    
@@ -145,11 +148,11 @@ export default class NatureOfBusiness extends Component {
                         </label>
                         <div className="form-group">
                             <label htmlFor="productsFilter">Current Products</label>
-                            <Select name="productsFilter" onChange={(e) => this.updateForm(e, 'cp-filter')} options={this.state.currentProductsDropdown} isMulti  value={this.getSlectedCurrentProducts(this.props.case.requirement.proxyRR.productsAndServices.currentProducts)} />
+                            <Select className="requirement-filter" name="productsFilter" onChange={(e) => this.updateForm(e, 'cp-filter')} options={this.state.currentProductsDropdown} isMulti  value={this.getSlectedCurrentProducts(this.props.case.requirement.proxyRR.productsAndServices.currentProducts)} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="productsUserFilter">User Products and Services</label>
-                            <Select name="productsUserFilter" onChange={(e) => this.updateForm(e, 'cp-user')} options={this.state.userProducstsDropdown} isMulti  value={this.getSlectedCurrentProducts(this.props.case.requirement.proxyRR.productsAndServices.userProducts)} />  
+                            <Select className="requirement-filter" name="productsUserFilter" onChange={(e) => this.updateForm(e, 'cp-user')} options={this.state.userProducstsDropdown} isMulti  value={this.getSlectedCurrentProducts(this.props.case.requirement.proxyRR.productsAndServices.userProducts)} />  
                         </div>
                         <div className="checkbox">
                             <label>
