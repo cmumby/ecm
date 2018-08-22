@@ -60,3 +60,8 @@ select.naics-form{
 .complete .requirement-filter__multi-value{
     border: 1px solid #323c48;
 }
+
+.ecm-affix{
+    position: fixed;
+    width: fit-content;
+}

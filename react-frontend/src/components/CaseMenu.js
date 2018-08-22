@@ -2,15 +2,7 @@ import React, { Component } from 'react';
 import CaseService from './CaseService';
 import CaseStructure from './structures/CaseStructure';
 import Location from '../util/Location';
-import RegisteredAddress from './requirements/proxyrr/RegisteredAddress';
-import PhysicalAddress from './requirements/proxyrr/PhysicalAddress';
-import LegalEntity from './requirements/proxyrr/LegalEntity';
-import LegalFormation from './requirements/proxyrr/LegalFormation';
-import NatureOfBusiness from './requirements/proxyrr/NatureOfBusiness';
-import MarketServed from './requirements/proxyrr/MarketServed';
-import RelatedParties from './requirements/proxyrr/RelatedParties';
-import Pep from './requirements/proxyrr/Pep';
-import ProductsAndServices from './requirements/proxyrr/ProductsAndServices';
+
 
 export default class CaseMenu extends Component {
 
@@ -94,7 +86,7 @@ export default class CaseMenu extends Component {
        // var countries = this.countries;
 
         return (
-            <div className="box box-solid position-sticky" >
+            <div className="box box-solid box-primary ecm-affix" >
                 <div className="box-header with-border">
                     <h3 className="box-title">Case Requirements</h3>
 
@@ -105,18 +97,19 @@ export default class CaseMenu extends Component {
                 </div>
                 <div className="box-body no-padding">
                     <ul className="nav nav-pills nav-stacked">
-                    <li className="active"><a href="#"><i className="fa fa-align-left"></i> Proxy RR Requirements
+                    <li className="active"><a href="#"><i className="fa fa-exclamation-triangle"></i> Proxy RR Requirements
                         <span className="label label-primary pull-right">12</span></a></li>
-                    <li><a href="#"><i className="fa fa-align-left"></i> CIP Requirements</a></li>
-                    <li><a href="#"><i className="fa fa-align-left"></i> Related Parties</a></li>
-                    <li><a href="#"><i className="fa fa-align-left"></i> Screening <span className="label label-warning pull-right">65</span></a>
+                    <li><a href="#"><i className="fa fa-user-circle"></i> CIP Requirements</a></li>
+                    <li><a href="#"><i className="fa fa-wrench"></i> Remediation</a></li>
+                    <li><a href="#"><i className="fa fa-users"></i> Related Parties</a></li>
+                    <li><a href="#"><i className="fa fa-search"></i> Screening <span className="label label-warning pull-right">65</span></a>
                     </li>
-                    <li><a href="#"><i className="fa fa-align-left"></i> Documentation</a></li>
-                    <li><a href="#"><i className="fa fa-align-left"></i> Transportation SARF</a></li>
-                    <li><a href="#"><i className="fa fa-align-left"></i> HRA EDD Determination</a></li>
-                    <li><a href="#"><i className="fa fa-align-left"></i> QC Checklist</a></li>
-                    <li><a href="#"><i className="fa fa-align-left"></i> OUS Requirements</a></li>
-                    <li><a href="#"><i className="fa fa-align-left"></i> MMD Additional Requirements</a></li>
+                    <li><a href="#"><i className="fa fa-file"></i> Documentation</a></li>
+                    <li><a href="#"><i className="fa fa-truck"></i> Transportation SARF</a></li>
+                    <li><a href="#"><i className="fa fa-microscope"></i> HRA EDD Determination</a></li>
+                    <li><a href="#"><i className="fa fa-clipboard-check"></i> QC Checklist</a></li>
+                    <li><a href="#"><i className="fa fa-globe"></i> OUS Requirements</a></li>
+                    <li><a href="#"><i className="fa fa-plus"></i> MMB Additional Requirements</a></li>
                     </ul>
                 </div>
           </div>

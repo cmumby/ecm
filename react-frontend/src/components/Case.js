@@ -94,7 +94,7 @@ export default class Case extends Component {
        // var countries = this.countries;
 
         return (
-            <div className="box box-primary">
+            <div className="box box-solid box-primary">
                 <div className="box-header with-border">
                     <h3 className="box-title">Requirements for Case: {this.state.case.name}</h3>
                 </div>

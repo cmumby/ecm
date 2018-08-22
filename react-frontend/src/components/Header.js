@@ -1,7 +1,12 @@
 import React from "react";
 
 export const Header = (props) => {
-
+  var currentLocation = document.location.href;
+  var headerText = "Current Case List";
+  if(currentLocation.indexOf('/requirements') >=0){
+     headerText = "Case Requirements Form"
+  }
+  
   return (
     <nav className="navbar navbar-default">
         <div className="container-fluid">
@@ -10,7 +15,7 @@ export const Header = (props) => {
               <span className="sr-only">Toggle navigation</span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="/">Current Case List</a>
+            <a className="navbar-brand" href="/">{headerText}</a>
           </div>
         </div>
       </nav>
