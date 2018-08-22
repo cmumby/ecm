@@ -11,9 +11,12 @@ import ListCase from './components/ListCase';
 //import ListCase from './components/ListCase';
 import UpdateTodo from './components/UpdateTodo';
 import Case from './components/Case';
+import CaseMenu from './components/CaseMenu';
 
 
 import './index.css';
+var currentLocation = document.location.href;
+var mainSize = (currentLocation.indexOf('/requirements') >=0)?'col-xs-10': 'col-xs-12';
 
 ReactDOM.render(
   <div className="box-header ui-sortable-handle">
@@ -22,9 +25,15 @@ ReactDOM.render(
         <Header/>
       </div>
     </div>
-    <div>
+    <div className="row">
       <Router>
-      <div>
+        <div className="col-xs-2">
+          <Route path='/case/:ecmId/requirements' component={CaseMenu} />
+        </div>
+      </Router>
+      <Router>
+      <div className={mainSize}>
+      
       <Route path='/add' component={AddTodo} />
       <Route path='/cases' component={AddTodo} />
       <Route exact path='/' component={ListCase} />
