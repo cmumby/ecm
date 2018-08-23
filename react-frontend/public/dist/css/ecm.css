@@ -65,3 +65,10 @@ select.naics-form{
     position: fixed;
     width: fit-content;
 }
+
+@media screen and (max-width: 375px){
+    .ecm-affix{
+        position: inherit;
+        width: inherit;
+    }
+}

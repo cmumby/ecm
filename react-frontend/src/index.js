@@ -16,7 +16,8 @@ import CaseMenu from './components/CaseMenu';
 
 import './index.css';
 var currentLocation = document.location.href;
-var mainSize = (currentLocation.indexOf('/requirements') >=0)?'col-xs-10': 'col-xs-12';
+var mainSize = (currentLocation.indexOf('/requirements') >=0)?'col-md-10': 'col-md-12';
+mainSize += ' col-xs-12';
 
 ReactDOM.render(
   <div className="box-header ui-sortable-handle">
@@ -27,7 +28,7 @@ ReactDOM.render(
     </div>
     <div className="row">
       <Router>
-        <div className="col-xs-2">
+        <div className="col-md-2 col-xs-12">
           <Route path='/case/:ecmId/requirements' component={CaseMenu} />
         </div>
       </Router>
