@@ -194,7 +194,7 @@
                 "taxOrGovernmentId": {
                     "idType": "Tax Identification Number",
                     "id": 123456789,
-                    "tinType": "Employer Identification Number",
+                    "tinType": "Employer Identification Number (EIN)",
                     "attachments": [
                         {
                             "icon": "PDF",

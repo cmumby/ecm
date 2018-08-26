@@ -52,7 +52,10 @@ export default class CaseStructure {
                         customerName:{
                             legalName: "",
                             dbaName: "",
-                        }
+                        },
+                        taxOrGovernmentId:{
+                            
+                        } 
                     }
                 }
             }
