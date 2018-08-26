@@ -47,6 +47,12 @@ export default class CaseStructure {
                         productsAndServices:{
 
                         }
+                    },
+                    cip: {
+                        customerName:{
+                            legalName: "",
+                            dbaName: "",
+                        }
                     }
                 }
             }

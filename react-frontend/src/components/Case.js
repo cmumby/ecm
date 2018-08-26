@@ -11,6 +11,7 @@ import MarketServed from './requirements/proxyrr/MarketServed';
 import RelatedParties from './requirements/proxyrr/RelatedParties';
 import Pep from './requirements/proxyrr/Pep';
 import ProductsAndServices from './requirements/proxyrr/ProductsAndServices';
+import CustomerName from './requirements/cip/CustomerName';
 
 export default class Case extends Component {
 
@@ -108,6 +109,7 @@ export default class Case extends Component {
                     <RelatedParties case={this.state.case} color="light"/>
                     <Pep case={this.state.case} color="dark"/>
                     <ProductsAndServices case={this.state.case} color="light"/>
+                    <CustomerName case={this.state.case} color="light"/>
                    { /* <div className="box-body">
                         <label>
                             <input type="checkbox" checked={this.state.case.requirement.proxyRR.registeredAddress.complete ? 'checked':''} /> Registered / Residential Address
