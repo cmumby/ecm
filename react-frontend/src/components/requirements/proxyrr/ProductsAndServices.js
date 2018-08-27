@@ -142,7 +142,7 @@ export default class NatureOfBusiness extends Component {
         return (
 
                    
-                    <div className={componentClass}>
+                    <div className={"proxyrr " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e, 'cp-complete')} checked={this.props.case.requirement.proxyRR.productsAndServices.complete ? 'checked':''} />  Products and Services
                         </label>

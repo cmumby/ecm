@@ -187,7 +187,7 @@ export default class PhysicalAddress extends Component {
         return (
 
                    
-                    <div className={componentClass}>
+                    <div className={"proxyrr " + componentClass}>
                    
                         <label> 
                             <input onChange={(e) => this.updateForm(e, 'pa-complete', 0)} type="checkbox" checked={this.props.case.requirement.proxyRR.physicalAddress[0].complete ? 'checked' : ''} /> Physical / Mailing Address

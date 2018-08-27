@@ -81,7 +81,7 @@ export default class LegalEntity extends Component {
         return (
 
                    
-                    <div className={componentClass}>
+                    <div className={"proxyrr " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e, 'le-complete')} checked={this.props.case.requirement.proxyRR.legalEntity.complete ? 'checked':''} />  Legal Entity Type
                         </label>

@@ -50,7 +50,6 @@ export default class CaseMenu extends Component {
     handleFormDataRouting(event, name){
         switch (name) {
             case "ra-firsLine":
-                alert('???');
                 this.caseData.requirement.proxyRR.registeredAddress.firstLine = event.target.value;
                 console.log("new??: " );
                 break;
@@ -80,6 +79,17 @@ export default class CaseMenu extends Component {
         this.setState({[name]: event.target.value});
     }
 
+    toggleCaseMenu = function(section){
+       //alert("sigh");
+        console.log("bs: ", document.getElementsByClassName(section) ); 
+        var formSection =  document.getElementsByClassName(section);
+        for(var i=0; i < formSection.length; i++){
+            document.getElementsByClassName('cip')[0].display = "none";
+        }
+        return false;
+
+    }
+
     render() {
         
        // var usStates = this.usStates;
@@ -99,7 +109,7 @@ export default class CaseMenu extends Component {
                     <ul className="nav nav-pills nav-stacked">
                     <li className="active"><a href="#"><i className="fa fa-exclamation-triangle"></i> Proxy RR Requirements
                         <span className="label label-primary pull-right">12</span></a></li>
-                    <li><a href="#"><i className="fa fa-user-circle"></i> CIP Requirements</a></li>
+                    <li><a href="#" className="cip-toggle" ><i className="fa fa-user-circle"></i> CIP Requirements</a></li>
                     <li><a href="#"><i className="fa fa-wrench"></i> Remediation Requirements</a></li>
                     <li><a href="#"><i className="fa fa-users"></i> Related Parties</a></li>
                     <li><a href="#"><i className="fa fa-search"></i> Screening <span className="label label-warning pull-right">65</span></a>

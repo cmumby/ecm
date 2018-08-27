@@ -94,7 +94,7 @@ export default class TaxOrGovernmentId extends Component {
         return (
 
                    
-                    <div className={componentClass}>
+                    <div className={"cip " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'ti-complete')} checked={this.props.case.requirement.cip.taxOrGovernmentId.complete ? 'checked':''} /> Tax ID/ Government ID Number
                         </label>

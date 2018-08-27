@@ -91,7 +91,7 @@ export default class CustomerName extends Component {
         return (
 
                    
-                    <div className={componentClass}>
+                    <div className={"cip " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'cn-complete')} checked={this.props.case.requirement.cip.customerName.complete ? 'checked':''} /> Customer Name (Entity)
                         </label>

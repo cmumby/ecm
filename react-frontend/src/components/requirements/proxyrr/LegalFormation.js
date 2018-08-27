@@ -85,7 +85,7 @@ export default class LegalFormation extends Component {
         return (
 
                    
-                    <div className={componentClass}>
+                    <div className={"proxyrr " + componentClass}>
                         <label>
                             <input onChange={(e) => this.updateForm(e, 'lf-complete')} type="checkbox" checked={this.props.case.requirement.proxyRR.legalFormation.complete ? 'checked':''} />  Legal Formation
                         </label>

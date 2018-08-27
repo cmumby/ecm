@@ -106,7 +106,7 @@ export default class RegisteredAddress extends Component {
         return (
 
                    
-                    <div className={componentClass}>
+                    <div className={"proxyrr " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'ra-complete')} checked={this.props.case.requirement.proxyRR.registeredAddress.complete ? 'checked':''} /> Registered / Residential Address
                         </label>
