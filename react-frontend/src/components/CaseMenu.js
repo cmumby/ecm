@@ -106,10 +106,10 @@ export default class CaseMenu extends Component {
                     </div>
                 </div>
                 <div className="box-body no-padding">
-                    <ul className="nav nav-pills nav-stacked">
-                    <li className="active"><a href="#"><i className="fa fa-exclamation-triangle"></i> Proxy RR Requirements
+                    <ul className="case-menu nav nav-pills nav-stacked">
+                    <li className="active"><a href="#proxyrr" className="proxyrr-toggle"><i className="fa fa-exclamation-triangle"></i> Proxy RR Requirements
                         <span className="label label-primary pull-right">12</span></a></li>
-                    <li><a href="#" className="cip-toggle" ><i className="fa fa-user-circle"></i> CIP Requirements</a></li>
+                    <li><a href="#cip" className="cip-toggle" ><i className="fa fa-user-circle"></i> CIP Requirements</a></li>
                     <li><a href="#"><i className="fa fa-wrench"></i> Remediation Requirements</a></li>
                     <li><a href="#"><i className="fa fa-users"></i> Related Parties</a></li>
                     <li><a href="#"><i className="fa fa-search"></i> Screening <span className="label label-warning pull-right">65</span></a>
