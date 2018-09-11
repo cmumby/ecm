@@ -10,6 +10,16 @@ $(document).ready(function() {
     $('.remediation-toggle').click(function(){
         sectionToggle(this,'remediation');
     });
+
+    if(window.location.href.indexOf("#proxyrr") != -1){
+        sectionToggle($('.proxyrr-toggle'),'proxyrr');
+    } else if(window.location.href.indexOf("#cip") != -1) {
+        sectionToggle($('.cip-toggle'),'cip');
+    } else if(window.location.href.indexOf("#remediation") != -1) {
+        sectionToggle($('.remediation-toggle'),'remediation');
+    } else{
+        sectionToggle($('.proxyrr-toggle'),'proxyrr');
+    }
 });
 
 var sectionToggle = function(target, className){
