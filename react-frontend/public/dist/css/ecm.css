@@ -61,7 +61,7 @@ select.naics-form{
     border: 1px solid #323c48;
 }
 
-.ecm-affix{
+/*.ecm-affix{
     position: fixed;
     width: fit-content;
 }
@@ -70,5 +70,4 @@ select.naics-form{
     .ecm-affix{
         position: inherit;
         width: inherit;
-    }
-}
+    }*/

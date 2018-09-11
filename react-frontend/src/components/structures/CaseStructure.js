@@ -56,6 +56,11 @@ export default class CaseStructure {
                         taxOrGovernmentId:{
                             
                         } 
+                    },
+                    remediation:{
+                        investmentVechiclesFunds:{
+
+                        }
                     }
                 }
             }
