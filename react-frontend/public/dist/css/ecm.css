@@ -43,11 +43,11 @@ select.naics-form{
     background-color: #2a323c;
 }
 
-.box-component-light.complete label, .box-component-light.complete h3, .complete .help-block {
+.box-component-light.complete label, .box-component-light.complete h3, .box-component-light.complete p, .complete .help-block {
     color: #e3e3e3;
 }
 
-.box-component-dark.complete label, .box-component-dark.complete h3 {
+.box-component-dark.complete label, .box-component-dark.complete h3, .box-component-dark.complete p {
     color: #e7e7e7;
 }
 
