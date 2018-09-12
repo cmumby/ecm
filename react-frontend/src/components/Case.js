@@ -16,6 +16,7 @@ import TaxOrGovernmentId from './requirements/cip/TaxOrGovernmentId';
 import InvestmentVechiclesFunds from './requirements/remediation/InvestmentVechiclesFunds';
 import CustomerDetails from './requirements/remediation/CustomerDetails';
 import AccountRelationship from './requirements/remediation/AccountRelationship';
+import LegalFormationRemediation from'./requirements/remediation/LegalFormationRemediation';
 
 export default class Case extends Component {
 
@@ -118,6 +119,7 @@ export default class Case extends Component {
                     <InvestmentVechiclesFunds case={this.state.case} color="light"/>
                     <CustomerDetails case={this.state.case} color="dark"/>
                     <AccountRelationship case={this.state.case} color="light"/>
+                    <LegalFormationRemediation case={this.state.case} color="dark"/>
                     
                    { /* <div className="box-body">
                         <label>

@@ -65,6 +65,9 @@ export default class CaseStructure {
                             
                         },
                         accountRelationship:{
+
+                        },
+                        legalFormation:{
                             
                         }
                     }
