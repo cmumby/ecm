@@ -63,6 +63,9 @@ export default class CaseStructure {
                         },
                         customerDetails:{
                             
+                        },
+                        accountRelationship:{
+                            
                         }
                     }
                 }

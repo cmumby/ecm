@@ -15,6 +15,7 @@ import CustomerName from './requirements/cip/CustomerName';
 import TaxOrGovernmentId from './requirements/cip/TaxOrGovernmentId';
 import InvestmentVechiclesFunds from './requirements/remediation/InvestmentVechiclesFunds';
 import CustomerDetails from './requirements/remediation/CustomerDetails';
+import AccountRelationship from './requirements/remediation/AccountRelationship';
 
 export default class Case extends Component {
 
@@ -116,6 +117,8 @@ export default class Case extends Component {
                     <TaxOrGovernmentId case={this.state.case} color="dark"/>
                     <InvestmentVechiclesFunds case={this.state.case} color="light"/>
                     <CustomerDetails case={this.state.case} color="dark"/>
+                    <AccountRelationship case={this.state.case} color="light"/>
+                    
                    { /* <div className="box-body">
                         <label>
                             <input type="checkbox" checked={this.state.case.requirement.proxyRR.registeredAddress.complete ? 'checked':''} /> Registered / Residential Address
