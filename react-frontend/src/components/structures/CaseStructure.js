@@ -71,6 +71,9 @@ export default class CaseStructure {
                             
                         },
                         customerStructure:{
+
+                        },
+                        sourceOfWealth:{
                             
                         }
                     }

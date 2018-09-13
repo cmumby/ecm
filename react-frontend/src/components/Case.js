@@ -18,6 +18,7 @@ import CustomerDetails from './requirements/remediation/CustomerDetails';
 import AccountRelationship from './requirements/remediation/AccountRelationship';
 import LegalFormationRemediation from'./requirements/remediation/LegalFormationRemediation';
 import CustomerStructure from './requirements/remediation/CustomerStructure';
+import SourceOfWealth from './requirements/remediation/SourceOfWealth';
 
 export default class Case extends Component {
 
@@ -122,6 +123,7 @@ export default class Case extends Component {
                     <AccountRelationship case={this.state.case} color="light"/>
                     <LegalFormationRemediation case={this.state.case} color="dark"/>
                     <CustomerStructure case={this.state.case} color="light"/>
+                    <SourceOfWealth case={this.state.case} color="dark"/>
                     
                    { /* <div className="box-body">
                         <label>

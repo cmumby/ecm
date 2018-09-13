@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
 import EntityType from '../../../util/EntityType';
-import Location from '../../../util/Location';
 
 
 export default class CustomerStructure extends Component {
@@ -12,10 +11,7 @@ export default class CustomerStructure extends Component {
         this.caseService = new CaseService();
         this.caseStructure = new CaseStructure();
         this.entitTypes = new EntityType();
-        this.locations = new Location();
         this.state = this.caseStructure.getStructure();
-        this.entites = this.entitTypes.getEntities();
-        this.usStates = this.locations.getStates();
     }
 
     fillData() { 
