@@ -20,6 +20,7 @@ import LegalFormationRemediation from'./requirements/remediation/LegalFormationR
 import CustomerStructure from './requirements/remediation/CustomerStructure';
 import SourceOfWealth from './requirements/remediation/SourceOfWealth';
 import GeneralDescriptionOfBusiness from './requirements/remediation/GeneralDescriptionOfBusiness';
+import SourceOfFunds from './requirements/remediation/SourceOfFunds';
 
 export default class Case extends Component {
 
@@ -67,7 +68,6 @@ export default class Case extends Component {
     handleFormDataRouting(event, name){
         switch (name) {
             case "ra-firsLine":
-                alert('???');
                 this.caseData.requirement.proxyRR.registeredAddress.firstLine = event.target.value;
                 console.log("new??: " );
                 break;
@@ -126,6 +126,7 @@ export default class Case extends Component {
                     <CustomerStructure case={this.state.case} color="light"/>
                     <SourceOfWealth case={this.state.case} color="dark"/>
                     <GeneralDescriptionOfBusiness case={this.state.case} color="light"/>
+                    <SourceOfFunds case={this.state.case} color="dark"/>
                     
                    { /* <div className="box-body">
                         <label>
