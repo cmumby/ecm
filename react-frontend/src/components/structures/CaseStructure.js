@@ -74,6 +74,9 @@ export default class CaseStructure {
 
                         },
                         sourceOfWealth:{
+
+                        },
+                        generalDescriptionOfBusiness:{
                             
                         }
                     }
