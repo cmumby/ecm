@@ -98,6 +98,9 @@ export default class CaseStructure {
 
                         },
                         cipCddApprovedDate:{
+
+                        },
+                        submitter:{
                             
                         }
                     }
