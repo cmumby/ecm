@@ -21,6 +21,7 @@ import CustomerStructure from './requirements/remediation/CustomerStructure';
 import SourceOfWealth from './requirements/remediation/SourceOfWealth';
 import GeneralDescriptionOfBusiness from './requirements/remediation/GeneralDescriptionOfBusiness';
 import SourceOfFunds from './requirements/remediation/SourceOfFunds';
+import ParticipationPurchased from './requirements/remediation/ParticipationPurchased';
 
 export default class Case extends Component {
 
@@ -127,6 +128,7 @@ export default class Case extends Component {
                     <SourceOfWealth case={this.state.case} color="dark"/>
                     <GeneralDescriptionOfBusiness case={this.state.case} color="light"/>
                     <SourceOfFunds case={this.state.case} color="dark"/>
+                    <ParticipationPurchased case={this.state.case} color="light"/>
                     
                    { /* <div className="box-body">
                         <label>

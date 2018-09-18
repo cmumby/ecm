@@ -81,6 +81,9 @@ export default class CaseStructure {
                         },
                         sourceOfFunds:{
 
+                        },
+                        participationPurchased:{
+
                         }
                     }
                 }
