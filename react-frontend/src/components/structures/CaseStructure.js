@@ -89,7 +89,10 @@ export default class CaseStructure {
 
                         },
                         internetGambling:{
-                            
+
+                        },
+                        prohibitedCustomers:{
+
                         }
                     }
                 }
