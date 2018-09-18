@@ -93,6 +93,9 @@ export default class CaseStructure {
                         },
                         prohibitedCustomers:{
 
+                        },
+                        relationshipManager:{
+                            
                         }
                     }
                 }

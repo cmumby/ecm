@@ -4,6 +4,7 @@ var Attachment = require('../../Attachment');
 
 var RelationshipManager = new Schema({
     rm: String,
+    om: String,
     attachments: [Attachment],
     raCorrectionRequired: Boolean,
     comments: String,
