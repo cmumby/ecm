@@ -22,6 +22,7 @@ import SourceOfWealth from './requirements/remediation/SourceOfWealth';
 import GeneralDescriptionOfBusiness from './requirements/remediation/GeneralDescriptionOfBusiness';
 import SourceOfFunds from './requirements/remediation/SourceOfFunds';
 import ParticipationPurchased from './requirements/remediation/ParticipationPurchased';
+import CipNotice from './requirements/remediation/CipNotice';
 
 export default class Case extends Component {
 
@@ -129,6 +130,7 @@ export default class Case extends Component {
                     <GeneralDescriptionOfBusiness case={this.state.case} color="light"/>
                     <SourceOfFunds case={this.state.case} color="dark"/>
                     <ParticipationPurchased case={this.state.case} color="light"/>
+                    <CipNotice case={this.state.case} color="dark"/>
                     
                    { /* <div className="box-body">
                         <label>

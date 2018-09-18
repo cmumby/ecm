@@ -84,6 +84,9 @@ export default class CaseStructure {
                         },
                         participationPurchased:{
 
+                        },
+                        cipNotice:{
+                            
                         }
                     }
                 }
