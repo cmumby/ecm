@@ -26,6 +26,7 @@ import CipNotice from './requirements/remediation/CipNotice';
 import InternetGambling from './requirements/remediation/InternetGambling';
 import ProhibitedCustomers from './requirements/remediation/ProhibitedCustomers';
 import RelationshipManager from './requirements/remediation/RelationshipManager';
+import CipCddApprovedDate from './requirements/remediation/CipCddApprovedDate';
 
 export default class Case extends Component {
 
@@ -137,6 +138,7 @@ export default class Case extends Component {
                     <InternetGambling case={this.state.case} color="light"/>
                     <ProhibitedCustomers case={this.state.case} color="dark"/>
                     <RelationshipManager case={this.state.case} color="light"/>
+                    <CipCddApprovedDate case={this.state.case} color="dark"/>
                     
                    { /* <div className="box-body">
                         <label>

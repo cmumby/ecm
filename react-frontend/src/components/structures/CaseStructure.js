@@ -95,6 +95,9 @@ export default class CaseStructure {
 
                         },
                         relationshipManager:{
+
+                        },
+                        cipCddApprovedDate:{
                             
                         }
                     }
