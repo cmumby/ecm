@@ -47,22 +47,35 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                                 <option value="false" >No</option>
                             </select>
                     </div>
+                   
+                    <div className="form-group">
+                        <label htmlFor="rpap-firstName">First Name</label>
+                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-firstName', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder="Exactly as Written on Supporting Documentaion" value={object.firstName} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="physicalAddress-firstLine">Middle Name</label>
+                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-middlname', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder="Exactly as Written on Supporting Documentaion"  value={object.middleName} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="physicalAddress-firstLine">Last Name</label>
+                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-lastname', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder="Exactly as Written on Supporting Documentaion"  value={object.lastName} />
+                    </div>
                              
                     <div className="form-group">
                         <label htmlFor="physicalAddress-firstLine">Address Line 1</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'pa-firsLine', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder={(i === 0 )?"No P.O Boxes In First Address" :"Add P.O Boxes here"} value={object.firstLine} />
+                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-firsLine', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder={(i === 0 )?"No P.O Boxes In First Address" :"Add P.O Boxes here"} value={object.firstLine} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="physicalAddress-secondLine">Address Line 2</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'pa-secondLine', i)} type="text" className="form-control" id="physicalAddress-secondLine" value={object.secondLine} />
+                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-secondLine', i)} type="text" className="form-control" id="physicalAddress-secondLine" value={object.secondLine} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="city">City</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'pa-city', i)} type="text" className="form-control" id="city" placeholder="Exactly As it is Written in Attached Document, Misspellings and all." value={object.city} />
+                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-city', i)} type="text" className="form-control" id="city" placeholder="Exactly As it is Written in Attached Document, Misspellings and all." value={object.city} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="customerState">State/Province</label>
-                        <select onChange={(e) => thisRef.updateForm(e, 'pa-state', i)} id="customerState" className="form-control" value={object.state}>
+                        <select onChange={(e) => thisRef.updateForm(e, 'rpap-state', i)} id="customerState" className="form-control" value={object.state}>
                             <option value="0">Select a State</option>
                             {usStates.map((state, index) =>
 
@@ -72,7 +85,7 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="country">Country</label>
-                        <select onChange={(e) => thisRef.updateForm(e, 'pa-country' ,i)} id="customerState" className="form-control" value={object.country} disabled>
+                        <select onChange={(e) => thisRef.updateForm(e, 'rpap-country' ,i)} id="customerState" className="form-control" value={object.country} disabled>
                             <option value="0">Select a Country</option>
                             {countries.map((country, index) =>
 
@@ -83,16 +96,16 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="city">Postal Code</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'pa-postalCode', i )} type="text" className="form-control" id="pa-postal-code" placeholder="For Best Practice, please only use the first 5 digits of the Postal Code" value={object.postalCode} />
+                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-postalCode', i )} type="text" className="form-control" id="rpap-postal-code" placeholder="For Best Practice, please only use the first 5 digits of the Postal Code" value={object.postalCode} />
                     </div>
                     <div className="checkbox">
                         <label>
-                            <input onChange={(e) => thisRef.updateForm(e, 'pa-correction-required', i)} type="checkbox" defaultChecked={object.raCorrectionRequired } /> Analyst Correction Required
+                            <input onChange={(e) => thisRef.updateForm(e, 'rpap-correction-required', i)} type="checkbox" defaultChecked={object.raCorrectionRequired } /> Analyst Correction Required
                         </label>
                     </div>
                     <div className="form-group">
                         <label>Comments</label>
-                        <textarea onChange={(e) => thisRef.updateForm(e, 'pa-comments', i)} className="form-control" rows="3" placeholder="" value={object.comments}></textarea>
+                        <textarea onChange={(e) => thisRef.updateForm(e, 'rpap-comments', i)} className="form-control" rows="3" placeholder="" value={object.comments}></textarea>
                     </div>
                 </div>
             })
@@ -130,32 +143,32 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
             case "rpap-non-ubo":
                 this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.anyNonUlimitmadeBo = (event.target.value == "true")?true:false;
                 break;
-            case "pa-firsLine":
-                this.props.case.requirement.proxyRR.physicalAddress[index].firstLine = event.target.value;
+            case "rpap-firsLine":
+               this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].firstLine = event.target.value;
                 break;
-            case "pa-secondLine":
-                this.props.case.requirement.proxyRR.physicalAddress[index].secondLine = event.target.value;
+            case "rpap-secondLine":
+               this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].secondLine = event.target.value;
                 break;
-            case "pa-city":
-                this.props.case.requirement.proxyRR.physicalAddress[index].city = event.target.value;
+            case "rpap-city":
+               this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].city = event.target.value;
                 break;
-            case "pa-state":
-                this.props.case.requirement.proxyRR.physicalAddress[index].state = event.target.value;
+            case "rpap-state":
+               this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].state = event.target.value;
                 break;
-            case "pa-country":
-                this.props.case.requirement.proxyRR.physicalAddress[index].country = event.target.value;
+            case "rpap-country":
+               this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].country = event.target.value;
                 break;
-            case "pa-postalCode":
-                this.props.case.requirement.proxyRR.physicalAddress[index].postalCode = event.target.value;
+            case "rpap-postalCode":
+               this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].postalCode = event.target.value;
                 break;
-            case "pa-comments":
-                this.props.case.requirement.proxyRR.physicalAddress[index].comments = event.target.value;
+            case "rpap-comments":
+               this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].comments = event.target.value;
                 break;
-            case "pa-correction-required":
-                this.props.case.requirement.proxyRR.physicalAddress[index].raCorrectionRequired = event.target.checked;
+            case "rpap-correction-required":
+               this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].raCorrectionRequired = event.target.checked;
                 break;
             case "rpap-complete":
-            this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.complete = event.target.checked;
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.complete = event.target.checked;
                 break;
             default:
                 return false;
