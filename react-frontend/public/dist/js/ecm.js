@@ -11,12 +11,18 @@ $(document).ready(function() {
         sectionToggle(this,'remediation');
     });
 
+    $('.related-parties-toggle').click(function(){
+        sectionToggle(this,'related-parties');
+    });
+
     if(window.location.href.indexOf("#proxyrr") != -1){
         sectionToggle($('.proxyrr-toggle'),'proxyrr');
     } else if(window.location.href.indexOf("#cip") != -1) {
         sectionToggle($('.cip-toggle'),'cip');
     } else if(window.location.href.indexOf("#remediation") != -1) {
         sectionToggle($('.remediation-toggle'),'remediation');
+    } else if(window.location.href.indexOf("#related-parties") != -1) {
+        sectionToggle($('.related-parties-toggle'),'related-parties');
     } else{
         sectionToggle($('.proxyrr-toggle'),'proxyrr');
     }

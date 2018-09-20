@@ -28,6 +28,7 @@ import ProhibitedCustomers from './requirements/remediation/ProhibitedCustomers'
 import RelationshipManager from './requirements/remediation/RelationshipManager';
 import CipCddApprovedDate from './requirements/remediation/CipCddApprovedDate';
 import Submitter from './requirements/remediation/Submitter';
+import RelatedPartiesAuthorizedPersons from './requirements/related-parties/RelatedPartiesAuthorizedPersons';
 
 export default class Case extends Component {
 
@@ -141,6 +142,7 @@ export default class Case extends Component {
                     <RelationshipManager case={this.state.case} color="light"/>
                     <CipCddApprovedDate case={this.state.case} color="dark"/>
                     <Submitter case={this.state.case} color="light"/>
+                    <RelatedPartiesAuthorizedPersons case={this.state.case} color="light"/>
                     
                    { /* <div className="box-body">
                         <label>

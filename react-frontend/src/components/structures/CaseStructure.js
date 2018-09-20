@@ -101,6 +101,11 @@ export default class CaseStructure {
 
                         },
                         submitter:{
+
+                        }
+                    },
+                    relatedParties:{
+                        relatedPartiesAuthorizedPersons:{
                             
                         }
                     }
