@@ -408,21 +408,46 @@
             "relatedParties": {
                 "relatedPartiesAuthorizedPersons": {
                     "anyNonUlimitmadeBo": false,
+                    "authorizedPersons": [
+                        {
+                            "isIndividual": true,
+                            "firstName": "Robert",
+                            "middleName": "",
+                            "lastName": "Belcher",
+                            "occupation": "Proprietor, Professional, Managerial",
+                            "wcisRelatedPartyType": "Benefical Owner",
+                            "wcisId": null,
+                            "firstLine": "124 Ocean Avenue",
+                            "secondLine": "",
+                            "city": "Ocean City",
+                            "state": "New Jersey",
+                            "country": "United States",
+                            "postalCode": "08226",
+                            "dateOfBirth": "1974-05-03T16:00:00.000Z",
+                            "idType": "Tax Identification Number",
+                            "tin": "151665490",
+                            "tinType": "Social Security Number",
+                            "countryOfIussuance": "United States",
+                            "expirationDate": "",
+                            "domicile": "United States",
+                            "countryOfCitizenship": "United States",
+                            "legalEntityType": "INDIVIDUALS",
+                            "organizationType": "Individuals ~ Individuals",
+                            "relationshipType": "Beneficial Owner",
+                            "beneficialOwnerType": "Control & Ownership",
+                            "stateOfRegistration": "",
+                            "cddiTaskRequest": "none",
+                            "isPep": false,
+                            "raCorrectionRequired": false,
+                            "comments": ""
+                        }
+                    ],
                     "attachments": [
                         ""
                     ],
-                    "complete": true
-                },
-                "authorizedPersons": {
                     "raCorrectionRequired": false,
                     "comments": "",
-                    "complete": true,
-                    "attachments": [
-                        ""
-                    ],
-                    "beneficialOwners": [
-                        ""
-                    ]
+                    "complete": true
                 },
                 "controlProngs": {
                     "raCorrectionRequired": false,

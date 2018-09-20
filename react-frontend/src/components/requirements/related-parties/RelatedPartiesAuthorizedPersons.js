@@ -27,7 +27,7 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
         
             var thisRef = this;
             //return this.props.case.requirement.proxyRR.physicalAddress.map(function (object, i) 
-            return this.props.case.requirement.proxyRR.physicalAddress.map(function (object, i) { 
+            return this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons.map(function (object, i) { 
                 return <div key={i} className="box-body" >
                         <h3> Related Parties / Authorized Person # {i + 1 }</h3>
                         <hr/>
@@ -40,6 +40,13 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                             :
                                 ""
                             }
+                    <div className="form-group">
+                            <label htmlFor="cipNotice">Is the Related Party / Authorized Person an individual? </label>
+                            <select onChange={(e) => this.updateForm(e, 'rpap-non-ubo')} id="cipNotice" className="form-control" value={object.isIndividual}>
+                                <option value="true">Yes</option>
+                                <option value="false" >No</option>
+                            </select>
+                    </div>
                              
                     <div className="form-group">
                         <label htmlFor="physicalAddress-firstLine">Address Line 1</label>
