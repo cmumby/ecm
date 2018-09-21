@@ -40,9 +40,10 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                             :
                                 ""
                             }
+                            {console.log("no sah", object)}
                     <div className="form-group">
                             <label htmlFor="cipNotice">Is the Related Party / Authorized Person an individual? </label>
-                            <select onChange={(e) => this.updateForm(e, 'rpap-non-ubo')} id="cipNotice" className="form-control" value={object.isIndividual}>
+                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-individual',i)} className="form-control" value={object.isIndividual}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
@@ -53,14 +54,29 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                         <input onChange={(e) => thisRef.updateForm(e, 'rpap-firstName', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder="Exactly as Written on Supporting Documentaion" value={object.firstName} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="physicalAddress-firstLine">Middle Name</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-middlname', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder="Exactly as Written on Supporting Documentaion"  value={object.middleName} />
+                        <label htmlFor="rpap-middleName">Middle Name</label>
+                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-middleName', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder="Exactly as Written on Supporting Documentaion"  value={object.middleName} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="physicalAddress-firstLine">Last Name</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-lastname', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder="Exactly as Written on Supporting Documentaion"  value={object.lastName} />
+                        <label htmlFor="rpap-lastName">Last Name</label>
+                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-lastName', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder="Exactly as Written on Supporting Documentaion"  value={object.lastName} />
                     </div>
-                             
+                    <div className="form-group">
+                            <label htmlFor="cipNotice">Occupation </label>
+                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-occupation', i)} id="cipNotice" className="form-control" value={object.occupation}>
+                                <option value="Proprietor, Professional, Managerial">Proprietor, Professional, Managerial</option>
+                                <option value="other" >Other</option>
+                            </select>
+                    </div>
+                    <div className="form-group">
+                            <label htmlFor="cipNotice">WCIS Related Party Type </label>
+                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-wcisRelatedPartyType', i)} id="cipNotice" className="form-control" value={object.wcisRelatedPartyType}>
+                                <option value="Benefical Owner">Benefical Owner</option>
+                                <option value="other" >Other</option>
+                            </select>
+                            
+                    </div>
+                    <p>WCIS ID: {object.wcisId}</p>        
                     <div className="form-group">
                         <label htmlFor="physicalAddress-firstLine">Address Line 1</label>
                         <input onChange={(e) => thisRef.updateForm(e, 'rpap-firsLine', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder={(i === 0 )?"No P.O Boxes In First Address" :"Add P.O Boxes here"} value={object.firstLine} />
@@ -94,9 +110,10 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                         </select>
                         <p className="help-block">Countries Limited to the United States in the Alpha Build</p>
                     </div>
+                    
                     <div className="form-group">
-                        <label htmlFor="city">Postal Code</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-postalCode', i )} type="text" className="form-control" id="rpap-postal-code" placeholder="For Best Practice, please only use the first 5 digits of the Postal Code" value={object.postalCode} />
+                        <label htmlFor="city">Date Of Birth</label>
+                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-dateOfBirth', i )} type="text" className="form-control" id="rpap-postal-code"  value={object.dateOfBirth} />
                     </div>
                     <div className="checkbox">
                         <label>
@@ -142,6 +159,24 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
         switch (name) { 
             case "rpap-non-ubo":
                 this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.anyNonUlimitmadeBo = (event.target.value == "true")?true:false;
+                break;
+            case "rpap-individual":
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].isIndividual = (event.target.value == "true")?true:false;
+                break;
+            case "rpap-firstName":
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].firstName = event.target.value;
+                break;
+            case "rpap-middleName":
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].middleName = event.target.value;
+                break;
+            case "rpap-lastName":
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].lastName = event.target.value;
+                break;
+            case "rpap-occupation":
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].occupation = event.target.value;
+                break;
+            case "rpap-wcisRelatedPartyType":
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].wcisRelatedPartyType = event.target.value;
                 break;
             case "rpap-firsLine":
                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].firstLine = event.target.value;
