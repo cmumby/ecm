@@ -115,6 +115,27 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                         <label htmlFor="city">Date Of Birth</label>
                         <input onChange={(e) => thisRef.updateForm(e, 'rpap-dateOfBirth', i )} type="text" className="form-control" id="rpap-postal-code"  value={object.dateOfBirth} />
                     </div>
+                    <div className="form-group">
+                            <label>Tax ID or Government ID Number </label>
+                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-idType', i)}  className="form-control" value={object.idType}>
+                                <option value="Tax Identification Number">Tax Identification Number</option>
+                                <option value="Government Identification Number" >Government Identification Number</option>
+                            </select>  
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="city">Tax ID / Government ID Number</label>
+                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-tin', i)} type="text" className="form-control" id="city" placeholder="Do not include dashes." value={object.tin} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="customerState">Tax Identification Numbe (TIN) Type</label>
+                        <select onChange={(e) => thisRef.updateForm(e, 'rpap-tinType', i)} className="form-control" value={object.tinType}>
+                            <option value="Social Security Number (SSN)" >Social Security Number (SSN)</option>
+                            <option value="Employer Identification Number (EIN)">Employer Identification Number (EIN)</option>
+                            <option value="Individual Taxpayer Identification Number (ITIN)">Individual Taxpayer Identification Number (ITIN)</option>
+                            <option value="Taxpayer Identification Number for Pending U.S. Adoptions (ATIN)">Taxpayer Identification Number for Pending U.S. Adoptions (ATIN)</option>
+                            <option value="Preparer Taxpayer Identification Number (PTIN)">Preparer Taxpayer Identification Number (PTIN)</option>
+                        </select>
+                    </div>
                     <div className="checkbox">
                         <label>
                             <input onChange={(e) => thisRef.updateForm(e, 'rpap-correction-required', i)} type="checkbox" defaultChecked={object.raCorrectionRequired } /> Analyst Correction Required
@@ -195,6 +216,18 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                 break;
             case "rpap-postalCode":
                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].postalCode = event.target.value;
+                break;
+            case "rpap-dateOfBirth":
+            this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].dateOfBirth = event.target.value;
+                break;
+            case "rpap-idType":
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].idType = event.target.value;
+                break;
+            case "rpap-tin":
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].tin = event.target.value;
+                break;
+            case "rpap-tinType":
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].tinType = event.target.value;
                 break;
             case "rpap-comments":
                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].comments = event.target.value;
