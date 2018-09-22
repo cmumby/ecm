@@ -20,7 +20,7 @@ var AuthorizedPersons = new Schema({
     idType: String,
     tin: String,
     tinType: String,
-    countryOfIussuance: String,
+    countryOfIssuance: String,
     expirationDate: Date,
     domicile: String,
     countryOfCitizenship: String,

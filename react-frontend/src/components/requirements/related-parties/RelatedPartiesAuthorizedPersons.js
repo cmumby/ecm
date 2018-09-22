@@ -136,6 +136,36 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                             <option value="Preparer Taxpayer Identification Number (PTIN)">Preparer Taxpayer Identification Number (PTIN)</option>
                         </select>
                     </div>
+                    <div className="form-group">
+                        <label htmlFor="country">Country of Issuance</label>
+                        <select onChange={(e) => thisRef.updateForm(e, 'rpap-countryOfIssuance' ,i)} className="form-control" value={object.countryOfIssuance} >
+                            <option value="0">Select a Country</option>
+                            {countries.map((country, index) =>
+
+                                <option key={index} value={country} >{country}</option>
+                            )}
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="country">Country of Citizenship</label>
+                        <select onChange={(e) => thisRef.updateForm(e, 'rpap-countryOfCitizenship' ,i)} className="form-control" value={object.countryOfCitizenship} >
+                            <option value="0">Select a Country</option>
+                            {countries.map((country, index) =>
+
+                                <option key={index} value={country} >{country}</option>
+                            )}
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="country">Domicile</label>
+                        <select onChange={(e) => thisRef.updateForm(e, 'rpap-countryOfCitizenship' ,i)} className="form-control" value={object.domicile} >
+                            <option value="0">Select a Country</option>
+                            {countries.map((country, index) =>
+
+                                <option key={index} value={country} >{country}</option>
+                            )}
+                        </select>
+                    </div>
                     <div className="checkbox">
                         <label>
                             <input onChange={(e) => thisRef.updateForm(e, 'rpap-correction-required', i)} type="checkbox" defaultChecked={object.raCorrectionRequired } /> Analyst Correction Required
@@ -228,6 +258,15 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                 break;
             case "rpap-tinType":
                 this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].tinType = event.target.value;
+                break;
+            case "rpap-countryOfIssuance":
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].countryOfIssuance = event.target.value;
+                break;
+            case "rpap-countryOfCitizenship":
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].countryOfCitizenship = event.target.value;
+                break;
+            case "rpap-domicile":
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].domicile = event.target.value;
                 break;
             case "rpap-comments":
                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].comments = event.target.value;
