@@ -23,7 +23,7 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
     tabRow() {
         var usStates = this.usStates; 
         var countries = this.countries;
-        if (this.props.case.requirement.proxyRR.physicalAddress instanceof Array && this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.anyNonUlimitmadeBo == true ) {
+        if (this.props.case.requirement.proxyRR.physicalAddress instanceof Array && this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.anyNonUlimitmadeBo === true ) {
         
             var thisRef = this;
             //return this.props.case.requirement.proxyRR.physicalAddress.map(function (object, i) 
@@ -170,6 +170,60 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                             )}
                         </select>
                     </div>
+                    <div className="form-group">
+                            <label>Legal Entity Type of the Related Party</label>
+                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-legalEntityType', i)}  className="form-control" value={object.legalEntityType}>
+                                <option value="INDIVIDUALS">INDIVIDUALS</option>
+                                <option value="Other" >Other</option>
+                            </select>  
+                    </div>
+                    <div className="form-group">
+                            <label>Organization Type / Sub-Type of the Related Party</label>
+                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-organizationType', i)}  className="form-control" value={object.organizationType}>
+                                <option value="Individuals ~ Individuals">Individuals ~ Individuals</option>
+                                <option value="Other" >Other</option>
+                            </select>  
+                    </div>
+                    <div className="form-group">
+                            <label>Relationship Type of the Related Party</label>
+                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-relationshipType', i)}  className="form-control" value={object.relationshipType}>
+                                <option value="Beneficial Owner">Beneficial Owner</option>
+                                <option value="Authorized Person" >Authorized Person</option>
+                                <option value="Control Prong" >Control Prong</option>
+                            </select>  
+                    </div>
+                    <div className="form-group">
+                            <label>Beneficial Owner Type</label>
+                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-beneficialOwnerType', i)}  className="form-control" value={object.beneficialOwnerType}>
+                                <option value="Control & Ownership">Control & Ownership</option>
+                                <option value="Control" >Control</option>
+                                <option value="Ownership" >Ownership</option>
+                            </select>  
+                    </div>
+                    <div className="form-group">
+                        <label>State of Registration (Entities Only)</label>
+                        <select onChange={(e) => thisRef.updateForm(e, 'rpap-stateOfRegistration', i)} id="customerState" className="form-control" value={object.stateOfRegistration}>
+                            <option value="0">Select a State</option>
+                            {usStates.map((state, index) =>
+
+                                <option key={index} value={state} >{state}</option>
+                            )}
+                        </select>
+                    </div>
+                    <div className="form-group">
+                            <label>CDDI Task Request (Related Party)</label>
+                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-cddiTaskRequest', i)}  className="form-control" value={object.cddiTaskRequest}>
+                                <option value="None">None</option>
+                                <option value="Screening" >Screening</option>
+                                <option value="Verification" >Verification</option>
+                                <option value="Screening & Verification" >Screening & Verification</option>
+                            </select>  
+                    </div>
+                    <div className=" form-group checkbox">
+                        <label>
+                            <input onChange={(e) => thisRef.updateForm(e, 'rpap-isPep', i)} type="checkbox" defaultChecked={object.isPep } /> Is PEP?
+                        </label>
+                    </div>
                     
                     <div className="checkbox">
                         <label>
@@ -214,10 +268,10 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
     handleFormDataRouting(event, name, index){
         switch (name) { 
             case "rpap-non-ubo":
-                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.anyNonUlimitmadeBo = (event.target.value == "true")?true:false;
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.anyNonUlimitmadeBo = (event.target.value === "true")?true:false;
                 break;
             case "rpap-individual":
-                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].isIndividual = (event.target.value == "true")?true:false;
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].isIndividual = (event.target.value === "true")?true:false;
                 break;
             case "rpap-firstName":
                 this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].firstName = event.target.value;
@@ -276,9 +330,30 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
             case "rpap-countryOfCitizenship":
                 this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].countryOfCitizenship = event.target.value;
                 break;
+            case "rpap-legalEntityType":
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].legalEntityType = event.target.value;
+                break;
+            case "rpap-organizationType":
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].organizationType = event.target.value;
+                break;
+            case "rpap-relationshipType":
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].relationshipType = event.target.value;
+                break;
+            case "rpap-beneficialOwnerType":
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].beneficialOwnerType = event.target.value;
+                break;
+            case "rpap-stateOfRegistration":
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].stateOfRegistration = event.target.value;
+                break;
+            case "rpap-cddiTaskRequest":
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].cddiTaskRequest = event.target.value;
+                break;
             case "rpap-comments":
                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].comments = event.target.value;
                 break;
+            case "rpap-isPep":
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].isPep = event.target.checked;
+                 break;
             case "rpap-correction-required":
                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].raCorrectionRequired = event.target.checked;
                 break;
@@ -293,7 +368,7 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
 
     updateForm = (event, name, index) => {
         this.handleFormDataRouting(event, name, index);
-        if(name === "rpap-complete"){
+        if(name === "rpap-complete" || name === "rpap-isPep"){
             this.setState({[name]: event.target.checked});
         } else {
             this.setState({[name]: event.target.value});
@@ -344,7 +419,7 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                                 <input type="checkbox" /> Check me out
                             </label>
                             <p className="pull-right">
-                            {(this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.anyNonUlimitmadeBo == true)?
+                            {(this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.anyNonUlimitmadeBo === true)?
                                 (<button onClick={(e) => {this.addAddress(e)}} href="https://themequarry.com/theme/ample-admin-the-ultimate-dashboard-template-ASFEDA95" className="btn btn-success btn-sm ad-click-event">
                                     Add Another Related Parties / Authorized Person
                                 </button>):

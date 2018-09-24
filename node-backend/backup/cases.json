@@ -436,7 +436,7 @@
                             "relationshipType": "Beneficial Owner",
                             "beneficialOwnerType": "Control & Ownership",
                             "stateOfRegistration": "",
-                            "cddiTaskRequest": "none",
+                            "cddiTaskRequest": "None",
                             "isPep": false,
                             "raCorrectionRequired": false,
                             "comments": ""
