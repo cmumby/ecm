@@ -33,7 +33,7 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                         <hr/>
                             {(i > 0)?
                                 (<p className="pull-right">
-                                <button onClick={(e) => {thisRef.removeAddress(e,i)}}  className="btn btn-danger btn-sm ad-click-event">
+                                <button onClick={(e) => {thisRef.removeAuthorizedPerson(e,i)}}  className="btn btn-danger btn-sm ad-click-event">
                                     Remove this Related Parties / Authorized Person
                                 </button>
                             </p>)
@@ -376,16 +376,45 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
         
     }
     
-    addAddress(event){
+    addAuthorizedPerson(event){
         event.preventDefault();
-        let newAddressField = {"firstLine":"","secondLine":"","city":"","state":"","country":"United States","postalCode":"",
-                               "comments":"","attachments":null,"raCorrectionRequired":false,"complete":false};
-        this.props.case.requirement.proxyRR.physicalAddress.push(newAddressField);
+        let newAuthorizedPerson = {
+            "comments": "",
+            "raCorrectionRequired": false,
+            "isPep": false,
+            "stateOfRegistration": "",
+            "beneficialOwnerType": "",
+            "relationshipType": "",
+            "organizationType": "",
+            "legalEntityType": "",
+            "countryOfCitizenship": "",
+            "domicile": "United States",
+            "expirationDate": "",
+            "countryOfIssuance": "United States",
+            "tinType": "",
+            "tin": "",
+            "idType": "",
+            "dateOfBirth": "",
+            "postalCode": "",
+            "country": "",
+            "state": "",
+            "city": "",
+            "secondLine": "",
+            "firstLine": "",
+            "wcisId": null,
+            "wcisRelatedPartyType": "",
+            "occupation": "",
+            "lastName": "",
+            "middleName": "",
+            "firstName": "",
+            "isIndividual": true
+        };
+        this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons.push(newAuthorizedPerson);
         this.setState(this.state);
     }
-    removeAddress(event, key){ 
+    removeAuthorizedPerson(event, key){ 
         event.preventDefault();
-        this.props.case.requirement.proxyRR.physicalAddress.splice(key,1);
+        this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons.splice(key,1);
         this.setState(this.state);
     }
 
@@ -415,12 +444,9 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                         {this.tabRow()}
                        
                         <div className="checkbox">
-                            <label>
-                                <input type="checkbox" /> Check me out
-                            </label>
                             <p className="pull-right">
                             {(this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.anyNonUlimitmadeBo === true)?
-                                (<button onClick={(e) => {this.addAddress(e)}} href="https://themequarry.com/theme/ample-admin-the-ultimate-dashboard-template-ASFEDA95" className="btn btn-success btn-sm ad-click-event">
+                                (<button onClick={(e) => {this.addAuthorizedPerson(e)}}  className="btn btn-success btn-sm ad-click-event">
                                     Add Another Related Parties / Authorized Person
                                 </button>):
                                 ""
