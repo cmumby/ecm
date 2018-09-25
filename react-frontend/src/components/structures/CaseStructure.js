@@ -107,6 +107,10 @@ export default class CaseStructure {
                     relatedParties:{
                         relatedPartiesAuthorizedPersons:{
                             
+                        },
+                        controlProngs:{
+                            beneficialOwners:[]
+
                         }
                     }
                 }
