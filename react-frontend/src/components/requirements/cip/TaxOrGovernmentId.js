@@ -108,7 +108,7 @@ export default class TaxOrGovernmentId extends Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="Legal-Name">Tax ID / Government ID Number</label>
-                            <input name="Legal-Name" onChange={(e) => this.updateForm(e,'ti-id')} type="text" className="form-control"  placeholder="Must Be 9 Digits" value={this.props.case.requirement.cip.taxOrGovernmentId.id} />
+                            <input name="Legal-Name" onChange={(e) => this.updateForm(e,'ti-id')} type="text" className="form-control" value={this.props.case.requirement.cip.taxOrGovernmentId.id} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="customerState">Tax Identification Numbe (TIN) Type</label>

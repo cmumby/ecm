@@ -54,12 +54,12 @@ export default class CaseStructure {
                             dbaName: "",
                         },
                         taxOrGovernmentId:{
-                            
+                            id: "",
                         } 
                     },
                     remediation:{
                         investmentVechiclesFunds:{
-
+                            secRiaNumber: ""
                         },
                         customerDetails:{
 
@@ -118,7 +118,7 @@ export default class CaseStructure {
                             
                         },
                         reports:{
-                            
+
                         }
                     }
                 }

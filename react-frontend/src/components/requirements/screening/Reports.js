@@ -24,7 +24,7 @@ export default class Reports extends Component {
             var thisRef = this;
             //return this.props.case.requirement.proxyRR.physicalAddress.map(function (object, i) 
             return this.props.case.requirement.screening.reports.investagationIds.map(function (object, i) { 
-                return <div className="form-group">
+                return <div className="form-group" key={i}>
                         {(i > 0)?
                             (<p className="pull-right">
                             <button onClick={(e) => {thisRef.removeReport(e,i)}}  className="btn btn-danger btn-sm ad-click-event">

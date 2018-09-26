@@ -40,7 +40,7 @@ export default class ControlProngs extends Component {
                             :
                                 ""
                             }
-                            {console.log("no sah", object)}
+                            
                     <div className="form-group">
                             <label htmlFor="cipNotice">Is the Related Party / Authorized Person an individual? </label>
                             <select onChange={(e) => thisRef.updateForm(e, 'rpap-individual',i)} className="form-control" value={object.isIndividual}>
