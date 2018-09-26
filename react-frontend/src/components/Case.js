@@ -31,6 +31,7 @@ import Submitter from './requirements/remediation/Submitter';
 import RelatedPartiesAuthorizedPersons from './requirements/related-parties/RelatedPartiesAuthorizedPersons';
 import ControlProngs from './requirements/related-parties/ControlProngs';
 import CddiTaskRequest from './requirements/screening/CddiTaskRequest';
+import Reports from './requirements/screening/Reports';
 
 export default class Case extends Component {
 
@@ -147,6 +148,7 @@ export default class Case extends Component {
                     <RelatedPartiesAuthorizedPersons case={this.state.case} color="light"/>
                     <ControlProngs case={this.state.case} color="dark"/>
                     <CddiTaskRequest case={this.state.case} color="light"/>
+                    <Reports case={this.state.case} color="dark" />
                     
                    { /* <div className="box-body">
                         <label>

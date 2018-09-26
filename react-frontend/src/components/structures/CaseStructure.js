@@ -116,6 +116,9 @@ export default class CaseStructure {
                     screening:{
                         cddiTaskRequest:{
                             
+                        },
+                        reports:{
+                            
                         }
                     }
                 }
