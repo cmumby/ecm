@@ -94,7 +94,7 @@ export default class CddiTaskRequest extends Component {
                             </select>  
                     </div>
                         
-                        <div className="checkbox">
+                        {/*<div className="checkbox">
                             <label>
                                 <input onChange={(e) => this.updateForm(e, 'cddi-correction-required')} type="checkbox" checked={this.props.case.requirement.screening.cddiTaskRequest.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
@@ -102,7 +102,7 @@ export default class CddiTaskRequest extends Component {
                         <div className="form-group">
                             <label>Comments</label>
                             <textarea onChange={(e) => this.updateForm(e, 'cddi-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.screening.cddiTaskRequest.comments}></textarea>
-                        </div>
+                        </div> */}
                     </div>               
             
         );
