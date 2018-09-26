@@ -30,6 +30,7 @@ import CipCddApprovedDate from './requirements/remediation/CipCddApprovedDate';
 import Submitter from './requirements/remediation/Submitter';
 import RelatedPartiesAuthorizedPersons from './requirements/related-parties/RelatedPartiesAuthorizedPersons';
 import ControlProngs from './requirements/related-parties/ControlProngs';
+import CddiTaskRequest from './requirements/screening/CddiTaskRequest';
 
 export default class Case extends Component {
 
@@ -145,6 +146,7 @@ export default class Case extends Component {
                     <Submitter case={this.state.case} color="light"/>
                     <RelatedPartiesAuthorizedPersons case={this.state.case} color="light"/>
                     <ControlProngs case={this.state.case} color="dark"/>
+                    <CddiTaskRequest case={this.state.case} color="light"/>
                     
                    { /* <div className="box-body">
                         <label>

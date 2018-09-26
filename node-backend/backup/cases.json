@@ -533,7 +533,7 @@
                 "sectionComplete": true
             },
             "screening": {
-                "ccdiTaskRequest": {
+                "cddiTaskRequest": {
                     "complete": true,
                     "comments": "",
                     "raCorrectionRequired": false,

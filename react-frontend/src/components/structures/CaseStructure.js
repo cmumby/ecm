@@ -112,6 +112,11 @@ export default class CaseStructure {
                             beneficialOwners:[]
 
                         }
+                    },
+                    screening:{
+                        cddiTaskRequest:{
+                            
+                        }
                     }
                 }
             }

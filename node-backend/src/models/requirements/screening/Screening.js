@@ -1,13 +1,13 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var CcdiTaskRequest = require('./CcdiTaskRequest');
+var CddiTaskRequest = require('./CddiTaskRequest');
 var Reports = require('./Reports');
 var ScreeningCustomer = require('./ScreeningCustomer');
 var ScreeningParty = require('./ScreeningParty');
 
 var Screening = new Schema({
-    ccdiTaskRequest: CcdiTaskRequest,
+    cddiTaskRequest: CddiTaskRequest,
     reports: Reports,
     screeningCustomer: ScreeningCustomer,
     screeningParty: ScreeningParty,

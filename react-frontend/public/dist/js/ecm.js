@@ -15,6 +15,10 @@ $(document).ready(function() {
         sectionToggle(this,'related-parties');
     });
 
+    $('.screening-toggle').click(function(){
+        sectionToggle(this,'screening');
+    });
+
     if(window.location.href.indexOf("#proxyrr") != -1){
         sectionToggle($('.proxyrr-toggle'),'proxyrr');
     } else if(window.location.href.indexOf("#cip") != -1) {
@@ -23,7 +27,9 @@ $(document).ready(function() {
         sectionToggle($('.remediation-toggle'),'remediation');
     } else if(window.location.href.indexOf("#related-parties") != -1) {
         sectionToggle($('.related-parties-toggle'),'related-parties');
-    } else{
+    } else if(window.location.href.indexOf("#screening") != -1) {
+        sectionToggle($('.screening'),'screening');
+    }else{
         sectionToggle($('.proxyrr-toggle'),'proxyrr');
     }
 });
