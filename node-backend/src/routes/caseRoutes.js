@@ -66,8 +66,7 @@ router.route('/add').post(function (req, res) {
 router.route('/update/:id').post(function (req, res) {
   Case.findById(req.body.data._id,  function (err, item) {
     if (!item)
-      //res.status(400).send("Could not load console.log("loading document...");
-      ;
+      res.status(400).send("Could not load Document");
     else {
       item.requirement = req.body.data.requirement;//= req.body.data.requirement.proxyRR.registeredAddress.firstLine;
       item.markModified('requirement');

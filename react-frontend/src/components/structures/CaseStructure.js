@@ -119,6 +119,9 @@ export default class CaseStructure {
                         },
                         reports:{
 
+                        },
+                        screeningCustomer:{
+                            
                         }
                     }
                 }
