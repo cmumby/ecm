@@ -90,7 +90,7 @@ export default class RequiredDocuments extends Component {
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'rd-complete')} checked={this.props.case.requirement.documentation.requiredDocuments.complete ? 'checked':''} /> Documentation
                         </label>
                         <div className="form-group">
-                            <label>Formation Document or Evidence of Filing (Certificate of Good Standing, Certificate of Formation, Articles of Incorporation or equivalent evidence filing)</label>
+                            <label>Formation Document or Evidence of Filing (Certificate of Good Standing, Certificate of Formation, Articles of Incorporation or equivalent evidence of filing)</label>
                             <select onChange={(e) => this.updateForm(e, 'rd-formationDocuments')}  className="form-control" value={this.props.case.requirement.documentation.requiredDocuments.formationDocuments}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
@@ -106,7 +106,7 @@ export default class RequiredDocuments extends Component {
                         </div>
 
                         <div className="form-group">
-                            <label>Signed Beneficial Ownership Form (including an idividual with significant responsiblity to control, manage, or direct a legal entity customer, including an executive officer or senior manger)</label>
+                            <label>Signed Beneficial Ownership Form (including an individual with significant responsiblity to control, manage, or direct a legal entity customer, including an executive officer or senior manger)</label>
                             <select onChange={(e) => this.updateForm(e, 'rd-signedBoForm')} className="form-control" value={this.props.case.requirement.documentation.requiredDocuments.signedBoForm}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
