@@ -19,6 +19,10 @@ $(document).ready(function() {
         sectionToggle(this,'screening');
     });
 
+    $('.documentation-toggle').click(function(){
+        sectionToggle(this,'documentation');
+    });
+
     if(window.location.href.indexOf("#proxyrr") != -1){
         sectionToggle($('.proxyrr-toggle'),'proxyrr');
     } else if(window.location.href.indexOf("#cip") != -1) {
@@ -29,6 +33,8 @@ $(document).ready(function() {
         sectionToggle($('.related-parties-toggle'),'related-parties');
     } else if(window.location.href.indexOf("#screening") != -1) {
         sectionToggle($('.screening'),'screening');
+    } else if(window.location.href.indexOf("#documentation") != -1) {
+        sectionToggle($('.documentation'),'documentation');
     }else{
         sectionToggle($('.proxyrr-toggle'),'proxyrr');
     }

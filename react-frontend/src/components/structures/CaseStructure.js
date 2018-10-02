@@ -126,6 +126,11 @@ export default class CaseStructure {
                         screeningParty:{
                             
                         }
+                    },
+                    documentation:{
+                        requiredDocuments:{
+                            
+                        }
                     }
                 }
             }

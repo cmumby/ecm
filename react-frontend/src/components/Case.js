@@ -34,6 +34,7 @@ import CddiTaskRequest from './requirements/screening/CddiTaskRequest';
 import Reports from './requirements/screening/Reports';
 import ScreeningCustomer from './requirements/screening/ScreeningCustomer';
 import ScreeningParty from './requirements/screening/ScreeningParty';
+import RequiredDocuments from './requirements/documentation/RequiredDocuments';
 
 export default class Case extends Component {
 
@@ -153,6 +154,7 @@ export default class Case extends Component {
                     <Reports case={this.state.case} color="dark" />
                     <ScreeningCustomer case={this.state.case} color="light" />
                     <ScreeningParty case={this.state.case} color="dark" />
+                    <RequiredDocuments case={this.state.case} color="light" />
                     
                    { /* <div className="box-body">
                         <label>
