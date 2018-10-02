@@ -157,7 +157,7 @@ export default class ScreeningParty extends Component {
         let newRelatedParty = {
             "pepScreening": false,
             "pepComments": "",
-            "bsaHotlistScreeining": false,
+            "bsaHotlistScreening": false,
             "bsaHotlistComments": "",
             "negativeNewsScreening": false,
             "negativeNewsComments": ""
