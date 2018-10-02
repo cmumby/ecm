@@ -24,7 +24,29 @@ export default class ScreeningParty extends Component {
             var thisRef = this;
             //return this.props.case.requirement.proxyRR.physicalAddress.map(function (object, i) 
             return this.props.case.requirement.screening.screeningParty.parties.map(function (object, i) { 
+                let partyFirstName = null;
+                let partyLastName = null;
+                console.log("where are we:", thisRef.props.case.requirement.relatedParties.controlProngs.beneficialOwners[i]);
+                if(thisRef.props.case.requirement.relatedParties.controlProngs.beneficialOwners[i] !== undefined &&
+                   thisRef.props.case.requirement.relatedParties.controlProngs.beneficialOwners[i].hasOwnProperty('firstName') &&
+                   thisRef.props.case.requirement.relatedParties.controlProngs.beneficialOwners[i].hasOwnProperty('lastName') 
+                ){
+                    
+                    partyFirstName = thisRef.props.case.requirement.relatedParties.controlProngs.beneficialOwners[i].firstName;
+                    partyLastName = thisRef.props.case.requirement.relatedParties.controlProngs.beneficialOwners[i].lastName;
+                }
+                
                 return <div key={i} className="box-body" >
+                        <h3> Related Party # {i + 1 }: {(partyFirstName != null && partyLastName != null)?partyFirstName + " " + partyLastName:"New Party"}</h3>
+                        {(i > 0)?
+                            (<p className="pull-right">
+                            <button onClick={(e) => {thisRef.removeParty(e,i)}}  className="btn btn-danger btn-sm ad-click-event">
+                                Remove Related Party # {i + 1 }
+                            </button>
+                        </p>)
+                        :
+                            ""
+                        }
                       <div className="form-group">
                             <label>Are there any resluts from OFAC/PEP screening?</label>
                             <select onChange={(e) => thisRef.updateForm(e, 'sp-pepScreening',i)} className="form-control" value={object.pepScreening}>
@@ -130,17 +152,22 @@ export default class ScreeningParty extends Component {
         
     }
 
-    addReport(event){
+    addParty(event){
         event.preventDefault();
-        let newInvestagationId = {
-            investagationId: ""
-        };
-        this.props.case.requirement.screening.screeningParty.investagationIds.push(newInvestagationId);
+        let newRelatedParty = {
+            "pepScreening": false,
+            "pepComments": "",
+            "bsaHotlistScreeining": false,
+            "bsaHotlistComments": "",
+            "negativeNewsScreening": false,
+            "negativeNewsComments": ""
+            };
+        this.props.case.requirement.screening.screeningParty.parties.push(newRelatedParty);
         this.setState(this.state);
     }
-    removeReport(event, key){ 
+    removeParty(event, key){ 
         event.preventDefault();
-        this.props.case.requirement.screening.screeningParty.investagationIds.splice(key,1);
+        this.props.case.requirement.screening.screeningParty.parties.splice(key,1);
         this.setState(this.state);
     }
   
@@ -161,6 +188,14 @@ export default class ScreeningParty extends Component {
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'sp-complete')} checked={this.props.case.requirement.screening.screeningParty.complete ? 'checked':''} /> Screening (Party)
                         </label>
                         {this.tabRow()}
+                        <div className="checkbox">
+                            <p className="pull-right">
+                            <button onClick={(e) => {this.addParty(e)}}  className="btn btn-success btn-sm ad-click-event">
+                                    Add Another Related Party
+                            </button>
+                                
+                            </p>
+                        </div>
                         
                         
                         
