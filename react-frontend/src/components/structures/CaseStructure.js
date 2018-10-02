@@ -122,6 +122,9 @@ export default class CaseStructure {
                         },
                         screeningCustomer:{
                             
+                        },
+                        screeningParty:{
+                            
                         }
                     }
                 }

@@ -33,6 +33,7 @@ import ControlProngs from './requirements/related-parties/ControlProngs';
 import CddiTaskRequest from './requirements/screening/CddiTaskRequest';
 import Reports from './requirements/screening/Reports';
 import ScreeningCustomer from './requirements/screening/ScreeningCustomer';
+import ScreeningParty from './requirements/screening/ScreeningParty';
 
 export default class Case extends Component {
 
@@ -151,6 +152,7 @@ export default class Case extends Component {
                     <CddiTaskRequest case={this.state.case} color="light"/>
                     <Reports case={this.state.case} color="dark" />
                     <ScreeningCustomer case={this.state.case} color="light" />
+                    <ScreeningParty case={this.state.case} color="dark" />
                     
                    { /* <div className="box-body">
                         <label>
