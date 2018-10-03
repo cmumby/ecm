@@ -728,8 +728,9 @@
                 "sectionComplete": true
             },
             "ousEntity": {
-                "Entity": {
+                "entity": {
                     "hasOus": false,
+                    "complete": true,
                     "attachments": [
                         ""
                     ]

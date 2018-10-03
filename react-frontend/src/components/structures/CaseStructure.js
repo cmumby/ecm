@@ -147,6 +147,11 @@ export default class CaseStructure {
 
                         },
                         qcReview:{
+
+                        }
+                    },
+                    ousEntity:{
+                        entity:{
                             
                         }
                     }

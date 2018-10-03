@@ -39,6 +39,7 @@ import Sarf from './requirements/transportationSarf/Sarf';
 import Edd from './requirements/hraedd/Edd';
 import QcInformation from './requirements/qcchecklist/QcInformation';
 import QcReview from './requirements/qcchecklist/QcReview';
+import Entity from './requirements/ousentity/Entity';
 
 export default class Case extends Component {
 
@@ -87,7 +88,6 @@ export default class Case extends Component {
         switch (name) {
             case "ra-firsLine":
                 this.caseData.requirement.proxyRR.registeredAddress.firstLine = event.target.value;
-                console.log("new??: " );
                 break;
             case "ra-secondLine":
                 this.caseData.requirement.proxyRR.registeredAddress.secondLine = event.target.value;
@@ -117,8 +117,6 @@ export default class Case extends Component {
 
     render() {
         
-       // var usStates = this.usStates;
-       // var countries = this.countries;
 
         return (
             <div id="form-container" className="box box-solid box-primary">
@@ -163,54 +161,8 @@ export default class Case extends Component {
                     <Edd case={this.state.case} color="light" />
                     <QcInformation case={this.state.case} color="light" />
                     <QcReview case={this.state.case} color="dark" />
+                    <Entity case={this.state.case} color="light" />
                     
-                   { /* <div className="box-body">
-                        <label>
-                            <input type="checkbox" checked={this.state.case.requirement.proxyRR.registeredAddress.complete ? 'checked':''} /> Registered / Residential Address
-                        </label>
-                        <div className="form-group">
-                            <label htmlFor="registeredAddress-firstLine">Address Line 1</label>
-                            <input onChange={(e) => this.updateForm(e,'ra-firsLine')} type="text" className="form-control" id="registeredAddress-firstLine" placeholder="No P.O Boxes" value={this.state.case.requirement.proxyRR.registeredAddress.firstLine} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="registeredAddress-secondLine">Address Line 2</label>
-                            <input onChange={(e) => this.updateForm(e, 'ra-secondLine')} type="text" className="form-control" id="registeredAddress-secondLine" value={this.state.case.requirement.proxyRR.registeredAddress.secondLine}  />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="city">City</label>
-                            <input onChange={(e) => this.updateForm(e, 'ra-city')}type="text" className="form-control" id="city" placeholder="Exactly As it is Written in Attached Document, Misspellings and all." value={this.state.case.requirement.proxyRR.registeredAddress.city} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="customerState">State/Province</label>
-                            <select onChange={(e) => this.updateForm(e, 'ra-state')} id="customerState" className="form-control" value={this.state.case.requirement.proxyRR.registeredAddress.state}>
-                                <option value="0">Select a State</option>
-                            {usStates.map((state,index) =>
-                                   
-                                    <option key={index} value={state} >{state}</option>
-                            )}
-                            </select>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="country">Country</label>
-                            <select onChange={(e) => this.updateForm(e, 'ra-country')} id="customerState" className="form-control" value={this.state.case.requirement.proxyRR.registeredAddress.country} >
-                                <option value="0">Select a Country</option>
-                                {countries.map((country, index) =>
-
-                                    <option key={index} value={country} >{country}</option>
-                                )}
-                            </select>
-                            <p className="help-block">Countries Limited to the United States in the Alpha Build</p>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="city">Postal Code</label>
-                            <input onChange={(e) => this.updateForm(e, 'ra-postalCode')} type="text" className="form-control" id="ra-postal-code" placeholder="For Best Practice, please only use the first 5 digits of the Postal Code" value={this.state.case.requirement.proxyRR.registeredAddress.postalCode} />
-                        </div>
-                        <div className="checkbox">
-                            <label>
-                                <input type="checkbox" /> Check me out
-                            </label>
-                        </div>
-                            </div>   */}            
                 </form>
             </div>
         );

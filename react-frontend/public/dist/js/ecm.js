@@ -35,6 +35,10 @@ $(document).ready(function() {
         sectionToggle(this,'qc-checklist');
     });
 
+    $('.ous-entity-toggle').click(function(){
+        sectionToggle(this,'ous-entity');
+    });
+
     if(window.location.href.indexOf("#proxyrr") != -1){
         sectionToggle($('.proxyrr-toggle'),'proxyrr');
     } else if(window.location.href.indexOf("#cip") != -1) {
@@ -53,6 +57,8 @@ $(document).ready(function() {
         sectionToggle($('.hraedd'),'hraedd');
     } else if(window.location.href.indexOf("#qc-checklist") != -1) {
         sectionToggle($('.qc-checklist'),'qc-checklist');
+    } else if(window.location.href.indexOf("#ous-entity") != -1) {
+        sectionToggle($('.ous-entity'),'ous-entity');
     }else{
         sectionToggle($('.proxyrr-toggle'),'proxyrr');
     }
