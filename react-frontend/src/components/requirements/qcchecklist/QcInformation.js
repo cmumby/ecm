@@ -119,16 +119,6 @@ export default class QcInformation extends Component {
                                 <input onChange={(e) => this.updateForm(e, 'qci-secondReview')} type="checkbox" checked={this.props.case.requirement.qcChecklist.qcInformation.secondReview ?'checked':''} /> Second Review
                             </label>
                         </div>
-                       
-                        <div className="checkbox">
-                            <label>
-                                <input onChange={(e) => this.updateForm(e, 'qci-correction-required')} type="checkbox" checked={this.props.case.requirement.qcChecklist.qcInformation.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
-                            </label>
-                        </div>
-                        <div className="form-group">
-                            <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'qci-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.qcChecklist.qcInformation.comments}></textarea>
-                        </div>
                     </div>               
             
         );

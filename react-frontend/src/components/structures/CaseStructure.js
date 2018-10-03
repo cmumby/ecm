@@ -145,6 +145,9 @@ export default class CaseStructure {
                     qcChecklist:{
                         qcInformation:{
 
+                        },
+                        qcReview:{
+                            
                         }
                     }
                 }

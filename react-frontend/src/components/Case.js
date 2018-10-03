@@ -38,6 +38,7 @@ import RequiredDocuments from './requirements/documentation/RequiredDocuments';
 import Sarf from './requirements/transportationSarf/Sarf';
 import Edd from './requirements/hraedd/Edd';
 import QcInformation from './requirements/qcchecklist/QcInformation';
+import QcReview from './requirements/qcchecklist/QcReview';
 
 export default class Case extends Component {
 
@@ -161,6 +162,7 @@ export default class Case extends Component {
                     <Sarf case={this.state.case} color="light" />
                     <Edd case={this.state.case} color="light" />
                     <QcInformation case={this.state.case} color="light" />
+                    <QcReview case={this.state.case} color="dark" />
                     
                    { /* <div className="box-body">
                         <label>
