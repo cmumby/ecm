@@ -31,6 +31,10 @@ $(document).ready(function() {
         sectionToggle(this,'hraedd');
     });
 
+    $('.qc-checklist-toggle').click(function(){
+        sectionToggle(this,'qc-checklist');
+    });
+
     if(window.location.href.indexOf("#proxyrr") != -1){
         sectionToggle($('.proxyrr-toggle'),'proxyrr');
     } else if(window.location.href.indexOf("#cip") != -1) {
@@ -46,7 +50,9 @@ $(document).ready(function() {
     } else if(window.location.href.indexOf("#transportation-sarf") != -1) {
         sectionToggle($('.transportation-sarf'),'transportation-sarf');
     } else if(window.location.href.indexOf("#hraedd") != -1) {
-        sectionToggle($('hraedd'),'hraedd');
+        sectionToggle($('.hraedd'),'hraedd');
+    } else if(window.location.href.indexOf("#qc-checklist") != -1) {
+        sectionToggle($('.qc-checklist'),'qc-checklist');
     }else{
         sectionToggle($('.proxyrr-toggle'),'proxyrr');
     }

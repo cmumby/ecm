@@ -141,6 +141,11 @@ export default class CaseStructure {
                         edd:{
 
                         }
+                    },
+                    qcChecklist:{
+                        qcInformation:{
+
+                        }
                     }
                 }
             }
