@@ -21,6 +21,10 @@ $(document).ready(function() {
 
     $('.documentation-toggle').click(function(){
         sectionToggle(this,'documentation');
+    });//transportation-sarf
+
+    $('.transportation-sarf-toggle').click(function(){
+        sectionToggle(this,'transportation-sarf');
     });
 
     if(window.location.href.indexOf("#proxyrr") != -1){
@@ -35,6 +39,8 @@ $(document).ready(function() {
         sectionToggle($('.screening'),'screening');
     } else if(window.location.href.indexOf("#documentation") != -1) {
         sectionToggle($('.documentation'),'documentation');
+    } else if(window.location.href.indexOf("#transportation-sarf") != -1) {
+        sectionToggle($('.transportation-sarf'),'transportation-sarf');
     }else{
         sectionToggle($('.proxyrr-toggle'),'proxyrr');
     }

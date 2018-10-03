@@ -676,7 +676,7 @@
                     "complete": true,
                     "handlesSouthwestTrucks": false,
                     "highRiskTransportation": false,
-                    "CountryOfCitizenship": "United States"
+                    "countryOfCitizenship": "United States"
                 },
                 "sectionComplete": true
             },

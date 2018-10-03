@@ -35,6 +35,7 @@ import Reports from './requirements/screening/Reports';
 import ScreeningCustomer from './requirements/screening/ScreeningCustomer';
 import ScreeningParty from './requirements/screening/ScreeningParty';
 import RequiredDocuments from './requirements/documentation/RequiredDocuments';
+import Sarf from './requirements/transportationSarf/Sarf';
 
 export default class Case extends Component {
 
@@ -155,6 +156,7 @@ export default class Case extends Component {
                     <ScreeningCustomer case={this.state.case} color="light" />
                     <ScreeningParty case={this.state.case} color="dark" />
                     <RequiredDocuments case={this.state.case} color="light" />
+                    <Sarf case={this.state.case} color="light" />
                     
                    { /* <div className="box-body">
                         <label>
