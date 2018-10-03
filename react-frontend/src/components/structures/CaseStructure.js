@@ -136,6 +136,11 @@ export default class CaseStructure {
                         sarf:{
                             
                         }
+                    },
+                    hraEdd:{
+                        edd:{
+
+                        }
                     }
                 }
             }

@@ -103,7 +103,7 @@ export default class Sarf extends Component {
                         
                         <div className="form-group">
                             <label>For all Transportation will the equipment be traveling to a High Risk Country</label>
-                            <select onChange={(e) => this.updateForm(e, 'srf-evidenceOfFiling')} id="internetGambling" className="form-control" value={this.props.case.requirement.transportationSarf.sarf.highRiskTransportation}>
+                            <select onChange={(e) => this.updateForm(e, 'srf-evidenceOfFiling')} className="form-control" value={this.props.case.requirement.transportationSarf.sarf.highRiskTransportation}>
                             <option value="na">&nbsp;</option>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
@@ -112,7 +112,7 @@ export default class Sarf extends Component {
 
                         <div className="form-group">
                             <label>For individuals only, what is the individual's country of citizenship</label>
-                            <select onChange={(e) => this.updateForm(e, 'srf-countryOfCitizenship')} id="customerState" className="form-control" value={this.props.case.requirement.transportationSarf.sarf.countryOfCitizenship} >
+                            <select onChange={(e) => this.updateForm(e, 'srf-countryOfCitizenship')} className="form-control" value={this.props.case.requirement.transportationSarf.sarf.countryOfCitizenship} >
                                 <option value="0">Select a Country</option>
                                 {countries.map((country, index) =>
 
