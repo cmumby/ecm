@@ -152,6 +152,11 @@ export default class CaseStructure {
                     },
                     ousEntity:{
                         entity:{
+
+                        }
+                    },
+                    mmb:{
+                        managedReportingAttributes:{
                             
                         }
                     }

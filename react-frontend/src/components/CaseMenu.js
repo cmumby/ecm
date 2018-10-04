@@ -118,7 +118,7 @@ export default class CaseMenu extends Component {
                     <li><a href="#hraedd" className="hraedd-toggle"><i className="fa fa-microscope"></i> HRA EDD Determination</a></li>
                     <li><a href="#qc-checklist" className="qc-checklist-toggle"><i className="fa fa-clipboard-check"></i> QC Checklist</a></li>
                     <li><a href="#ous-entity" className="ous-entity-toggle"><i className="fa fa-globe"></i> OUS Requirements</a></li>
-                    <li><a href="#"><i className="fa fa-plus"></i> MMB Additional Requirements</a></li>
+                    <li><a href="#mmb" className="mmb-toggle"><i className="fa fa-plus"></i> MMB Additional Requirements</a></li>
                     </ul>
                 </div>
           </div>

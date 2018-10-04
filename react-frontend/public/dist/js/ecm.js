@@ -39,6 +39,11 @@ $(document).ready(function() {
         sectionToggle(this,'ous-entity');
     });
 
+    $('.mmb-toggle').click(function(){
+        sectionToggle(this,'mmb');
+    });
+
+
     if(window.location.href.indexOf("#proxyrr") != -1){
         sectionToggle($('.proxyrr-toggle'),'proxyrr');
     } else if(window.location.href.indexOf("#cip") != -1) {
@@ -59,6 +64,8 @@ $(document).ready(function() {
         sectionToggle($('.qc-checklist'),'qc-checklist');
     } else if(window.location.href.indexOf("#ous-entity") != -1) {
         sectionToggle($('.ous-entity'),'ous-entity');
+    } else if(window.location.href.indexOf("#mmb") != -1) {
+        sectionToggle($('.mmb'),'mmb');
     }else{
         sectionToggle($('.proxyrr-toggle'),'proxyrr');
     }

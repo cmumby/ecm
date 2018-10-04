@@ -40,6 +40,7 @@ import Edd from './requirements/hraedd/Edd';
 import QcInformation from './requirements/qcchecklist/QcInformation';
 import QcReview from './requirements/qcchecklist/QcReview';
 import Entity from './requirements/ousentity/Entity';
+import ManagedReportingAttributes from './requirements/mmb/ManagedReportingAttributes';
 
 export default class Case extends Component {
 
@@ -162,7 +163,7 @@ export default class Case extends Component {
                     <QcInformation case={this.state.case} color="light" />
                     <QcReview case={this.state.case} color="dark" />
                     <Entity case={this.state.case} color="light" />
-                    
+                    <ManagedReportingAttributes case={this.state.case} color="light" />
                 </form>
             </div>
         );
