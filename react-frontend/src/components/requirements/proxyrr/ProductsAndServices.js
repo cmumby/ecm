@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
-import Location from '../../../util/Location';
 import Products from '../../../util/Products';
 import Select from 'react-select';
-
 
 
 export default class NatureOfBusiness extends Component {
@@ -13,26 +11,24 @@ export default class NatureOfBusiness extends Component {
         super(props);
         this.caseService = new CaseService();
         this.caseStructure = new CaseStructure();
-        this.locations = new Location();
         this.products = new Products();
         this.currentProducts = this.products.getCurrentProducts();
         this.userProducts = this.products.getUserProducts();
         this.state = this.caseStructure.getStructure();
-       
     }
 
     fillData() { 
-        var thisRef = this;
+        let thisRef = this;
         this.caseData = this.props.case;   
         thisRef.currentProductsDropDown = [];
         thisRef.userProducstsDropDown = [];
         
-        for(var cp of thisRef.currentProducts){
+        for(let cp of thisRef.currentProducts){
            
             thisRef.currentProductsDropDown.push({ label: cp, value: cp });
         }
         
-        for(var up of thisRef.userProducts){
+        for(let up of thisRef.userProducts){
            
             thisRef.userProducstsDropDown.push({ label: up, value: up });
         }
@@ -50,7 +46,7 @@ export default class NatureOfBusiness extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
         if (updatedCase.requirement.hasOwnProperty('cip')){
         } else {
@@ -83,7 +79,7 @@ export default class NatureOfBusiness extends Component {
     }
 
     getSlectedCurrentProducts(products){
-        var productList = [];
+        let productList = [];
         for(let p in products){
            
             productList[p] = {label:products[p],value:products[p]};
@@ -92,7 +88,7 @@ export default class NatureOfBusiness extends Component {
     }
 
     formatProductsForSave(markets){
-        var marketList = [];
+        let marketList = [];
        
         for(let m in markets){
             marketList.push(markets[m].label);
@@ -105,9 +101,9 @@ export default class NatureOfBusiness extends Component {
         this.handleFormDataRouting(event, name);
         //leaving this in for a select multple example
         if(name === "nc-naics"){
-            var options = event.target.options;
-            var value = [];
-            for (var i = 0, l = options.length; i < l; i++) {
+            let options = event.target.options;
+            let value = [];
+            for (let i = 0, l = options.length; i < l; i++) {
               if (options[i].selected) {
                 value.push(options[i].value);
               }
@@ -118,8 +114,7 @@ export default class NatureOfBusiness extends Component {
             this.setState({[name]: event.value});
         } else{
             this.setState({[name]: event.target.value});
-        }
-        
+        }  
     }
 
     tabRow(){
@@ -130,18 +125,15 @@ export default class NatureOfBusiness extends Component {
           })
         }
       }
-  
 
     render() {  
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.proxyRR.productsAndServices.complete){
             componentClass += " complete";
         }
         return (
-
-                   
                     <div className={"proxyrr " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e, 'cp-complete')} checked={this.props.case.requirement.proxyRR.productsAndServices.complete ? 'checked':''} />  Products and Services
@@ -164,7 +156,6 @@ export default class NatureOfBusiness extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'cp-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.proxyRR.productsAndServices.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }

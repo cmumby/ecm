@@ -4,8 +4,7 @@ import CaseStructure from '../../structures/CaseStructure';
 import EntityType from '../../../util/EntityType';
 
 
-
-export default class NatureOfBusiness extends Component {
+export default class Pep extends Component {
     
     constructor(props) {
         super(props);
@@ -17,14 +16,14 @@ export default class NatureOfBusiness extends Component {
     }
 
     fillData() { 
-        var thisRef = this;
+        let thisRef = this;
         this.caseData = this.props.case;   
         this.caseService.naics((data)=>{
             thisRef.naicsCodes = data;
             thisRef.codelist = [];
             thisRef.setState({ naics: data });
-            for(var d of data){
-                var nacsDropdownTitle =  d.code  + " - " + d.title
+            for(let d of data){
+                let nacsDropdownTitle =  d.code  + " - " + d.title
                 thisRef.codelist[d.code] = { label: nacsDropdownTitle, value: d.code };
             }
             thisRef.setState({ codeList: thisRef.codelist });
@@ -42,7 +41,7 @@ export default class NatureOfBusiness extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
         if (updatedCase.requirement.hasOwnProperty('cip')){
         } else {
@@ -68,10 +67,8 @@ export default class NatureOfBusiness extends Component {
                 break;
             default:
                 return false;
-
         }
     }
-
 
     updateForm = (event, name) => {
         this.handleFormDataRouting(event, name);
@@ -84,30 +81,26 @@ export default class NatureOfBusiness extends Component {
   
           return this.state.naics.map(function(object, i){
               return  <option id={'naics-' + object.code} key={i} value={[object.code]} >{object.code} - {object.title}</option>;
-          })
+          });
         }
-      }
+    }
   
-
     render() {  
        
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.proxyRR.pep.complete){
             componentClass += " complete";
         }
         return (
-
-                   
                     <div className={"proxyrr " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e, 'pe-complete')} checked={this.props.case.requirement.proxyRR.pep.complete ? 'checked':''} /> PEP
                         </label>
                         <div className="form-group">
                             <label htmlFor="customerState">Is the Customer Classified as a PEP?</label>
-                            <select onChange={(e) => this.updateForm(e, 'pe-pep')} id="customerState" className="form-control" defaultValue={false} value={this.props.case.requirement.proxyRR.pep.isPep}>
-                                
+                            <select onChange={(e) => this.updateForm(e, 'pe-pep')} className="form-control" defaultValue={false} value={this.props.case.requirement.proxyRR.pep.isPep}>
                                 <option value={true} >Yes</option>
                                 <option value={false} >No</option>
                             </select>
@@ -122,8 +115,6 @@ export default class NatureOfBusiness extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'pe-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.proxyRR.pep.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }
-

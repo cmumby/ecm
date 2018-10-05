@@ -29,7 +29,7 @@ export default class LegalEntity extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
         if (updatedCase.requirement.hasOwnProperty('cip')){
         } else {
@@ -71,8 +71,8 @@ export default class LegalEntity extends Component {
   
 
     render() {  
-        var entitySelections = this.entites;
-        var componentClass = 
+        let entitySelections = this.entites;
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.proxyRR.legalEntity.complete){
@@ -80,15 +80,13 @@ export default class LegalEntity extends Component {
         }
         return (
 
-                   
                     <div className={"proxyrr " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e, 'le-complete')} checked={this.props.case.requirement.proxyRR.legalEntity.complete ? 'checked':''} />  Legal Entity Type
                         </label>
                         <div className="form-group">
-                            <label htmlFor="city">What is the Legal Entity Type</label>
-                    
-                            <select onChange={(e) => this.updateForm(e, 'le-entity')} id="customerState" className="form-control" value={this.props.case.requirement.proxyRR.legalEntity.entityType}>
+                            <label>What is the Legal Entity Type</label>
+                            <select onChange={(e) => this.updateForm(e, 'le-entity')} className="form-control" value={this.props.case.requirement.proxyRR.legalEntity.entityType}>
                                 <option value="0">Select the proper entity for this customer</option>
                             {entitySelections.map((state,index) =>
                                    
@@ -106,8 +104,7 @@ export default class LegalEntity extends Component {
                             <label>Comments</label>
                             <textarea onChange={(e) => this.updateForm(e, 'le-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.proxyRR.legalEntity.comments}></textarea>
                         </div>
-                    </div>               
-            
+                    </div>                
         );
     }
 }

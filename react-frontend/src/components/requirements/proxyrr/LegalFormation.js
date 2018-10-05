@@ -32,7 +32,7 @@ export default class LegalFormation extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
         if (updatedCase.requirement.hasOwnProperty('cip')){
         } else {
@@ -72,27 +72,24 @@ export default class LegalFormation extends Component {
         
     }
   
-
     render() {  
         
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.proxyRR.legalFormation.complete){
             componentClass += " complete";
         }
-        var countries = this.countries;
+        let countries = this.countries;
         return (
 
-                   
                     <div className={"proxyrr " + componentClass}>
                         <label>
                             <input onChange={(e) => this.updateForm(e, 'lf-complete')} type="checkbox" checked={this.props.case.requirement.proxyRR.legalFormation.complete ? 'checked':''} />  Legal Formation
                         </label>
                         <div className="form-group">
-                            <label htmlFor="city">Country of Registration</label>
-                    
-                            <select onChange={(e) => this.updateForm(e, 'lf-country-registration')} id="customerState" className="form-control" value={this.props.case.requirement.proxyRR.legalFormation.countryOfRegistration}>
+                            <label>Country of Registration</label>
+                            <select onChange={(e) => this.updateForm(e, 'lf-country-registration')} className="form-control" value={this.props.case.requirement.proxyRR.legalFormation.countryOfRegistration}>
                                 <option value="0">Select a Country</option>
                                 {countries.map((country, index) =>
 
@@ -111,7 +108,6 @@ export default class LegalFormation extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'lf-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.proxyRR.legalFormation.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }

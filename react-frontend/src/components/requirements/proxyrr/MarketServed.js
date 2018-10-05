@@ -6,7 +6,6 @@ import Location from '../../../util/Location';
 import Select from 'react-select';
 
 
-
 export default class NatureOfBusiness extends Component {
     
     constructor(props) {
@@ -21,11 +20,11 @@ export default class NatureOfBusiness extends Component {
     }
 
     fillData() { 
-        var thisRef = this;
+        let thisRef = this;
         this.caseData = this.props.case;   
         thisRef.countriesDropdown = [];
         
-        for(var c of thisRef.usCountries){
+        for(let c of thisRef.usCountries){
            
             thisRef.countriesDropdown.push({ label: c, value: c });
         }
@@ -42,7 +41,7 @@ export default class NatureOfBusiness extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
         if (updatedCase.requirement.hasOwnProperty('cip')){
         } else {
@@ -57,7 +56,6 @@ export default class NatureOfBusiness extends Component {
                 this.props.case.requirement.proxyRR.natureOfBusiness.naics = event.target.value;
                 break;
             case "ms-filter":
-               
                 this.props.case.requirement.proxyRR.marketsServed.countries = this.formatMarketsForSave(event);
                 break;
             case "ms-comments":
@@ -76,7 +74,7 @@ export default class NatureOfBusiness extends Component {
     }
 
     getSlectedMarkets(markets){
-        var marketList = [];
+        let marketList = [];
         marketList['key'] = 0;
         for(let m in markets){
            
@@ -86,7 +84,7 @@ export default class NatureOfBusiness extends Component {
     }
 
     formatMarketsForSave(markets){
-        var marketList = [];
+        let marketList = [];
        
         for(let m in markets){
             marketList.push(markets[m].label);
@@ -99,9 +97,9 @@ export default class NatureOfBusiness extends Component {
         this.handleFormDataRouting(event, name);
         //leaving this in for a select multple example
         if(name === "nc-naics"){
-            var options = event.target.options;
-            var value = [];
-            for (var i = 0, l = options.length; i < l; i++) {
+            let options = event.target.options;
+            let value = [];
+            for (let i = 0, l = options.length; i < l; i++) {
               if (options[i].selected) {
                 value.push(options[i].value);
               }
@@ -125,9 +123,8 @@ export default class NatureOfBusiness extends Component {
         }
       }
   
-
     render() {  
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.proxyRR.marketsServed.complete){
@@ -135,7 +132,6 @@ export default class NatureOfBusiness extends Component {
         }
         return (
 
-                   
                     <div className={"proxyrr " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e, 'ms-complete')} checked={this.props.case.requirement.proxyRR.marketsServed.complete ? 'checked':''} />  Markets Served
@@ -143,17 +139,7 @@ export default class NatureOfBusiness extends Component {
                         <div className="form-group">
                             <label htmlFor="markets-filter">Primary Markets Served</label>
                             <Select className="requirement-filter" name="marketsFilter" onChange={(e) => this.updateForm(e, 'ms-filter')} options={this.state.countriesDropdown} isMulti  value={this.getSlectedMarkets(this.props.case.requirement.proxyRR.marketsServed.countries)} />
-                            
                         </div>
-                        
-                      { /* saving for possible future use
-                            <div className="form-group">
-                            <label>Nature of the Customer's Business / NAICS Code</label>
-                            <select name="naicsSelection" onChange={(e) => this.updateForm(e, 'nc-naics')} multiple={true}  className="form-control naics-form"  value={[this.props.case.requirement.proxyRR.natureOfBusiness.naics]}>
-                            {this.tabRow()}
-
-                             </select> 
-                        </div>*/ }
                         <div className="checkbox">
                             <label>
                                 <input onChange={(e) => this.updateForm(e, 'ms-correction-required')} type="checkbox" checked={this.props.case.requirement.proxyRR.marketsServed.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
@@ -164,7 +150,6 @@ export default class NatureOfBusiness extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'ms-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.proxyRR.marketsServed.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }

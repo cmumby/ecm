@@ -4,7 +4,6 @@ import CaseStructure from '../../structures/CaseStructure';
 import EntityType from '../../../util/EntityType';
 
 
-
 export default class NatureOfBusiness extends Component {
     
     constructor(props) {
@@ -17,14 +16,14 @@ export default class NatureOfBusiness extends Component {
     }
 
     fillData() { 
-        var thisRef = this;
+        let thisRef = this;
         this.caseData = this.props.case;   
         this.caseService.naics((data)=>{
             thisRef.naicsCodes = data;
             thisRef.codelist = [];
             thisRef.setState({ naics: data });
-            for(var d of data){
-                var nacsDropdownTitle =  d.code  + " - " + d.title
+            for(let d of data){
+                let nacsDropdownTitle =  d.code  + " - " + d.title
                 thisRef.codelist[d.code] = { label: nacsDropdownTitle, value: d.code };
             }
             thisRef.setState({ codeList: thisRef.codelist });
@@ -42,7 +41,7 @@ export default class NatureOfBusiness extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
         if (updatedCase.requirement.hasOwnProperty('cip')){
         } else {
@@ -54,7 +53,7 @@ export default class NatureOfBusiness extends Component {
     handleFormDataRouting(event, name){
         switch (name) { 
             case "rp-parties":
-                this.props.case.requirement.proxyRR.relatedParties.anyForeignParties = event.target.value;
+                this.props.case.requirement.proxyRR.relatedParties.anyForeignParties = (event.target.value === "true")?true:false; 
                 break;
             case "rp-comments":
                 this.props.case.requirement.proxyRR.relatedParties.comments = event.target.value;
@@ -67,10 +66,8 @@ export default class NatureOfBusiness extends Component {
                 break;
             default:
                 return false;
-
         }
     }
-
 
     updateForm = (event, name) => {
         this.handleFormDataRouting(event, name);
@@ -87,27 +84,23 @@ export default class NatureOfBusiness extends Component {
           })
         }
       }
-  
 
     render() {  
        
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.proxyRR.relatedParties.complete){
             componentClass += " complete";
         }
         return (
-
-                   
                     <div className={"proxyrr " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e, 'rp-complete')} checked={this.props.case.requirement.proxyRR.relatedParties.complete ? 'checked':''} />  Related Parties
                         </label>
                         <div className="form-group">
                             <label htmlFor="customerState">Are any of the entity's princapals, beneficial oweners, or gurantors permanent residents of a different country then whe the entity's products/service accunts are booked?</label>
-                            <select onChange={(e) => this.updateForm(e, 'rp-parties')} id="customerState" className="form-control" defaultValue={false} value={this.props.case.requirement.proxyRR.relatedParties.anyForeignParties}>
-                                
+                            <select onChange={(e) => this.updateForm(e, 'rp-parties')} className="form-control" defaultValue={false} value={this.props.case.requirement.proxyRR.relatedParties.anyForeignParties}>
                                 <option value={true} >Yes</option>
                                 <option value={false} >No</option>
                             </select>
@@ -122,8 +115,6 @@ export default class NatureOfBusiness extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'rp-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.proxyRR.relatedParties.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }
-

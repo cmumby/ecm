@@ -17,14 +17,14 @@ export default class NatureOfBusiness extends Component {
     }
 
     fillData() { 
-        var thisRef = this;
+        let thisRef = this;
         this.caseData = this.props.case;   
         this.caseService.naics((data)=>{
             thisRef.naicsCodes = data;
             thisRef.codelist = [];
             thisRef.setState({ naics: data });
-            for(var d of data){
-                var nacsDropdownTitle =  d.code  + " - " + d.title
+            for(let d of data){
+                let nacsDropdownTitle =  d.code  + " - " + d.title
                 thisRef.codelist[d.code] = { label: nacsDropdownTitle, value: d.code };
             }
             thisRef.setState({ codeList: thisRef.codelist });
@@ -42,7 +42,7 @@ export default class NatureOfBusiness extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
         if (updatedCase.requirement.hasOwnProperty('cip')){
         } else {
@@ -70,12 +70,11 @@ export default class NatureOfBusiness extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
     getNaicsTitle(naics){
-        var defaultNaicsTitle = "Type the proper code or search from the dropdown for the correct NAICS...";
+        let defaultNaicsTitle = "Type the proper code or search from the dropdown for the correct NAICS...";
         for(let nc in this.codelist){
             if(this.codelist[nc].value === naics){
                 this.codelist[nc].selected = true;
@@ -89,9 +88,9 @@ export default class NatureOfBusiness extends Component {
         this.handleFormDataRouting(event, name);
         //leaving this in for a select multple example
         if(name === "nc-naics"){
-            var options = event.target.options;
-            var value = [];
-            for (var i = 0, l = options.length; i < l; i++) {
+            let options = event.target.options;
+            let value = [];
+            for (let i = 0, l = options.length; i < l; i++) {
               if (options[i].selected) {
                 value.push(options[i].value);
               }
@@ -107,15 +106,13 @@ export default class NatureOfBusiness extends Component {
 
     render() {  
        
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.proxyRR.natureOfBusiness.complete){
             componentClass += " complete";
         }
         return (
-
-                   
                     <div className={"proxyrr " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e, 'nc-complete')} checked={this.props.case.requirement.proxyRR.natureOfBusiness.complete ? 'checked':''} />  Nature of Business
@@ -125,7 +122,6 @@ export default class NatureOfBusiness extends Component {
                             <Select className="requirement-filter" name="naicsFilter" onChange={(e) => this.updateForm(e, 'nc-filter')} options={this.state.codeList}  value={{label: this.getNaicsTitle(this.props.case.requirement.proxyRR.natureOfBusiness.naics)} } />
                             
                         </div>
-                        
                       { /* saving for possible future use
                             <div className="form-group">
                             <label>Nature of the Customer's Business / NAICS Code</label>
@@ -144,7 +140,6 @@ export default class NatureOfBusiness extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'nc-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.proxyRR.natureOfBusiness.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }
