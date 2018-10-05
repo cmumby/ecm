@@ -55,7 +55,7 @@ export default class Case extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         if (updatedCase.requirement.hasOwnProperty('cip')){
             this.updateData(updatedCase);
         } else {
@@ -65,7 +65,7 @@ export default class Case extends Component {
     
 
     fillData() { 
-        var thisRef = this;
+        let thisRef = this;
         this.caseService.get(this.props.match.params.ecmId, (data) => {
             this.caseData = data;
             thisRef.setState({ case: data });

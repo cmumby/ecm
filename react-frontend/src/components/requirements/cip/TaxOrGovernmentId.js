@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
-import Location from '../../../util/Location';
 
 
 export default class TaxOrGovernmentId extends Component {
@@ -10,24 +9,15 @@ export default class TaxOrGovernmentId extends Component {
         super(props);
         this.caseService = new CaseService();
         this.caseStructure = new CaseStructure();
-        this.locations = new Location();
         this.state = this.caseStructure.getStructure();
-        this.usStates = this.locations.getStates();
-        this.countries = this.locations.getCountries();
     }
 
     fillData() { 
-      //  var thisRef = this;
         this.caseData = this.props.case;
-        
-        
     }
+
     updateData(data) {
-        //var thisRef = this; 
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-           // this.caseData = data;
-           // thisRef.setState({ case: data });
-        })
+        this.caseService.update(data, this.props.case.ecmId, (data) => { });
     }
 
     componentWillMount() {
@@ -35,7 +25,7 @@ export default class TaxOrGovernmentId extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
             //this.updateData(updatedCase);
@@ -68,7 +58,6 @@ export default class TaxOrGovernmentId extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -78,13 +67,11 @@ export default class TaxOrGovernmentId extends Component {
             this.setState({[name]: event.target.checked});
         }  else{
             this.setState({[name]: event.target.value});
-        }
-        
+        } 
     }
   
-
     render() {  
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.cip.taxOrGovernmentId.complete){
@@ -92,8 +79,6 @@ export default class TaxOrGovernmentId extends Component {
         }
         
         return (
-
-                   
                     <div className={"cip " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'ti-complete')} checked={this.props.case.requirement.cip.taxOrGovernmentId.complete ? 'checked':''} /> Tax ID/ Government ID Number
@@ -103,7 +88,6 @@ export default class TaxOrGovernmentId extends Component {
                             <select onChange={(e) => this.updateForm(e, 'ti-idType')} id="customerState" className="form-control" value={this.props.case.requirement.cip.taxOrGovernmentId.idType}>
                                 <option value="Tax Identification Number">Tax Identification Number</option>
                                 <option value="Government Identification Number" >Government Identification Number</option>
-                           
                             </select>
                         </div>
                         <div className="form-group">
@@ -111,8 +95,8 @@ export default class TaxOrGovernmentId extends Component {
                             <input name="Legal-Name" onChange={(e) => this.updateForm(e,'ti-id')} type="text" className="form-control" value={this.props.case.requirement.cip.taxOrGovernmentId.id} />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="customerState">Tax Identification Numbe (TIN) Type</label>
-                            <select onChange={(e) => this.updateForm(e, 'ti-tinType')} id="customerState" className="form-control" value={this.props.case.requirement.cip.taxOrGovernmentId.tinType}>
+                            <label>Tax Identification Numbe (TIN) Type</label>
+                            <select onChange={(e) => this.updateForm(e, 'ti-tinType')} className="form-control" value={this.props.case.requirement.cip.taxOrGovernmentId.tinType}>
                                 <option value="Social Security Number (SSN)" >Social Security Number (SSN)</option>
                                 <option value="Employer Identification Number (EIN)">Employer Identification Number (EIN)</option>
                                 <option value="Individual Taxpayer Identification Number (ITIN)">Individual Taxpayer Identification Number (ITIN)</option>
@@ -131,7 +115,6 @@ export default class TaxOrGovernmentId extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'ti-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.cip.taxOrGovernmentId.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }

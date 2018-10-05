@@ -17,17 +17,14 @@ export default class CustomerName extends Component {
     }
 
     fillData() { 
-      //  var thisRef = this;
+      //  let thisRef = this;
         this.caseData = this.props.case;
         
         
     }
     updateData(data) {
-        //var thisRef = this; 
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-           // this.caseData = data;
-           // thisRef.setState({ case: data });
-        })
+        //let thisRef = this; 
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -35,7 +32,7 @@ export default class CustomerName extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
             //this.updateData(updatedCase);
@@ -65,7 +62,6 @@ export default class CustomerName extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -81,7 +77,7 @@ export default class CustomerName extends Component {
   
 
     render() {  
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.cip.customerName.complete){
@@ -89,8 +85,6 @@ export default class CustomerName extends Component {
         }
         
         return (
-
-                   
                     <div className={"cip " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'cn-complete')} checked={this.props.case.requirement.cip.customerName.complete ? 'checked':''} /> Customer Name (Entity)
@@ -114,7 +108,6 @@ export default class CustomerName extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'cn-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.cip.customerName.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }
