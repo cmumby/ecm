@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import CaseService from './CaseService';
 import CaseStructure from './structures/CaseStructure';
-import Location from '../util/Location';
 import RegisteredAddress from './requirements/proxyrr/RegisteredAddress';
 import PhysicalAddress from './requirements/proxyrr/PhysicalAddress';
 import LegalEntity from './requirements/proxyrr/LegalEntity';
@@ -48,17 +47,14 @@ export default class Case extends Component {
         super(props);
         this.caseService = new CaseService();
         this.caseStructure = new CaseStructure();
-        this.locations = new Location();
         this.state = this.caseStructure.getStructure();
-        this.usStates = this.locations.getStates();
-        this.countries = this.locations.getCountries();
      }
 
     componentWillMount() {
         this.fillData();
     }
 
-   componentDidUpdate(prevProps, prevState, snapshot){
+    componentDidUpdate(prevProps, prevState, snapshot){
         var updatedCase = prevState.case;
         if (updatedCase.requirement.hasOwnProperty('cip')){
             this.updateData(updatedCase);
@@ -75,47 +71,12 @@ export default class Case extends Component {
             thisRef.setState({ case: data });
         })
     }
+
     updateData(data) {
-       // var thisRef = this;
         this.caseService.update(data, this.props.match.params.ecmId, (data) => {
-           // this.caseData = data;
-           // thisRef.setState({ case: data });
-        })
+        });
     }
     
-
-    //Routes the changed information to the right poperty
-    handleFormDataRouting(event, name){
-        switch (name) {
-            case "ra-firsLine":
-                this.caseData.requirement.proxyRR.registeredAddress.firstLine = event.target.value;
-                break;
-            case "ra-secondLine":
-                this.caseData.requirement.proxyRR.registeredAddress.secondLine = event.target.value;
-                break;
-            case "ra-city":
-                this.caseData.requirement.proxyRR.registeredAddress.city = event.target.value;
-                break;
-            case "ra-state":
-                this.caseData.requirement.proxyRR.registeredAddress.state = event.target.value;
-                break;
-            case "ra-country":
-                this.caseData.requirement.proxyRR.registeredAddress.country = event.target.value;
-                break;
-            case "ra-postalCode":
-                this.caseData.requirement.proxyRR.registeredAddress.postalCode = event.target.value;
-                break;
-            default:
-                return false;
-
-        }
-    }
-
-    updateForm = (event, name) => {
-        this.handleFormDataRouting(event, name);
-        this.setState({[name]: event.target.value});
-    }
-
     render() {
         
 

@@ -17,17 +17,13 @@ export default class RegisteredAddress extends Component {
     }
 
     fillData() { 
-      //  var thisRef = this;
-        this.caseData = this.props.case;
-        
-        
+
+        this.caseData = this.props.case;  
     }
+
     updateData(data) {
-        //var thisRef = this; 
         this.caseService.update(data, this.props.case.ecmId, (data) => {
-           // this.caseData = data;
-           // thisRef.setState({ case: data });
-        })
+        });
     }
 
     componentWillMount() {
@@ -35,7 +31,7 @@ export default class RegisteredAddress extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
             //this.updateData(updatedCase);
@@ -91,12 +87,11 @@ export default class RegisteredAddress extends Component {
         
     }
   
-
     render() {  
         
-        var usStates = this.usStates;
-        var countries = this.countries;
-        var componentClass = 
+        let usStates = this.usStates;
+        let countries = this.countries;
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.proxyRR.registeredAddress.complete){
@@ -104,8 +99,6 @@ export default class RegisteredAddress extends Component {
         }
         
         return (
-
-                   
                     <div className={"proxyrr " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'ra-complete')} checked={this.props.case.requirement.proxyRR.registeredAddress.complete ? 'checked':''} /> Registered / Residential Address
@@ -156,8 +149,7 @@ export default class RegisteredAddress extends Component {
                             <label>Comments</label>
                             <textarea onChange={(e) => this.updateForm(e, 'ra-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.proxyRR.registeredAddress.comments}></textarea>
                         </div>
-                    </div>               
-            
+                    </div>                
         );
     }
 }

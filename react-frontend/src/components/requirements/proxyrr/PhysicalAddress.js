@@ -21,12 +21,12 @@ export default class PhysicalAddress extends Component {
     }
 
     tabRow() {
-        var usStates = this.usStates; 
-        var countries = this.countries;
+        let usStates = this.usStates; 
+        let countries = this.countries;
         if (this.props.case.requirement.proxyRR.physicalAddress instanceof Array) {
         
-            var thisRef = this;
-            //return this.props.case.requirement.proxyRR.physicalAddress.map(function (object, i) 
+            let thisRef = this;
+        
             return this.props.case.requirement.proxyRR.physicalAddress.map(function (object, i) { 
                 return <div key={i} className="box-body" >
                         <h3> Physical / Mailing Address # {i + 1 }</h3>
@@ -43,19 +43,19 @@ export default class PhysicalAddress extends Component {
                              
                     <div className="form-group">
                         <label htmlFor="physicalAddress-firstLine">Address Line 1</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'pa-firsLine', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder={(i === 0 )?"No P.O Boxes In First Address" :"Add P.O Boxes here"} value={object.firstLine} />
+                        <input onChange={(e) => thisRef.updateForm(e, 'pa-firsLine', i)} type="text" className="form-control"  placeholder={(i === 0 )?"No P.O Boxes In First Address" :"Add P.O Boxes here"} value={object.firstLine} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="physicalAddress-secondLine">Address Line 2</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'pa-secondLine', i)} type="text" className="form-control" id="physicalAddress-secondLine" value={object.secondLine} />
+                        <input onChange={(e) => thisRef.updateForm(e, 'pa-secondLine', i)} type="text" className="form-control" value={object.secondLine} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="city">City</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'pa-city', i)} type="text" className="form-control" id="city" placeholder="Exactly As it is Written in Attached Document, Misspellings and all." value={object.city} />
+                        <label>City</label>
+                        <input onChange={(e) => thisRef.updateForm(e, 'pa-city', i)} type="text" className="form-control" placeholder="Exactly As it is Written in Attached Document, Misspellings and all." value={object.city} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="customerState">State/Province</label>
-                        <select onChange={(e) => thisRef.updateForm(e, 'pa-state', i)} id="customerState" className="form-control" value={object.state}>
+                        <label>State/Province</label>
+                        <select onChange={(e) => thisRef.updateForm(e, 'pa-state', i)} className="form-control" value={object.state}>
                             <option value="0">Select a State</option>
                             {usStates.map((state, index) =>
 
@@ -64,8 +64,8 @@ export default class PhysicalAddress extends Component {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="country">Country</label>
-                        <select onChange={(e) => thisRef.updateForm(e, 'pa-country' ,i)} id="customerState" className="form-control" value={object.country} disabled>
+                        <label>Country</label>
+                        <select onChange={(e) => thisRef.updateForm(e, 'pa-country' ,i)} className="form-control" value={object.country} disabled>
                             <option value="0">Select a Country</option>
                             {countries.map((country, index) =>
 
@@ -75,8 +75,8 @@ export default class PhysicalAddress extends Component {
                         <p className="help-block">Countries Limited to the United States in the Alpha Build</p>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="city">Postal Code</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'pa-postalCode', i )} type="text" className="form-control" id="pa-postal-code" placeholder="For Best Practice, please only use the first 5 digits of the Postal Code" value={object.postalCode} />
+                        <label>Postal Code</label>
+                        <input onChange={(e) => thisRef.updateForm(e, 'pa-postalCode', i )} type="text" className="form-control" placeholder="For Best Practice, please only use the first 5 digits of the Postal Code" value={object.postalCode} />
                     </div>
                     <div className="checkbox">
                         <label>
@@ -92,13 +92,9 @@ export default class PhysicalAddress extends Component {
         }
     }
 
-    
     updateData(data) {
-        //var thisRef = this;
         this.caseService.update(data, this.props.case.ecmId, (data) => {
-           // this.caseData = data;
-           // thisRef.setState({ case: data });
-        })
+        });
     }
 
     componentWillMount() {
@@ -106,7 +102,7 @@ export default class PhysicalAddress extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         
         this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
@@ -170,6 +166,7 @@ export default class PhysicalAddress extends Component {
         this.props.case.requirement.proxyRR.physicalAddress.push(newAddressField);
         this.setState(this.state);
     }
+
     removeAddress(event, key){ 
         event.preventDefault();
         this.props.case.requirement.proxyRR.physicalAddress.splice(key,1);
@@ -177,7 +174,7 @@ export default class PhysicalAddress extends Component {
     }
 
     render() {
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.proxyRR.physicalAddress[0].complete){
@@ -185,27 +182,19 @@ export default class PhysicalAddress extends Component {
         }
         
         return (
-
-                   
                     <div className={"proxyrr " + componentClass}>
-                   
                         <label> 
                             <input onChange={(e) => this.updateForm(e, 'pa-complete', 0)} type="checkbox" checked={this.props.case.requirement.proxyRR.physicalAddress[0].complete ? 'checked' : ''} /> Physical / Mailing Address
                         </label>
-                    {this.tabRow()}
-                       
+                        {this.tabRow()}
                         <div className="checkbox">
-                            <label>
-                                <input type="checkbox" /> Check me out
-                            </label>
                             <p className="pull-right">
-                                <button onClick={(e) => {this.addAddress(e)}} href="https://themequarry.com/theme/ample-admin-the-ultimate-dashboard-template-ASFEDA95" className="btn btn-success btn-sm ad-click-event">
+                                <button onClick={(e) => {this.addAddress(e)}} className="btn btn-success btn-sm ad-click-event">
                                     Add Another Physical / Mailing Address 
                                 </button>
                             </p>
                         </div>
-                    </div>               
-             
+                    </div>                 
         );
     }
 }
