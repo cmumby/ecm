@@ -13,13 +13,11 @@ export default class CipNotice extends Component {
     }
 
     fillData() { 
-        this.caseData = this.props.case;
-        
-        
+        this.caseData = this.props.case;   
     }
+
     updateData(data) {
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-        })
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -27,13 +25,12 @@ export default class CipNotice extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
        } else {
          return false;
        }
-
     }
 
     //Routes the changed information to the right poperty
@@ -53,7 +50,6 @@ export default class CipNotice extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -63,13 +59,11 @@ export default class CipNotice extends Component {
             this.setState({[name]: event.target.checked});
         }  else{
             this.setState({[name]: event.target.value});
-        }
-        
+        } 
     }
   
-
     render() {  
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.remediation.cipNotice.complete){
@@ -77,8 +71,6 @@ export default class CipNotice extends Component {
         }
         
         return (
-
-                   
                     <div className={"remediation " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'cn-complete')} checked={this.props.case.requirement.remediation.cipNotice.complete ? 'checked':''} /> CIP Notice
@@ -91,7 +83,6 @@ export default class CipNotice extends Component {
                             </select>
                         </div>
                         
-                        
                         <div className="checkbox">
                             <label>
                                 <input onChange={(e) => this.updateForm(e, 'cn-correction-required')} type="checkbox" checked={this.props.case.requirement.remediation.cipNotice.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
@@ -102,7 +93,6 @@ export default class CipNotice extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'cn-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.cipNotice.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }

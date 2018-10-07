@@ -14,12 +14,10 @@ export default class CustomerDetails extends Component {
 
     fillData() { 
         this.caseData = this.props.case;
-        
-        
     }
+    
     updateData(data) {
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-        })
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -27,13 +25,12 @@ export default class CustomerDetails extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
-       if (updatedCase.requirement.hasOwnProperty('cip')){
-       } else {
-         return false;
-       }
-
+        if (updatedCase.requirement.hasOwnProperty('cip')){
+        } else {
+            return false;
+        }
     }
 
     //Routes the changed information to the right poperty
@@ -67,9 +64,8 @@ export default class CustomerDetails extends Component {
         
     }
   
-
     render() {  
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.remediation.customerDetails.complete){
@@ -77,8 +73,6 @@ export default class CustomerDetails extends Component {
         }
         
         return (
-
-                   
                     <div className={"remediation " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'cd-complete')} checked={this.props.case.requirement.remediation.customerDetails.complete ? 'checked':''} /> Customer Details (Entity)
@@ -105,7 +99,6 @@ export default class CustomerDetails extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'cd-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.customerDetails.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }

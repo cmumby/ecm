@@ -13,13 +13,11 @@ export default class CipCddApprovedDate extends Component {
     }
 
     fillData() { 
-        this.caseData = this.props.case;
-        
-        
+        this.caseData = this.props.case; 
     }
+
     updateData(data) {
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-        })
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -63,7 +61,6 @@ export default class CipCddApprovedDate extends Component {
         }
         
     }
-  
 
     render() {  
         var componentClass = 
@@ -74,8 +71,6 @@ export default class CipCddApprovedDate extends Component {
         }
         
         return (
-
-                   
                     <div className={"remediation " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'rm-complete')} checked={this.props.case.requirement.remediation.cipCddApprovedDate.complete ? 'checked':''} /> CIP/CDD Approved Date
@@ -83,7 +78,6 @@ export default class CipCddApprovedDate extends Component {
                         <div className="form-group">
                             <p>CIP/CDD Approved Date: {this.props.case.requirement.remediation.cipCddApprovedDate.date} </p>
                         </div>
-                        
                         
                         <div className="checkbox">
                             <label>
@@ -95,7 +89,6 @@ export default class CipCddApprovedDate extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'rm-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.cipCddApprovedDate.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }

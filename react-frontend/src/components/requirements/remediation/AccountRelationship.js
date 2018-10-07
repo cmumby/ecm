@@ -3,7 +3,7 @@ import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
 
 
-export default class InvestmentVechiclesFunds extends Component {
+export default class AccountRelationship extends Component {
     
     constructor(props) {
         super(props);
@@ -14,12 +14,10 @@ export default class InvestmentVechiclesFunds extends Component {
 
     fillData() { 
         this.caseData = this.props.case;
-        
-        
     }
+
     updateData(data) {
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-        })
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -27,13 +25,12 @@ export default class InvestmentVechiclesFunds extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
        } else {
          return false;
        }
-
     }
 
     //Routes the changed information to the right poperty
@@ -57,7 +54,6 @@ export default class InvestmentVechiclesFunds extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -68,12 +64,10 @@ export default class InvestmentVechiclesFunds extends Component {
         }  else{
             this.setState({[name]: event.target.value});
         }
-        
     }
   
-
     render() {  
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.remediation.accountRelationship.complete){
@@ -81,8 +75,6 @@ export default class InvestmentVechiclesFunds extends Component {
         }
         
         return (
-
-                   
                     <div className={"remediation " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'ar-complete')} checked={this.props.case.requirement.remediation.accountRelationship.complete ? 'checked':''} /> Account Relationship
@@ -112,7 +104,6 @@ export default class InvestmentVechiclesFunds extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'ar-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.accountRelationship.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }
