@@ -21,12 +21,12 @@ export default class ControlProngs extends Component {
     }
 
     tabRow() {
-        var usStates = this.usStates; 
-        var countries = this.countries;
+        let usStates = this.usStates; 
+        let countries = this.countries;
         if (this.props.case.requirement.proxyRR.physicalAddress instanceof Array) {
         
-            var thisRef = this;
-            //return this.props.case.requirement.proxyRR.physicalAddress.map(function (object, i) 
+            let thisRef = this;
+           
             return this.props.case.requirement.relatedParties.controlProngs.beneficialOwners.map(function (object, i) { 
                 return <div key={i} className="box-body" >
                         <h3>Beneficial Owners / Shareholders / Members / Control Prongs # {i + 1 }</h3>
@@ -62,36 +62,35 @@ export default class ControlProngs extends Component {
                         <input onChange={(e) => thisRef.updateForm(e, 'rpap-lastName', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder="Exactly as Written on Supporting Documentaion"  value={object.lastName} />
                     </div>
                     <div className="form-group">
-                            <label htmlFor="cipNotice">Occupation </label>
-                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-occupation', i)} id="cipNotice" className="form-control" value={object.occupation}>
+                            <label>Occupation </label>
+                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-occupation', i)} className="form-control" value={object.occupation}>
                                 <option value="Proprietor, Professional, Managerial">Proprietor, Professional, Managerial</option>
                                 <option value="other" >Other</option>
                             </select>
                     </div>
                     <div className="form-group">
-                            <label htmlFor="cipNotice">WCIS Related Party Type </label>
-                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-wcisRelatedPartyType', i)} id="cipNotice" className="form-control" value={object.wcisRelatedPartyType}>
+                            <label>WCIS Related Party Type </label>
+                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-wcisRelatedPartyType', i)} className="form-control" value={object.wcisRelatedPartyType}>
                                 <option value="Benefical Owner">Benefical Owner</option>
                                 <option value="other" >Other</option>
                             </select>
-                            
                     </div>
                     <p>WCIS ID: {object.wcisId}</p>        
                     <div className="form-group">
-                        <label htmlFor="physicalAddress-firstLine">Address Line 1</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-firsLine', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder={(i === 0 )?"No P.O Boxes In First Address" :"Add P.O Boxes here"} value={object.firstLine} />
+                        <label>Address Line 1</label>
+                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-firsLine', i)} type="text" className="form-control" placeholder={(i === 0 )?"No P.O Boxes In First Address" :"Add P.O Boxes here"} value={object.firstLine} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="physicalAddress-secondLine">Address Line 2</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-secondLine', i)} type="text" className="form-control" id="physicalAddress-secondLine" value={object.secondLine} />
+                        <label>Address Line 2</label>
+                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-secondLine', i)} type="text" className="form-control" value={object.secondLine} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="city">City</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-city', i)} type="text" className="form-control" id="city" placeholder="Exactly As it is Written in Attached Document, Misspellings and all." value={object.city} />
+                        <label>City</label>
+                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-city', i)} type="text" className="form-control" placeholder="Exactly As it is Written in Attached Document, Misspellings and all." value={object.city} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="customerState">State/Province</label>
-                        <select onChange={(e) => thisRef.updateForm(e, 'rpap-state', i)} id="customerState" className="form-control" value={object.state}>
+                        <label>State/Province</label>
+                        <select onChange={(e) => thisRef.updateForm(e, 'rpap-state', i)} className="form-control" value={object.state}>
                             <option value="0">Select a State</option>
                             {usStates.map((state, index) =>
 
@@ -100,8 +99,8 @@ export default class ControlProngs extends Component {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="country">Country</label>
-                        <select onChange={(e) => thisRef.updateForm(e, 'rpap-country' ,i)} id="customerState" className="form-control" value={object.country} disabled>
+                        <label>Country</label>
+                        <select onChange={(e) => thisRef.updateForm(e, 'rpap-country' ,i)} className="form-control" value={object.country} disabled>
                             <option value="0">Select a Country</option>
                             {countries.map((country, index) =>
 
@@ -110,10 +109,9 @@ export default class ControlProngs extends Component {
                         </select>
                         <p className="help-block">Countries Limited to the United States in the Alpha Build</p>
                     </div>
-                    
                     <div className="form-group">
-                        <label htmlFor="city">Date Of Birth</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-dateOfBirth', i )} type="text" className="form-control" id="rpap-postal-code"  value={object.dateOfBirth} />
+                        <label>Date Of Birth</label>
+                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-dateOfBirth', i )} type="text" className="form-control" value={object.dateOfBirth} />
                     </div>
                     <div className="form-group">
                             <label>Tax ID or Government ID Number </label>
@@ -123,11 +121,11 @@ export default class ControlProngs extends Component {
                             </select>  
                     </div>
                     <div className="form-group">
-                        <label htmlFor="city">Tax ID / Government ID Number</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-tin', i)} type="text" className="form-control" id="city" placeholder="Do not include dashes." value={object.tin} />
+                        <label>Tax ID / Government ID Number</label>
+                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-tin', i)} type="text" className="form-control" placeholder="Do not include dashes." value={object.tin} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="customerState">Tax Identification Numbe (TIN) Type</label>
+                        <label>Tax Identification Numbe (TIN) Type</label>
                         <select onChange={(e) => thisRef.updateForm(e, 'rpap-tinType', i)} className="form-control" value={object.tinType}>
                             <option value="Social Security Number (SSN)" >Social Security Number (SSN)</option>
                             <option value="Employer Identification Number (EIN)">Employer Identification Number (EIN)</option>
@@ -137,7 +135,7 @@ export default class ControlProngs extends Component {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="country">Country of Issuance</label>
+                        <label>Country of Issuance</label>
                         <select onChange={(e) => thisRef.updateForm(e, 'rpap-countryOfIssuance' ,i)} className="form-control" value={object.countryOfIssuance} >
                             <option value="0">Select a Country</option>
                             {countries.map((country, index) =>
@@ -147,11 +145,11 @@ export default class ControlProngs extends Component {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="city">Expiration Date</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-expirationDate', i)} type="text" className="form-control" id="city" value={object.expirationDate} />
+                        <label>Expiration Date</label>
+                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-expirationDate', i)} type="text" className="form-control" value={object.expirationDate} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="country">Domicile</label>
+                        <label>Domicile</label>
                         <select onChange={(e) => thisRef.updateForm(e, 'rpap-countryOfCitizenship' ,i)} className="form-control" value={object.domicile} >
                             <option value="0">Select a Country</option>
                             {countries.map((country, index) =>
@@ -161,7 +159,7 @@ export default class ControlProngs extends Component {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="country">Country of Citizenship</label>
+                        <label>Country of Citizenship</label>
                         <select onChange={(e) => thisRef.updateForm(e, 'rpap-countryOfCitizenship' ,i)} className="form-control" value={object.countryOfCitizenship} >
                             <option value="0">Select a Country</option>
                             {countries.map((country, index) =>
@@ -241,11 +239,7 @@ export default class ControlProngs extends Component {
 
     
     updateData(data) {
-        //var thisRef = this;
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-           // this.caseData = data;
-           // thisRef.setState({ case: data });
-        })
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -253,7 +247,7 @@ export default class ControlProngs extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         
         this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
@@ -261,7 +255,6 @@ export default class ControlProngs extends Component {
        } else {
          return false;
        }
-
     }
 
     //Routes the changed information to the right poperty
@@ -362,7 +355,6 @@ export default class ControlProngs extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -412,6 +404,7 @@ export default class ControlProngs extends Component {
         this.props.case.requirement.relatedParties.controlProngs.beneficialOwners.push(newAuthorizedPerson);
         this.setState(this.state);
     }
+
     removeAuthorizedPerson(event, key){ 
         event.preventDefault();
         this.props.case.requirement.relatedParties.controlProngs.beneficialOwners.splice(key,1);
@@ -419,7 +412,7 @@ export default class ControlProngs extends Component {
     }
 
     render() {
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.relatedParties.controlProngs.complete){
@@ -427,16 +420,14 @@ export default class ControlProngs extends Component {
         }
         
         return (
-
-                   
                     <div className={"related-parties " + componentClass}>
-                   
                         <label> 
                             <input onChange={(e) => this.updateForm(e, 'rpap-complete', 0)} type="checkbox" checked={this.props.case.requirement.relatedParties.controlProngs.complete ? 'checked' : ''} /> Beneficial Owners / Shareholders / Members / Control Prongs
                         </label>
                         <div className="form-group">
                             <p>Add any Beneficial Owner that holds more than teh CDD standards required threshold based on risk rating/geographic localion and/or a Control Prong for the customer </p>
                         </div>
+                        
                         {this.tabRow()}
                        
                         <div className="checkbox">
@@ -446,8 +437,7 @@ export default class ControlProngs extends Component {
                                 </button>
                             </p>
                         </div>
-                    </div>               
-             
+                    </div>
         );
     }
 }

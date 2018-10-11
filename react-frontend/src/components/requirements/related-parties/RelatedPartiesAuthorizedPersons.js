@@ -21,12 +21,12 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
     }
 
     tabRow() {
-        var usStates = this.usStates; 
-        var countries = this.countries;
+        let usStates = this.usStates; 
+        let countries = this.countries;
         if (this.props.case.requirement.proxyRR.physicalAddress instanceof Array && this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.anyNonUlimitmadeBo === true ) {
         
-            var thisRef = this;
-            //return this.props.case.requirement.proxyRR.physicalAddress.map(function (object, i) 
+            let thisRef = this;
+        
             return this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons.map(function (object, i) { 
                 return <div key={i} className="box-body" >
                         <h3> Related Parties / Authorized Person # {i + 1 }</h3>
@@ -41,7 +41,7 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                                 ""
                             }
                     <div className="form-group">
-                            <label htmlFor="cipNotice">Is the Related Party / Authorized Person an individual? </label>
+                            <label htmlFor="rpap-individual">Is the Related Party / Authorized Person an individual? </label>
                             <select onChange={(e) => thisRef.updateForm(e, 'rpap-individual',i)} className="form-control" value={object.isIndividual}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
@@ -73,7 +73,6 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                                 <option value="Benefical Owner">Benefical Owner</option>
                                 <option value="other" >Other</option>
                             </select>
-                            
                     </div>
                     <p>WCIS ID: {object.wcisId}</p>        
                     <div className="form-group">
@@ -81,15 +80,15 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                         <input onChange={(e) => thisRef.updateForm(e, 'rpap-firsLine', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder={(i === 0 )?"No P.O Boxes In First Address" :"Add P.O Boxes here"} value={object.firstLine} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="physicalAddress-secondLine">Address Line 2</label>
+                        <label>Address Line 2</label>
                         <input onChange={(e) => thisRef.updateForm(e, 'rpap-secondLine', i)} type="text" className="form-control" id="physicalAddress-secondLine" value={object.secondLine} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="city">City</label>
+                        <label>City</label>
                         <input onChange={(e) => thisRef.updateForm(e, 'rpap-city', i)} type="text" className="form-control" id="city" placeholder="Exactly As it is Written in Attached Document, Misspellings and all." value={object.city} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="customerState">State/Province</label>
+                        <label>State/Province</label>
                         <select onChange={(e) => thisRef.updateForm(e, 'rpap-state', i)} id="customerState" className="form-control" value={object.state}>
                             <option value="0">Select a State</option>
                             {usStates.map((state, index) =>
@@ -99,8 +98,8 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="country">Country</label>
-                        <select onChange={(e) => thisRef.updateForm(e, 'rpap-country' ,i)} id="customerState" className="form-control" value={object.country} disabled>
+                        <label>Country</label>
+                        <select onChange={(e) => thisRef.updateForm(e, 'rpap-country' ,i)} className="form-control" value={object.country} disabled>
                             <option value="0">Select a Country</option>
                             {countries.map((country, index) =>
 
@@ -111,7 +110,7 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                     </div>
                     
                     <div className="form-group">
-                        <label htmlFor="city">Date Of Birth</label>
+                        <label>Date Of Birth</label>
                         <input onChange={(e) => thisRef.updateForm(e, 'rpap-dateOfBirth', i )} type="text" className="form-control" id="rpap-postal-code"  value={object.dateOfBirth} />
                     </div>
                     <div className="form-group">
@@ -122,11 +121,11 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                             </select>  
                     </div>
                     <div className="form-group">
-                        <label htmlFor="city">Tax ID / Government ID Number</label>
+                        <label>Tax ID / Government ID Number</label>
                         <input onChange={(e) => thisRef.updateForm(e, 'rpap-tin', i)} type="text" className="form-control" id="city" placeholder="Do not include dashes." value={object.tin} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="customerState">Tax Identification Numbe (TIN) Type</label>
+                        <label>Tax Identification Numbe (TIN) Type</label>
                         <select onChange={(e) => thisRef.updateForm(e, 'rpap-tinType', i)} className="form-control" value={object.tinType}>
                             <option value="Social Security Number (SSN)" >Social Security Number (SSN)</option>
                             <option value="Employer Identification Number (EIN)">Employer Identification Number (EIN)</option>
@@ -136,7 +135,7 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="country">Country of Issuance</label>
+                        <label>Country of Issuance</label>
                         <select onChange={(e) => thisRef.updateForm(e, 'rpap-countryOfIssuance' ,i)} className="form-control" value={object.countryOfIssuance} >
                             <option value="0">Select a Country</option>
                             {countries.map((country, index) =>
@@ -146,11 +145,11 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="city">Expiration Date</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-expirationDate', i)} type="text" className="form-control" id="city" value={object.expirationDate} />
+                        <label>Expiration Date</label>
+                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-expirationDate', i)} type="text" className="form-control" value={object.expirationDate} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="country">Domicile</label>
+                        <label>Domicile</label>
                         <select onChange={(e) => thisRef.updateForm(e, 'rpap-countryOfCitizenship' ,i)} className="form-control" value={object.domicile} >
                             <option value="0">Select a Country</option>
                             {countries.map((country, index) =>
@@ -160,7 +159,7 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="country">Country of Citizenship</label>
+                        <label>Country of Citizenship</label>
                         <select onChange={(e) => thisRef.updateForm(e, 'rpap-countryOfCitizenship' ,i)} className="form-control" value={object.countryOfCitizenship} >
                             <option value="0">Select a Country</option>
                             {countries.map((country, index) =>
@@ -234,17 +233,12 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                         <textarea onChange={(e) => thisRef.updateForm(e, 'rpap-comments', i)} className="form-control" rows="3" placeholder="" value={object.comments}></textarea>
                     </div>
                 </div>
-            })
+            });
         }
     }
 
-    
     updateData(data) {
-        //var thisRef = this;
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-           // this.caseData = data;
-           // thisRef.setState({ case: data });
-        })
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -252,7 +246,7 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         
         this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
@@ -306,7 +300,7 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].postalCode = event.target.value;
                 break;
             case "rpap-dateOfBirth":
-            this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].dateOfBirth = event.target.value;
+                this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].dateOfBirth = event.target.value;
                 break;
             case "rpap-idType":
                 this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons[index].idType = event.target.value;
@@ -361,7 +355,6 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -371,8 +364,7 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
             this.setState({[name]: event.target.checked});
         } else {
             this.setState({[name]: event.target.value});
-        }
-        
+        } 
     }
     
     addAuthorizedPerson(event){
@@ -411,6 +403,7 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
         this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons.push(newAuthorizedPerson);
         this.setState(this.state);
     }
+
     removeAuthorizedPerson(event, key){ 
         event.preventDefault();
         this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.authorizedPersons.splice(key,1);
@@ -418,7 +411,7 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
     }
 
     render() {
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.complete){
@@ -426,10 +419,7 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
         }
         
         return (
-
-                   
                     <div className={"related-parties " + componentClass}>
-                   
                         <label> 
                             <input onChange={(e) => this.updateForm(e, 'rpap-complete', 0)} type="checkbox" checked={this.props.case.requirement.relatedParties.relatedPartiesAuthorizedPersons.complete ? 'checked' : ''} /> Related Parties / Authorized Persons
                         </label>
@@ -440,6 +430,7 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                                 <option value="false" >No</option>
                             </select>
                         </div>
+                        
                         {this.tabRow()}
                        
                         <div className="checkbox">
@@ -449,12 +440,10 @@ export default class RelatedPartiesAuthorizedPersons extends Component {
                                     Add Another Related Parties / Authorized Person
                                 </button>):
                                 ""
-                            }
-                                
+                            } 
                             </p>
                         </div>
                     </div>               
-             
         );
     }
 }
