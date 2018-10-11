@@ -13,13 +13,11 @@ export default class GeneralDescriptionOfBusiness extends Component {
     }
 
     fillData() { 
-        this.caseData = this.props.case;
-        
-        
+        this.caseData = this.props.case; 
     }
+
     updateData(data) {
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-        })
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -27,13 +25,12 @@ export default class GeneralDescriptionOfBusiness extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
        } else {
          return false;
        }
-
     }
 
     //Routes the changed information to the right poperty
@@ -53,7 +50,6 @@ export default class GeneralDescriptionOfBusiness extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -63,13 +59,11 @@ export default class GeneralDescriptionOfBusiness extends Component {
             this.setState({[name]: event.target.checked});
         }  else{
             this.setState({[name]: event.target.value});
-        }
-        
+        }  
     }
-  
 
     render() {  
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.remediation.generalDescriptionOfBusiness.complete){
@@ -77,8 +71,6 @@ export default class GeneralDescriptionOfBusiness extends Component {
         }
         
         return (
-
-                   
                     <div className={"remediation " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'db-complete')} checked={this.props.case.requirement.remediation.generalDescriptionOfBusiness.complete ? 'checked':''} /> General Description of the Customers Business
@@ -97,8 +89,7 @@ export default class GeneralDescriptionOfBusiness extends Component {
                             <label>Comments</label>
                             <textarea onChange={(e) => this.updateForm(e, 'db-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.generalDescriptionOfBusiness.comments}></textarea>
                         </div>
-                    </div>               
-            
+                    </div>                
         );
     }
 }

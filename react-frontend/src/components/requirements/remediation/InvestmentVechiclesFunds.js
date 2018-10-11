@@ -13,13 +13,11 @@ export default class InvestmentVechiclesFunds extends Component {
     }
 
     fillData() { 
-        this.caseData = this.props.case;
-        
-        
+        this.caseData = this.props.case;  
     }
+
     updateData(data) {
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-        })
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -27,7 +25,7 @@ export default class InvestmentVechiclesFunds extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
        } else {
@@ -59,7 +57,6 @@ export default class InvestmentVechiclesFunds extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -69,13 +66,11 @@ export default class InvestmentVechiclesFunds extends Component {
             this.setState({[name]: event.target.checked});
         }  else{
             this.setState({[name]: event.target.value});
-        }
-        
+        }  
     }
   
-
     render() {  
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.remediation.investmentVechiclesFunds.complete){
@@ -83,8 +78,6 @@ export default class InvestmentVechiclesFunds extends Component {
         }
         
         return (
-
-                   
                     <div className={"remediation " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'vf-complete')} checked={this.props.case.requirement.remediation.investmentVechiclesFunds.complete ? 'checked':''} /> Investment Vechicles / Funds
@@ -97,8 +90,8 @@ export default class InvestmentVechiclesFunds extends Component {
                             </select>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="customerState">Does the Investment Advisor have any related entity funds?</label>
-                            <select onChange={(e) => this.updateForm(e, 'vf-related-funds')} id="customerState" className="form-control" value={this.props.case.requirement.remediation.investmentVechiclesFunds.relatedEntityFunds}>
+                            <label>Does the Investment Advisor have any related entity funds?</label>
+                            <select onChange={(e) => this.updateForm(e, 'vf-related-funds')} className="form-control" value={this.props.case.requirement.remediation.investmentVechiclesFunds.relatedEntityFunds}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
@@ -119,7 +112,6 @@ export default class InvestmentVechiclesFunds extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'vf-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.investmentVechiclesFunds.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }

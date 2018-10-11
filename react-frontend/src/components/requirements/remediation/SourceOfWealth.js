@@ -13,13 +13,11 @@ export default class SourceOfWealth extends Component {
     }
 
     fillData() { 
-        this.caseData = this.props.case;
-        
-        
+        this.caseData = this.props.case;  
     }
+
     updateData(data) {
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-        })
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -27,13 +25,12 @@ export default class SourceOfWealth extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
        } else {
          return false;
        }
-
     }
 
     //Routes the changed information to the right poperty
@@ -53,7 +50,6 @@ export default class SourceOfWealth extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -64,12 +60,10 @@ export default class SourceOfWealth extends Component {
         }  else{
             this.setState({[name]: event.target.value});
         }
-        
     }
   
-
     render() {  
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.remediation.sourceOfWealth.complete){
@@ -77,8 +71,6 @@ export default class SourceOfWealth extends Component {
         }
         
         return (
-
-                   
                     <div className={"remediation " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'sw-complete')} checked={this.props.case.requirement.remediation.sourceOfWealth.complete ? 'checked':''} /> Source of Wealth (Entity)
@@ -88,7 +80,6 @@ export default class SourceOfWealth extends Component {
                             <select onChange={(e) => this.updateForm(e, 'sw-source')} id="orgType" className="form-control" value={this.props.case.requirement.remediation.sourceOfWealth.wealthSource}>
                                 <option value="Operating Revenue">Operating Revenue</option>
                                 <option value="Other" >Other</option>
-
                             </select>
                         </div>
             
@@ -102,7 +93,6 @@ export default class SourceOfWealth extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'sw-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.sourceOfWealth.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }

@@ -13,13 +13,11 @@ export default class ParticipationPurchased extends Component {
     }
 
     fillData() { 
-        this.caseData = this.props.case;
-        
-        
+        this.caseData = this.props.case;   
     }
+
     updateData(data) {
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-        })
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -27,7 +25,7 @@ export default class ParticipationPurchased extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
        } else {
@@ -53,7 +51,6 @@ export default class ParticipationPurchased extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -67,9 +64,8 @@ export default class ParticipationPurchased extends Component {
         
     }
   
-
     render() {  
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.remediation.participationPurchased.complete){
@@ -77,8 +73,6 @@ export default class ParticipationPurchased extends Component {
         }
         
         return (
-
-                   
                     <div className={"remediation " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'pp-complete')} checked={this.props.case.requirement.remediation.participationPurchased.complete ? 'checked':''} /> Participation Purchased

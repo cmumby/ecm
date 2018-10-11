@@ -19,8 +19,7 @@ export default class CustomerStructure extends Component {
     }
 
     updateData(data) {
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-        });
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -28,7 +27,7 @@ export default class CustomerStructure extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
         if (updatedCase.requirement.hasOwnProperty('cip')){
         } else {
@@ -42,7 +41,6 @@ export default class CustomerStructure extends Component {
             case "cs-public":
                 this.props.case.requirement.remediation.customerStructure.isPubliclyTraded = event.target.value;
                 break;
-            
             case "cs-comments":
                 this.props.case.requirement.remediation.customerStructure.comments = event.target.value;
                 break;
@@ -54,7 +52,6 @@ export default class CustomerStructure extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -64,14 +61,12 @@ export default class CustomerStructure extends Component {
             this.setState({[name]: event.target.checked});
         }  else{
             this.setState({[name]: event.target.value});
-        }
-        
+        } 
     }
   
-
     render() {  
         
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.remediation.customerStructure.complete){
@@ -79,15 +74,13 @@ export default class CustomerStructure extends Component {
         }
 
         return (
-
-                   
                     <div className={"remediation " + componentClass}>
                         <label>
                             <input onChange={(e) => this.updateForm(e, 'cs-complete')} type="checkbox" checked={this.props.case.requirement.remediation.customerStructure.complete ? 'checked':''} />  Customer Structure
                         </label>
                         <div className="form-group">
-                            <label htmlFor="customerState">Is the customer a publicly traded company?</label>
-                            <select onChange={(e) => this.updateForm(e, 'cs-public')} id="customerState" className="form-control" value={this.props.case.requirement.remediation.customerStructure.isPubliclyTraded}>
+                            <label>Is the customer a publicly traded company?</label>
+                            <select onChange={(e) => this.updateForm(e, 'cs-public')} className="form-control" value={this.props.case.requirement.remediation.customerStructure.isPubliclyTraded}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
@@ -103,7 +96,6 @@ export default class CustomerStructure extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'cs-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.customerStructure.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }

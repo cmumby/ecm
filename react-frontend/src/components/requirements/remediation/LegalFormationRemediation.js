@@ -23,8 +23,7 @@ export default class LegalFormationRemediation extends Component {
     }
 
     updateData(data) {
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-        });
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -32,7 +31,7 @@ export default class LegalFormationRemediation extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
         if (updatedCase.requirement.hasOwnProperty('cip')){
         } else {
@@ -46,7 +45,6 @@ export default class LegalFormationRemediation extends Component {
             case "lfs-state-registration":
                 this.props.case.requirement.remediation.legalFormation.stateOfRegistration = event.target.value;
                 break;
-            
             case "lfs-comments":
                 this.props.case.requirement.remediation.legalFormation.comments = event.target.value;
                 break;
@@ -58,7 +56,6 @@ export default class LegalFormationRemediation extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -72,19 +69,16 @@ export default class LegalFormationRemediation extends Component {
         
     }
   
-
     render() {  
         
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.remediation.legalFormation.complete){
             componentClass += " complete";
         }
-        var usStates = this.usStates;
+        let usStates = this.usStates;
         return (
-
-                   
                     <div className={"remediation " + componentClass}>
                         <label>
                             <input onChange={(e) => this.updateForm(e, 'lfs-complete')} type="checkbox" checked={this.props.case.requirement.remediation.legalFormation.complete ? 'checked':''} />  Legal Formation
@@ -111,7 +105,6 @@ export default class LegalFormationRemediation extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'lfs-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.legalFormation.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }
