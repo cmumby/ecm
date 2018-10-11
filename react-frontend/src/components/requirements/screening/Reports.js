@@ -14,15 +14,11 @@ export default class Reports extends Component {
 
     fillData() { 
         this.caseData = this.props.case;
-        
-        
     }
 
     tabRow() {
         if (this.props.case.requirement.screening.reports.investagationIds instanceof Array) {
-       // alert('hey');
-            var thisRef = this;
-            //return this.props.case.requirement.proxyRR.physicalAddress.map(function (object, i) 
+            let thisRef = this;
             return this.props.case.requirement.screening.reports.investagationIds.map(function (object, i) { 
                 return <div className="form-group" key={i}>
                         {(i > 0)?
@@ -40,9 +36,9 @@ export default class Reports extends Component {
             });
         }
     }
+
     updateData(data) {
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-        })
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -50,13 +46,12 @@ export default class Reports extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
        } else {
          return false;
        }
-
     }
 
     //Routes the changed information to the right poperty
@@ -76,7 +71,6 @@ export default class Reports extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -86,8 +80,7 @@ export default class Reports extends Component {
             this.setState({[name]: event.target.checked});
         } else {
             this.setState({[name]: event.target.value});
-        }
-        
+        } 
     }
 
     addReport(event){
@@ -98,15 +91,15 @@ export default class Reports extends Component {
         this.props.case.requirement.screening.reports.investagationIds.push(newInvestagationId);
         this.setState(this.state);
     }
+
     removeReport(event, key){ 
         event.preventDefault();
         this.props.case.requirement.screening.reports.investagationIds.splice(key,1);
         this.setState(this.state);
     }
   
-
     render() {  
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.screening.reports.complete){
@@ -114,8 +107,6 @@ export default class Reports extends Component {
         }
         
         return (
-
-                   
                     <div className={"screening " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'r-complete')} checked={this.props.case.requirement.screening.reports.complete ? 'checked':''} /> Screening
@@ -141,7 +132,6 @@ export default class Reports extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'r-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.screening.reports.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }

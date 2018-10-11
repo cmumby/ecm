@@ -14,14 +14,10 @@ export default class ScreeningCustomer extends Component {
 
     fillData() { 
         this.caseData = this.props.case;
-        
-        
     }
 
-    
     updateData(data) {
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-        })
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -29,13 +25,12 @@ export default class ScreeningCustomer extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
        } else {
          return false;
        }
-
     }
 
     //Routes the changed information to the right poperty
@@ -70,7 +65,6 @@ export default class ScreeningCustomer extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -81,7 +75,6 @@ export default class ScreeningCustomer extends Component {
         } else {
             this.setState({[name]: event.target.value});
         }
-        
     }
 
     addReport(event){
@@ -92,24 +85,22 @@ export default class ScreeningCustomer extends Component {
         this.props.case.requirement.screening.screeningCustomer.investagationIds.push(newInvestagationId);
         this.setState(this.state);
     }
+
     removeReport(event, key){ 
         event.preventDefault();
         this.props.case.requirement.screening.screeningCustomer.investagationIds.splice(key,1);
         this.setState(this.state);
     }
   
-
     render() {  
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.screening.screeningCustomer.complete){
             componentClass += " complete";
         }
         
-        return (
-
-                   
+        return ( 
                     <div className={"screening " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'sc-complete')} checked={this.props.case.requirement.screening.screeningCustomer.complete ? 'checked':''} /> Screening (Customer)
@@ -162,7 +153,6 @@ export default class ScreeningCustomer extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'sc-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.screening.screeningCustomer.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }

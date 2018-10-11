@@ -14,12 +14,10 @@ export default class CddiTaskRequest extends Component {
 
     fillData() { 
         this.caseData = this.props.case;
-        
-        
     }
+
     updateData(data) {
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-        })
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -27,13 +25,12 @@ export default class CddiTaskRequest extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
        } else {
          return false;
        }
-
     }
 
     //Routes the changed information to the right poperty
@@ -53,7 +50,6 @@ export default class CddiTaskRequest extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -63,13 +59,11 @@ export default class CddiTaskRequest extends Component {
             this.setState({[name]: event.target.checked});
         }  else{
             this.setState({[name]: event.target.value});
-        }
-        
+        }  
     }
   
-
     render() {  
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.screening.cddiTaskRequest.complete){
@@ -77,8 +71,6 @@ export default class CddiTaskRequest extends Component {
         }
         
         return (
-
-                   
                     <div className={"screening " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'cddi-complete')} checked={this.props.case.requirement.screening.cddiTaskRequest.complete ? 'checked':''} /> CDDI Task Request
@@ -92,19 +84,8 @@ export default class CddiTaskRequest extends Component {
                                 <option value="Verification" >Verification</option>
                                 <option value="Screening & Verification" >Screening & Verification</option>
                             </select>  
-                    </div>
-                        
-                        {/*<div className="checkbox">
-                            <label>
-                                <input onChange={(e) => this.updateForm(e, 'cddi-correction-required')} type="checkbox" checked={this.props.case.requirement.screening.cddiTaskRequest.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
-                            </label>
                         </div>
-                        <div className="form-group">
-                            <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'cddi-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.screening.cddiTaskRequest.comments}></textarea>
-                        </div> */}
                     </div>               
-            
         );
     }
 }

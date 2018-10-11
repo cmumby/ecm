@@ -14,15 +14,12 @@ export default class ScreeningParty extends Component {
 
     fillData() { 
         this.caseData = this.props.case;
-        
-        
     }
 
     tabRow() {
         if (this.props.case.requirement.screening.screeningParty.parties instanceof Array) {
-       // alert('hey');
             var thisRef = this;
-            //return this.props.case.requirement.proxyRR.physicalAddress.map(function (object, i) 
+    
             return this.props.case.requirement.screening.screeningParty.parties.map(function (object, i) { 
                 let partyFirstName = null;
                 let partyLastName = null;
@@ -103,7 +100,6 @@ export default class ScreeningParty extends Component {
        } else {
          return false;
        }
-
     }
 
     //Routes the changed information to the right poperty
@@ -138,7 +134,6 @@ export default class ScreeningParty extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -148,8 +143,7 @@ export default class ScreeningParty extends Component {
             this.setState({[name]: event.target.checked});
         } else {
             this.setState({[name]: event.target.value});
-        }
-        
+        }   
     }
 
     addParty(event){
@@ -165,6 +159,7 @@ export default class ScreeningParty extends Component {
         this.props.case.requirement.screening.screeningParty.parties.push(newRelatedParty);
         this.setState(this.state);
     }
+
     removeParty(event, key){ 
         event.preventDefault();
         this.props.case.requirement.screening.screeningParty.parties.splice(key,1);
@@ -181,8 +176,6 @@ export default class ScreeningParty extends Component {
         }
         
         return (
-
-                   
                     <div className={"screening " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'sp-complete')} checked={this.props.case.requirement.screening.screeningParty.complete ? 'checked':''} /> Screening (Party)
@@ -197,8 +190,6 @@ export default class ScreeningParty extends Component {
                             </p>
                         </div>
                         
-                        
-                        
                         <div className="checkbox">
                             <label>
                                 <input onChange={(e) => this.updateForm(e, 'sp-correction-required')} type="checkbox" checked={this.props.case.requirement.screening.screeningParty.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
@@ -209,7 +200,6 @@ export default class ScreeningParty extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'sp-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.screening.screeningParty.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }
