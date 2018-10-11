@@ -18,7 +18,7 @@ export default class ScreeningParty extends Component {
 
     tabRow() {
         if (this.props.case.requirement.screening.screeningParty.parties instanceof Array) {
-            var thisRef = this;
+            let thisRef = this;
     
             return this.props.case.requirement.screening.screeningParty.parties.map(function (object, i) { 
                 let partyFirstName = null;
@@ -94,7 +94,7 @@ export default class ScreeningParty extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
        } else {
@@ -168,7 +168,7 @@ export default class ScreeningParty extends Component {
   
 
     render() {  
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.screening.screeningParty.complete){
