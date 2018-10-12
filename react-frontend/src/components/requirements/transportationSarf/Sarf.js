@@ -16,13 +16,11 @@ export default class Sarf extends Component {
     }
 
     fillData() { 
-        this.caseData = this.props.case;
-        
-        
+        this.caseData = this.props.case;     
     }
+
     updateData(data) {
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-        })
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -30,13 +28,12 @@ export default class Sarf extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
        } else {
          return false;
        }
-
     }
 
     //Routes the changed information to the right poperty
@@ -62,7 +59,6 @@ export default class Sarf extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -73,13 +69,11 @@ export default class Sarf extends Component {
         }  else{
             this.setState({[name]: event.target.value});
         }
-        
     }
-  
 
     render() { 
-        var countries = this.countries; 
-        var componentClass = 
+        let countries = this.countries; 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.transportationSarf.sarf.complete){
@@ -87,8 +81,6 @@ export default class Sarf extends Component {
         }
         
         return (
-
-                   
                     <div className={"transportation-sarf " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'srf-complete')} checked={this.props.case.requirement.transportationSarf.sarf.complete ? 'checked':''} /> Transportation SARF
@@ -131,7 +123,6 @@ export default class Sarf extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'srf-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.transportationSarf.sarf.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }
