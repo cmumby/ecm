@@ -3,20 +3,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-
 import {Header} from "./components/Header";
-
 import AddTodo from './components/AddTodo';
 import ListCase from './components/ListCase';
-//import ListCase from './components/ListCase';
 import UpdateTodo from './components/UpdateTodo';
 import Case from './components/Case';
 import CaseMenu from './components/CaseMenu';
 
-
-import './index.css';
-var currentLocation = document.location.href;
-var mainSize = (currentLocation.indexOf('/requirements') >=0)?'col-md-10': 'col-md-12';
+let currentLocation = document.location.href;
+let mainSize = (currentLocation.indexOf('/requirements') >=0)?'col-md-10': 'col-md-12';
 mainSize += ' col-xs-12';
 
 ReactDOM.render(
@@ -34,7 +29,6 @@ ReactDOM.render(
       </Router>
       <Router>
       <div className={mainSize}>
-      
       <Route path='/add' component={AddTodo} />
       <Route path='/cases' component={AddTodo} />
       <Route exact path='/' component={ListCase} />
