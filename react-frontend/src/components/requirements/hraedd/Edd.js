@@ -14,12 +14,10 @@ export default class Edd extends Component {
 
     fillData() { 
         this.caseData = this.props.case;
-        
-        
     }
+
     updateData(data) {
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-        })
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -59,7 +57,6 @@ export default class Edd extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -70,7 +67,6 @@ export default class Edd extends Component {
         }  else{
             this.setState({[name]: event.target.value});
         }
-        
     }
   
 
@@ -83,8 +79,6 @@ export default class Edd extends Component {
         }
         
         return (
-
-                   
                     <div className={"hraedd " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'edd-complete')} checked={this.props.case.requirement.hraEdd.edd.complete ? 'checked':''} /> HRA EDD Determination
@@ -110,8 +104,6 @@ export default class Edd extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'edd-rationale')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.hraEdd.edd.rationale}></textarea>
                         </div>
 
-                       
-                        
                         <div className="checkbox">
                             <label>
                                 <input onChange={(e) => this.updateForm(e, 'edd-correction-required')} type="checkbox" checked={this.props.case.requirement.hraEdd.edd.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
@@ -122,7 +114,6 @@ export default class Edd extends Component {
                             <textarea onChange={(e) => this.updateForm(e, 'edd-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.hraEdd.edd.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }
