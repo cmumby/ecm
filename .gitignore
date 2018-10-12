@@ -3,3 +3,4 @@ node-backend/node_modules
 node-backend/package-lock.json
 react-frontend/node_modules
 react-frontend/package-lock.json
+yarn-error.log
