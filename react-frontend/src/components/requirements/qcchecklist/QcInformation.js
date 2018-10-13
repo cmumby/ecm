@@ -17,17 +17,11 @@ export default class QcInformation extends Component {
     }
 
     fillData() { 
-      //  var thisRef = this;
         this.caseData = this.props.case;
-        
-        
     }
+
     updateData(data) {
-        //var thisRef = this; 
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-           // this.caseData = data;
-           // thisRef.setState({ case: data });
-        })
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -35,14 +29,13 @@ export default class QcInformation extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
-       if (updatedCase.requirement.hasOwnProperty('cip')){
+        if (updatedCase.requirement.hasOwnProperty('cip')){
             //this.updateData(updatedCase);
-       } else {
-         return false;
-       }
-
+        } else {
+            return false;
+        }
     }
 
     //Routes the changed information to the right poperty
@@ -71,7 +64,6 @@ export default class QcInformation extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -82,12 +74,10 @@ export default class QcInformation extends Component {
         }  else{
             this.setState({[name]: event.target.value});
         }
-        
     }
   
-
     render() {  
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.qcChecklist.qcInformation.complete){
@@ -95,8 +85,6 @@ export default class QcInformation extends Component {
         }
         
         return (
-
-                   
                     <div className={"qc-checklist " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'qci-complete')} checked={this.props.case.requirement.qcChecklist.qcInformation.complete ? 'checked':''} /> QC Information
@@ -120,7 +108,6 @@ export default class QcInformation extends Component {
                             </label>
                         </div>
                     </div>               
-            
         );
     }
 }

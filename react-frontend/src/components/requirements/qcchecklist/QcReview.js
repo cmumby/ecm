@@ -14,14 +14,10 @@ export default class QcReview extends Component {
 
     fillData() { 
         this.caseData = this.props.case;
-        
-        
     }
 
-    
     updateData(data) {
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-        })
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -29,13 +25,12 @@ export default class QcReview extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
-       if (updatedCase.requirement.hasOwnProperty('cip')){
-       } else {
-         return false;
-       }
-
+        if (updatedCase.requirement.hasOwnProperty('cip')){
+        } else {
+            return false;
+        }
     }
 
     //Routes the changed information to the right poperty
@@ -56,7 +51,6 @@ export default class QcReview extends Component {
             case "qcr-completeFields":
                 this.props.case.requirement.qcChecklist.qcReview.completeFields = (event.target.value === "true")?true:false;
                 break;
-           
             case "qcr-comments":
                 this.props.case.requirement.qcChecklist.qcReview.comments = event.target.value;
                 break;
@@ -68,7 +62,6 @@ export default class QcReview extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -79,7 +72,6 @@ export default class QcReview extends Component {
         } else {
             this.setState({[name]: event.target.value});
         }
-        
     }
 
     addReport(event){
@@ -90,15 +82,15 @@ export default class QcReview extends Component {
         this.props.case.requirement.qcChecklist.qcReview.investagationIds.push(newInvestagationId);
         this.setState(this.state);
     }
+
     removeReport(event, key){ 
         event.preventDefault();
         this.props.case.requirement.qcChecklist.qcReview.investagationIds.splice(key,1);
         this.setState(this.state);
     }
   
-
     render() {  
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.qcChecklist.qcReview.complete){
@@ -106,8 +98,6 @@ export default class QcReview extends Component {
         }
         
         return (
-
-                   
                     <div className={"qc-checklist " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'qcr-complete')} checked={this.props.case.requirement.qcChecklist.qcReview.complete ? 'checked':''} /> Screening (Customer)
@@ -121,7 +111,6 @@ export default class QcReview extends Component {
                             </select>
                         </div>
                         
-
                         <div className="form-group">
                             <label>Reasonableness of Reponses</label>
                             <select onChange={(e) => this.updateForm(e, 'qcr-reasonableness')} className="form-control" value={this.props.case.requirement.qcChecklist.qcReview.reasonableness}>
@@ -130,7 +119,6 @@ export default class QcReview extends Component {
                             </select>
                         </div>
                        
-
                          <div className="form-group">
                             <label>Supporting Documentation</label>
                             <select onChange={(e) => this.updateForm(e, 'qcr-negativeNewsScreening')} className="form-control" value={this.props.case.requirement.qcChecklist.qcReview.negativeNewsScreening}>
@@ -138,8 +126,6 @@ export default class QcReview extends Component {
                                 <option value="false" >No</option>
                             </select>
                         </div>
-
-                       
 
                         <div className="form-group">
                             <label>If required, was a SARF from completed for the customer? </label>
@@ -157,13 +143,11 @@ export default class QcReview extends Component {
                             </select>
                         </div>
                         
-                        
                         <div className="form-group">
                             <label>QC Additional Comments</label>
                             <textarea onChange={(e) => this.updateForm(e, 'qcr-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.qcChecklist.qcReview.comments}></textarea>
                         </div>
                     </div>               
-            
         );
     }
 }
