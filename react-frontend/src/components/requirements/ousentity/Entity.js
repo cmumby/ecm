@@ -13,13 +13,11 @@ export default class Entity extends Component {
     }
 
     fillData() { 
-        this.caseData = this.props.case;
-        
-        
+        this.caseData = this.props.case; 
     }
+
     updateData(data) {
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-        })
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -27,13 +25,12 @@ export default class Entity extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
        } else {
          return false;
        }
-
     }
 
     //Routes the changed information to the right poperty
@@ -47,7 +44,6 @@ export default class Entity extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -57,13 +53,11 @@ export default class Entity extends Component {
             this.setState({[name]: event.target.checked});
         }  else{
             this.setState({[name]: event.target.value});
-        }
-        
+        }   
     }
   
-
     render() {  
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.ousEntity.entity.complete){
@@ -71,8 +65,6 @@ export default class Entity extends Component {
         }
         
         return (
-
-                   
                     <div className={"ous-entity " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'ous-complete')} checked={this.props.case.requirement.ousEntity.entity.complete ? 'checked':''} /> OUS Entity Information
@@ -85,7 +77,6 @@ export default class Entity extends Component {
                             </select>
                         </div>
                     </div>               
-            
         );
     }
 }
