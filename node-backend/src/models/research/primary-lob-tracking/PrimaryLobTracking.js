@@ -1,7 +1,7 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
 
-var PrimaryLobTracking = new Schema({
+let PrimaryLobTracking = new Schema({
     primaryLobGroup: String,
     receivedDate: Date,
     requestDate: Date,

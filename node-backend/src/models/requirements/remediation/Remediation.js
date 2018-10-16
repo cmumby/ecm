@@ -1,24 +1,23 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let InvestmentVechiclesFunds = require('./InvestmentVechiclesFunds');
+let CustomerDetails = require('./CustomerDetails');
+let AccountRelationship = require('./AccountRelationship');
+let LegalFormation = require('./LegalFormation');
+let CustomerStructure = require('./CustomerStructure');
+let SourceOfWealth = require('./SourceOfWealth');
+let GeneralDescriptionOfBusiness = require('./GeneralDescriptionOfBusiness');
+let SourceOfFunds = require('./SourceOfFunds');
+let ParticipationPurchased = require('./ParticipationPurchased');
+let CipNotice = require('./CipNotice');
+let InternetGambling = require('./InternetGambling');
+let ProhibitedCustomers = require('./ProhibitedCustomers');
+let RelationshipManager = require('./RelationshipManager');
+let CipCddApprovedDate = require('./CipCddApprovedDate');
+let Submitter = require('./Submitter');
 
-var InvestmentVechiclesFunds = require('./InvestmentVechiclesFunds');
-var CustomerDetails = require('./CustomerDetails');
-var AccountRelationship = require('./AccountRelationship');
-var LegalFormation = require('./LegalFormation');
-var CustomerStructure = require('./CustomerStructure');
-var SourceOfWealth = require('./SourceOfWealth');
-var GeneralDescriptionOfBusiness = require('./GeneralDescriptionOfBusiness');
-var SourceOfFunds = require('./SourceOfFunds');
-var ParticipationPurchased = require('./ParticipationPurchased');
-var CipNotice = require('./CipNotice');
-var InternetGambling = require('./InternetGambling');
-var ProhibitedCustomers = require('./ProhibitedCustomers');
-var RelationshipManager = require('./RelationshipManager');
-var CipCddApprovedDate = require('./CipCddApprovedDate');
-var Submitter = require('./Submitter');
 
-
-var Remediation = new Schema({
+let Remediation = new Schema({
     investmentVechiclesFunds: InvestmentVechiclesFunds,
     customerDetails: CustomerDetails,
     accountRelationship: AccountRelationship,

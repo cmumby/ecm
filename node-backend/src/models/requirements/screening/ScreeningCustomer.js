@@ -1,8 +1,8 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-var Attachment = require('../../Attachment');
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let Attachment = require('../../Attachment');
 
-var ScreeningCustomer = new Schema({
+let ScreeningCustomer = new Schema({
     pepScreening: Boolean,
     pepComments: String,
     bsaHotlistScreeining: Boolean,

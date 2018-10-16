@@ -1,11 +1,10 @@
 //Naics.js
 
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
 
 //schema
-var Naics = new Schema({ 
+let Naics = new Schema({ 
     _comment: String,
     trilateral: Number,
     code: Number,

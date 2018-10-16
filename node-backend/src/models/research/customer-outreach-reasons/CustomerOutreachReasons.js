@@ -1,7 +1,7 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
 
-var CustomerOutreachReasons = new Schema({
+let CustomerOutreachReasons = new Schema({
     reason: String,
     extension: String
 }); 

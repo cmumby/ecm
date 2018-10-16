@@ -1,16 +1,16 @@
-var express = require('express');
-var app = express();
-var router = express.Router();
-var Requirement = require('../models/requirements/Requirement');
+let express = require('express');
+let app = express();
+let router = express.Router();
+let Requirement = require('../models/requirements/Requirement');
 
 //Schema
-var TodoList = require('../models/TodoList');
-var Case = require('../models/Case');
-var Naics = require('../models/Naics');
+let TodoList = require('../models/TodoList');
+let Case = require('../models/Case');
+let Naics = require('../models/Naics');
 
 // Get Specific
 router.route('/:id').get(function (req, res) {
-  var id = req.params.id;
+  let id = req.params.id;
   Case.find({ 'ecmId': id }, function (err, item) {
     res.json(item[0]);
   });
@@ -29,17 +29,6 @@ router.route('/').get(function (req, res) {
 
 router.route('/cases/list').get(function (req, res) {
   Case.find(function (err, items) {
-    //console.log(items);
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(items);
-    }
-  });
-});
-router.route('/naics/list').get(function (req, res) {
-  Naics.find(function (err, items) {
-    //console.log(items);
     if (err) {
       console.log(err);
     } else {
@@ -48,10 +37,19 @@ router.route('/naics/list').get(function (req, res) {
   });
 });
 
+router.route('/naics/list').get(function (req, res) {
+  Naics.find(function (err, items) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(items);
+    }
+  });
+});
 
 // Add item
 router.route('/add').post(function (req, res) {
-  var item = new TodoList(req.body);
+  let item = new TodoList(req.body);
   item.save()
     .then(item => {
 
@@ -68,10 +66,9 @@ router.route('/update/:id').post(function (req, res) {
     if (!item)
       res.status(400).send("Could not load Document");
     else {
-      item.requirement = req.body.data.requirement;//= req.body.data.requirement.proxyRR.registeredAddress.firstLine;
+      item.requirement = req.body.data.requirement;
       item.markModified('requirement');
-     ///console.log("case:", item.requirement.proxyRR.registeredAddress);
-     item.save().then(item => {
+      item.save().then(item => {
         res.json('Updated');
       })
       .catch(err => {

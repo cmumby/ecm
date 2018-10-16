@@ -1,7 +1,7 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
 
-var RelationshipNameApproval = new Schema({
+let RelationshipNameApproval = new Schema({
     rmName: String,
     primayLobApproverName: String,
     crcApproverName: String,

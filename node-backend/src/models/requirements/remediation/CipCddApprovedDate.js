@@ -1,8 +1,8 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-var Attachment = require('../../Attachment');
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let Attachment = require('../../Attachment');
 
-var CipCddApprovedDate = new Schema({
+let CipCddApprovedDate = new Schema({
     date: Date,
     attachments: [Attachment],
     raCorrectionRequired: Boolean,

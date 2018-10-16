@@ -1,9 +1,9 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-var CustomerName = require('./CustomerName');
-var TaxOrGovernmentId = require('./TaxOrGovernmentId');
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let CustomerName = require('./CustomerName');
+let TaxOrGovernmentId = require('./TaxOrGovernmentId');
 
-var Cip = new Schema({
+let Cip = new Schema({
     customerName: CustomerName,
     taxOrGovernmentId: TaxOrGovernmentId,
     sectionComplete: Boolean

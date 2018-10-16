@@ -1,9 +1,8 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let Entity = require('./Entity');
 
-var Entity = require('./Entity');
-
-var OusEntity = new Schema({
+let OusEntity = new Schema({
     entity: Entity,
     sectionComplete: Boolean
 });

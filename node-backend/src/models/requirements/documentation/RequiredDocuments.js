@@ -1,9 +1,8 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-var Attachment = require('../../Attachment');
-var RequiredDocuments = require('./RequiredDocuments');
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let Attachment = require('../../Attachment');
 
-var RequiredDocuments = new Schema({
+let RequiredDocuments = new Schema({
     formationDocuments: Boolean,
     evidenceOfFiling: Boolean,
     signedBoForm: Boolean,

@@ -1,9 +1,8 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let Attachment = require('../../Attachment');
 
-var Attachment = require('../../Attachment');
-
-var QcReview = new Schema({
+let QcReview = new Schema({
     spellingAndLanguage: String,
     reasonableness: Boolean,
     documentation: Boolean,

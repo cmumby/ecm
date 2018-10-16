@@ -1,11 +1,11 @@
 //Attachment.js
 
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
 
 
 //schema
-var Attachment = new Schema({      
+let Attachment = new Schema({      
     icon: String,
     fileName: String,
     filePath: String,

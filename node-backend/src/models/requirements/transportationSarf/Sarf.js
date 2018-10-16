@@ -1,9 +1,8 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-var Attachment = require('../../Attachment');
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let Attachment = require('../../Attachment');
 
-
-var Sarf = new Schema({
+let Sarf = new Schema({
     handlesSouthwestTrucks: Boolean,
     highRiskTransportation: Boolean,
     countryOfCitizenship: String,

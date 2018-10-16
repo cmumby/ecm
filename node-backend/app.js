@@ -1,12 +1,12 @@
 //Libraries
-var express = require('express');
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
-var cors = require('cors');
+let express = require('express');
+let mongoose = require('mongoose');
+let bodyParser = require('body-parser');
+let cors = require('cors');
 
 //server configuration
-var basePath = '/ecm';
-var port = 6200;
+let basePath = '/ecm';
+let port = 6200;
 
 // Connection to DB
 mongoose.connect('mongodb://mongodb')
@@ -19,11 +19,10 @@ mongoose.connect('mongodb://mongodb')
     });
 
 // Routes and Backend Funcioncalities
-var caseRoutes = require('./src/routes/caseRoutes');
-
+let caseRoutes = require('./src/routes/caseRoutes');
 
 // App Instance
-var app = express();
+let app = express();
 app.use(express.static('public'));
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));

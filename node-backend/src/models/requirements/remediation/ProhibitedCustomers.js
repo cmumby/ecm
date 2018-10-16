@@ -1,8 +1,8 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-var Attachment = require('../../Attachment');
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let Attachment = require('../../Attachment');
 
-var ProhibitedCustomers = new Schema({
+let ProhibitedCustomers = new Schema({
     isMarijunaDistributor: Boolean,
     customerHasWarrents: Boolean,
     isNonUsMexicanCdc: Boolean,

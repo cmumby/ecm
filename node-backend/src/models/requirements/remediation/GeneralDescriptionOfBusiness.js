@@ -1,8 +1,8 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-var Attachment = require('../../Attachment');
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let Attachment = require('../../Attachment');
 
-var GeneralDescriptionOfBusiness = new Schema({
+let GeneralDescriptionOfBusiness = new Schema({
     description: String,
     attachments: [Attachment],
     raCorrectionRequired: Boolean,

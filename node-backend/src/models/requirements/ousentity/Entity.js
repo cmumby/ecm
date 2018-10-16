@@ -1,9 +1,8 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let Attachment = require('../../Attachment');
 
-var Attachment = require('../../Attachment');
-
-var Entity = new Schema({
+let Entity = new Schema({
     hasOus: Boolean,
     attachments: [Attachment],
     raCorrectionRequired: Boolean,

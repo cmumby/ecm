@@ -1,7 +1,7 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
 
-var RejectedFromCornerstoneLoad = new Schema({
+let RejectedFromCornerstoneLoad = new Schema({
     cashVault: String,
     internationalWires: String,
     desktopDeposit: String,

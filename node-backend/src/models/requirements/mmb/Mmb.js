@@ -1,9 +1,8 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let ManagedReportingAttributes = require('./ManagedReportingAttributes');
 
-var ManagedReportingAttributes = require('./ManagedReportingAttributes');
-
-var Mmb = new Schema({
+let Mmb = new Schema({
     managedReportingAttributes: ManagedReportingAttributes,
     sectionComplete: Boolean
 });

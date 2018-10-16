@@ -1,8 +1,8 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-var Attachment = require('../../Attachment');
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let Attachment = require('../../Attachment');
 
-var InvestmentVechiclesFunds = new Schema({
+let InvestmentVechiclesFunds = new Schema({
     isInvestment: Boolean,
     relatedEntityFunds: Boolean,
     secRiaNumber: Number,

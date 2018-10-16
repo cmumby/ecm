@@ -1,19 +1,16 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-var RegisteredAddress = require('./RegisteredAddress');
-var PhysicalAddress = require('./PhysicalAddress');
-var LegalEntity = require('./LegalEntity');
-var LegalFormation = require('./LegalFormation');
-var NatureOfBusiness = require('./NatureOfBusiness');
-var MarketsServed = require('./MarketsServed');
-var RelatedParties = require('./RelatedParties');
-var ProductsAndServices = require('./ProductsAndServices');
-var Pep = require('./Pep');
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let RegisteredAddress = require('./RegisteredAddress');
+let PhysicalAddress = require('./PhysicalAddress');
+let LegalEntity = require('./LegalEntity');
+let LegalFormation = require('./LegalFormation');
+let NatureOfBusiness = require('./NatureOfBusiness');
+let MarketsServed = require('./MarketsServed');
+let RelatedParties = require('./RelatedParties');
+let ProductsAndServices = require('./ProductsAndServices');
+let Pep = require('./Pep');
 
-
-
-
-var ProxyRR = new Schema({
+let ProxyRR = new Schema({
     registeredAddress: RegisteredAddress,
     physicalAddress: [PhysicalAddress],
     legalEntity: LegalEntity,

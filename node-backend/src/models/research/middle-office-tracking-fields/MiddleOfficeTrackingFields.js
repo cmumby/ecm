@@ -1,7 +1,7 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
 
-var MiddleOfficeTrackingFields = new Schema({
+let MiddleOfficeTrackingFields = new Schema({
     itemNumber: Number,
     itemComments: String,
     lobDispute: Boolean,

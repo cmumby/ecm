@@ -1,7 +1,7 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
 
-var EnhancedDueDiligence = new Schema({
+let EnhancedDueDiligence = new Schema({
     highRiskFactors: String,
     sourceOfWealth: String,
     adversNewsSearch: String

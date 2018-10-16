@@ -1,9 +1,8 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let Attachment = require('../../Attachment');
 
-var Attachment = require('../../Attachment');
-
-var ManagedReportingAttributes = new Schema({
+let ManagedReportingAttributes = new Schema({
     customer: String,
     divison: String,
     rcbo: String,

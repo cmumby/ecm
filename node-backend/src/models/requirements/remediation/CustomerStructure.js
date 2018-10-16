@@ -1,8 +1,8 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-var Attachment = require('../../Attachment');
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let Attachment = require('../../Attachment');
 
-var CustomerDetails = new Schema({
+let CustomerDetails = new Schema({
     isPubliclyTraded: Boolean,
     attachments: [Attachment],
     raCorrectionRequired: Boolean,

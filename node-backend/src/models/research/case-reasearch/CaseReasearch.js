@@ -1,7 +1,7 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
 
-var CaseReasearch = new Schema({
+let CaseReasearch = new Schema({
     issueDescription: String,
     exceptionExemptionAndExit: String,
     lobResponse: String,

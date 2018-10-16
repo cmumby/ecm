@@ -1,8 +1,8 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-var RequiredDocuments = require('./RequiredDocuments');
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let RequiredDocuments = require('./RequiredDocuments');
 
-var Documentation = new Schema({
+let Documentation = new Schema({
     requiredDocuments: RequiredDocuments,
     sectionComplete: Boolean
 });

@@ -1,7 +1,7 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
 
-var CrcRejectReason = new Schema({
+let CrcRejectReason = new Schema({
     administrative: Boolean,
     ccdNotMet: Boolean,
     missingBo: Boolean,

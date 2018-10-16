@@ -1,8 +1,8 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-var Edd = require('./Edd');
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let Edd = require('./Edd');
 
-var HraEdd = new Schema({
+let HraEdd = new Schema({
     edd: Edd,
     sectionComplete: Boolean
 });

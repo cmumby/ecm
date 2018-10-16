@@ -1,9 +1,8 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let Sarf = require('./Sarf');
 
-var Sarf = require('./Sarf');
-
-var TransportationSarf = new Schema({
+let TransportationSarf = new Schema({
     sarf: Sarf,
     sectionComplete: Boolean
 });

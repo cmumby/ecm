@@ -1,10 +1,9 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let RelatedPartiesAuthorizedPersons = require('./RelatedPartiesAuthorizedPersons');
+let ControlProngs = require('./ControlProngs');
 
-var RelatedPartiesAuthorizedPersons = require('./RelatedPartiesAuthorizedPersons');
-var ControlProngs = require('./ControlProngs');
-
-var RelatedParties = new Schema({
+let RelatedParties = new Schema({
     relatedPartiesAuthorizedPersons: RelatedPartiesAuthorizedPersons,
     authorizedPersons: ControlProngs, // needs same schema as control prongs
     controlProngs: ControlProngs,

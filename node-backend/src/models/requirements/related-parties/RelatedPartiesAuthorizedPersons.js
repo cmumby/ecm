@@ -1,9 +1,9 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-var Attachment = require('../../Attachment');
-var AuthorizedPersons = require('./AuthorizedPersons');
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let Attachment = require('../../Attachment');
+let AuthorizedPersons = require('./AuthorizedPersons');
 
-var RelatedPartiesAuthorizedPersons = new Schema({
+let RelatedPartiesAuthorizedPersons = new Schema({
     anyNonUltimateBo: Boolean,
     authorizedPersons: [AuthorizedPersons],
     attachments: [Attachment],

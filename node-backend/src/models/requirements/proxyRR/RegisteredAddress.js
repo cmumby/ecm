@@ -1,8 +1,8 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-var Attachment = require('../../Attachment');
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let Attachment = require('../../Attachment');
 
-var RegisteredAddress = new Schema({
+let RegisteredAddress = new Schema({
     firstLine: String,
     secondLine: String,
     city: String,

@@ -1,7 +1,7 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
 
-var CrcFlags = new Schema({
+let CrcFlags = new Schema({
     bearerShareIssuingEntity: Boolean,
     exemptionRequested: Boolean,
     referredToExit: Boolean,

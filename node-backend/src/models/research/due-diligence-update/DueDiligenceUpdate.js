@@ -1,7 +1,7 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
 
-var DueDiligenceUpdate = new Schema({
+let DueDiligenceUpdate = new Schema({
     unusualActivitiy: String,
     totalNumberofUnusualActivity: String,
     pep: String,

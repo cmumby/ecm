@@ -1,8 +1,8 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-var Attachment = require('../../Attachment');
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let Attachment = require('../../Attachment');
 
-var AccountRelationship = new Schema({
+let AccountRelationship = new Schema({
     accountPurpose: String,
     accountType: String,
     attachments: [Attachment],
