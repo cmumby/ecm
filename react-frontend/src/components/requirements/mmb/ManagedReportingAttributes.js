@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
-import Location from '../../../util/Location';
 
 
 export default class ManagedReportingAttributes extends Component {
@@ -10,10 +9,7 @@ export default class ManagedReportingAttributes extends Component {
         super(props);
         this.caseService = new CaseService();
         this.caseStructure = new CaseStructure();
-        this.locations = new Location();
         this.state = this.caseStructure.getStructure();
-        this.usStates = this.locations.getStates();
-        this.countries = this.locations.getCountries();
     }
 
     fillData() { 
@@ -21,8 +17,7 @@ export default class ManagedReportingAttributes extends Component {
     }
 
     updateData(data) {
-        this.caseService.update(data, this.props.case.ecmId, (data) => {
-        });
+        this.caseService.update(data, this.props.case.ecmId, (data) => {});
     }
 
     componentWillMount() {
@@ -37,7 +32,6 @@ export default class ManagedReportingAttributes extends Component {
        } else {
          return false;
        }
-
     }
 
     //Routes the changed information to the right poperty
@@ -48,7 +42,6 @@ export default class ManagedReportingAttributes extends Component {
                 break;
             default:
                 return false;
-
         }
     }
 
@@ -59,10 +52,8 @@ export default class ManagedReportingAttributes extends Component {
         }  else{
             this.setState({[name]: event.target.value});
         }
-        
     }
   
-
     render() {  
         var componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
@@ -72,8 +63,6 @@ export default class ManagedReportingAttributes extends Component {
         }
         
         return (
-
-                   
                     <div className={"mmb " + componentClass}>
                         <label>
                             <input type="checkbox" onChange={(e) => this.updateForm(e,'mmb-complete')} checked={this.props.case.requirement.mmb.managedReportingAttributes.complete ? 'checked':''} /> Management Reporting Attribures
@@ -95,7 +84,6 @@ export default class ManagedReportingAttributes extends Component {
                             <span>{this.props.case.requirement.mmb.managedReportingAttributes.div}</span>
                         </div>     
                     </div>               
-            
         );
     }
 }
