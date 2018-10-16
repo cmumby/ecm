@@ -25,7 +25,7 @@ export default class ManagedReportingAttributes extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
+        let updatedCase = prevState.case;
         this.updateData(this.props.case);
        if (updatedCase.requirement.hasOwnProperty('cip')){
            
@@ -55,7 +55,7 @@ export default class ManagedReportingAttributes extends Component {
     }
   
     render() {  
-        var componentClass = 
+        let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.mmb.managedReportingAttributes.complete){
