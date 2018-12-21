@@ -86,7 +86,13 @@ export default class NatureOfBusiness extends Component {
       }
 
     render() {  
-       
+        const { 
+            complete,
+            anyForeignParties,
+            raCorrectionRequired,
+            comments
+        } = this.props.case.requirement.proxyRR.relatedParties;
+
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
@@ -96,23 +102,23 @@ export default class NatureOfBusiness extends Component {
         return (
                     <div className={"proxyrr " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e, 'rp-complete')} checked={this.props.case.requirement.proxyRR.relatedParties.complete ? 'checked':''} />  Related Parties
+                            <input type="checkbox" onChange={(e) => this.updateForm(e, 'rp-complete')} checked={complete ? 'checked':''} />  Related Parties
                         </label>
                         <div className="form-group">
                             <label htmlFor="customerState">Are any of the entity's princapals, beneficial oweners, or gurantors permanent residents of a different country then whe the entity's products/service accunts are booked?</label>
-                            <select onChange={(e) => this.updateForm(e, 'rp-parties')} className="form-control" defaultValue={false} value={this.props.case.requirement.proxyRR.relatedParties.anyForeignParties}>
+                            <select onChange={(e) => this.updateForm(e, 'rp-parties')} className="form-control" defaultValue={false} value={anyForeignParties}>
                                 <option value={true} >Yes</option>
                                 <option value={false} >No</option>
                             </select>
                         </div>
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'rp-correction-required')} type="checkbox" checked={this.props.case.requirement.proxyRR.relatedParties.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'rp-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'rp-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.proxyRR.relatedParties.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'rp-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>               
         );

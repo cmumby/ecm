@@ -124,6 +124,14 @@ export default class NatureOfBusiness extends Component {
       }
   
     render() {  
+        const { complete, 
+                countries, 
+                raCorrectionRequired, 
+                comments
+        } = this.props.case.requirement.proxyRR.marketsServed;
+        
+        const { countriesDropdown } = this.state;
+                
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
@@ -134,20 +142,20 @@ export default class NatureOfBusiness extends Component {
 
                     <div className={"proxyrr " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e, 'ms-complete')} checked={this.props.case.requirement.proxyRR.marketsServed.complete ? 'checked':''} />  Markets Served
+                            <input type="checkbox" onChange={(e) => this.updateForm(e, 'ms-complete')} checked={complete ? 'checked':''} />  Markets Served
                         </label>
                         <div className="form-group">
                             <label htmlFor="markets-filter">Primary Markets Served</label>
-                            <Select className="requirement-filter" name="marketsFilter" onChange={(e) => this.updateForm(e, 'ms-filter')} options={this.state.countriesDropdown} isMulti  value={this.getSlectedMarkets(this.props.case.requirement.proxyRR.marketsServed.countries)} />
+                            <Select className="requirement-filter" name="marketsFilter" onChange={(e) => this.updateForm(e, 'ms-filter')} options={countriesDropdown} isMulti  value={this.getSlectedMarkets(countries)} />
                         </div>
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'ms-correction-required')} type="checkbox" checked={this.props.case.requirement.proxyRR.marketsServed.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'ms-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'ms-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.proxyRR.marketsServed.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'ms-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>               
         );

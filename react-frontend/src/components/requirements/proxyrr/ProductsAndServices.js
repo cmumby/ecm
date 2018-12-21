@@ -127,6 +127,19 @@ export default class NatureOfBusiness extends Component {
       }
 
     render() {  
+        const {
+            complete,
+            currentProducts,
+            userProducts,
+            raCorrectionRequired,
+            comments
+        } = this.props.case.requirement.proxyRR.productsAndServices;
+
+        const {
+            userProducstsDropdown,
+            currentProductsDropdown
+        } = this.state;
+
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
@@ -136,27 +149,26 @@ export default class NatureOfBusiness extends Component {
         return (
                     <div className={"proxyrr " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e, 'cp-complete')} checked={this.props.case.requirement.proxyRR.productsAndServices.complete ? 'checked':''} />  Products and Services
+                            <input type="checkbox" onChange={(e) => this.updateForm(e, 'cp-complete')} checked={complete ? 'checked':''} />  Products and Services
                         </label>
                         <div className="form-group">
                             <label htmlFor="productsFilter">Current Products</label>
-                            <Select className="requirement-filter" name="productsFilter" onChange={(e) => this.updateForm(e, 'cp-filter')} options={this.state.currentProductsDropdown} isMulti  value={this.getSlectedCurrentProducts(this.props.case.requirement.proxyRR.productsAndServices.currentProducts)} />
+                            <Select className="requirement-filter" name="productsFilter" onChange={(e) => this.updateForm(e, 'cp-filter')} options={currentProductsDropdown} isMulti  value={this.getSlectedCurrentProducts(currentProducts)} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="productsUserFilter">User Products and Services</label>
-                            <Select className="requirement-filter" name="productsUserFilter" onChange={(e) => this.updateForm(e, 'cp-user')} options={this.state.userProducstsDropdown} isMulti  value={this.getSlectedCurrentProducts(this.props.case.requirement.proxyRR.productsAndServices.userProducts)} />  
+                            <Select className="requirement-filter" name="productsUserFilter" onChange={(e) => this.updateForm(e, 'cp-user')} options={userProducstsDropdown} isMulti  value={this.getSlectedCurrentProducts(userProducts)} />  
                         </div>
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'cp-correction-required')} type="checkbox" checked={this.props.case.requirement.proxyRR.productsAndServices.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'cp-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'cp-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.proxyRR.productsAndServices.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'cp-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>               
         );
     }
 }
-

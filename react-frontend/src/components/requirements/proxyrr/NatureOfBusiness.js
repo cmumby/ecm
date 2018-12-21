@@ -105,7 +105,15 @@ export default class NatureOfBusiness extends Component {
     }
 
     render() {  
-       
+        const {
+            complete, 
+            naics, 
+            raCorrectionRequired, 
+            comments
+        } = this.props.case.requirement.proxyRR.natureOfBusiness;
+
+        const { codeList } = this.state;
+
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
@@ -115,32 +123,23 @@ export default class NatureOfBusiness extends Component {
         return (
                     <div className={"proxyrr " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e, 'nc-complete')} checked={this.props.case.requirement.proxyRR.natureOfBusiness.complete ? 'checked':''} />  Nature of Business
+                            <input type="checkbox" onChange={(e) => this.updateForm(e, 'nc-complete')} checked={complete ? 'checked':''} />  Nature of Business
                         </label>
                         <div className="form-group">
                             <label htmlFor="naics-filter">Nature of the Customer's Business / NAICS Code</label>
-                            <Select className="requirement-filter" name="naicsFilter" onChange={(e) => this.updateForm(e, 'nc-filter')} options={this.state.codeList}  value={{label: this.getNaicsTitle(this.props.case.requirement.proxyRR.natureOfBusiness.naics)} } />
+                            <Select className="requirement-filter" name="naicsFilter" onChange={(e) => this.updateForm(e, 'nc-filter')} options={codeList}  value={{label: this.getNaicsTitle(naics)} } />
                             
                         </div>
-                      { /* saving for possible future use
-                            <div className="form-group">
-                            <label>Nature of the Customer's Business / NAICS Code</label>
-                            <select name="naicsSelection" onChange={(e) => this.updateForm(e, 'nc-naics')} multiple={true}  className="form-control naics-form"  value={[this.props.case.requirement.proxyRR.natureOfBusiness.naics]}>
-                            {this.tabRow()}
-
-                             </select> 
-                        </div>*/ }
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'nc-correction-required')} type="checkbox" checked={this.props.case.requirement.proxyRR.natureOfBusiness.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'nc-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'nc-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.proxyRR.natureOfBusiness.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'nc-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>               
         );
     }
 }
-

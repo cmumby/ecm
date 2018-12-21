@@ -71,6 +71,13 @@ export default class LegalEntity extends Component {
   
 
     render() {  
+        const { 
+            complete, 
+            entityType, 
+            raCorrectionRequired, 
+            comments 
+        } = this.props.case.requirement.proxyRR.legalEntity;
+
         let entitySelections = this.entites;
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
@@ -82,11 +89,11 @@ export default class LegalEntity extends Component {
 
                     <div className={"proxyrr " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e, 'le-complete')} checked={this.props.case.requirement.proxyRR.legalEntity.complete ? 'checked':''} />  Legal Entity Type
+                            <input type="checkbox" onChange={(e) => this.updateForm(e, 'le-complete')} checked={complete ? 'checked':''} />  Legal Entity Type
                         </label>
                         <div className="form-group">
                             <label>What is the Legal Entity Type</label>
-                            <select onChange={(e) => this.updateForm(e, 'le-entity')} className="form-control" value={this.props.case.requirement.proxyRR.legalEntity.entityType}>
+                            <select onChange={(e) => this.updateForm(e, 'le-entity')} className="form-control" value={entityType}>
                                 <option value="0">Select the proper entity for this customer</option>
                             {entitySelections.map((state,index) =>
                                    
@@ -97,12 +104,12 @@ export default class LegalEntity extends Component {
                        
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'le-correction-required')} type="checkbox" checked={this.props.case.requirement.proxyRR.legalEntity.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'le-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'le-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.proxyRR.legalEntity.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'le-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>                
         );

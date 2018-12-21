@@ -91,6 +91,16 @@ export default class RegisteredAddress extends Component {
         
         let usStates = this.usStates;
         let countries = this.countries;
+        const { complete, 
+                firstLine, 
+                secondLine,
+                city, 
+                state, 
+                country, 
+                postalCode, 
+                raCorrectionRequired, 
+                comments } = this.props.case.requirement.proxyRR.registeredAddress;
+        
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
@@ -101,23 +111,23 @@ export default class RegisteredAddress extends Component {
         return (
                     <div className={"proxyrr " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'ra-complete')} checked={this.props.case.requirement.proxyRR.registeredAddress.complete ? 'checked':''} /> Registered / Residential Address
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'ra-complete')} checked={complete ? 'checked':''} /> Registered / Residential Address
                         </label>
                         <div className="form-group">
                             <label htmlFor="registeredAddress-firstLine">Address Line 1</label>
-                            <input onChange={(e) => this.updateForm(e,'ra-firsLine')} type="text" className="form-control" id="registeredAddress-firstLine" placeholder="No P.O Boxes" value={this.props.case.requirement.proxyRR.registeredAddress.firstLine} />
+                            <input onChange={(e) => this.updateForm(e,'ra-firsLine')} type="text" className="form-control" id="registeredAddress-firstLine" placeholder="No P.O Boxes" value={firstLine} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="registeredAddress-secondLine">Address Line 2</label>
-                            <input onChange={(e) => this.updateForm(e, 'ra-secondLine')} type="text" className="form-control" id="registeredAddress-secondLine" value={this.props.case.requirement.proxyRR.registeredAddress.secondLine}  />
+                            <input onChange={(e) => this.updateForm(e, 'ra-secondLine')} type="text" className="form-control" id="registeredAddress-secondLine" value={secondLine}  />
                         </div>
                         <div className="form-group">
                             <label htmlFor="city">City</label>
-                            <input onChange={(e) => this.updateForm(e, 'ra-city')}type="text" className="form-control" id="city" placeholder="Exactly As it is Written in Attached Document, Misspellings and all." value={this.props.case.requirement.proxyRR.registeredAddress.city} />
+                            <input onChange={(e) => this.updateForm(e, 'ra-city')}type="text" className="form-control" id="city" placeholder="Exactly As it is Written in Attached Document, Misspellings and all." value={city} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="customerState">State/Province</label>
-                            <select onChange={(e) => this.updateForm(e, 'ra-state')} id="customerState" className="form-control" value={this.props.case.requirement.proxyRR.registeredAddress.state}>
+                            <select onChange={(e) => this.updateForm(e, 'ra-state')} id="customerState" className="form-control" value={state}>
                                 <option value="0">Select a State</option>
                             {usStates.map((state,index) =>
                                    
@@ -127,7 +137,7 @@ export default class RegisteredAddress extends Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="country">Country</label>
-                            <select onChange={(e) => this.updateForm(e, 'ra-country')} id="customerState" className="form-control" value={this.props.case.requirement.proxyRR.registeredAddress.country} disabled>
+                            <select onChange={(e) => this.updateForm(e, 'ra-country')} id="customerState" className="form-control" value={country} disabled>
                                 <option value="0">Select a Country</option>
                                 {countries.map((country, index) =>
 
@@ -138,16 +148,16 @@ export default class RegisteredAddress extends Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="city">Postal Code</label>
-                            <input onChange={(e) => this.updateForm(e, 'ra-postalCode')} type="text" className="form-control" id="ra-postal-code" placeholder="For Best Practice, please only use the first 5 digits of the Postal Code" value={this.props.case.requirement.proxyRR.registeredAddress.postalCode} />
+                            <input onChange={(e) => this.updateForm(e, 'ra-postalCode')} type="text" className="form-control" id="ra-postal-code" placeholder="For Best Practice, please only use the first 5 digits of the Postal Code" value={postalCode} />
                         </div>
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'ra-correction-required')} type="checkbox" checked={this.props.case.requirement.proxyRR.registeredAddress.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'ra-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'ra-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.proxyRR.registeredAddress.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'ra-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>                
         );
