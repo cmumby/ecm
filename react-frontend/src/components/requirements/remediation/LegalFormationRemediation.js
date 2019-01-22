@@ -70,6 +70,13 @@ export default class LegalFormationRemediation extends Component {
     }
   
     render() {  
+
+        const{
+            complete,
+            stateOfRegistration,
+            raCorrectionRequired, 
+            comments
+        } = this.props.case.requirement.remediation.legalFormation;
         
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
@@ -81,12 +88,12 @@ export default class LegalFormationRemediation extends Component {
         return (
                     <div className={"remediation " + componentClass}>
                         <label>
-                            <input onChange={(e) => this.updateForm(e, 'lfs-complete')} type="checkbox" checked={this.props.case.requirement.remediation.legalFormation.complete ? 'checked':''} />  Legal Formation
+                            <input onChange={(e) => this.updateForm(e, 'lfs-complete')} type="checkbox" checked={complete ? 'checked':''} />  Legal Formation
                         </label>
                         <div className="form-group">
                             <label htmlFor="city">State of Registration</label>
                     
-                            <select onChange={(e) => this.updateForm(e, 'lfs-state-registration')} id="customerState" className="form-control" value={this.props.case.requirement.remediation.legalFormation.stateOfRegistration}>
+                            <select onChange={(e) => this.updateForm(e, 'lfs-state-registration')} id="customerState" className="form-control" value={stateOfRegistration}>
                                 <option value="0">Select a State</option>
                                 {usStates.map((state, index) =>
 
@@ -97,12 +104,12 @@ export default class LegalFormationRemediation extends Component {
                        
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'lfs-correction-required')} type="checkbox" checked={this.props.case.requirement.remediation.legalFormation.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'lfs-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'lfs-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.legalFormation.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'lfs-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>               
         );

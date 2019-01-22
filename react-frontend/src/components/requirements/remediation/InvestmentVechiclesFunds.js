@@ -69,7 +69,15 @@ export default class InvestmentVechiclesFunds extends Component {
         }  
     }
   
-    render() {  
+    render() { 
+        const {
+                 complete,
+                 isInvestment,
+                 relatedEntityFunds,
+                 secRiaNumber,
+                 raCorrectionRequired,
+                 comments
+              } = this.props.case.requirement.remediation.investmentVechiclesFunds;
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
@@ -80,18 +88,18 @@ export default class InvestmentVechiclesFunds extends Component {
         return (
                     <div className={"remediation " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'vf-complete')} checked={this.props.case.requirement.remediation.investmentVechiclesFunds.complete ? 'checked':''} /> Investment Vechicles / Funds
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'vf-complete')} checked={complete ? 'checked':''} /> Investment Vechicles / Funds
                         </label>
                         <div className="form-group">
                             <label htmlFor="investmentAdvisor">Is the customer an Investment Advisor/Manager?</label>
-                            <select onChange={(e) => this.updateForm(e, 'vf-advisor')} id="investmentAdvisor" className="form-control" value={this.props.case.requirement.remediation.investmentVechiclesFunds.isInvestment}>
+                            <select onChange={(e) => this.updateForm(e, 'vf-advisor')} id="investmentAdvisor" className="form-control" value={isInvestment}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
                         </div>
                         <div className="form-group">
                             <label>Does the Investment Advisor have any related entity funds?</label>
-                            <select onChange={(e) => this.updateForm(e, 'vf-related-funds')} className="form-control" value={this.props.case.requirement.remediation.investmentVechiclesFunds.relatedEntityFunds}>
+                            <select onChange={(e) => this.updateForm(e, 'vf-related-funds')} className="form-control" value={relatedEntityFunds}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
@@ -99,17 +107,17 @@ export default class InvestmentVechiclesFunds extends Component {
                         <div className="form-group">
                             <p>When remediating a fund, the Investment Manager / Advisor is deemed to be the customer. The funds are not the customers but the underlying accounts:</p>
                             <label htmlFor="secRiaNumber">SEC RIA Number</label>
-                            <input name="secRiaNumber" onChange={(e) => this.updateForm(e,'vf-sec-ria')} type="text" className="form-control"   value={this.props.case.requirement.remediation.investmentVechiclesFunds.secRiaNumber} />
+                            <input name="secRiaNumber" onChange={(e) => this.updateForm(e,'vf-sec-ria')} type="text" className="form-control"   value={secRiaNumber} />
                         </div>
                         
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'vf-correction-required')} type="checkbox" checked={this.props.case.requirement.remediation.investmentVechiclesFunds.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'vf-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'vf-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.investmentVechiclesFunds.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'vf-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>               
         );

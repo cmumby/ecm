@@ -66,7 +66,15 @@ export default class AccountRelationship extends Component {
         }
     }
   
-    render() {  
+    render() {
+        const{
+            complete,
+            accountPurpose,
+            accountType,
+            raCorrectionRequired, 
+            comments
+        } = this.props.case.requirement.remediation.accountRelationship;
+ 
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
@@ -77,18 +85,18 @@ export default class AccountRelationship extends Component {
         return (
                     <div className={"remediation " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'ar-complete')} checked={this.props.case.requirement.remediation.accountRelationship.complete ? 'checked':''} /> Account Relationship
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'ar-complete')} checked={complete ? 'checked':''} /> Account Relationship
                         </label>
                         <div className="form-group">
                             <label htmlFor="accountPurpose">Nature and Purpose of the Account</label>
-                            <select onChange={(e) => this.updateForm(e, 'ar-purpose')} id="accountPurpose" className="form-control" value={this.props.case.requirement.remediation.accountRelationship.accountPurpose}>
+                            <select onChange={(e) => this.updateForm(e, 'ar-purpose')} id="accountPurpose" className="form-control" value={accountPurpose}>
                                 <option value="Financing (Lending)">Financing (Lending)</option>
                                 <option value="Treasury" >Treasury</option>
                             </select>
                         </div>
                         <div className="form-group">
                             <label htmlFor="accountRelationshp">Account Relationship Type</label>
-                            <select onChange={(e) => this.updateForm(e, 'ar-relationship-type')} id="accountRelationshp" className="form-control" value={this.props.case.requirement.remediation.accountRelationship.accountType}>
+                            <select onChange={(e) => this.updateForm(e, 'ar-relationship-type')} id="accountRelationshp" className="form-control" value={accountType}>
                                 <option value="Borrower/Account Holder">Borrower/Account Holder</option>
                                 <option value="Other" >Other</option>
                             </select>
@@ -96,12 +104,12 @@ export default class AccountRelationship extends Component {
                         
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'ar-correction-required')} type="checkbox" checked={this.props.case.requirement.remediation.accountRelationship.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'ar-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'ar-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.accountRelationship.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'ar-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>               
         );

@@ -65,6 +65,13 @@ export default class CustomerDetails extends Component {
     }
   
     render() {  
+        const{
+            complete,
+            organizationType,
+            raCorrectionRequired, 
+            comments
+        } = this.props.case.requirement.remediation.customerDetails;
+
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
@@ -75,28 +82,27 @@ export default class CustomerDetails extends Component {
         return (
                     <div className={"remediation " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'cd-complete')} checked={this.props.case.requirement.remediation.customerDetails.complete ? 'checked':''} /> Customer Details (Entity)
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'cd-complete')} checked={complete ? 'checked':''} /> Customer Details (Entity)
                         </label>
                         <div className="form-group">
                             <label htmlFor="orgType">Organization Type / Sub Type of the Customer</label>
-                            <select onChange={(e) => this.updateForm(e, 'cd-orgtype')} id="orgType" className="form-control" value={this.props.case.requirement.remediation.customerDetails.organizationType}>
+                            <select onChange={(e) => this.updateForm(e, 'cd-orgtype')} id="orgType" className="form-control" value={organizationType}>
                                 <option value="Limited Liability Company and Corporations ~ Corporation">Limited Liability Company and Corporations ~ Corporation</option>
                                 <option value="Limited Liability Company and Corporations ~ LLC" >Limited Liability Company and Corporations ~ LLC</option>
                                 <option value="Limited Liability Partnership and Limited Partnership ~ LLP">Limited Liability Partnership and Limited Partnership ~ LLP</option>
                                 <option value="Limited Liability Partnership and Limited Partnership ~ LP">Limited Liability Partnership and Limited Partnership ~ LP</option>
                                 <option value="Non Profit Originizatiions ~ Charity">Non Profit Originizatiions ~ Charity</option>
-
                             </select>
                         </div>
             
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'cd-correction-required')} type="checkbox" checked={this.props.case.requirement.remediation.customerDetails.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'cd-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'cd-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.customerDetails.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'cd-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>               
         );
