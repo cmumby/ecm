@@ -77,35 +77,46 @@ export default class CustomerName extends Component {
   
 
     render() {  
+        const {
+            complete,
+            legalName,
+            dbaName,
+            raCorrectionRequired,
+            comments
+
+        } = this.props.case.requirement.cip.customerName;
+        
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
         if(this.props.case.requirement.cip.customerName.complete){
             componentClass += " complete";
         }
+
+        
         
         return (
                     <div className={"cip " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'cn-complete')} checked={this.props.case.requirement.cip.customerName.complete ? 'checked':''} /> Customer Name (Entity)
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'cn-complete')} checked={complete ? 'checked':''} /> Customer Name (Entity)
                         </label>
                         <div className="form-group">
                             <label htmlFor="Legal-Name">Customer Legal Name</label>
-                            <input name="Legal-Name" onChange={(e) => this.updateForm(e,'cn-legalName')} type="text" className="form-control"  placeholder="Exactly As it is Written on the Supporting Documentaion" value={this.props.case.requirement.cip.customerName.legalName} />
+                            <input name="Legal-Name" onChange={(e) => this.updateForm(e,'cn-legalName')} type="text" className="form-control"  placeholder="Exactly As it is Written on the Supporting Documentaion" value={legalName} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="dba-name">DBA Name</label>
-                            <input name="dba-name" onChange={(e) => this.updateForm(e, 'cn-dbaName')} type="text" className="form-control"  placeholder="Doing Business As Name from offical supporting documentaion"  value={this.props.case.requirement.cip.customerName.dbaName}  />
+                            <input name="dba-name" onChange={(e) => this.updateForm(e, 'cn-dbaName')} type="text" className="form-control"  placeholder="Doing Business As Name from offical supporting documentaion"  value={dbaName}  />
                         </div>
                        
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'cn-correction-required')} type="checkbox" checked={this.props.case.requirement.cip.customerName.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'cn-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'cn-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.cip.customerName.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'cn-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>               
         );
