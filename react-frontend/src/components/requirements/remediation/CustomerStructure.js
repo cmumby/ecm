@@ -65,22 +65,28 @@ export default class CustomerStructure extends Component {
     }
   
     render() {  
+        const{
+            complete,
+            isPubliclyTraded,
+            raCorrectionRequired, 
+            comments
+        } = this.props.case.requirement.remediation.customerStructure;
         
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
-        if(this.props.case.requirement.remediation.customerStructure.complete){
+        if(complete){
             componentClass += " complete";
         }
 
         return (
                     <div className={"remediation " + componentClass}>
                         <label>
-                            <input onChange={(e) => this.updateForm(e, 'cs-complete')} type="checkbox" checked={this.props.case.requirement.remediation.customerStructure.complete ? 'checked':''} />  Customer Structure
+                            <input onChange={(e) => this.updateForm(e, 'cs-complete')} type="checkbox" checked={complete ? 'checked':''} />  Customer Structure
                         </label>
                         <div className="form-group">
                             <label>Is the customer a publicly traded company?</label>
-                            <select onChange={(e) => this.updateForm(e, 'cs-public')} className="form-control" value={this.props.case.requirement.remediation.customerStructure.isPubliclyTraded}>
+                            <select onChange={(e) => this.updateForm(e, 'cs-public')} className="form-control" value={isPubliclyTraded}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
@@ -88,12 +94,12 @@ export default class CustomerStructure extends Component {
                        
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'cs-correction-required')} type="checkbox" checked={this.props.case.requirement.remediation.customerStructure.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'cs-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'cs-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.customerStructure.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'cs-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>               
         );

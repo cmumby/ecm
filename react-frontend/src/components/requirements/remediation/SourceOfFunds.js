@@ -63,32 +63,39 @@ export default class SourceOfFunds extends Component {
         
     }
   
-    render() {  
+    render() {
+        const{
+            complete,
+            wealthSource,
+            raCorrectionRequired, 
+            comments
+        } = this.props.case.requirement.remediation.sourceOfFunds;
+
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
-        if(this.props.case.requirement.remediation.sourceOfFunds.complete){
+        if(complete){
             componentClass += " complete";
         }
         
         return (
                     <div className={"remediation " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'sf-complete')} checked={this.props.case.requirement.remediation.sourceOfFunds.complete ? 'checked':''} /> Source of Funds
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'sf-complete')} checked={complete ? 'checked':''} /> Source of Funds
                         </label>
                         <div className="form-group">
                             <label>Source of Funds of the Initial Deposit</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'sf-description')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.sourceOfFunds.wealthSource}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'sf-description')} className="form-control" rows="3" placeholder="" value={wealthSource}></textarea>
                         </div>
             
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'sf-correction-required')} type="checkbox" checked={this.props.case.requirement.remediation.sourceOfFunds.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'sf-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'sf-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.sourceOfFunds.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'sf-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>               
         );

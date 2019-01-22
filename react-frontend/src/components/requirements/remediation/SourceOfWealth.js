@@ -62,22 +62,29 @@ export default class SourceOfWealth extends Component {
         }
     }
   
-    render() {  
+    render() {
+        const{
+            complete,
+            wealthSource,
+            raCorrectionRequired, 
+            comments
+        } = this.props.case.requirement.remediation.sourceOfWealth;
+
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
-        if(this.props.case.requirement.remediation.sourceOfWealth.complete){
+        if(complete){
             componentClass += " complete";
         }
         
         return (
                     <div className={"remediation " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'sw-complete')} checked={this.props.case.requirement.remediation.sourceOfWealth.complete ? 'checked':''} /> Source of Wealth (Entity)
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'sw-complete')} checked={complete ? 'checked':''} /> Source of Wealth (Entity)
                         </label>
                         <div className="form-group">
                             <label htmlFor="orgType">Organization Type / Sub Type of the Customer</label>
-                            <select onChange={(e) => this.updateForm(e, 'sw-source')} id="orgType" className="form-control" value={this.props.case.requirement.remediation.sourceOfWealth.wealthSource}>
+                            <select onChange={(e) => this.updateForm(e, 'sw-source')} id="orgType" className="form-control" value={wealthSource}>
                                 <option value="Operating Revenue">Operating Revenue</option>
                                 <option value="Other" >Other</option>
                             </select>
@@ -85,12 +92,12 @@ export default class SourceOfWealth extends Component {
             
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'sw-correction-required')} type="checkbox" checked={this.props.case.requirement.remediation.sourceOfWealth.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'sw-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'sw-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.sourceOfWealth.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'sw-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>               
         );

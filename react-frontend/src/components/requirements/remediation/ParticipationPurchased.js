@@ -64,22 +64,29 @@ export default class ParticipationPurchased extends Component {
         
     }
   
-    render() {  
+    render() {
+        const{
+            complete,
+            isPurchased,
+            raCorrectionRequired, 
+            comments
+        } = this.props.case.requirement.remediation.participationPurchased;
+
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
-        if(this.props.case.requirement.remediation.participationPurchased.complete){
+        if(complete){
             componentClass += " complete";
         }
         
         return (
                     <div className={"remediation " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'pp-complete')} checked={this.props.case.requirement.remediation.participationPurchased.complete ? 'checked':''} /> Participation Purchased
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'pp-complete')} checked={complete ? 'checked':''} /> Participation Purchased
                         </label>
                         <div className="form-group">
                             <label htmlFor="participationPurchased">Participation Purchased</label>
-                            <select onChange={(e) => this.updateForm(e, 'pp-purchased')} id="participationPurchased" className="form-control" value={this.props.case.requirement.remediation.participationPurchased.isPurchased}>
+                            <select onChange={(e) => this.updateForm(e, 'pp-purchased')} id="participationPurchased" className="form-control" value={isPurchased}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
@@ -88,12 +95,12 @@ export default class ParticipationPurchased extends Component {
                         
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'pp-correction-required')} type="checkbox" checked={this.props.case.requirement.remediation.participationPurchased.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'pp-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'pp-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.participationPurchased.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'pp-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>               
             

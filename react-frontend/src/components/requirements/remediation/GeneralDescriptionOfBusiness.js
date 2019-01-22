@@ -62,32 +62,39 @@ export default class GeneralDescriptionOfBusiness extends Component {
         }  
     }
 
-    render() {  
+    render() {
+        const{
+            complete,
+            description,
+            raCorrectionRequired, 
+            comments
+        } = this.props.case.requirement.remediation.generalDescriptionOfBusiness;
+
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
-        if(this.props.case.requirement.remediation.generalDescriptionOfBusiness.complete){
+        if(complete){
             componentClass += " complete";
         }
         
         return (
                     <div className={"remediation " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'db-complete')} checked={this.props.case.requirement.remediation.generalDescriptionOfBusiness.complete ? 'checked':''} /> General Description of the Customers Business
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'db-complete')} checked={complete ? 'checked':''} /> General Description of the Customers Business
                         </label>
                         <div className="form-group">
                             <label>General Description of the Customers Business</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'db-description')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.generalDescriptionOfBusiness.description}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'db-description')} className="form-control" rows="3" placeholder="" value={description}></textarea>
                         </div>
             
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'db-correction-required')} type="checkbox" checked={this.props.case.requirement.remediation.generalDescriptionOfBusiness.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'db-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'db-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.generalDescriptionOfBusiness.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'db-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>                
         );
