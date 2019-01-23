@@ -54,21 +54,26 @@ export default class Submitter extends Component {
         }
     }
   
-    render() {  
+    render() {
+        const{
+            complete,
+            rm,
+        } = this.props.case.requirement.remediation.submitter;
+
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
-        if(this.props.case.requirement.remediation.submitter.complete){
+        if(complete){
             componentClass += " complete";
         }
         
         return (
                     <div className={"remediation " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'s-complete')} checked={this.props.case.requirement.remediation.submitter.complete ? 'checked':''} /> Submitter
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'s-complete')} checked={complete ? 'checked':''} /> Submitter
                         </label>
                         <div className="fos-group">
-                            <p>Submitter: {this.props.case.requirement.remediation.submitter.rm} </p>
+                            <p>Submitter: {rm} </p>
                         </div>
                     </div>               
         );

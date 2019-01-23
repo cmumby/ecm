@@ -62,7 +62,12 @@ export default class CddiTaskRequest extends Component {
         }  
     }
   
-    render() {  
+    render() {
+        const{
+            complete,
+            taskRequest,
+        } = this.props.case.requirement.screening.cddiTaskRequest;
+
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
@@ -73,12 +78,12 @@ export default class CddiTaskRequest extends Component {
         return (
                     <div className={"screening " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'cddi-complete')} checked={this.props.case.requirement.screening.cddiTaskRequest.complete ? 'checked':''} /> CDDI Task Request
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'cddi-complete')} checked={complete ? 'checked':''} /> CDDI Task Request
                         </label>
                         
                         <div className="form-group">
                             <label>CDDI Task Request (Customer)</label>
-                            <select onChange={(e) => this.updateForm(e, 'cddi-taskRequest')}  className="form-control" value={this.props.case.requirement.screening.cddiTaskRequest.taskRequest}>
+                            <select onChange={(e) => this.updateForm(e, 'cddi-taskRequest')}  className="form-control" value={taskRequest}>
                                 <option value="None">None</option>
                                 <option value="Screening" >Screening</option>
                                 <option value="Verification" >Verification</option>
