@@ -60,32 +60,40 @@ export default class RelationshipManager extends Component {
     }
   
 
-    render() {  
+    render() {
+        const{
+            complete,
+            rm,
+            om,
+            raCorrectionRequired, 
+            comments
+        } = this.props.case.requirement.remediation.relationshipManager; 
+         
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
-        if(this.props.case.requirement.remediation.relationshipManager.complete){
+        if(complete){
             componentClass += " complete";
         }
         
         return (
                     <div className={"remediation " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'rm-complete')} checked={this.props.case.requirement.remediation.relationshipManager.complete ? 'checked':''} /> Relationship Manager
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'rm-complete')} checked={complete ? 'checked':''} /> Relationship Manager
                         </label>
                         <div className="form-group">
-                            <p>Relationship Manager: {this.props.case.requirement.remediation.relationshipManager.rm} </p>
-                            <p>Office Manager: {this.props.case.requirement.remediation.relationshipManager.om} </p>
+                            <p>Relationship Manager: {rm} </p>
+                            <p>Office Manager: {om} </p>
                         </div>
                         
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'rm-correction-required')} type="checkbox" checked={this.props.case.requirement.remediation.relationshipManager.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'rm-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'rm-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.relationshipManager.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'rm-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>               
         );

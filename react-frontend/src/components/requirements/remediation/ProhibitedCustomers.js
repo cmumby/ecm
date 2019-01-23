@@ -91,86 +91,102 @@ export default class ProhibitedCustomers extends Component {
     }
   
 
-    render() {  
+    render() {
+        const{
+            complete,
+            isMarijunaDistributor,
+            customerHasWarrents,
+            isNonUsMexicanCdc,
+            isUsOwnsMexicanCdc,
+            isShellBank,
+            isVirtualCurrencyExchange,
+            isThroughAccount,
+            isThirdPartyCheckCasher,
+            isPuipidTransactor,
+            isInternationalCurrencyShipper,
+            raCorrectionRequired,
+            comments
+        } = this.props.case.requirement.remediation.prohibitedCustomers;
+
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
-        if(this.props.case.requirement.remediation.prohibitedCustomers.complete){
+        if(complete){
             componentClass += " complete";
         }
         
         return (
                     <div className={"remediation " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'pc-complete')} checked={this.props.case.requirement.remediation.prohibitedCustomers.complete ? 'checked':''} /> Prohibited Customers
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'pc-complete')} checked={complete ? 'checked':''} /> Prohibited Customers
                         </label>
                         
                         <div className="form-group">
                             <label htmlFor="pcMd">Does the customer or any of it's related parties engage in Marijuna dispenseries including producers or distributors (Medical and Recreational)?</label>
-                            <select onChange={(e) => this.updateForm(e, 'pc-md')} id="pcMd" className="form-control" value={this.props.case.requirement.remediation.prohibitedCustomers.isMarijunaDistributor}>
+                            <select onChange={(e) => this.updateForm(e, 'pc-md')} id="pcMd" className="form-control" value={isMarijunaDistributor}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
                         </div>
                         <div className="form-group">
                             <label htmlFor="customerHasWarrents">Does the customer or any of it's related parties include ownership currently evidenced by, or with the ability to issue ownership shares in bearer form or bearer warrents?</label>
-                            <select onChange={(e) => this.updateForm(e, 'pc-customerHasWarrents')} id="customerHasWarrents" className="form-control" value={this.props.case.requirement.remediation.prohibitedCustomers.customerHasWarrents}>
+                            <select onChange={(e) => this.updateForm(e, 'pc-customerHasWarrents')} id="customerHasWarrents" className="form-control" value={customerHasWarrents}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
                         </div>
                         <div className="form-group">
                             <label htmlFor="isNonUsMexicanCdc">Is the customer or any of it's related parties a non US MSB or Mexican CDC?</label>
-                            <select onChange={(e) => this.updateForm(e, 'pc-isNonUsMexicanCdc')} id="isNonUsMexicanCdc" className="form-control" value={this.props.case.requirement.remediation.prohibitedCustomers.isNonUsMexicanCdc}>
+                            <select onChange={(e) => this.updateForm(e, 'pc-isNonUsMexicanCdc')} id="isNonUsMexicanCdc" className="form-control" value={isNonUsMexicanCdc}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
                         </div>
                         <div className="form-group">
                             <label htmlFor="isUsOwnsMexicanCdc">Is the customer or any of it's related parties a US MSB that includes 25% or more ownership by Mexican CDC's</label>
-                            <select onChange={(e) => this.updateForm(e, 'pc-isUsOwnsMexicanCdc')} id="isUsOwnsMexicanCdc" className="form-control" value={this.props.case.requirement.remediation.prohibitedCustomers.isUsOwnsMexicanCdc}>
+                            <select onChange={(e) => this.updateForm(e, 'pc-isUsOwnsMexicanCdc')} id="isUsOwnsMexicanCdc" className="form-control" value={isUsOwnsMexicanCdc}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
                         </div>
                         <div className="form-group">
                             <label htmlFor="isShellBank">Is the customer or any of it's related parties a non US shell bank?</label>
-                            <select onChange={(e) => this.updateForm(e, 'pc-isShellBank')} id="isShellBank" className="form-control" value={this.props.case.requirement.remediation.prohibitedCustomers.isShellBank}>
+                            <select onChange={(e) => this.updateForm(e, 'pc-isShellBank')} id="isShellBank" className="form-control" value={isShellBank}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
                         </div>
                         <div className="form-group">
                             <label htmlFor="isVirtualCurrencyExchange">Is the Customer or any of its related parties a Virtual Currency Exchanger?</label>
-                            <select onChange={(e) => this.updateForm(e, 'pc-isVirtualCurrencyExchange')} id="isVirtualCurrencyExchange" className="form-control" value={this.props.case.requirement.remediation.prohibitedCustomers.isVirtualCurrencyExchange}>
+                            <select onChange={(e) => this.updateForm(e, 'pc-isVirtualCurrencyExchange')} id="isVirtualCurrencyExchange" className="form-control" value={isVirtualCurrencyExchange}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
                         </div>
                         <div className="form-group">
                             <label htmlFor="isThroughAccount">Does the customer or any of its related parties intend to engange in payable through accounts with the bank?</label>
-                            <select onChange={(e) => this.updateForm(e, 'pc-isThroughAccount')} id="isThroughAccount" className="form-control" value={this.props.case.requirement.remediation.prohibitedCustomers.isThroughAccount}>
+                            <select onChange={(e) => this.updateForm(e, 'pc-isThroughAccount')} id="isThroughAccount" className="form-control" value={isThroughAccount}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
                         </div>
                         <div className="form-group">
                             <label htmlFor="isThirdPartyCheckCasher">Does the customer or any of its related parties intend to engange in third party cheack clearing with the bank?</label>
-                            <select onChange={(e) => this.updateForm(e, 'pc-isThirdPartyCheckCasher')} id="isThirdPartyCheckCasher" className="form-control" value={this.props.case.requirement.remediation.prohibitedCustomers.isThirdPartyCheckCasher}>
+                            <select onChange={(e) => this.updateForm(e, 'pc-isThirdPartyCheckCasher')} id="isThirdPartyCheckCasher" className="form-control" value={isThirdPartyCheckCasher}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
                         </div>
                         <div className="form-group">
                             <label htmlFor="isPuipidTransactor">Does the customer or any of its related parties intend to engange in Inbound Payable Upon Proper Identification (PUPID) Transactions?</label>
-                            <select onChange={(e) => this.updateForm(e, 'pc-isPuipidTransactor')} id="isPuipidTransactor" className="form-control" value={this.props.case.requirement.remediation.prohibitedCustomers.isPuipidTransactor}>
+                            <select onChange={(e) => this.updateForm(e, 'pc-isPuipidTransactor')} id="isPuipidTransactor" className="form-control" value={isPuipidTransactor}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
                         </div>
                         <div className="form-group">
                             <label htmlFor="isInternationalCurrencyShipper">International bulk shipments of currency (bulk cash services)</label>
-                            <select onChange={(e) => this.updateForm(e, 'pc-isInternationalCurrencyShipper')} id="isInternationalCurrencyShipper" className="form-control" value={this.props.case.requirement.remediation.prohibitedCustomers.isInternationalCurrencyShipper}>
+                            <select onChange={(e) => this.updateForm(e, 'pc-isInternationalCurrencyShipper')} id="isInternationalCurrencyShipper" className="form-control" value={isInternationalCurrencyShipper}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
@@ -179,12 +195,12 @@ export default class ProhibitedCustomers extends Component {
                         
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'pc-correction-required')} type="checkbox" checked={this.props.case.requirement.remediation.prohibitedCustomers.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'pc-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'pc-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.prohibitedCustomers.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'pc-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>               
         );

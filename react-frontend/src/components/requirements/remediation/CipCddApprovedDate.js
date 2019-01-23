@@ -62,31 +62,38 @@ export default class CipCddApprovedDate extends Component {
         
     }
 
-    render() {  
+    render() {
+        const{
+            complete,
+            date,
+            raCorrectionRequired, 
+            comments
+        } = this.props.case.requirement.remediation.cipCddApprovedDate; 
+          
         var componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
-        if(this.props.case.requirement.remediation.cipCddApprovedDate.complete){
+        if(complete){
             componentClass += " complete";
         }
         
         return (
                     <div className={"remediation " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'rm-complete')} checked={this.props.case.requirement.remediation.cipCddApprovedDate.complete ? 'checked':''} /> CIP/CDD Approved Date
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'rm-complete')} checked={complete ? 'checked':''} /> CIP/CDD Approved Date
                         </label>
                         <div className="form-group">
-                            <p>CIP/CDD Approved Date: {this.props.case.requirement.remediation.cipCddApprovedDate.date} </p>
+                            <p>CIP/CDD Approved Date: {date} </p>
                         </div>
                         
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'rm-correction-required')} type="checkbox" checked={this.props.case.requirement.remediation.cipCddApprovedDate.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'rm-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'rm-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.remediation.cipCddApprovedDate.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'rm-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>               
         );
