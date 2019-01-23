@@ -68,22 +68,31 @@ export default class RequiredDocuments extends Component {
         } 
     }
   
-    render() {  
+    render() {
+        const{
+            complete,
+            formationDocuments,
+            evidenceOfFiling,
+            signedBoForm,
+            raCorrectionRequired,
+            comments
+        } = this.props.case.requirement.documentation.requiredDocuments;
+
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
-        if(this.props.case.requirement.remediation.internetGambling.complete){
+        if(complete){
             componentClass += " complete";
         }
         
         return (
                     <div className={"documentation " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'rd-complete')} checked={this.props.case.requirement.documentation.requiredDocuments.complete ? 'checked':''} /> Documentation
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'rd-complete')} checked={complete ? 'checked':''} /> Documentation
                         </label>
                         <div className="form-group">
                             <label>Formation Document or Evidence of Filing (Certificate of Good Standing, Certificate of Formation, Articles of Incorporation or equivalent evidence of filing)</label>
-                            <select onChange={(e) => this.updateForm(e, 'rd-formationDocuments')}  className="form-control" value={this.props.case.requirement.documentation.requiredDocuments.formationDocuments}>
+                            <select onChange={(e) => this.updateForm(e, 'rd-formationDocuments')}  className="form-control" value={formationDocuments}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
@@ -91,7 +100,7 @@ export default class RequiredDocuments extends Component {
                         
                         <div className="form-group">
                             <label>Formation Document or Evidence of Filing (Memorandum and Articles of Incorporation, Operating Agreement, LLC Agreement or equivalent evidence of filing)</label>
-                            <select onChange={(e) => this.updateForm(e, 'rd-evidenceOfFiling')} id="internetGambling" className="form-control" value={this.props.case.requirement.documentation.requiredDocuments.evidenceOfFiling}>
+                            <select onChange={(e) => this.updateForm(e, 'rd-evidenceOfFiling')} id="internetGambling" className="form-control" value={evidenceOfFiling}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
@@ -99,7 +108,7 @@ export default class RequiredDocuments extends Component {
 
                         <div className="form-group">
                             <label>Signed Beneficial Ownership Form (including an individual with significant responsiblity to control, manage, or direct a legal entity customer, including an executive officer or senior manger)</label>
-                            <select onChange={(e) => this.updateForm(e, 'rd-signedBoForm')} className="form-control" value={this.props.case.requirement.documentation.requiredDocuments.signedBoForm}>
+                            <select onChange={(e) => this.updateForm(e, 'rd-signedBoForm')} className="form-control" value={signedBoForm}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
@@ -107,12 +116,12 @@ export default class RequiredDocuments extends Component {
                         
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'rd-correction-required')} type="checkbox" checked={this.props.case.requirement.documentation.requiredDocuments.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'rd-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'rd-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.documentation.requiredDocuments.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'rd-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>               
         );
