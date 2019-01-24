@@ -70,22 +70,31 @@ export default class Edd extends Component {
     }
   
 
-    render() { 
+    render() {
+        const {
+            complete,
+            eddRequired,
+            addTracking,
+            rationale,
+            raCorrectionRequired,
+            comments
+        } = this.props.case.requirement.hraEdd.edd;
+ 
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
-        if(this.props.case.requirement.hraEdd.edd.complete){
+        if(complete){
             componentClass += " complete";
         }
         
         return (
                     <div className={"hraedd " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'edd-complete')} checked={this.props.case.requirement.hraEdd.edd.complete ? 'checked':''} /> HRA EDD Determination
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'edd-complete')} checked={complete ? 'checked':''} /> HRA EDD Determination
                         </label>
                         <div className="form-group">
                             <label>Is EDD required?</label>
-                            <select onChange={(e) => this.updateForm(e, 'edd-eddRequired')}  className="form-control" value={this.props.case.requirement.hraEdd.edd.eddRequired}>
+                            <select onChange={(e) => this.updateForm(e, 'edd-eddRequired')}  className="form-control" value={eddRequired}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
@@ -93,7 +102,7 @@ export default class Edd extends Component {
                         
                         <div className="form-group">
                             <label>Do you want to add HRA Form Tracking Details</label>
-                            <select onChange={(e) => this.updateForm(e, 'edd-addTracking')}  className="form-control" value={this.props.case.requirement.hraEdd.edd.addTracking}>
+                            <select onChange={(e) => this.updateForm(e, 'edd-addTracking')}  className="form-control" value={addTracking}>
                             <option value="na">&nbsp;</option>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
@@ -101,17 +110,17 @@ export default class Edd extends Component {
                         </div>
                         <div className="form-group">
                             <label>EDD Determination rationale</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'edd-rationale')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.hraEdd.edd.rationale}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'edd-rationale')} className="form-control" rows="3" placeholder="" value={rationale}></textarea>
                         </div>
 
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'edd-correction-required')} type="checkbox" checked={this.props.case.requirement.hraEdd.edd.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'edd-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'edd-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.hraEdd.edd.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'edd-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>               
         );
