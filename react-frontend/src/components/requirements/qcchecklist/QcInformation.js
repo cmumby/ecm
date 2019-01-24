@@ -76,35 +76,45 @@ export default class QcInformation extends Component {
         }
     }
   
-    render() {  
+    render() {
+        const {
+            complete,
+            qcName,
+            dateReceived,
+            firstReview,
+            secondReview,
+            raCorrectionRequired,
+            comments
+        } = this.props.case.requirement.qcChecklist.qcInformation;
+
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
-        if(this.props.case.requirement.qcChecklist.qcInformation.complete){
+        if(complete){
             componentClass += " complete";
         }
         
         return (
                     <div className={"qc-checklist " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'qci-complete')} checked={this.props.case.requirement.qcChecklist.qcInformation.complete ? 'checked':''} /> QC Information
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'qci-complete')} checked={complete ? 'checked':''} /> QC Information
                         </label>
                         <div className="form-group">
                             <label htmlFor="Legal-Name">QC Name</label>
-                            <input name="Legal-Name" onChange={(e) => this.updateForm(e,'qci-qcName')} type="text" className="form-control"  placeholder="Exactly As it is Written on the Supporting Documentaion" value={this.props.case.requirement.qcChecklist.qcInformation.qcName} />
+                            <input name="Legal-Name" onChange={(e) => this.updateForm(e,'qci-qcName')} type="text" className="form-control"  placeholder="Exactly As it is Written on the Supporting Documentaion" value={qcName} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="dba-name">Date Received</label>
-                            <input name="dba-name" onChange={(e) => this.updateForm(e, 'qci-dateReceived')} type="text" className="form-control"  placeholder="Doing Business As Name from offical supporting documentaion"  value={this.props.case.requirement.qcChecklist.qcInformation.dateReceived}  />
+                            <input name="dba-name" onChange={(e) => this.updateForm(e, 'qci-dateReceived')} type="text" className="form-control"  placeholder="Doing Business As Name from offical supporting documentaion"  value={dateReceived}  />
                         </div>
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'qci-firstReview')} type="checkbox" checked={this.props.case.requirement.qcChecklist.qcInformation.firstReview ?'checked':''} /> First Review
+                                <input onChange={(e) => this.updateForm(e, 'qci-firstReview')} type="checkbox" checked={firstReview ?'checked':''} /> First Review
                             </label>
                         </div>
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'qci-secondReview')} type="checkbox" checked={this.props.case.requirement.qcChecklist.qcInformation.secondReview ?'checked':''} /> Second Review
+                                <input onChange={(e) => this.updateForm(e, 'qci-secondReview')} type="checkbox" checked={secondReview ?'checked':''} /> Second Review
                             </label>
                         </div>
                     </div>               

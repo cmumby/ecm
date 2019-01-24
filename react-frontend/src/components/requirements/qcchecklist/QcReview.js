@@ -73,23 +73,19 @@ export default class QcReview extends Component {
             this.setState({[name]: event.target.value});
         }
     }
-
-    addReport(event){
-        event.preventDefault();
-        let newInvestagationId = {
-            investagationId: ""
-        };
-        this.props.case.requirement.qcChecklist.qcReview.investagationIds.push(newInvestagationId);
-        this.setState(this.state);
-    }
-
-    removeReport(event, key){ 
-        event.preventDefault();
-        this.props.case.requirement.qcChecklist.qcReview.investagationIds.splice(key,1);
-        this.setState(this.state);
-    }
   
-    render() {  
+    render() {
+        const {
+            complete,
+            spellingAndLanguage,
+            reasonableness,
+            documentation,
+            completeSarf,
+            negativeNewsScreening,
+            completeFields,
+            comments
+        } = this.props.case.requirement.qcChecklist.qcReview;
+
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
@@ -100,12 +96,12 @@ export default class QcReview extends Component {
         return (
                     <div className={"qc-checklist " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'qcr-complete')} checked={this.props.case.requirement.qcChecklist.qcReview.complete ? 'checked':''} /> Screening (Customer)
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'qcr-complete')} checked={complete ? 'checked':''} /> Screening (Customer)
                         </label>
                         
                         <div className="form-group">
                             <label>Spelling and Language</label>
-                            <select onChange={(e) => this.updateForm(e, 'qcr-spellingAndLanguage')} className="form-control" value={this.props.case.requirement.qcChecklist.qcReview.spellingAndLanguage}>
+                            <select onChange={(e) => this.updateForm(e, 'qcr-spellingAndLanguage')} className="form-control" value={spellingAndLanguage}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
@@ -113,7 +109,7 @@ export default class QcReview extends Component {
                         
                         <div className="form-group">
                             <label>Reasonableness of Reponses</label>
-                            <select onChange={(e) => this.updateForm(e, 'qcr-reasonableness')} className="form-control" value={this.props.case.requirement.qcChecklist.qcReview.reasonableness}>
+                            <select onChange={(e) => this.updateForm(e, 'qcr-reasonableness')} className="form-control" value={reasonableness}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
@@ -121,7 +117,7 @@ export default class QcReview extends Component {
                        
                          <div className="form-group">
                             <label>Supporting Documentation</label>
-                            <select onChange={(e) => this.updateForm(e, 'qcr-negativeNewsScreening')} className="form-control" value={this.props.case.requirement.qcChecklist.qcReview.negativeNewsScreening}>
+                            <select onChange={(e) => this.updateForm(e, 'qcr-documentation')} className="form-control" value={documentation}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
@@ -129,7 +125,7 @@ export default class QcReview extends Component {
 
                         <div className="form-group">
                             <label>If required, was a SARF from completed for the customer? </label>
-                            <select onChange={(e) => this.updateForm(e, 'qcr-completeSarf')} className="form-control" value={this.props.case.requirement.qcChecklist.qcReview.completeSarf}>
+                            <select onChange={(e) => this.updateForm(e, 'qcr-completeSarf')} className="form-control" value={completeSarf}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
@@ -137,7 +133,7 @@ export default class QcReview extends Component {
 
                          <div className="form-group">
                             <label>Are the designated fields accurate and/or complete (as applicable)?</label>
-                            <select onChange={(e) => this.updateForm(e, 'qcr-completeFields')} className="form-control" value={this.props.case.requirement.qcChecklist.qcReview.completeFields}>
+                            <select onChange={(e) => this.updateForm(e, 'qcr-completeFields')} className="form-control" value={completeFields}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
@@ -145,7 +141,7 @@ export default class QcReview extends Component {
                         
                         <div className="form-group">
                             <label>QC Additional Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'qcr-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.qcChecklist.qcReview.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'qcr-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>               
         );
