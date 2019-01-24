@@ -72,6 +72,16 @@ export default class Sarf extends Component {
     }
 
     render() { 
+        const {
+            complete,
+            handlesSouthwestTrucks,
+            highRiskTransportation,
+            countryOfCitizenship,
+            raCorrectionRequired,
+            comments
+
+        } = this.props.case.requirement.transportationSarf.sarf;
+
         let countries = this.countries; 
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
@@ -83,11 +93,11 @@ export default class Sarf extends Component {
         return (
                     <div className={"transportation-sarf " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'srf-complete')} checked={this.props.case.requirement.transportationSarf.sarf.complete ? 'checked':''} /> Transportation SARF
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'srf-complete')} checked={complete ? 'checked':''} /> Transportation SARF
                         </label>
                         <div className="form-group">
                             <label>For trucks and Trailers only, is the equipment located or travelling in a Southwest border state for 25% or greater of its mileage (CA, AZ, NM, or TX)</label>
-                            <select onChange={(e) => this.updateForm(e, 'srf-handlesSouthwestTrucks')}  className="form-control" value={this.props.case.requirement.transportationSarf.sarf.handlesSouthwestTrucks}>
+                            <select onChange={(e) => this.updateForm(e, 'srf-handlesSouthwestTrucks')}  className="form-control" value={handlesSouthwestTrucks}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
@@ -95,7 +105,7 @@ export default class Sarf extends Component {
                         
                         <div className="form-group">
                             <label>For all Transportation will the equipment be traveling to a High Risk Country</label>
-                            <select onChange={(e) => this.updateForm(e, 'srf-evidenceOfFiling')} className="form-control" value={this.props.case.requirement.transportationSarf.sarf.highRiskTransportation}>
+                            <select onChange={(e) => this.updateForm(e, 'srf-evidenceOfFiling')} className="form-control" value={highRiskTransportation}>
                             <option value="na">&nbsp;</option>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
@@ -104,7 +114,7 @@ export default class Sarf extends Component {
 
                         <div className="form-group">
                             <label>For individuals only, what is the individual's country of citizenship</label>
-                            <select onChange={(e) => this.updateForm(e, 'srf-countryOfCitizenship')} className="form-control" value={this.props.case.requirement.transportationSarf.sarf.countryOfCitizenship} >
+                            <select onChange={(e) => this.updateForm(e, 'srf-countryOfCitizenship')} className="form-control" value={countryOfCitizenship} >
                                 <option value="0">Select a Country</option>
                                 {countries.map((country, index) =>
 
@@ -115,12 +125,12 @@ export default class Sarf extends Component {
                         
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'srf-correction-required')} type="checkbox" checked={this.props.case.requirement.transportationSarf.sarf.raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'srf-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'srf-comments')} className="form-control" rows="3" placeholder="" value={this.props.case.requirement.transportationSarf.sarf.comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'srf-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>               
         );
