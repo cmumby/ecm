@@ -54,9 +54,6 @@ export default class QcReview extends Component {
             case "qcr-comments":
                 this.props.case.requirement.qcChecklist.qcReview.comments = event.target.value;
                 break;
-            case "qcr-correction-required":
-                this.props.case.requirement.qcChecklist.qcReview.raCorrectionRequired = event.target.checked;
-                break;
             case "qcr-complete":
                 this.props.case.requirement.qcChecklist.qcReview.complete = event.target.checked;
                 break;
@@ -81,7 +78,6 @@ export default class QcReview extends Component {
             reasonableness,
             documentation,
             completeSarf,
-            negativeNewsScreening,
             completeFields,
             comments
         } = this.props.case.requirement.qcChecklist.qcReview;
@@ -89,7 +85,7 @@ export default class QcReview extends Component {
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
-        if(this.props.case.requirement.qcChecklist.qcReview.complete){
+        if(complete){
             componentClass += " complete";
         }
         

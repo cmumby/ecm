@@ -47,17 +47,11 @@ export default class QcInformation extends Component {
             case "qci-dateReceived":
                 this.props.case.requirement.qcChecklist.qcInformation.dateReceived = event.target.value;
                 break;
-            case "qci-comments":
-                this.props.case.requirement.qcChecklist.qcInformation.comments = event.target.value;
-                break;
             case "qci-firstReview":
                 this.props.case.requirement.qcChecklist.qcInformation.firstReview = event.target.checked;
                 break;
             case "qci-secondReview":
                 this.props.case.requirement.qcChecklist.qcInformation.secondReview = event.target.checked;
-                break;
-            case "qci-correction-required":
-                this.props.case.requirement.qcChecklist.qcInformation.raCorrectionRequired = event.target.checked;
                 break;
             case "qci-complete":
                 this.props.case.requirement.qcChecklist.qcInformation.complete = event.target.checked;
@@ -82,9 +76,7 @@ export default class QcInformation extends Component {
             qcName,
             dateReceived,
             firstReview,
-            secondReview,
-            raCorrectionRequired,
-            comments
+            secondReview
         } = this.props.case.requirement.qcChecklist.qcInformation;
 
         let componentClass = 

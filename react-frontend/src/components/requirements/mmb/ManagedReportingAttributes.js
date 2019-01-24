@@ -54,7 +54,15 @@ export default class ManagedReportingAttributes extends Component {
         }
     }
   
-    render() {  
+    render() {
+        const{
+            customer, 
+            divison,
+            rcbo,
+            div,
+            complete
+        } = this.props.case.requirement.mmb.managedReportingAttributes;
+
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
@@ -65,23 +73,23 @@ export default class ManagedReportingAttributes extends Component {
         return (
                     <div className={"mmb " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'mmb-complete')} checked={this.props.case.requirement.mmb.managedReportingAttributes.complete ? 'checked':''} /> Management Reporting Attribures
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'mmb-complete')} checked={complete ? 'checked':''} /> Management Reporting Attribures
                         </label>
                         <div className="form-group">
                             <label htmlFor="Legal-Name">MMB Customer Service Manager:</label>
-                            <span>{this.props.case.requirement.mmb.managedReportingAttributes.customer}</span>
+                            <span>{customer}</span>
                         </div>
                         <div className="form-group">
                             <label htmlFor="Legal-Name">MMB Divison Customer Service Manager:</label>
-                            <span>{this.props.case.requirement.mmb.managedReportingAttributes.divison}</span>
+                            <span>{divison}</span>
                         </div>
                         <div className="form-group">
                             <label htmlFor="Legal-Name">MMB RCBO:</label>
-                            <span>{this.props.case.requirement.mmb.managedReportingAttributes.rcbo}</span>
+                            <span>{rcbo}</span>
                         </div>
                         <div className="form-group">
                             <label htmlFor="Legal-Name">MMB Div Name:</label>
-                            <span>{this.props.case.requirement.mmb.managedReportingAttributes.div}</span>
+                            <span>{div}</span>
                         </div>     
                     </div>               
         );

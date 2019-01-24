@@ -56,22 +56,27 @@ export default class Entity extends Component {
         }   
     }
   
-    render() {  
+    render() {
+        const{ 
+            hasOus,
+            complete
+        } = this.props.case.requirement.ousEntity.entity;
+        
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
-        if(this.props.case.requirement.ousEntity.entity.complete){
+        if(complete){
             componentClass += " complete";
         }
         
         return (
                     <div className={"ous-entity " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'ous-complete')} checked={this.props.case.requirement.ousEntity.entity.complete ? 'checked':''} /> OUS Entity Information
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'ous-complete')} checked={complete ? 'checked':''} /> OUS Entity Information
                         </label>
                         <div className="form-group">
                             <label htmlFor="internetGambling">Does the Customer have OUS entities?</label>
-                            <select onChange={(e) => this.updateForm(e, 'ous-hasOus')} id="internetGambling" className="form-control" value={this.props.case.requirement.ousEntity.entity.hasOus}>
+                            <select onChange={(e) => this.updateForm(e, 'ous-hasOus')} id="internetGambling" className="form-control" value={hasOus}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
