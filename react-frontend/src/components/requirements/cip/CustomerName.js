@@ -85,11 +85,11 @@ export default class CustomerName extends Component {
             comments
 
         } = this.props.case.requirement.cip.customerName;
-        
+
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
-        if(this.props.case.requirement.cip.customerName.complete){
+        if(complete){
             componentClass += " complete";
         }
 

@@ -83,7 +83,7 @@ export default class TaxOrGovernmentId extends Component {
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
-        if(this.props.case.requirement.cip.taxOrGovernmentId.complete){
+        if(complete){
             componentClass += " complete";
         }
         

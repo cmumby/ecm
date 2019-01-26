@@ -81,7 +81,7 @@ export default class LegalFormationRemediation extends Component {
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
-        if(this.props.case.requirement.remediation.legalFormation.complete){
+        if(complete){
             componentClass += " complete";
         }
         let usStates = this.usStates;

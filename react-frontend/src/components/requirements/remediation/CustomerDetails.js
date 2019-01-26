@@ -75,7 +75,7 @@ export default class CustomerDetails extends Component {
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
-        if(this.props.case.requirement.remediation.customerDetails.complete){
+        if(complete){
             componentClass += " complete";
         }
         

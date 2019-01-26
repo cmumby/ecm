@@ -83,7 +83,7 @@ export default class LegalFormation extends Component {
         let componentClass = 
         (this.props.color === "light")?"box-body box-component-light":
         (this.props.color === "dark")?"box-body box-component-dark":"";
-        if(this.props.case.requirement.proxyRR.legalFormation.complete){
+        if(complete){
             componentClass += " complete";
         }
         let countries = this.countries;
