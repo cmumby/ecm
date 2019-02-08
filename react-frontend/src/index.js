@@ -3,18 +3,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { createStore } from 'redux';
 import {Header} from "./components/Header";
 import AddTodo from './components/AddTodo';
 import ListCase from './components/ListCase';
 import UpdateTodo from './components/UpdateTodo';
 import Case from './components/Case';
 import CaseMenu from './components/CaseMenu';
+import reducer from './store/reducers/reducer';
+import { Provider } from 'react-redux';
 
 let currentLocation = document.location.href;
 let mainSize = (currentLocation.indexOf('/requirements') >=0)?'col-md-10': 'col-md-12';
 mainSize += ' col-xs-12';
 
+const store = createStore(reducer);
+
 ReactDOM.render(
+  <Provider store={store}>
   <div className="box-header ui-sortable-handle">
     <div className="row">
       <div className="col-xs-12">
@@ -41,6 +47,7 @@ ReactDOM.render(
 
     </div>
   </div>
+  </Provider>
 ,
   document.getElementById('root')
 );
