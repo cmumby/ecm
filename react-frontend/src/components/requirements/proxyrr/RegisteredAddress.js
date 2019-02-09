@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
 import Location from '../../../util/Location';
+import sectionCompleteStatus from '../../../util/sectionCompleteStatus';
 
 
 export default class RegisteredAddress extends Component {
@@ -81,6 +82,7 @@ export default class RegisteredAddress extends Component {
         this.handleFormDataRouting(event, name);
         if(name === "ra-correction-required" || "ra-complete"){
             this.setState({[name]: event.target.checked});
+            sectionCompleteStatus(this.props.case.ecmId, this.props.case.requirement.proxyRR);
         }  else{
             this.setState({[name]: event.target.value});
         }
