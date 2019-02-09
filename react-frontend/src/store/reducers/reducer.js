@@ -1,20 +1,48 @@
 const initialState = {
-    focus:'proxyRR'
+    focus:'',
+    hash: '',
 };
 
 const reducer = (state=initialState, action) => {
     const newState = {...state};
-
+    
     switch(action.type){
         case 'PROXY_RR':
-            newState.focus = 'proxyRR';
+            newState.focus = '#proxyrr';
             newState.loading = false;
             break;
         case 'CIP': 
-            newState.focus = 'cip';
+            newState.focus = '#cip';
             break;
         case 'REMEDIATION':
-            newState.focus = "remediation";
+            newState.focus = "#remediation";
+            break;
+        case 'RELATED_PARTIES':
+            newState.focus = "#related-parties";
+            break;
+        case 'SCREENING':
+            newState.focus = "#screening";
+            break;
+        case 'DOCUMENTATION':
+            newState.focus = "#documentation";
+            break;
+        case 'TRANSPORTATION_SARF':
+            newState.focus = "#transportation-sarf";
+            break;
+        case 'HRA_EDD':
+            newState.focus = "#hraedd";
+            break;
+        case 'QC_CHECKLIST':
+            newState.focus = "#qc-checklist";
+            break;
+        case 'OUS_ENTITY':
+            newState.focus = "#ous-entity";
+            break;
+        case 'MMB':
+            newState.focus = "#mmb";
+            break;   
+        case 'HASH':
+            newState.hash = newState.focus = action.value;
             break;
         default:
             newState.focus = "proxyRR";

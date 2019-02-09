@@ -23,7 +23,7 @@ export default class ScreeningParty extends Component {
             return this.props.case.requirement.screening.screeningParty.parties.map(function (object, i) { 
                 let partyFirstName = null;
                 let partyLastName = null;
-                console.log("where are we:", thisRef.props.case.requirement.relatedParties.controlProngs.beneficialOwners[i]);
+                
                 if(thisRef.props.case.requirement.relatedParties.controlProngs.beneficialOwners[i] !== undefined &&
                    thisRef.props.case.requirement.relatedParties.controlProngs.beneficialOwners[i].hasOwnProperty('firstName') &&
                    thisRef.props.case.requirement.relatedParties.controlProngs.beneficialOwners[i].hasOwnProperty('lastName') 

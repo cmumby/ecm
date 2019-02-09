@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import CaseService from './CaseService';
 import CaseStructure from './structures/CaseStructure';
 import RegisteredAddress from './requirements/proxyrr/RegisteredAddress';
@@ -41,13 +42,14 @@ import QcReview from './requirements/qcchecklist/QcReview';
 import Entity from './requirements/ousentity/Entity';
 import ManagedReportingAttributes from './requirements/mmb/ManagedReportingAttributes';
 
-export default class Case extends Component {
+class Case extends Component {
 
     constructor(props) {
         super(props);
         this.caseService = new CaseService();
         this.caseStructure = new CaseStructure();
         this.state = this.caseStructure.getStructure();
+       
      }
 
     componentWillMount() {
@@ -55,6 +57,7 @@ export default class Case extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){
+        this.props.onHashDetect(this.props.location.hash)
         let updatedCase = prevState.case;
         if (updatedCase.requirement.hasOwnProperty('cip')){
             this.updateData(updatedCase);
@@ -64,7 +67,7 @@ export default class Case extends Component {
     }
     
 
-    fillData() { 
+    fillData() {
         let thisRef = this;
         this.caseService.get(this.props.match.params.ecmId, (data) => {
             this.caseData = data;
@@ -79,54 +82,128 @@ export default class Case extends Component {
     
     render() {
         
-
+       
         return (
             <div id="form-container" className="box box-solid box-primary">
                 <div className="box-header with-border">
                     <h3 className="box-title">Requirements for Case: {this.state.case.name}</h3>
                 </div>
                 <form name="reqForm">
-                    <RegisteredAddress case={this.state.case} color="light" />
-                    <PhysicalAddress case={this.state.case} color="dark"/>
-                    <LegalEntity case={this.state.case} color="light"/>
-                    <LegalFormation case={this.state.case} color="dark"/>
-                    <NatureOfBusiness case={this.state.case} color="light"/> 
-                    <MarketServed case={this.state.case} color="dark"/> 
-                    <RelatedParties case={this.state.case} color="light"/>
-                    <Pep case={this.state.case} color="dark"/>
-                    <ProductsAndServices case={this.state.case} color="light"/>
-                    <CustomerName case={this.state.case} color="light"/>
-                    <TaxOrGovernmentId case={this.state.case} color="dark"/>
-                    <InvestmentVechiclesFunds case={this.state.case} color="light"/>
-                    <CustomerDetails case={this.state.case} color="dark"/>
-                    <AccountRelationship case={this.state.case} color="light"/>
-                    <LegalFormationRemediation case={this.state.case} color="dark"/>
-                    <CustomerStructure case={this.state.case} color="light"/>
-                    <SourceOfWealth case={this.state.case} color="dark"/>
-                    <GeneralDescriptionOfBusiness case={this.state.case} color="light"/>
-                    <SourceOfFunds case={this.state.case} color="dark"/>
-                    <ParticipationPurchased case={this.state.case} color="light"/>
-                    <CipNotice case={this.state.case} color="dark"/>
-                    <InternetGambling case={this.state.case} color="light"/>
-                    <ProhibitedCustomers case={this.state.case} color="dark"/>
-                    <RelationshipManager case={this.state.case} color="light"/>
-                    <CipCddApprovedDate case={this.state.case} color="dark"/>
-                    <Submitter case={this.state.case} color="light"/>
-                    <RelatedPartiesAuthorizedPersons case={this.state.case} color="light"/>
-                    <ControlProngs case={this.state.case} color="dark"/>
-                    <CddiTaskRequest case={this.state.case} color="light"/>
-                    <Reports case={this.state.case} color="dark" />
-                    <ScreeningCustomer case={this.state.case} color="light" />
-                    <ScreeningParty case={this.state.case} color="dark" />
-                    <RequiredDocuments case={this.state.case} color="light" />
-                    <Sarf case={this.state.case} color="light" />
-                    <Edd case={this.state.case} color="light" />
-                    <QcInformation case={this.state.case} color="light" />
-                    <QcReview case={this.state.case} color="dark" />
-                    <Entity case={this.state.case} color="light" />
-                    <ManagedReportingAttributes case={this.state.case} color="light" />
+                   {/* <h3>{this.props.focus}</h3>  */}
+                    {(this.props.focus === '#proxyrr' || this.props.hash === '#proxyrr') &&
+                    <section className="proxy-rr-section">
+                        <RegisteredAddress case={this.state.case} color="light" />
+                        <PhysicalAddress case={this.state.case} color="dark"/>
+                        <LegalEntity case={this.state.case} color="light"/>
+                        <LegalFormation case={this.state.case} color="dark"/>
+                        <NatureOfBusiness case={this.state.case} color="light"/> 
+                        <MarketServed case={this.state.case} color="dark"/> 
+                        <RelatedParties case={this.state.case} color="light"/>
+                        <Pep case={this.state.case} color="dark"/>
+                        <ProductsAndServices case={this.state.case} color="light"/>
+                    </section>
+                } 
+
+                {(this.props.focus === '#cip' || this.props.hash === '#cip') &&
+                    <section className="cip-section">
+                        <CustomerName case={this.state.case} color="light"/>
+                        <TaxOrGovernmentId case={this.state.case} color="dark"/>
+                    </section>
+                }
+
+                {(this.props.focus === '#remediation' || this.props.hash === '#remediation') &&
+                    <section className="remediation-section">
+                        <InvestmentVechiclesFunds case={this.state.case} color="light"/>
+                        <CustomerDetails case={this.state.case} color="dark"/>
+                        <AccountRelationship case={this.state.case} color="light"/>
+                        <LegalFormationRemediation case={this.state.case} color="dark"/>
+                        <CustomerStructure case={this.state.case} color="light"/>
+                        <SourceOfWealth case={this.state.case} color="dark"/>
+                        <GeneralDescriptionOfBusiness case={this.state.case} color="light"/>
+                        <SourceOfFunds case={this.state.case} color="dark"/>
+                        <ParticipationPurchased case={this.state.case} color="light"/>
+                        <CipNotice case={this.state.case} color="dark"/>
+                        <InternetGambling case={this.state.case} color="light"/>
+                        <ProhibitedCustomers case={this.state.case} color="dark"/>
+                        <RelationshipManager case={this.state.case} color="light"/>
+                        <CipCddApprovedDate case={this.state.case} color="dark"/>
+                        <Submitter case={this.state.case} color="light"/>
+                    </section>
+                }
+
+                {(this.props.focus === '#related-parties' || this.props.hash === '#related-parties') &&
+                    <section className="related-parties-section">
+                        <RelatedPartiesAuthorizedPersons case={this.state.case} color="light"/>
+                        <ControlProngs case={this.state.case} color="dark"/>
+                    </section>
+                }
+
+                {(this.props.focus === '#screening' || this.props.hash === '#screening') &&
+                    <section className="screening-section">
+                        <CddiTaskRequest case={this.state.case} color="light"/>
+                        <Reports case={this.state.case} color="dark" />
+                        <ScreeningCustomer case={this.state.case} color="light" />
+                        <ScreeningParty case={this.state.case} color="dark" />
+                    </section>
+                }
+
+                {(this.props.focus === '#documentation' || this.props.hash === '#documentation') &&
+                    <section className="documentation-section">
+                      <RequiredDocuments case={this.state.case} color="light" />
+                    </section>
+                }
+
+                {(this.props.focus === '#transportation-sarf' || this.props.hash === '#transportation-sarf') &&
+                    <section className="transportationSarf-section">
+                      <Sarf case={this.state.case} color="light" />
+                    </section>
+                }
+
+                {(this.props.focus === '#hraedd' || this.props.hash === '#hraedd') &&
+                    <section className="hraEdd-section">
+                      <Edd case={this.state.case} color="light" />
+                    </section>
+                }
+
+                {(this.props.focus === '#qc-checklist' || this.props.hash === '#qc-checklist') &&
+                    <section className="qcChecklist-section">
+                        <QcInformation case={this.state.case} color="light" />
+                        <QcReview case={this.state.case} color="dark" />
+                    </section>
+                }
+
+                {(this.props.focus === '#ous-entity' || this.props.hash === '#ous-entity') &&
+                    <section className="ousEntity-section">
+                      <Entity case={this.state.case} color="light" />
+                    </section>
+                }
+
+                {(this.props.focus === '#mmb' || this.props.hash === '#mmb') &&
+                    <section className="mmb-section">
+                       <ManagedReportingAttributes case={this.state.case} color="light" />
+                    </section>
+                }   
                 </form>
             </div>
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+      focus: state.focus,
+      loading: state.loading,
+      hash: state.hash
+    };
+  };
+
+const mapDispachToProps = dispatch => { 
+    return {
+        onHashDetect: (hash) => dispatch({type:"HASH", value: hash})
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispachToProps
+)(Case);
