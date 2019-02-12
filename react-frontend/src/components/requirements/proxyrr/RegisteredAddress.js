@@ -79,14 +79,18 @@ export default class RegisteredAddress extends Component {
     }
 
     updateForm = (event, name) => {
+        const {ecmId, requirement} = this.props.case; 
         this.handleFormDataRouting(event, name);
         if(name === "ra-correction-required" || "ra-complete"){
             this.setState({[name]: event.target.checked});
-            sectionCompleteStatus(this.props.case.ecmId, this.props.case.requirement.proxyRR);
+            
         }  else{
             this.setState({[name]: event.target.value});
         }
-        
+
+        if(name === "ra-complete"){
+            sectionCompleteStatus(ecmId, requirement.proxyRR);
+        }
     }
   
     render() {  

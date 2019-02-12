@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
 import EntityType from '../../../util/EntityType';
+import sectionCompleteStatus from '../../../util/sectionCompleteStatus';
 
 
 export default class LegalEntity extends Component {
@@ -60,11 +61,16 @@ export default class LegalEntity extends Component {
     }
 
     updateForm = (event, name) => {
+        const {ecmId, requirement} = this.props.case; 
         this.handleFormDataRouting(event, name);
         if(name === "le-correction-required" || name === "le-complete"){
             this.setState({[name]: event.target.checked});
         }  else{
             this.setState({[name]: event.target.value});
+        }
+
+        if(name === "le-complete"){
+            sectionCompleteStatus(ecmId, requirement.proxyRR);
         }
         
     }

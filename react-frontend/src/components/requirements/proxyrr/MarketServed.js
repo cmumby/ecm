@@ -4,6 +4,7 @@ import CaseStructure from '../../structures/CaseStructure';
 import EntityType from '../../../util/EntityType';
 import Location from '../../../util/Location';
 import Select from 'react-select';
+import sectionCompleteStatus from '../../../util/sectionCompleteStatus';
 
 
 export default class NatureOfBusiness extends Component {
@@ -94,6 +95,7 @@ export default class NatureOfBusiness extends Component {
     }
 
     updateForm = (event, name) => {
+        const {ecmId, requirement} = this.props.case;
         this.handleFormDataRouting(event, name);
         //leaving this in for a select multple example
         if(name === "nc-naics"){
@@ -110,6 +112,10 @@ export default class NatureOfBusiness extends Component {
             this.setState({[name]: event.value});
         } else{
             this.setState({[name]: event.target.value});
+        }
+
+        if(name === "ms-complete"){
+            sectionCompleteStatus(ecmId, requirement.proxyRR);
         }
         
     }

@@ -9,7 +9,7 @@ export default function  sectionCompletStatus(id, data) {
         if(key !==  'sectionComplete'){
             console.log('KEY:', key);
             console.log('section case', data[key] );
-            if(data[key].complete === false){
+            if(data[key].complete === false || (  key === "physicalAddress"  && data[key][0].complete === false ) )  {
                 //Section Complete change from true to false 
                 if(data.sectionComplete === true){
                     statusChange = true;
@@ -20,7 +20,7 @@ export default function  sectionCompletStatus(id, data) {
             }
         }
     });
-    
+
     //Section Complete change false true to true 
     if(atLeastOneFalse === false) {
         data.sectionComplete = true;

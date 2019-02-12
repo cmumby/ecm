@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
 import Location from '../../../util/Location';
+import sectionCompleteStatus from '../../../util/sectionCompleteStatus';
 
 
 export default class PhysicalAddress extends Component {
@@ -150,13 +151,17 @@ export default class PhysicalAddress extends Component {
     }
 
     updateForm = (event, name, index) => {
+        const {ecmId, requirement} = this.props.case; 
         this.handleFormDataRouting(event, name, index);
         if(name === "pa-complete"){
             this.setState({[name]: event.target.checked});
         } else {
             this.setState({[name]: event.target.value});
         }
-        
+
+        if(name === "pa-complete"){
+            sectionCompleteStatus(ecmId, requirement.proxyRR);
+        }
     }
     
     addAddress(event){

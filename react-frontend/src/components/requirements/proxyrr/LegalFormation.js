@@ -3,6 +3,7 @@ import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
 import EntityType from '../../../util/EntityType';
 import Location from '../../../util/Location';
+import sectionCompleteStatus from '../../../util/sectionCompleteStatus';
 
 
 export default class LegalFormation extends Component {
@@ -63,11 +64,16 @@ export default class LegalFormation extends Component {
     }
 
     updateForm = (event, name) => {
+        const {ecmId, requirement} = this.props.case;
         this.handleFormDataRouting(event, name);
         if(name === "lf-correction-required" || name === "lf-complete"){
             this.setState({[name]: event.target.checked});
         }  else{
             this.setState({[name]: event.target.value});
+        }
+
+        if(name === "lf-complete"){
+            sectionCompleteStatus(ecmId, requirement.proxyRR);
         }
         
     }

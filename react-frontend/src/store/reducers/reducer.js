@@ -1,6 +1,6 @@
 const initialState = {
-    focus:'',
-    hash: '',
+    focus:'#proxyrr',
+    hash: '#proxyrr',
 };
 
 const reducer = (state=initialState, action) => {

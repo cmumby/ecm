@@ -89,8 +89,8 @@ class Case extends Component {
                     <h3 className="box-title">Requirements for Case: {this.state.case.name}</h3>
                 </div>
                 <form name="reqForm">
-                   {/* <h3>{this.props.focus}</h3>  */}
-                    {(this.props.focus === '#proxyrr' || this.props.hash === '#proxyrr') &&
+                   {/*<h3>{this.props.focus}</h3> **/}
+                    {(this.props.focus === '#proxyrr' || this.props.hash === '#proxyrr' || this.props.focus === '') &&
                     <section className="proxy-rr-section">
                         <RegisteredAddress case={this.state.case} color="light" />
                         <PhysicalAddress case={this.state.case} color="dark"/>
