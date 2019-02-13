@@ -7,8 +7,8 @@ export default function  sectionCompletStatus(id, data) {
     Object.keys(data).forEach(function(key,index){
        
         if(key !==  'sectionComplete'){
-            console.log('KEY:', key);
-            console.log('section case', data[key] );
+            //console.log('KEY:', key);
+            //console.log('section case', data[key] );
             if(data[key].complete === false || (  key === "physicalAddress"  && data[key][0].complete === false ) )  {
                 //Section Complete change from true to false 
                 if(data.sectionComplete === true){
@@ -30,5 +30,6 @@ export default function  sectionCompletStatus(id, data) {
     if (statusChange === true){
         caseService.update(data, id, (data) => {});
     }
-    console.log('EOD', data)
+
+    return statusChange;
 }

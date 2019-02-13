@@ -1,7 +1,7 @@
 const initialState = {
-    focus:'#proxyrr',
-    hash: '#proxyrr',
-};
+    hash: window.location.hash,
+    sectionStatuses: {}, 
+}; 
 
 const reducer = (state=initialState, action) => {
     const newState = {...state};
@@ -9,7 +9,6 @@ const reducer = (state=initialState, action) => {
     switch(action.type){
         case 'PROXY_RR':
             newState.focus = '#proxyrr';
-            newState.loading = false;
             break;
         case 'CIP': 
             newState.focus = '#cip';
@@ -42,10 +41,13 @@ const reducer = (state=initialState, action) => {
             newState.focus = "#mmb";
             break;   
         case 'HASH':
-            newState.hash = newState.focus = action.value;
+            newState.hash = action.value;
+            break;
+        case 'STATUS_UPDATE':
+            newState.sectionStatuses = action.value;
             break;
         default:
-            newState.focus = "proxyRR";
+            newState.focus = "#proxyrr";
     }
 
     return newState;

@@ -61,6 +61,26 @@ select.naics-form{
     border: 1px solid #323c48;
 }
 
+.case-menu li.complete:nth-child(odd){
+    background-color: #323c48;
+    border-bottom-color: #323c48;
+}
+
+.case-menu li.complete a {
+    color: #FFFFFF;
+}
+
+.case-menu li.complete:nth-child(even){
+    background-color: #2a323c;
+    border-bottom-color: #2a323c;
+}
+
+.case-menu li.complete a:hover   {
+    color: #FFFFFF;
+    background-color: #3c8dbc;
+}
+
+
 body {
     margin: 0;
     padding: 0;

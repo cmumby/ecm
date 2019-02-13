@@ -48,16 +48,18 @@ class Case extends Component {
         super(props);
         this.caseService = new CaseService();
         this.caseStructure = new CaseStructure();
-        this.state = this.caseStructure.getStructure();
+        this.state = this.caseStructure.getStructure(); 
+        
        
      }
 
     componentWillMount() {
         this.fillData();
+        
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){
-        this.props.onHashDetect(this.props.location.hash)
+       
         let updatedCase = prevState.case;
         if (updatedCase.requirement.hasOwnProperty('cip')){
             this.updateData(updatedCase);
@@ -66,13 +68,46 @@ class Case extends Component {
         }
     }
     
-
     fillData() {
+       
         let thisRef = this;
         this.caseService.get(this.props.match.params.ecmId, (data) => {
             this.caseData = data;
             thisRef.setState({ case: data });
-        })
+            
+            this.sectionStatuses = this.getSectionStatuses();
+            this.props.onSectionStatusFill(this.sectionStatuses);
+        });
+    }
+
+    getSectionStatuses(){
+        const {
+            proxyRR,
+            cip, 
+            remediation, 
+            relatedParties, 
+            screening, 
+            documentation,
+            transportationSarf,
+            hraEdd,
+            qcChecklist,
+            ousEntity,
+            mmb 
+        } = this.state.case.requirement;
+
+        return {
+          "proxyRR": proxyRR.sectionComplete,
+          "cip": cip.sectionComplete,
+          "remediation": remediation.sectionComplete,
+          "relatedParties": relatedParties.sectionComplete,
+          "screening": screening.sectionComplete,
+          "documentation": documentation.sectionComplete,
+          "transportationSarf": transportationSarf.sectionComplete,
+          "hraEdd": hraEdd.sectionComplete,
+          "qcChecklist": qcChecklist.sectionComplete,
+          "ousEntity": ousEntity.sectionComplete,
+          "mmb": mmb.sectionComplete
+        }
     }
 
     updateData(data) {
@@ -89,8 +124,7 @@ class Case extends Component {
                     <h3 className="box-title">Requirements for Case: {this.state.case.name}</h3>
                 </div>
                 <form name="reqForm">
-                   {/*<h3>{this.props.focus}</h3> **/}
-                    {(this.props.focus === '#proxyrr' || this.props.hash === '#proxyrr' || this.props.focus === '') &&
+                    {(this.props.hash === '#proxyrr') &&
                     <section className="proxy-rr-section">
                         <RegisteredAddress case={this.state.case} color="light" />
                         <PhysicalAddress case={this.state.case} color="dark"/>
@@ -104,14 +138,14 @@ class Case extends Component {
                     </section>
                 } 
 
-                {(this.props.focus === '#cip' || this.props.hash === '#cip') &&
+                {(this.props.hash === '#cip') &&
                     <section className="cip-section">
                         <CustomerName case={this.state.case} color="light"/>
                         <TaxOrGovernmentId case={this.state.case} color="dark"/>
                     </section>
                 }
 
-                {(this.props.focus === '#remediation' || this.props.hash === '#remediation') &&
+                {(this.props.hash === '#remediation') &&
                     <section className="remediation-section">
                         <InvestmentVechiclesFunds case={this.state.case} color="light"/>
                         <CustomerDetails case={this.state.case} color="dark"/>
@@ -131,14 +165,14 @@ class Case extends Component {
                     </section>
                 }
 
-                {(this.props.focus === '#related-parties' || this.props.hash === '#related-parties') &&
+                {(this.props.hash === '#related-parties') &&
                     <section className="related-parties-section">
                         <RelatedPartiesAuthorizedPersons case={this.state.case} color="light"/>
                         <ControlProngs case={this.state.case} color="dark"/>
                     </section>
                 }
 
-                {(this.props.focus === '#screening' || this.props.hash === '#screening') &&
+                {(this.props.hash === '#screening') &&
                     <section className="screening-section">
                         <CddiTaskRequest case={this.state.case} color="light"/>
                         <Reports case={this.state.case} color="dark" />
@@ -147,38 +181,38 @@ class Case extends Component {
                     </section>
                 }
 
-                {(this.props.focus === '#documentation' || this.props.hash === '#documentation') &&
+                {(this.props.hash === '#documentation') &&
                     <section className="documentation-section">
                       <RequiredDocuments case={this.state.case} color="light" />
                     </section>
                 }
 
-                {(this.props.focus === '#transportation-sarf' || this.props.hash === '#transportation-sarf') &&
+                {(this.props.hash === '#transportation-sarf') &&
                     <section className="transportationSarf-section">
                       <Sarf case={this.state.case} color="light" />
                     </section>
                 }
 
-                {(this.props.focus === '#hraedd' || this.props.hash === '#hraedd') &&
+                {(this.props.hash === '#hraedd') &&
                     <section className="hraEdd-section">
                       <Edd case={this.state.case} color="light" />
                     </section>
                 }
 
-                {(this.props.focus === '#qc-checklist' || this.props.hash === '#qc-checklist') &&
+                {(this.props.hash === '#qc-checklist') &&
                     <section className="qcChecklist-section">
                         <QcInformation case={this.state.case} color="light" />
                         <QcReview case={this.state.case} color="dark" />
                     </section>
                 }
 
-                {(this.props.focus === '#ous-entity' || this.props.hash === '#ous-entity') &&
+                {(this.props.hash === '#ous-entity') &&
                     <section className="ousEntity-section">
                       <Entity case={this.state.case} color="light" />
                     </section>
                 }
 
-                {(this.props.focus === '#mmb' || this.props.hash === '#mmb') &&
+                {(this.props.hash === '#mmb') &&
                     <section className="mmb-section">
                        <ManagedReportingAttributes case={this.state.case} color="light" />
                     </section>
@@ -193,13 +227,15 @@ const mapStateToProps = state => {
     return {
       focus: state.focus,
       loading: state.loading,
-      hash: state.hash
+      hash: state.hash,
+      statuses: state.sectionStatuses,
     };
   };
 
 const mapDispachToProps = dispatch => { 
     return {
-        onHashDetect: (hash) => dispatch({type:"HASH", value: hash})
+        onHashDetect: (hash) => dispatch({type:"HASH", value: hash}),
+        onSectionStatusFill: (statuses) => dispatch({type:"STATUS_UPDATE", value: statuses})
     };
 };
 
