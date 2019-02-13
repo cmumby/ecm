@@ -1,11 +1,10 @@
 const initialState = {
-    hash: window.location.hash,
+    hash: (window.location.hash !=="") ? window.location.hash: '#proxyrr',
     sectionStatuses: {}, 
 }; 
 
 const reducer = (state=initialState, action) => {
     const newState = {...state};
-    
     switch(action.type){
         case 'PROXY_RR':
             newState.focus = '#proxyrr';

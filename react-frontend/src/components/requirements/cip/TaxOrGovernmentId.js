@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
+import sectionCompleteStatus from '../../../util/sectionCompleteStatus';
 
 
 export default class TaxOrGovernmentId extends Component {
@@ -62,12 +63,17 @@ export default class TaxOrGovernmentId extends Component {
     }
 
     updateForm = (event, name) => {
+        const {ecmId, requirement} = this.props.case; 
         this.handleFormDataRouting(event, name);
-        if(name === "ra-correction-required" || "ra-complete"){
+        if(name === "ticorrection-required" || "ti-complete"){
             this.setState({[name]: event.target.checked});
         }  else{
             this.setState({[name]: event.target.value});
-        } 
+        }
+
+        if(name === "ti-complete"){
+            sectionCompleteStatus(ecmId, requirement.cip);
+        }
     }
   
     render() {
