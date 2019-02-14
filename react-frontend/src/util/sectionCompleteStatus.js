@@ -1,7 +1,6 @@
 import CaseService from '../components/CaseService';
 
 export default function  sectionCompletStatus(id, data) {
-    let statusChange = false;
     
     let caseService = new CaseService();
     
@@ -37,9 +36,5 @@ export default function  sectionCompletStatus(id, data) {
     
     caseService.update(data, id, (data) => {});
     
-    //if (statusChange === true){
-       // caseService.update(data, id, (data) => {});
-    //}
-
-    return statusChange;
+    return data.sectionComplete;
 }
