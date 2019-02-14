@@ -2,34 +2,44 @@ import CaseService from '../components/CaseService';
 
 export default function  sectionCompletStatus(id, data) {
     let statusChange = false;
-    let atLeastOneFalse = false;
+    
     let caseService = new CaseService();
-    Object.keys(data).forEach(function(key,index){
-       
-        if(key !==  'sectionComplete'){
-            //console.log('KEY:', key);
-            //console.log('section case', data[key] );
-            if(data[key].complete === false || (  key === "physicalAddress"  && data[key][0].complete === false ) )  {
-                //Section Complete change from true to false 
-                if(data.sectionComplete === true){
-                    statusChange = true;
+    
+    if(data.sectionComplete === true){
+        let atLeastOneFalse = false;
+        Object.keys(data).forEach(function(key,index){   
+            if(key !==  'sectionComplete'){
+                if(data[key].complete === false || (  key === "physicalAddress"  && data[key][0].complete === false ) ) {
                     atLeastOneFalse = true;
-                    data.sectionComplete = false;
-
-                }  
+                }
             }
+            
+        });
+
+        if(atLeastOneFalse === true){
+            data.sectionComplete = false;
         }
-    });
-
-    //Section Complete change false true to true 
-    if(atLeastOneFalse === false) {
-        data.sectionComplete = true;
-        statusChange = true
+    } else if(data.sectionComplete === false){
+        let incompleteCount = 0;
+        Object.keys(data).forEach(function(key,index){   
+            if(key !==  'sectionComplete'){
+                if(data[key].complete === false || (  key === "physicalAddress"  && data[key][0].complete === false ) ) {
+                   incompleteCount ++;
+                }
+            }
+            
+        });
+        if(incompleteCount == 0){
+            data.sectionComplete = true;
+        } 
     }
 
-    if (statusChange === true){
-        caseService.update(data, id, (data) => {});
-    }
+    
+    caseService.update(data, id, (data) => {});
+    
+    //if (statusChange === true){
+       // caseService.update(data, id, (data) => {});
+    //}
 
     return statusChange;
 }
