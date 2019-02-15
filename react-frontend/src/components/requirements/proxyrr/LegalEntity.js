@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { getSectionStatuses } from '../../../util/getSectionStatuses';
 import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
 import EntityType from '../../../util/EntityType';
 import sectionCompleteStatus from '../../../util/sectionCompleteStatus';
 
 
-export default class LegalEntity extends Component {
+class LegalEntity extends Component {
     
     constructor(props) {
         super(props);
@@ -70,7 +72,10 @@ export default class LegalEntity extends Component {
         }
 
         if(name === "le-complete"){
-            sectionCompleteStatus(ecmId, requirement.proxyRR);
+            const isComplete = sectionCompleteStatus(ecmId, requirement.proxyRR);
+            let newStatus = getSectionStatuses(requirement);
+            newStatus.proxyRR = isComplete;
+            this.props.onSectionStatusFill(newStatus);
         }
         
     }
@@ -121,3 +126,20 @@ export default class LegalEntity extends Component {
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+      statuses: state.sectionStatuses,
+    };
+  };
+
+const mapDispachToProps = dispatch => { 
+    return {
+        onSectionStatusFill: (statuses) => dispatch({type:"STATUS_UPDATE", value: statuses})
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispachToProps
+)(LegalEntity);

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { getSectionStatuses } from '../../../util/getSectionStatuses';
 import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
 import Location from '../../../util/Location';
 import sectionCompleteStatus from '../../../util/sectionCompleteStatus';
 
 
-export default class RegisteredAddress extends Component {
+class RegisteredAddress extends Component {
     
     constructor(props) {
         super(props);
@@ -89,7 +91,10 @@ export default class RegisteredAddress extends Component {
         }
 
         if(name === "ra-complete"){
-            sectionCompleteStatus(ecmId, requirement.proxyRR);
+            const isComplete = sectionCompleteStatus(ecmId, requirement.proxyRR);
+            let newStatus = getSectionStatuses(requirement);
+            newStatus.proxyRR = isComplete;
+            this.props.onSectionStatusFill(newStatus);
         }
     }
   
@@ -169,3 +174,20 @@ export default class RegisteredAddress extends Component {
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+      statuses: state.sectionStatuses,
+    };
+  };
+
+const mapDispachToProps = dispatch => { 
+    return {
+        onSectionStatusFill: (statuses) => dispatch({type:"STATUS_UPDATE", value: statuses})
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispachToProps
+)(RegisteredAddress);

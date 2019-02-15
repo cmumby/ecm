@@ -40,10 +40,10 @@ class CaseMenu extends Component {
     }
     updateData(data) {
        // var thisRef = this;
-        this.caseService.update(data, this.props.match.params.ecmId, (data) => {
+      /*  this.caseService.update(data, this.props.match.params.ecmId, (data) => {
            // this.caseData = data;
            // thisRef.setState({ case: data });
-        })
+        }) */
     }
     
 

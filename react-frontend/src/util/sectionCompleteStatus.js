@@ -1,40 +1,31 @@
-import CaseService from '../components/CaseService';
-
 export default function  sectionCompletStatus(id, data) {
-    
-    let caseService = new CaseService();
+    let incompleteCount = 0; 
+    let atLeastOneFalse = false;
     
     if(data.sectionComplete === true){
-        let atLeastOneFalse = false;
         Object.keys(data).forEach(function(key,index){   
             if(key !==  'sectionComplete'){
                 if(data[key].complete === false || (  key === "physicalAddress"  && data[key][0].complete === false ) ) {
                     atLeastOneFalse = true;
                 }
             }
-            
         });
 
         if(atLeastOneFalse === true){
             data.sectionComplete = false;
         }
-    } else if(data.sectionComplete === false){
-        let incompleteCount = 0;
+    } else if(data.sectionComplete === false){ 
         Object.keys(data).forEach(function(key,index){   
             if(key !==  'sectionComplete'){
                 if(data[key].complete === false || (  key === "physicalAddress"  && data[key][0].complete === false ) ) {
-                   incompleteCount ++;
+                    incompleteCount++;
                 }
-            }
-            
+            }  
         });
-        if(incompleteCount == 0){
+        if(incompleteCount === 0){
             data.sectionComplete = true;
         } 
     }
 
-    
-    caseService.update(data, id, (data) => {});
-    
     return data.sectionComplete;
 }

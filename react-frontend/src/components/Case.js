@@ -124,19 +124,19 @@ class Case extends Component {
                     <h3 className="box-title">Requirements for Case: {this.state.case.name}</h3>
                 </div>
                 <form name="reqForm">
-                    {(this.props.hash === '#proxyrr') &&
+                {(this.props.hash === '#proxyrr') && 
                     <section className="proxy-rr-section">
                         <RegisteredAddress case={this.state.case} color="light" />
                         <PhysicalAddress case={this.state.case} color="dark"/>
                         <LegalEntity case={this.state.case} color="light"/>
                         <LegalFormation case={this.state.case} color="dark"/>
-                        <NatureOfBusiness case={this.state.case} color="light"/> 
+                        <NatureOfBusiness case={this.state.case} color="light"/>
                         <MarketServed case={this.state.case} color="dark"/> 
                         <RelatedParties case={this.state.case} color="light"/>
-                        <Pep case={this.state.case} color="dark"/>
+                        <Pep case={this.state.case} color="dark"/> 
                         <ProductsAndServices case={this.state.case} color="light"/>
                     </section>
-                } 
+                }
 
                 {(this.props.hash === '#cip') &&
                     <section className="cip-section">
