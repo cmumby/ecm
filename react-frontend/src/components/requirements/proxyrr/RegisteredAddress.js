@@ -33,17 +33,6 @@ class RegisteredAddress extends Component {
         this.fillData();
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot){ 
-        let updatedCase = prevState.case;
-        this.updateData(this.props.case);
-       if (updatedCase.requirement.hasOwnProperty('cip')){
-            //this.updateData(updatedCase);
-       } else {
-         return false;
-       }
-
-    }
-
     //Routes the changed information to the right poperty
     handleFormDataRouting(event, name){
         switch (name) { 
@@ -96,6 +85,8 @@ class RegisteredAddress extends Component {
             newStatus.proxyRR = isComplete;
             this.props.onSectionStatusFill(newStatus);
         }
+        
+        this.updateData(this.props.case);
     }
   
     render() {  

@@ -58,16 +58,6 @@ class Case extends Component {
         
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot){
-       
-        let updatedCase = prevState.case;
-        if (updatedCase.requirement.hasOwnProperty('cip')){
-            this.updateData(updatedCase);
-        } else {
-            return false;
-        }
-    }
-    
     fillData() {
        
         let thisRef = this;

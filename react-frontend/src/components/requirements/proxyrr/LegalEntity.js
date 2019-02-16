@@ -30,16 +30,7 @@ class LegalEntity extends Component {
     componentWillMount() {
         this.fillData();
     }
-
-    componentDidUpdate(prevProps, prevState, snapshot){ 
-        let updatedCase = prevState.case;
-        this.updateData(this.props.case);
-        if (updatedCase.requirement.hasOwnProperty('cip')){
-        } else {
-            return false;
-        }
-    }
-
+    
     //Routes the changed information to the right poperty
     handleFormDataRouting(event, name){
         switch (name) { 
@@ -77,6 +68,8 @@ class LegalEntity extends Component {
             newStatus.proxyRR = isComplete;
             this.props.onSectionStatusFill(newStatus);
         }
+
+        this.updateData(this.props.case);
         
     }
   
