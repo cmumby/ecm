@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { getSectionStatuses } from '../../../util/getSectionStatuses';
 import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
 import sectionCompleteStatus from '../../../util/sectionCompleteStatus';
 
 
-export default class TaxOrGovernmentId extends Component {
+class TaxOrGovernmentId extends Component {
     
     constructor(props) {
         super(props);
@@ -23,17 +25,6 @@ export default class TaxOrGovernmentId extends Component {
 
     componentWillMount() {
         this.fillData();
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot){ 
-        let updatedCase = prevState.case;
-        this.updateData(this.props.case);
-       if (updatedCase.requirement.hasOwnProperty('cip')){
-            //this.updateData(updatedCase);
-       } else {
-         return false;
-       }
-
     }
 
     //Routes the changed information to the right poperty
@@ -72,8 +63,13 @@ export default class TaxOrGovernmentId extends Component {
         }
 
         if(name === "ti-complete"){
-            sectionCompleteStatus(ecmId, requirement.cip);
+            const isComplete = sectionCompleteStatus(ecmId, requirement.cip);
+            let newStatus = getSectionStatuses(requirement);
+            newStatus.cip = isComplete;
+            this.props.onSectionStatusFill(newStatus);
         }
+
+        this.updateData(this.props.case);
     }
   
     render() {
@@ -133,3 +129,20 @@ export default class TaxOrGovernmentId extends Component {
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+      statuses: state.sectionStatuses,
+    };
+  };
+
+const mapDispachToProps = dispatch => { 
+    return {
+        onSectionStatusFill: (statuses) => dispatch({type:"STATUS_UPDATE", value: statuses})
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispachToProps
+)(TaxOrGovernmentId);
