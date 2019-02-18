@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { getSectionStatuses } from '../../../util/getSectionStatuses';
 import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
+import sectionCompleteStatus from '../../../util/sectionCompleteStatus';
 
 
-export default class CustomerDetails extends Component {
+class CustomerDetails extends Component {
     
     constructor(props) {
         super(props);
@@ -22,15 +25,6 @@ export default class CustomerDetails extends Component {
 
     componentWillMount() {
         this.fillData();
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot){ 
-        let updatedCase = prevState.case;
-        this.updateData(this.props.case);
-        if (updatedCase.requirement.hasOwnProperty('cip')){
-        } else {
-            return false;
-        }
     }
 
     //Routes the changed information to the right poperty
@@ -55,12 +49,22 @@ export default class CustomerDetails extends Component {
     }
 
     updateForm = (event, name) => {
+        const {ecmId, requirement} = this.props.case;
         this.handleFormDataRouting(event, name);
-        if(name === "vf-correction-required" || "vf-complete"){
+        if(name === "cd-correction-required" || "cd-complete"){
             this.setState({[name]: event.target.checked});
         }  else{
             this.setState({[name]: event.target.value});
         }
+
+        if(name === "cd-complete"){
+            const isComplete = sectionCompleteStatus(ecmId, requirement.remediation);
+            let newStatus = getSectionStatuses(requirement);
+            newStatus.remediation = isComplete;
+            this.props.onSectionStatusFill(newStatus);
+        }
+
+        this.updateData(this.props.case);
         
     }
   
@@ -108,3 +112,20 @@ export default class CustomerDetails extends Component {
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+      statuses: state.sectionStatuses,
+    };
+  };
+
+const mapDispatchToProps = dispatch => { 
+    return {
+        onSectionStatusFill: (statuses) => dispatch({type:"STATUS_UPDATE", value: statuses})
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CustomerDetails);

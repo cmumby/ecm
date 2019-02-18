@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { getSectionStatuses } from '../../../util/getSectionStatuses';
 import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
+import sectionCompleteStatus from '../../../util/sectionCompleteStatus';
 
 
-export default class CipCddApprovedDate extends Component {
+class CipCddApprovedDate extends Component {
     
     constructor(props) {
         super(props);
@@ -24,26 +27,16 @@ export default class CipCddApprovedDate extends Component {
         this.fillData();
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot){ 
-        var updatedCase = prevState.case;
-        this.updateData(this.props.case);
-       if (updatedCase.requirement.hasOwnProperty('cip')){
-       } else {
-         return false;
-       }
-
-    }
-
     //Routes the changed information to the right poperty
     handleFormDataRouting(event, name){
         switch (name) { 
-            case "rm-comments":
+            case "cad-comments":
                 this.props.case.requirement.remediation.cipCddApprovedDate.comments = event.target.value;
                 break;
-            case "rm-correction-required":
+            case "cad-correction-required":
                 this.props.case.requirement.remediation.cipCddApprovedDate.raCorrectionRequired = event.target.checked;
                 break;
-            case "rm-complete":
+            case "cad-complete":
                 this.props.case.requirement.remediation.cipCddApprovedDate.complete = event.target.checked;
                 break;
             default:
@@ -53,12 +46,22 @@ export default class CipCddApprovedDate extends Component {
     }
 
     updateForm = (event, name) => {
+        const {ecmId, requirement} = this.props.case;
         this.handleFormDataRouting(event, name);
-        if(name === "rm-correction-required" || "rm-complete"){
+        if(name === "cad-correction-required" || "cad-complete"){
             this.setState({[name]: event.target.checked});
         }  else{
             this.setState({[name]: event.target.value});
         }
+
+        if(name === "cad-complete"){
+            const isComplete = sectionCompleteStatus(ecmId, requirement.remediation);
+            let newStatus = getSectionStatuses(requirement);
+            newStatus.remediation = isComplete;
+            this.props.onSectionStatusFill(newStatus);
+        }
+
+        this.updateData(this.props.case);
         
     }
 
@@ -80,7 +83,7 @@ export default class CipCddApprovedDate extends Component {
         return (
                     <div className={"remediation " + componentClass}>
                         <label>
-                            <input type="checkbox" onChange={(e) => this.updateForm(e,'rm-complete')} checked={complete ? 'checked':''} /> CIP/CDD Approved Date
+                            <input type="checkbox" onChange={(e) => this.updateForm(e,'cad-complete')} checked={complete ? 'checked':''} /> CIP/CDD Approved Date
                         </label>
                         <div className="form-group">
                             <p>CIP/CDD Approved Date: {date} </p>
@@ -88,14 +91,31 @@ export default class CipCddApprovedDate extends Component {
                         
                         <div className="checkbox">
                             <label>
-                                <input onChange={(e) => this.updateForm(e, 'rm-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
+                                <input onChange={(e) => this.updateForm(e, 'cad-correction-required')} type="checkbox" checked={raCorrectionRequired ?'checked':''} /> Analyst Correction Required
                             </label>
                         </div>
                         <div className="form-group">
                             <label>Comments</label>
-                            <textarea onChange={(e) => this.updateForm(e, 'rm-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
+                            <textarea onChange={(e) => this.updateForm(e, 'cad-comments')} className="form-control" rows="3" placeholder="" value={comments}></textarea>
                         </div>
                     </div>               
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+      statuses: state.sectionStatuses,
+    };
+  };
+
+const mapDispatchToProps = dispatch => { 
+    return {
+        onSectionStatusFill: (statuses) => dispatch({type:"STATUS_UPDATE", value: statuses})
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CipCddApprovedDate);
