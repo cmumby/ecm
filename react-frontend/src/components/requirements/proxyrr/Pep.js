@@ -132,7 +132,7 @@ const mapStateToProps = state => {
     };
   };
 
-const mapDispachToProps = dispatch => { 
+const mapDispatchToProps = dispatch => { 
     return {
         onSectionStatusFill: (statuses) => dispatch({type:"STATUS_UPDATE", value: statuses})
     };
@@ -140,5 +140,5 @@ const mapDispachToProps = dispatch => {
 
 export default connect(
     mapStateToProps,
-    mapDispachToProps
+    mapDispatchToProps
 )(Pep);
