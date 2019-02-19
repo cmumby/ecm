@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { getSectionStatuses } from '../../../util/getSectionStatuses';
 import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
+import sectionCompleteStatus from '../../../util/sectionCompleteStatus';
 
 
-export default class ScreeningParty extends Component {
+class ScreeningParty extends Component {
     
     constructor(props) {
         super(props);
@@ -93,15 +96,6 @@ export default class ScreeningParty extends Component {
         this.fillData();
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot){ 
-        let updatedCase = prevState.case;
-        this.updateData(this.props.case);
-       if (updatedCase.requirement.hasOwnProperty('cip')){
-       } else {
-         return false;
-       }
-    }
-
     //Routes the changed information to the right poperty
     handleFormDataRouting(event, name, index){
         switch (name) { 
@@ -138,12 +132,22 @@ export default class ScreeningParty extends Component {
     }
 
     updateForm = (event, name, index) => {
+        const {ecmId, requirement} = this.props.case;
         this.handleFormDataRouting(event, name, index);
         if(name === "sp-complete" || name === "sp-isPep"){
             this.setState({[name]: event.target.checked});
         } else {
             this.setState({[name]: event.target.value});
-        }   
+        }
+        
+        if(name === "sp-complete"){
+            const isComplete = sectionCompleteStatus(ecmId, requirement.screening);
+            let newStatus = getSectionStatuses(requirement);
+            newStatus.screening = isComplete;
+            this.props.onSectionStatusFill(newStatus);
+        }
+
+        this.updateData(this.props.case);
     }
 
     addParty(event){
@@ -203,3 +207,20 @@ export default class ScreeningParty extends Component {
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+      statuses: state.sectionStatuses,
+    };
+};
+
+const mapDispatchToProps = dispatch => { 
+    return {
+        onSectionStatusFill: (statuses) => dispatch({type:"STATUS_UPDATE", value: statuses})
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ScreeningParty);
