@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { getSectionStatuses } from '../../../util/getSectionStatuses';
 import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
 import Location from '../../../util/Location';
+import sectionCompleteStatus from '../../../util/sectionCompleteStatus';
 
 
-export default class ControlProngs extends Component {
+class ControlProngs extends Component {
     
     constructor(props) {
         super(props);
@@ -43,34 +46,34 @@ export default class ControlProngs extends Component {
                             
                     <div className="form-group">
                             <label htmlFor="cipNotice">Is the Related Party / Authorized Person an individual? </label>
-                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-individual',i)} className="form-control" value={object.isIndividual}>
+                            <select onChange={(e) => thisRef.updateForm(e, 'boc-individual',i)} className="form-control" value={object.isIndividual}>
                                 <option value="true">Yes</option>
                                 <option value="false" >No</option>
                             </select>
                     </div>
                    
                     <div className="form-group">
-                        <label htmlFor="rpap-firstName">First Name</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-firstName', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder="Exactly as Written on Supporting Documentaion" value={object.firstName} />
+                        <label htmlFor="boc-firstName">First Name</label>
+                        <input onChange={(e) => thisRef.updateForm(e, 'boc-firstName', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder="Exactly as Written on Supporting Documentaion" value={object.firstName} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="rpap-middleName">Middle Name</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-middleName', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder="Exactly as Written on Supporting Documentaion"  value={object.middleName} />
+                        <label htmlFor="boc-middleName">Middle Name</label>
+                        <input onChange={(e) => thisRef.updateForm(e, 'boc-middleName', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder="Exactly as Written on Supporting Documentaion"  value={object.middleName} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="rpap-lastName">Last Name</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-lastName', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder="Exactly as Written on Supporting Documentaion"  value={object.lastName} />
+                        <label htmlFor="boc-lastName">Last Name</label>
+                        <input onChange={(e) => thisRef.updateForm(e, 'boc-lastName', i)} type="text" className="form-control" id="physicalAddress-firstLine" placeholder="Exactly as Written on Supporting Documentaion"  value={object.lastName} />
                     </div>
                     <div className="form-group">
                             <label>Occupation </label>
-                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-occupation', i)} className="form-control" value={object.occupation}>
+                            <select onChange={(e) => thisRef.updateForm(e, 'boc-occupation', i)} className="form-control" value={object.occupation}>
                                 <option value="Proprietor, Professional, Managerial">Proprietor, Professional, Managerial</option>
                                 <option value="other" >Other</option>
                             </select>
                     </div>
                     <div className="form-group">
                             <label>WCIS Related Party Type </label>
-                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-wcisRelatedPartyType', i)} className="form-control" value={object.wcisRelatedPartyType}>
+                            <select onChange={(e) => thisRef.updateForm(e, 'boc-wcisRelatedPartyType', i)} className="form-control" value={object.wcisRelatedPartyType}>
                                 <option value="Benefical Owner">Benefical Owner</option>
                                 <option value="other" >Other</option>
                             </select>
@@ -78,19 +81,19 @@ export default class ControlProngs extends Component {
                     <p>WCIS ID: {object.wcisId}</p>        
                     <div className="form-group">
                         <label>Address Line 1</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-firsLine', i)} type="text" className="form-control" placeholder={(i === 0 )?"No P.O Boxes In First Address" :"Add P.O Boxes here"} value={object.firstLine} />
+                        <input onChange={(e) => thisRef.updateForm(e, 'boc-firsLine', i)} type="text" className="form-control" placeholder={(i === 0 )?"No P.O Boxes In First Address" :"Add P.O Boxes here"} value={object.firstLine} />
                     </div>
                     <div className="form-group">
                         <label>Address Line 2</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-secondLine', i)} type="text" className="form-control" value={object.secondLine} />
+                        <input onChange={(e) => thisRef.updateForm(e, 'boc-secondLine', i)} type="text" className="form-control" value={object.secondLine} />
                     </div>
                     <div className="form-group">
                         <label>City</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-city', i)} type="text" className="form-control" placeholder="Exactly As it is Written in Attached Document, Misspellings and all." value={object.city} />
+                        <input onChange={(e) => thisRef.updateForm(e, 'boc-city', i)} type="text" className="form-control" placeholder="Exactly As it is Written in Attached Document, Misspellings and all." value={object.city} />
                     </div>
                     <div className="form-group">
                         <label>State/Province</label>
-                        <select onChange={(e) => thisRef.updateForm(e, 'rpap-state', i)} className="form-control" value={object.state}>
+                        <select onChange={(e) => thisRef.updateForm(e, 'boc-state', i)} className="form-control" value={object.state}>
                             <option value="0">Select a State</option>
                             {usStates.map((state, index) =>
 
@@ -100,7 +103,7 @@ export default class ControlProngs extends Component {
                     </div>
                     <div className="form-group">
                         <label>Country</label>
-                        <select onChange={(e) => thisRef.updateForm(e, 'rpap-country' ,i)} className="form-control" value={object.country} disabled>
+                        <select onChange={(e) => thisRef.updateForm(e, 'boc-country' ,i)} className="form-control" value={object.country} disabled>
                             <option value="0">Select a Country</option>
                             {countries.map((country, index) =>
 
@@ -111,22 +114,22 @@ export default class ControlProngs extends Component {
                     </div>
                     <div className="form-group">
                         <label>Date Of Birth</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-dateOfBirth', i )} type="text" className="form-control" value={object.dateOfBirth} />
+                        <input onChange={(e) => thisRef.updateForm(e, 'boc-dateOfBirth', i )} type="text" className="form-control" value={object.dateOfBirth} />
                     </div>
                     <div className="form-group">
                             <label>Tax ID or Government ID Number </label>
-                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-idType', i)}  className="form-control" value={object.idType}>
+                            <select onChange={(e) => thisRef.updateForm(e, 'boc-idType', i)}  className="form-control" value={object.idType}>
                                 <option value="Tax Identification Number">Tax Identification Number</option>
                                 <option value="Government Identification Number" >Government Identification Number</option>
                             </select>  
                     </div>
                     <div className="form-group">
                         <label>Tax ID / Government ID Number</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-tin', i)} type="text" className="form-control" placeholder="Do not include dashes." value={object.tin} />
+                        <input onChange={(e) => thisRef.updateForm(e, 'boc-tin', i)} type="text" className="form-control" placeholder="Do not include dashes." value={object.tin} />
                     </div>
                     <div className="form-group">
                         <label>Tax Identification Numbe (TIN) Type</label>
-                        <select onChange={(e) => thisRef.updateForm(e, 'rpap-tinType', i)} className="form-control" value={object.tinType}>
+                        <select onChange={(e) => thisRef.updateForm(e, 'boc-tinType', i)} className="form-control" value={object.tinType}>
                             <option value="Social Security Number (SSN)" >Social Security Number (SSN)</option>
                             <option value="Employer Identification Number (EIN)">Employer Identification Number (EIN)</option>
                             <option value="Individual Taxpayer Identification Number (ITIN)">Individual Taxpayer Identification Number (ITIN)</option>
@@ -136,7 +139,7 @@ export default class ControlProngs extends Component {
                     </div>
                     <div className="form-group">
                         <label>Country of Issuance</label>
-                        <select onChange={(e) => thisRef.updateForm(e, 'rpap-countryOfIssuance' ,i)} className="form-control" value={object.countryOfIssuance} >
+                        <select onChange={(e) => thisRef.updateForm(e, 'boc-countryOfIssuance' ,i)} className="form-control" value={object.countryOfIssuance} >
                             <option value="0">Select a Country</option>
                             {countries.map((country, index) =>
 
@@ -146,11 +149,11 @@ export default class ControlProngs extends Component {
                     </div>
                     <div className="form-group">
                         <label>Expiration Date</label>
-                        <input onChange={(e) => thisRef.updateForm(e, 'rpap-expirationDate', i)} type="text" className="form-control" value={object.expirationDate} />
+                        <input onChange={(e) => thisRef.updateForm(e, 'boc-expirationDate', i)} type="text" className="form-control" value={object.expirationDate} />
                     </div>
                     <div className="form-group">
                         <label>Domicile</label>
-                        <select onChange={(e) => thisRef.updateForm(e, 'rpap-countryOfCitizenship' ,i)} className="form-control" value={object.domicile} >
+                        <select onChange={(e) => thisRef.updateForm(e, 'boc-countryOfCitizenship' ,i)} className="form-control" value={object.domicile} >
                             <option value="0">Select a Country</option>
                             {countries.map((country, index) =>
 
@@ -160,7 +163,7 @@ export default class ControlProngs extends Component {
                     </div>
                     <div className="form-group">
                         <label>Country of Citizenship</label>
-                        <select onChange={(e) => thisRef.updateForm(e, 'rpap-countryOfCitizenship' ,i)} className="form-control" value={object.countryOfCitizenship} >
+                        <select onChange={(e) => thisRef.updateForm(e, 'boc-countryOfCitizenship' ,i)} className="form-control" value={object.countryOfCitizenship} >
                             <option value="0">Select a Country</option>
                             {countries.map((country, index) =>
 
@@ -170,21 +173,21 @@ export default class ControlProngs extends Component {
                     </div>
                     <div className="form-group">
                             <label>Legal Entity Type of the Related Party</label>
-                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-legalEntityType', i)}  className="form-control" value={object.legalEntityType}>
+                            <select onChange={(e) => thisRef.updateForm(e, 'boc-legalEntityType', i)}  className="form-control" value={object.legalEntityType}>
                                 <option value="INDIVIDUALS">INDIVIDUALS</option>
                                 <option value="Other" >Other</option>
                             </select>  
                     </div>
                     <div className="form-group">
                             <label>Organization Type / Sub-Type of the Related Party</label>
-                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-organizationType', i)}  className="form-control" value={object.organizationType}>
+                            <select onChange={(e) => thisRef.updateForm(e, 'boc-organizationType', i)}  className="form-control" value={object.organizationType}>
                                 <option value="Individuals ~ Individuals">Individuals ~ Individuals</option>
                                 <option value="Other" >Other</option>
                             </select>  
                     </div>
                     <div className="form-group">
                             <label>Relationship Type of the Related Party</label>
-                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-relationshipType', i)}  className="form-control" value={object.relationshipType}>
+                            <select onChange={(e) => thisRef.updateForm(e, 'boc-relationshipType', i)}  className="form-control" value={object.relationshipType}>
                                 <option value="Beneficial Owner">Beneficial Owner</option>
                                 <option value="Authorized Person" >Authorized Person</option>
                                 <option value="Control Prong" >Control Prong</option>
@@ -192,7 +195,7 @@ export default class ControlProngs extends Component {
                     </div>
                     <div className="form-group">
                             <label>Beneficial Owner Type</label>
-                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-beneficialOwnerType', i)}  className="form-control" value={object.beneficialOwnerType}>
+                            <select onChange={(e) => thisRef.updateForm(e, 'boc-beneficialOwnerType', i)}  className="form-control" value={object.beneficialOwnerType}>
                                 <option value="Control & Ownership">Control & Ownership</option>
                                 <option value="Control" >Control</option>
                                 <option value="Ownership" >Ownership</option>
@@ -200,7 +203,7 @@ export default class ControlProngs extends Component {
                     </div>
                     <div className="form-group">
                         <label>State of Registration (Entities Only)</label>
-                        <select onChange={(e) => thisRef.updateForm(e, 'rpap-stateOfRegistration', i)} id="customerState" className="form-control" value={object.stateOfRegistration}>
+                        <select onChange={(e) => thisRef.updateForm(e, 'boc-stateOfRegistration', i)} id="customerState" className="form-control" value={object.stateOfRegistration}>
                             <option value="0">Select a State</option>
                             {usStates.map((state, index) =>
 
@@ -210,7 +213,7 @@ export default class ControlProngs extends Component {
                     </div>
                     <div className="form-group">
                             <label>CDDI Task Request (Related Party)</label>
-                            <select onChange={(e) => thisRef.updateForm(e, 'rpap-cddiTaskRequest', i)}  className="form-control" value={object.cddiTaskRequest}>
+                            <select onChange={(e) => thisRef.updateForm(e, 'boc-cddiTaskRequest', i)}  className="form-control" value={object.cddiTaskRequest}>
                                 <option value="None">None</option>
                                 <option value="Screening" >Screening</option>
                                 <option value="Verification" >Verification</option>
@@ -219,18 +222,18 @@ export default class ControlProngs extends Component {
                     </div>
                     <div className=" form-group checkbox">
                         <label>
-                            <input onChange={(e) => thisRef.updateForm(e, 'rpap-isPep', i)} type="checkbox" defaultChecked={object.isPep } /> Is PEP?
+                            <input onChange={(e) => thisRef.updateForm(e, 'boc-isPep', i)} type="checkbox" defaultChecked={object.isPep } /> Is PEP?
                         </label>
                     </div>
                     
                     <div className="checkbox">
                         <label>
-                            <input onChange={(e) => thisRef.updateForm(e, 'rpap-correction-required', i)} type="checkbox" defaultChecked={object.raCorrectionRequired } /> Analyst Correction Required
+                            <input onChange={(e) => thisRef.updateForm(e, 'boc-correction-required', i)} type="checkbox" defaultChecked={object.raCorrectionRequired } /> Analyst Correction Required
                         </label>
                     </div>
                     <div className="form-group">
                         <label>Comments</label>
-                        <textarea onChange={(e) => thisRef.updateForm(e, 'rpap-comments', i)} className="form-control" rows="3" placeholder="" value={object.comments}></textarea>
+                        <textarea onChange={(e) => thisRef.updateForm(e, 'boc-comments', i)} className="form-control" rows="3" placeholder="" value={object.comments}></textarea>
                     </div>
                 </div>
             })
@@ -246,111 +249,100 @@ export default class ControlProngs extends Component {
         this.fillData();
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot){ 
-        let updatedCase = prevState.case;
-        
-        this.updateData(this.props.case);
-       if (updatedCase.requirement.hasOwnProperty('cip')){
-            this.updateData(updatedCase);
-       } else {
-         return false;
-       }
-    }
-
     //Routes the changed information to the right poperty
     handleFormDataRouting(event, name, index){
         switch (name) { 
-            case "rpap-non-ubo":
+            case "boc-non-ubo":
                 this.props.case.requirement.relatedParties.controlProngs.anyNonUlimitmadeBo = (event.target.value === "true")?true:false;
                 break;
-            case "rpap-individual":
+            case "boc-individual":
                 this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].isIndividual = (event.target.value === "true")?true:false;
                 break;
-            case "rpap-firstName":
+            case "boc-firstName":
                 this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].firstName = event.target.value;
                 break;
-            case "rpap-middleName":
+            case "boc-middleName":
                 this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].middleName = event.target.value;
                 break;
-            case "rpap-lastName":
+            case "boc-lastName":
                 this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].lastName = event.target.value;
                 break;
-            case "rpap-occupation":
+            case "boc-occupation":
                 this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].occupation = event.target.value;
                 break;
-            case "rpap-wcisRelatedPartyType":
+            case "boc-wcisRelatedPartyType":
                 this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].wcisRelatedPartyType = event.target.value;
                 break;
-            case "rpap-firsLine":
+            case "boc-firsLine":
                this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].firstLine = event.target.value;
                 break;
-            case "rpap-secondLine":
+            case "boc-secondLine":
                this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].secondLine = event.target.value;
                 break;
-            case "rpap-city":
+            case "boc-city":
                this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].city = event.target.value;
                 break;
-            case "rpap-state":
+            case "boc-state":
                this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].state = event.target.value;
                 break;
-            case "rpap-country":
+            case "boc-country":
                this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].country = event.target.value;
                 break;
-            case "rpap-postalCode":
+            case "boc-postalCode":
                this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].postalCode = event.target.value;
                 break;
-            case "rpap-dateOfBirth":
+            case "boc-dateOfBirth":
             this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].dateOfBirth = event.target.value;
                 break;
-            case "rpap-idType":
+            case "boc-idType":
                 this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].idType = event.target.value;
                 break;
-            case "rpap-tin":
+            case "boc-tin":
                 this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].tin = event.target.value;
                 break;
-            case "rpap-tinType":
+            case "boc-tinType":
                 this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].tinType = event.target.value;
                 break;
-            case "rpap-countryOfIssuance":
+            case "boc-countryOfIssuance":
                 this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].countryOfIssuance = event.target.value;
                 break;
-            case "rpap-expirationDate":
+            case "boc-expirationDate":
                 this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].expirationDate = event.target.value;
                 break;
-            case "rpap-domicile":
+            case "boc-domicile":
                 this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].domicile = event.target.value;
                 break;
-            case "rpap-countryOfCitizenship":
+            case "boc-countryOfCitizenship":
                 this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].countryOfCitizenship = event.target.value;
                 break;
-            case "rpap-legalEntityType":
+            case "boc-legalEntityType":
                 this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].legalEntityType = event.target.value;
                 break;
-            case "rpap-organizationType":
+            case "boc-organizationType":
                 this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].organizationType = event.target.value;
                 break;
-            case "rpap-relationshipType":
+            case "boc-relationshipType":
                 this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].relationshipType = event.target.value;
                 break;
-            case "rpap-beneficialOwnerType":
+            case "boc-beneficialOwnerType":
                 this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].beneficialOwnerType = event.target.value;
                 break;
-            case "rpap-stateOfRegistration":
+            case "boc-stateOfRegistration":
                 this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].stateOfRegistration = event.target.value;
                 break;
-            case "rpap-cddiTaskRequest":
+            case "boc-cddiTaskRequest":
                 this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].cddiTaskRequest = event.target.value;
                 break;
-            case "rpap-comments":
+            case "boc-comments":
                this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].comments = event.target.value;
                 break;
-            case "rpap-isPep":
+            case "boc-isPep":
                 this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].isPep = event.target.checked;
                  break;
-            case "rpap-correction-required":
+            case "boc-correction-required":
                this.props.case.requirement.relatedParties.controlProngs.beneficialOwners[index].raCorrectionRequired = event.target.checked;
                 break;
-            case "rpap-complete":
+            case "boc-complete":
                 this.props.case.requirement.relatedParties.controlProngs.complete = event.target.checked;
                 break;
             default:
@@ -359,12 +351,22 @@ export default class ControlProngs extends Component {
     }
 
     updateForm = (event, name, index) => {
+        const {ecmId, requirement} = this.props.case;
         this.handleFormDataRouting(event, name, index);
-        if(name === "rpap-complete" || name === "rpap-isPep"){
+        if(name === "boc-complete" || name === "boc-isPep"){
             this.setState({[name]: event.target.checked});
         } else {
             this.setState({[name]: event.target.value});
         }
+
+        if(name === "boc-complete"){
+            const isComplete = sectionCompleteStatus(ecmId, requirement.relatedParties);
+            let newStatus = getSectionStatuses(requirement);
+            newStatus.relatedParties = isComplete;
+            this.props.onSectionStatusFill(newStatus);
+        }
+
+        this.updateData(this.props.case);
         
     }
     
@@ -422,7 +424,7 @@ export default class ControlProngs extends Component {
         return (
                     <div className={"related-parties " + componentClass}>
                         <label> 
-                            <input onChange={(e) => this.updateForm(e, 'rpap-complete', 0)} type="checkbox" checked={this.props.case.requirement.relatedParties.controlProngs.complete ? 'checked' : ''} /> Beneficial Owners / Shareholders / Members / Control Prongs
+                            <input onChange={(e) => this.updateForm(e, 'boc-complete', 0)} type="checkbox" checked={this.props.case.requirement.relatedParties.controlProngs.complete ? 'checked' : ''} /> Beneficial Owners / Shareholders / Members / Control Prongs
                         </label>
                         <div className="form-group">
                             <p>Add any Beneficial Owner that holds more than teh CDD standards required threshold based on risk rating/geographic localion and/or a Control Prong for the customer </p>
@@ -441,3 +443,20 @@ export default class ControlProngs extends Component {
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+      statuses: state.sectionStatuses,
+    };
+  };
+
+const mapDispatchToProps = dispatch => { 
+    return {
+        onSectionStatusFill: (statuses) => dispatch({type:"STATUS_UPDATE", value: statuses})
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ControlProngs);
