@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { getSectionStatuses } from '../../../util/getSectionStatuses';
 import CaseService from '../../CaseService';
 import CaseStructure from '../../structures/CaseStructure';
+import sectionCompleteStatus from '../../../util/sectionCompleteStatus';
 
-
-export default class Entity extends Component {
+class Entity extends Component {
     
     constructor(props) {
         super(props);
@@ -23,16 +25,7 @@ export default class Entity extends Component {
     componentWillMount() {
         this.fillData();
     }
-
-    componentDidUpdate(prevProps, prevState, snapshot){ 
-        let updatedCase = prevState.case;
-        this.updateData(this.props.case);
-       if (updatedCase.requirement.hasOwnProperty('cip')){
-       } else {
-         return false;
-       }
-    }
-
+    
     //Routes the changed information to the right poperty
     handleFormDataRouting(event, name){
         switch (name) { 
@@ -48,12 +41,22 @@ export default class Entity extends Component {
     }
 
     updateForm = (event, name) => {
+        const {ecmId, requirement} = this.props.case;
         this.handleFormDataRouting(event, name);
         if(name === "ous-correction-required" || "ous-complete"){
             this.setState({[name]: event.target.checked});
         }  else{
             this.setState({[name]: event.target.value});
-        }   
+        }
+        
+        if(name === "ous-complete"){
+            const isComplete = sectionCompleteStatus(ecmId, requirement.ousEntity);
+            let newStatus = getSectionStatuses(requirement);
+            newStatus.ousEntity = isComplete;
+            this.props.onSectionStatusFill(newStatus);
+        }
+
+        this.updateData(this.props.case);
     }
   
     render() {
@@ -85,3 +88,20 @@ export default class Entity extends Component {
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+      statuses: state.sectionStatuses,
+    };
+};
+
+const mapDispatchToProps = dispatch => { 
+    return {
+        onSectionStatusFill: (statuses) => dispatch({type:"STATUS_UPDATE", value: statuses})
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Entity);
