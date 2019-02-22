@@ -26,7 +26,9 @@ ReactDOM.render(
     <div className="row">
       <div className="col-xs-12">
         <Header/>
-        <Attachments/>
+        { (window.location.href.indexOf('/requirements') !== -1) && 
+          <Attachments/> 
+        }
       </div>
     </div>
     <div className="row">

@@ -65,7 +65,7 @@ class Attachments extends Component {
     render() {
         
         return (
-            <div className="box">
+          <div className="attachments box">
             <div className="box-header">
               <h3 className="box-title">Attachments</h3>
 
@@ -80,41 +80,46 @@ class Attachments extends Component {
               </div>
             </div>
             <div className="box-body table-responsive no-padding">
-              <table className="table table-hover">
+              <table className="table table-hover table-striped">
                 <tbody><tr>
-                  <th>File Type</th>
+                  <th>Document Type</th>
                   <th>Filename</th>
+                  <th>File Type</th>
                   <th>Uploader</th>
                   <th>Comments</th>
-                  <th>Reason</th>
+                  <th>Upload Date</th>
                 </tr>
                 <tr>
-                  <td><img src="/dist/svg/pdf.svg"/></td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span className="label label-success">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                  <td><img className="svg-icon" src="/dist/svg/pdf.svg"/></td>
+                  <td>CASE_SOS_FORM</td>
+                  <td>Formation Documents - SOS Documentation</td>
+                  <td>u616323</td>
+                  <td>Secutary of State Customer Information</td>
+                  <td>2-21-2019</td>
                 </tr>
                 <tr>
-                  <td><img src="/dist/svg/pdf.svg"/></td>
-                  <td>Alexander Pierce</td>
-                  <td>11-7-2014</td>
-                  <td><span className="label label-warning">Pending</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                  <td><img className="svg-icon" src="/dist/svg/pdf.svg"/></td>
+                  <td>CASE_AOC_DOC</td>
+                  <td>Formation Documents - Articles of Incorporation</td>
+                  <td>u616323</td>
+                  <td>Customer Articles of Incorporation Information</td>
+                  <td>2-21-2019</td>
                 </tr>
                 <tr>
-                  <td><img src="/dist/svg/doc.svg"/></td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span className="label label-primary">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                  <td><img className="svg-icon" src="/dist/svg/doc.svg"/></td>
+                  <td>CASE_RM_RESPONSE</td>
+                  <td>Customer Due Diligence - RM Response</td>
+                  <td>u616323</td>
+                  <td>RM Repsonse from RFI Request</td>
+                  <td>2-21-2019</td>
                 </tr>
                 <tr>
-                  <td><img src="/dist/svg/png.svg"/></td>
-                  <td>Mike Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span className="label label-danger">Denied</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                  <td><img className="svg-icon" src="/dist/svg/png.svg"/></td>
+                  <td>CASE_SVP_IMAGE</td>
+                  <td>Customer Due Diligence -StoreVision Proile</td>
+                  <td>u616323</td>
+                  <td>SVP Profile for Customer</td>
+                  <td>2-21-2019</td>
                 </tr>
               </tbody></table>
             </div>

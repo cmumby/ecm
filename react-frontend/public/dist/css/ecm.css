@@ -80,6 +80,14 @@ select.naics-form{
     background-color: #3c8dbc;
 }
 
+.svg-icon {
+    max-width: 50%;
+}
+
+.attachments table > tbody > tr > td  {
+    vertical-align: middle;
+}
+
 
 body {
     margin: 0;
