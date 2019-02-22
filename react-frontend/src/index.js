@@ -9,6 +9,7 @@ import AddTodo from './components/AddTodo';
 import ListCase from './components/ListCase';
 import UpdateTodo from './components/UpdateTodo';
 import Case from './components/Case';
+import Attachments from './components/widgets/Attachments';
 import CaseMenu from './components/CaseMenu';
 import reducer from './store/reducers/reducer';
 import { Provider } from 'react-redux';
@@ -25,6 +26,7 @@ ReactDOM.render(
     <div className="row">
       <div className="col-xs-12">
         <Header/>
+        <Attachments/>
       </div>
     </div>
     <div className="row">
