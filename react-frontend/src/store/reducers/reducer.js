@@ -1,6 +1,7 @@
 const initialState = {
     hash: (window.location.hash !=="") ? window.location.hash: '#proxyrr',
-    sectionStatuses: {}, 
+    sectionStatuses: {},
+    attachments:[]
 }; 
 
 const reducer = (state=initialState, action) => {
@@ -44,6 +45,9 @@ const reducer = (state=initialState, action) => {
             break;
         case 'STATUS_UPDATE':
             newState.sectionStatuses = action.value;
+            break;
+        case 'ATTACHMENT_LOAD':
+            newState.attachments = action.value;
             break;
         default:
             newState.focus = "#proxyrr";

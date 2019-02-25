@@ -80,8 +80,20 @@ select.naics-form{
     background-color: #3c8dbc;
 }
 
+
+
 .svg-icon {
-    max-width: 50%;
+    max-width: 25%;
+}
+@media screen and (max-width: 1500px){
+    .svg-icon {
+        max-width: 50%;
+    }
+}
+@media screen and (max-width: 770px){
+    .svg-icon {
+        max-width: 75%;
+    }
 }
 
 .attachments table > tbody > tr > td  {

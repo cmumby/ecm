@@ -12,7 +12,8 @@ let Attachment = new Schema({
     fileType: String,
     uploader: String,
     section: String,
-    comment: String
+    comment: String,
+    date: Date,
     
 }, {
         collection: 'Attachments'

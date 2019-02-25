@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CaseService from '../CaseService';
 import CaseStructure from '../structures/CaseStructure';
 import { connect } from "react-redux";
+const dateFormat = require('dateformat');
 
 
 class Attachments extends Component {
@@ -62,8 +63,21 @@ class Attachments extends Component {
     updateForm = (event, name) => {
     }
 
+    documentRow(){
+        return this.props.attachments.map( function (doc, i){
+            return <tr key={i}>
+                <td><img className="svg-icon" alt={`Icon for ${doc.fileName}`} src={`/dist/svg/${doc.icon.toLowerCase()}.svg`}/></td>
+                <td>{ doc.fileName}</td>
+                <td>{ doc.fileType }</td>
+                <td>{ doc.uploader }</td>
+                <td>{ doc.comment }</td>
+                <td>{ dateFormat(doc.date, 'mm-dd-yyyy') }</td>
+            </tr>
+        });
+    }
+
     render() {
-        
+        console.log('attachments',this.props.attachments);
         return (
           <div className="attachments box">
             <div className="box-header">
@@ -81,49 +95,20 @@ class Attachments extends Component {
             </div>
             <div className="box-body table-responsive no-padding">
               <table className="table table-hover table-striped">
-                <tbody><tr>
-                  <th>Document Type</th>
-                  <th>Filename</th>
-                  <th>File Type</th>
-                  <th>Uploader</th>
-                  <th>Comments</th>
-                  <th>Upload Date</th>
-                </tr>
-                <tr>
-                  <td><img className="svg-icon" src="/dist/svg/pdf.svg"/></td>
-                  <td>CASE_SOS_FORM</td>
-                  <td>Formation Documents - SOS Documentation</td>
-                  <td>u616323</td>
-                  <td>Secutary of State Customer Information</td>
-                  <td>2-21-2019</td>
-                </tr>
-                <tr>
-                  <td><img className="svg-icon" src="/dist/svg/pdf.svg"/></td>
-                  <td>CASE_AOC_DOC</td>
-                  <td>Formation Documents - Articles of Incorporation</td>
-                  <td>u616323</td>
-                  <td>Customer Articles of Incorporation Information</td>
-                  <td>2-21-2019</td>
-                </tr>
-                <tr>
-                  <td><img className="svg-icon" src="/dist/svg/doc.svg"/></td>
-                  <td>CASE_RM_RESPONSE</td>
-                  <td>Customer Due Diligence - RM Response</td>
-                  <td>u616323</td>
-                  <td>RM Repsonse from RFI Request</td>
-                  <td>2-21-2019</td>
-                </tr>
-                <tr>
-                  <td><img className="svg-icon" src="/dist/svg/png.svg"/></td>
-                  <td>CASE_SVP_IMAGE</td>
-                  <td>Customer Due Diligence -StoreVision Proile</td>
-                  <td>u616323</td>
-                  <td>SVP Profile for Customer</td>
-                  <td>2-21-2019</td>
-                </tr>
-              </tbody></table>
-            </div>
-          </div> 
+                <tbody>
+                    <tr>
+                        <th>Document Type</th>
+                        <th>Filename</th>
+                        <th>File Type</th>
+                        <th>Uploader</th>
+                        <th>Comments</th>
+                        <th>Upload Date</th>
+                    </tr>
+                    { this.documentRow() }
+                </tbody>
+            </table>
+        </div>
+    </div> 
         );
     }
 }
@@ -132,6 +117,7 @@ const mapStateToProps = state => {
     return {
       statuses: state.sectionStatuses,
       hash: state.hash,
+      attachments: state.attachments,
     };
   };
   

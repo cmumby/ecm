@@ -64,6 +64,8 @@ class Case extends Component {
         this.caseService.get(this.props.match.params.ecmId, (data) => {
             this.caseData = data;
             thisRef.setState({ case: data });
+            this.props.onAttachmentsFill(this.state.case.attachments);
+
             
             this.sectionStatuses = this.getSectionStatuses();
             this.props.onSectionStatusFill(this.sectionStatuses);
@@ -219,13 +221,15 @@ const mapStateToProps = state => {
       loading: state.loading,
       hash: state.hash,
       statuses: state.sectionStatuses,
+      attachments: state.attachments,
     };
   };
 
 const mapDispachToProps = dispatch => { 
     return {
         onHashDetect: (hash) => dispatch({type:"HASH", value: hash}),
-        onSectionStatusFill: (statuses) => dispatch({type:"STATUS_UPDATE", value: statuses})
+        onSectionStatusFill: (statuses) => dispatch({type:"STATUS_UPDATE", value: statuses}),
+        onAttachmentsFill: (attachments) => dispatch({type:"ATTACHMENT_LOAD", value: attachments})
     };
 };
 
