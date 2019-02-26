@@ -11,10 +11,12 @@ class Attachments extends Component {
         super(props);
         this.caseService = new CaseService();
         this.caseStructure = new CaseStructure();
+        
      }
 
     componentWillMount() {
        // this.fillData();
+       this.setState({expanded: false});
     }
 
     fillData() { 
@@ -76,14 +78,28 @@ class Attachments extends Component {
         });
     }
 
+    setExpanded(){
+        this.setState({expanded:!(this.state.expanded)});
+    }
+
     render() {
-        console.log('attachments',this.props.attachments);
+        let docMessage = "No Documents";
+        if(this.props.attachments.length >= 1){
+            docMessage = `${this.props.attachments.length} Document`;
+        }
+        if(this.props.attachments.length > 1){ 
+            docMessage += 's';
+        }
+        let expandMessage = (this.state.expanded === true)?'Collapse Panel ( - )':'Expand Panel ( + )';
+        let expandClass = (this.state.expanded === true)?'expanded':'collapsed';
         return (
           <div className="attachments box">
             <div className="box-header">
-              <h3 className="box-title">Attachments</h3>
-
+              <h3 className="box-title">Attachments - { docMessage }</h3>
               <div className="box-tools">
+              {(this.props.attachments.length) > 3 &&
+              <button className="btn btn-info pull-right" onClick={(e) => this.setExpanded(e)} > {expandMessage}</button> }
+
                 <div className="input-group input-group-sm" style={{width: 150 + "px"}}>
                   <input type="text" name="table_search" className="form-control pull-right" placeholder="Search" />
 
@@ -93,7 +109,7 @@ class Attachments extends Component {
                 </div>
               </div>
             </div>
-            <div className="box-body table-responsive no-padding">
+            <div className={`box-body table-responsive no-padding ${expandClass}`}>
               <table className="table table-hover table-striped">
                 <tbody>
                     <tr>

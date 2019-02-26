@@ -100,6 +100,10 @@ select.naics-form{
     vertical-align: middle;
 }
 
+.attachments .table-responsive.collapsed {
+    height: 230px;
+    overflow-y: scroll;
+}
 
 body {
     margin: 0;
