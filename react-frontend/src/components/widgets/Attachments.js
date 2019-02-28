@@ -20,6 +20,7 @@ class Attachments extends Component {
          expanded: false,
          mode: 'display'
       });
+      this.setState({"markedItems":[]})
     }
 
     fillData() { 
@@ -38,8 +39,6 @@ class Attachments extends Component {
         })
     }
 
-    
-    
     //Routes the changed information to the right poperty
     handleFormDataRouting(event, name){
         switch (name) {
@@ -67,7 +66,7 @@ class Attachments extends Component {
         }
     }
 
-    updateForm = (event, name, key=0) => { 
+    updateForm = (event, name, key=0) => {
       if(name === 'comments'){
         this.props.attachments[key].comment = event.target.value;
       }
@@ -76,15 +75,24 @@ class Attachments extends Component {
         this.props.attachments[key].fileType = event.target.value;
       }
 
-      if(name === 'comments' || name === 'fileType'){
-        this.setState({expanded:'edit'});
-        this.props.onAttachmentsFill(this.props.attachments);
-        this.updateData(this.props.attachments);
+      if(name === 'delete'){ 
+        if(event.target.value === true){ 
+          this.props.attachments.splice(key,1);
+        }
+        if(event.target.value !== true){
+          let newMakredItems = this.state.markedItems.concat(key);
+          this.setState({'markedItems':newMakredItems});
+          
+          event.target.value = true;
+        }
       }
-      
+
+      this.setState({mode:'edit'});
+      this.props.onAttachmentsFill(this.props.attachments);
+      this.updateData(this.props.attachments);
     }
 
-    documentRow(mode){
+    documentRow(mode){ 
       if(mode === 'display'){
         return this.props.attachments.map( function (doc, i){
           return <tr key={i}>
@@ -99,16 +107,16 @@ class Attachments extends Component {
       } else if (mode === 'edit'){ 
         const thisRef = this;
         return this.props.attachments.map( function (doc, i){
-          return <tr key={i}>
+          return <tr key={i} className={(thisRef.state.markedItems.includes(i))?'marked':''}>
               <td><img className="svg-icon" alt={`Icon for ${doc.fileName}`} src={`/dist/svg/${doc.icon.toLowerCase()}.svg`}/></td>
               <td>{ doc.fileName}</td>
               <td>{thisRef.getFileTypeOptions(doc.fileType, i)  }</td>
               <td>{ doc.uploader }</td>
               <td>
-                <textarea onChange={(e) => thisRef.updateForm(e, 'comments', i )} className="form-control" rows="3" placeholder="" value={ doc.comment }></textarea>
+                <textarea onChange={(e) => thisRef.updateForm(e, 'comments', i )} className="form-control" rows="1" placeholder="" value={ doc.comment }></textarea>
               </td>
               <td>{ dateFormat(doc.date, 'mm-dd-yyyy') }</td>
-              <td><button className="btn btn-danger" href="#"><i className="fa fa-trash" style={{'color':'white'}}></i></button></td>
+              <td><button onClick={(e) => thisRef.updateForm(e, 'delete', i )} className="btn btn-danger" value={false}><i className="fa fa-trash" style={{'color':'white'}}></i></button></td>
           </tr>
         });
       }
@@ -145,28 +153,38 @@ class Attachments extends Component {
       this.setState({
         mode:(this.state.mode === 'display')?'edit':'display'
       });
+      if(this.state.mode === 'display'){
+        this.setState({"markedItems":[]});
+       // this.setState({ mode:'display'});
+      }
     }
 
-    render() {
+    render() { console.log("EXPANDED", this.state.expanded)
+        let expandClass = (this.state.expanded === true)?'expanded':'collapsed';
+        let expandIcon = (this.state.expanded === true)?'fa-compress':'fa-expand';
+        let modeMessage = (this.state.mode === 'display')?'Edit Documents':'End Document Editing';
+       
         let docMessage = "No Documents";
+        
         if(this.props.attachments.length >= 1){
             docMessage = `${this.props.attachments.length} Document`;
         }
+        
         if(this.props.attachments.length > 1){ 
             docMessage += 's';
         }
-        let expandClass = (this.state.expanded === true)?'expanded':'collapsed';
-        let modeMessage = (this.state.mode === 'display')?'Edit Documents':'End Document Editing';
+        
         return (
           <div className="attachments box">
             <div className="box-header">
               <h3 className="box-title">Attachments - { docMessage }</h3>
+              {(this.state.markedItems.length > 0 && this.state.mode === 'edit') &&  <h4><strong>Warning: </strong>{this.state.markedItems.length} item{(this.state.markedItems.length > 1) && 's'} Marked <span style={{'color':'#FFAAAA'}}><strong>RED</strong></span> will be PERMANENTLY DELETED once the corresponding <i className="fa fa-trash"/> icon is clicked.</h4>}
               <div className="box-tools">
               <button type="button" className="btn btn-box-tool" data-widget="collapse"><i className="fa fa-minus"></i>
                 </button>
                 
               {(this.props.attachments.length) > 3 &&
-             <button type="button" onClick={(e) => this.setExpanded(e)} className="btn btn-box-tool" ><i className="fa fa-expand"></i>
+             <button type="button" onClick={(e) => this.setExpanded(e)} className="btn btn-box-tool" ><i className={`fa ${expandIcon}`}></i>
              </button>}
 
                
@@ -193,6 +211,7 @@ class Attachments extends Component {
         <div className="box-footer clearfix">
           <button  className="btn btn-sm btn-info btn-flat pull-left">Upload New Document</button>
           <button  onClick={(e)=>this.setMode(e)} className="btn btn-sm btn-default btn-flat pull-right">{ modeMessage }</button>
+          <br/>
         </div>
     </div> 
         );

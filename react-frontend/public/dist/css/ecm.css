@@ -80,6 +80,10 @@ select.naics-form{
     background-color: #3c8dbc;
 }
 
+.marked {
+    background-color: #FFAAAA !important;
+}
+
 
 
 .svg-icon {
