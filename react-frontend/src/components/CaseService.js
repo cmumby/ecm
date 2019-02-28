@@ -64,6 +64,19 @@ export default class CaseService {
             });
     }
 
+    updateAttachments(data, id, callback) {
+        axios.post(`http://localhost:6200/ecm/update/${id}/attachments`, {
+            data: data
+        })
+            .then(function (response) {
+                
+                callback();
+            })
+            .catch(function (response) {
+                callback();
+            });
+    }
+
     delete(id, callback) {
         axios.get('http://localhost:6200/ecm/delete/' + id)
             .then(function (response) {

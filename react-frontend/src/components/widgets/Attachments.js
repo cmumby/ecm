@@ -16,7 +16,10 @@ class Attachments extends Component {
 
     componentWillMount() {
        // this.fillData();
-       this.setState({expanded: false});
+       this.setState({
+         expanded: false,
+         mode: 'display'
+      });
     }
 
     fillData() { 
@@ -26,15 +29,18 @@ class Attachments extends Component {
             thisRef.setState({ case: data });
         })
     }
+   
     updateData(data) {
-       // var thisRef = this;
-      /*  this.caseService.update(data, this.props.match.params.ecmId, (data) => {
+       var thisRef = this;
+       const id = thisRef.props.ecmID;
+       this.caseService.updateAttachments(data, this.props.ecmId, (data) => {
            // this.caseData = data;
            // thisRef.setState({ case: data });
-        }) */
+        })
     }
-    
 
+    
+    
     //Routes the changed information to the right poperty
     handleFormDataRouting(event, name){
         switch (name) {
@@ -62,24 +68,82 @@ class Attachments extends Component {
         }
     }
 
-    updateForm = (event, name) => {
+    updateForm = (event, name, key=0) => { 
+      if(name === 'comments'){
+        this.props.attachments[key].comment = event.target.value;
+      }
+
+      if(name === 'fileType'){
+        this.props.attachments[key].fileType = event.target.value;
+      }
+
+      if(name === 'comments' || name === 'fileType'){
+        this.setState({expanded:'edit'});
+        this.props.onAttachmentsFill(this.props.attachments);
+        this.updateData(this.props.attachments);
+      }
+      
     }
 
-    documentRow(){
+    documentRow(mode){
+      if(mode === 'display'){
         return this.props.attachments.map( function (doc, i){
-            return <tr key={i}>
-                <td><img className="svg-icon" alt={`Icon for ${doc.fileName}`} src={`/dist/svg/${doc.icon.toLowerCase()}.svg`}/></td>
-                <td>{ doc.fileName}</td>
-                <td>{ doc.fileType }</td>
-                <td>{ doc.uploader }</td>
-                <td>{ doc.comment }</td>
-                <td>{ dateFormat(doc.date, 'mm-dd-yyyy') }</td>
-            </tr>
+          return <tr key={i}>
+              <td><img className="svg-icon" alt={`Icon for ${doc.fileName}`} src={`/dist/svg/${doc.icon.toLowerCase()}.svg`}/></td>
+              <td>{ doc.fileName}</td>
+              <td>{ doc.fileType }</td>
+              <td>{ doc.uploader }</td>
+              <td>{ doc.comment }</td>
+              <td>{ dateFormat(doc.date, 'mm-dd-yyyy') }</td>
+          </tr>
         });
+      } else if (mode === 'edit'){ 
+        const thisRef = this;
+        return this.props.attachments.map( function (doc, i){
+          return <tr key={i}>
+              <td><img className="svg-icon" alt={`Icon for ${doc.fileName}`} src={`/dist/svg/${doc.icon.toLowerCase()}.svg`}/></td>
+              <td>{ doc.fileName}</td>
+              <td>{thisRef.getFileTypeOptions(doc.fileType, i)  }</td>
+              <td>{ doc.uploader }</td>
+              <td>
+                <textarea onChange={(e) => thisRef.updateForm(e, 'comments', i )} className="form-control" rows="3" placeholder="" value={ doc.comment }></textarea>
+              </td>
+              <td>{ dateFormat(doc.date, 'mm-dd-yyyy') }</td>
+          </tr>
+        });
+      }
+        
+    }
+
+    getFileTypeOptions(current,index=0){
+      const fileTypeOptions = [
+        'Formation Documents - SOS Documentation',
+        'Benficial Ownership Form',
+        'Banker Files - StoreVision',
+        'Screening Report',
+        'Formation Documents - Articles of Organization',
+        'Customer Due Dillegence - HRA FORM'
+      ];
+
+     
+        return <select onChange={(e) => this.updateForm(e, 'fileType', index )} className="form-control" value={current}>
+                  {fileTypeOptions.map((option, index) =>
+
+                      <option  key={index} value={option} >{option}</option>
+                  )}
+              </select>
+
+      
     }
 
     setExpanded(){
         this.setState({expanded:!(this.state.expanded)});
+    }
+
+    setMode(event){
+      this.setState({
+        mode:(this.state.mode === 'display')?'edit':'display'
+      });
     }
 
     render() {
@@ -90,23 +154,20 @@ class Attachments extends Component {
         if(this.props.attachments.length > 1){ 
             docMessage += 's';
         }
-        let expandMessage = (this.state.expanded === true)?'Collapse Panel ( - )':'Expand Panel ( + )';
+        let expandMessage = (this.state.expanded === true)?'Switch to Compact ( - )':'Switch to Full ( + )';
         let expandClass = (this.state.expanded === true)?'expanded':'collapsed';
+        let modeMessage = (this.state.mode === 'display')?'Edit Documents':'End Document Editing';
         return (
           <div className="attachments box">
             <div className="box-header">
               <h3 className="box-title">Attachments - { docMessage }</h3>
               <div className="box-tools">
+              <button type="button" className="btn btn-box-tool" data-widget="collapse"><i className="fa fa-minus"></i>
+                </button>
               {(this.props.attachments.length) > 3 &&
               <button className="btn btn-info pull-right" onClick={(e) => this.setExpanded(e)} > {expandMessage}</button> }
 
-                <div className="input-group input-group-sm" style={{width: 150 + "px"}}>
-                  <input type="text" name="table_search" className="form-control pull-right" placeholder="Search" />
-
-                  <div className="input-group-btn">
-                    <button type="submit" className="btn btn-default"><i className="fa fa-search"></i></button>
-                  </div>
-                </div>
+               
               </div>
             </div>
             <div className={`box-body table-responsive no-padding ${expandClass}`}>
@@ -120,9 +181,13 @@ class Attachments extends Component {
                         <th>Comments</th>
                         <th>Upload Date</th>
                     </tr>
-                    { this.documentRow() }
+                    { this.documentRow(this.state.mode) }
                 </tbody>
             </table>
+        </div>
+        <div className="box-footer clearfix">
+          <button  className="btn btn-sm btn-info btn-flat pull-left">Upload New Document</button>
+          <button  onClick={(e)=>this.setMode(e)} className="btn btn-sm btn-default btn-flat pull-right">{ modeMessage }</button>
         </div>
     </div> 
         );
@@ -134,12 +199,14 @@ const mapStateToProps = state => {
       statuses: state.sectionStatuses,
       hash: state.hash,
       attachments: state.attachments,
+      ecmId: state.ecmId,
     };
   };
   
   const mapDispachToProps = dispatch => {
     return {
         onHashDetect: (hash) => dispatch({type: "HASH", value: hash}),
+        onAttachmentsFill: (attachments) => dispatch({type:"ATTACHMENT_LOAD", value: attachments})
     };
   };
   

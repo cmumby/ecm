@@ -78,6 +78,25 @@ router.route('/update/:id').post(function (req, res) {
   });
 });
 
+router.route('/update/:id/attachments').post(function (req, res) {
+  let id = req.params.id; 
+  Case.findById(id ,  function (err, item) {
+    if (!item) {
+      return false;//res.status(400).send("Could not load Document");
+      
+    } else {
+      item.attachments = req.body.data;
+      item.markModified('attachments');
+      item.save().then(item => {
+        res.json('Updated');
+      })
+      .catch(err => {
+        res.status(400).send("unable to update the database");
+      }); 
+    }
+  });
+});
+
 // Delete Specific
 router.route('/delete/:id').get(function (req, res) {
   TodoList.findByIdAndRemove({ _id: req.params.id },

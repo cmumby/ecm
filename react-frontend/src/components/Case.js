@@ -65,6 +65,7 @@ class Case extends Component {
             this.caseData = data;
             thisRef.setState({ case: data });
             this.props.onAttachmentsFill(this.state.case.attachments);
+            this.props.onEcmIdUpdate(this.state.case._id);
 
             
             this.sectionStatuses = this.getSectionStatuses();
@@ -229,7 +230,8 @@ const mapDispachToProps = dispatch => {
     return {
         onHashDetect: (hash) => dispatch({type:"HASH", value: hash}),
         onSectionStatusFill: (statuses) => dispatch({type:"STATUS_UPDATE", value: statuses}),
-        onAttachmentsFill: (attachments) => dispatch({type:"ATTACHMENT_LOAD", value: attachments})
+        onAttachmentsFill: (attachments) => dispatch({type:"ATTACHMENT_LOAD", value: attachments}),
+        onEcmIdUpdate: (ecmId) => dispatch({type:"CASE_FOCUS", value: ecmId}),
     };
 };
 
