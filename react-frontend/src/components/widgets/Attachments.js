@@ -155,7 +155,6 @@ class Attachments extends Component {
         if(this.props.attachments.length > 1){ 
             docMessage += 's';
         }
-        let expandMessage = (this.state.expanded === true)?'Switch to Compact ( - )':'Switch to Full ( + )';
         let expandClass = (this.state.expanded === true)?'expanded':'collapsed';
         let modeMessage = (this.state.mode === 'display')?'Edit Documents':'End Document Editing';
         return (
@@ -165,8 +164,10 @@ class Attachments extends Component {
               <div className="box-tools">
               <button type="button" className="btn btn-box-tool" data-widget="collapse"><i className="fa fa-minus"></i>
                 </button>
+                
               {(this.props.attachments.length) > 3 &&
-              <button className="btn btn-info pull-right" onClick={(e) => this.setExpanded(e)} > {expandMessage}</button> }
+             <button type="button" onClick={(e) => this.setExpanded(e)} className="btn btn-box-tool" ><i className="fa fa-expand"></i>
+             </button>}
 
                
               </div>
