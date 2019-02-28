@@ -31,8 +31,7 @@ class Attachments extends Component {
     }
    
     updateData(data) {
-       var thisRef = this;
-       const id = thisRef.props.ecmID;
+       //var thisRef = this;
        this.caseService.updateAttachments(data, this.props.ecmId, (data) => {
            // this.caseData = data;
            // thisRef.setState({ case: data });
@@ -109,6 +108,7 @@ class Attachments extends Component {
                 <textarea onChange={(e) => thisRef.updateForm(e, 'comments', i )} className="form-control" rows="3" placeholder="" value={ doc.comment }></textarea>
               </td>
               <td>{ dateFormat(doc.date, 'mm-dd-yyyy') }</td>
+              <td><button className="btn btn-danger" href="#"><i className="fa fa-trash" style={{'color':'white'}}></i></button></td>
           </tr>
         });
       }
@@ -122,7 +122,8 @@ class Attachments extends Component {
         'Banker Files - StoreVision',
         'Screening Report',
         'Formation Documents - Articles of Organization',
-        'Customer Due Dillegence - HRA FORM'
+        'Customer Due Dillegence - HRA FORM',
+        'Customer Due Dillegence - RM Response',
       ];
 
      
@@ -180,6 +181,9 @@ class Attachments extends Component {
                         <th>Uploader</th>
                         <th>Comments</th>
                         <th>Upload Date</th>
+                        {(this.state.mode === 'edit') &&
+                        <th>Action</th>
+                        }
                     </tr>
                     { this.documentRow(this.state.mode) }
                 </tbody>
