@@ -18,7 +18,8 @@ class Attachments extends Component {
        // this.fillData();
        this.setState({
          expanded: false,
-         mode: 'display'
+         mode: 'display',
+         upload: false,
       });
       this.setState({"markedItems":[]})
     }
@@ -123,7 +124,7 @@ class Attachments extends Component {
         
     }
 
-    getFileTypeOptions(current,index=0){
+    getFileTypeOptions(current=false,index=0){
       const fileTypeOptions = [
         'Formation Documents - SOS Documentation',
         'Benficial Ownership Form',
@@ -136,6 +137,7 @@ class Attachments extends Component {
 
      
         return <select onChange={(e) => this.updateForm(e, 'fileType', index )} className="form-control" value={current}>
+                  <option  value="0" >Select an File Type</option>
                   {fileTypeOptions.map((option, index) =>
 
                       <option  key={index} value={option} >{option}</option>
@@ -149,6 +151,10 @@ class Attachments extends Component {
         this.setState({expanded:!(this.state.expanded)});
     }
 
+    setUpload(event){
+        this.setState({upload:!(this.state.upload)});
+    }
+
     setMode(event){
       this.setState({
         mode:(this.state.mode === 'display')?'edit':'display'
@@ -159,7 +165,36 @@ class Attachments extends Component {
       }
     }
 
-    render() { console.log("EXPANDED", this.state.expanded)
+    
+
+    uploadForm(){
+        return <div id="upload-form" className="box">
+                <div className="box-header">
+                    <h3 className="box-title">Upload a new Document</h3>
+                </div>
+                <div class="proxyrr box-body">
+                    <div class="form-group">
+                        <label for="exampleInputFile">File input</label>
+                        <input type="file" id="exampleInputFile" />
+
+                        <p class="help-block">Select a document to upload to this case.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">File Type</label>
+                        {this.getFileTypeOptions()}
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">File Comments</label>
+                        <p class="help-block">Add comments to help describe this document.</p>
+                        <textarea className="form-control" rows="3" placeholder="" ></textarea>
+                    </div>
+                    <button  className="btn btn-sm btn-info btn-flat pull-left">Submit and Upload</button>
+                    <button  onClick={(e)=> this.setUpload(e)} className="btn btn-sm btn-danger btn-flat pull-right">Close Dialog</button>
+                </div>
+               </div>
+    }
+
+    render() {
         let expandClass = (this.state.expanded === true)?'expanded':'collapsed';
         let expandIcon = (this.state.expanded === true)?'fa-compress':'fa-expand';
         let modeMessage = (this.state.mode === 'display')?'Edit Documents':'End Document Editing';
@@ -209,10 +244,11 @@ class Attachments extends Component {
             </table>
         </div>
         <div className="box-footer clearfix">
-          <button  className="btn btn-sm btn-info btn-flat pull-left">Upload New Document</button>
-          <button  onClick={(e)=>this.setMode(e)} className="btn btn-sm btn-default btn-flat pull-right">{ modeMessage }</button>
+          <button  onClick={(e)=> this.setUpload(e)} className="btn btn-sm btn-info btn-flat pull-left">Upload New Document</button>
+          <button  onClick={(e)=> this.setMode(e)} className="btn btn-sm btn-default btn-flat pull-right">{ modeMessage }</button>
           <br/>
         </div>
+        {(this.state.upload === true) && this.uploadForm()}
     </div> 
         );
     }
