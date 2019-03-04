@@ -77,6 +77,24 @@ export default class CaseService {
             });
     }
 
+    upload(data) {
+        const formData = new FormData();
+        formData.append('file',data);
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }
+        axios.post('http://localhost:6200/ecm/upload', formData, config )
+            .then(function (response) {
+                
+                //callback();
+            })
+            .catch(function (response) {
+               // callback();
+            });
+    }
+
     delete(id, callback) {
         axios.get('http://localhost:6200/ecm/delete/' + id)
             .then(function (response) {

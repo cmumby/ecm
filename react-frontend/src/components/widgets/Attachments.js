@@ -165,31 +165,42 @@ class Attachments extends Component {
       }
     }
 
-    
+    handleUpload(event, name){
+        if(name === 'select'){
+            this.setState({
+            selectedFile:event.target.files[0]
+          });
+        } else if (name === 'submit'){
+            this.caseService.upload(this.state.selectedFile, (data) => {
+               
+            });
+        }
+        
+    }
 
     uploadForm(){
         return <div id="upload-form" className="box">
                 <div className="box-header">
                     <h3 className="box-title">Upload a new Document</h3>
                 </div>
-                <div class="proxyrr box-body">
-                    <div class="form-group">
-                        <label for="exampleInputFile">File input</label>
-                        <input type="file" id="exampleInputFile" />
+                <div className="proxyrr box-body">
+                    <div className="form-group">
+                        <label htmlFor="exampleInputFile">File input</label>
+                        <input onChange={(e) => this.handleUpload(e,'select')} type="file" id="exampleInputFile" />
 
-                        <p class="help-block">Select a document to upload to this case.</p>
+                        <p className="help-block">Select a document to upload to this case.</p>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputFile">File Type</label>
+                    <div className="form-group">
+                        <label htmlFor="exampleInputFile">File Type</label>
                         {this.getFileTypeOptions()}
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputFile">File Comments</label>
-                        <p class="help-block">Add comments to help describe this document.</p>
+                    <div className="form-group">
+                        <label htmlFor="exampleInputFile">File Comments</label>
+                        <p className="help-block">Add comments to help describe this document.</p>
                         <textarea className="form-control" rows="3" placeholder="" ></textarea>
                     </div>
-                    <button  className="btn btn-sm btn-info btn-flat pull-left">Submit and Upload</button>
-                    <button  onClick={(e)=> this.setUpload(e)} className="btn btn-sm btn-danger btn-flat pull-right">Close Dialog</button>
+                    <button onClick={(e) => this.handleUpload(e,'submit')} className="btn btn-sm btn-info btn-flat pull-left">Submit and Upload</button>
+                    <button onClick={(e) => this.setUpload(e)} className="btn btn-sm btn-danger btn-flat pull-right">Close Dialog</button>
                 </div>
                </div>
     }
