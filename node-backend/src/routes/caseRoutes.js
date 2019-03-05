@@ -3,6 +3,7 @@ let app = express();
 let router = express.Router();
 let Requirement = require('../models/requirements/Requirement');
 const fileUpload = require('express-fileupload');
+const directory = require('../util/directory');
 
 router.use(fileUpload());
 
@@ -114,19 +115,26 @@ router.route('/upload').post( function (req, res, next) {
 
 
  let uploadFile = req.files.file;
+ 
+  const referrer = req.headers.referer;
   const fileName = req.files.file.name;
-  uploadFile.mv(
-    `${__dirname}/public/files/${fileName}`,
-    function (err) {
-      if (err) {
-        return res.status(500).send(err)
+  const caseNumber = referrer.split('/')[(referrer.split('/').length - 2)];
+  const uploadPath = `${__dirname}/../../public/files/case/${caseNumber}`;
+  
+    ///directory.checkUploadPath(uploadPath); Will use on creation of case
+    uploadFile.mv(
+      `${uploadPath}/${fileName}`,
+      function (err) {
+        if (err) {
+          return res.status(500).send(err)
+          console.log('file error', err);
+        }
+  
+        res.json({
+          file: `public/files/case/${caseNumber}/${req.files.file.name}`,
+        })
       }
-
-      res.json({
-        file: `public/${req.files.file.name}`,
-      })
-    }
-  )
+    ); 
 });
 
 module.exports = router;

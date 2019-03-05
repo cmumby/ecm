@@ -77,7 +77,7 @@ export default class CaseService {
             });
     }
 
-    upload(data) {
+    upload(data, callback) {
         const formData = new FormData();
         formData.append('file',data);
         const config = {
@@ -87,8 +87,7 @@ export default class CaseService {
         }
         axios.post('http://localhost:6200/ecm/upload', formData, config )
             .then(function (response) {
-                
-                //callback();
+                callback(response);
             })
             .catch(function (response) {
                // callback();
