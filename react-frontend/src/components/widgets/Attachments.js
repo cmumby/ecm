@@ -65,7 +65,7 @@ class Attachments extends Component {
         if(this.state.uploadType === 0 ){
           this.state.alerts.push({
             exclamation:'Missing file type',
-            message:`Please select an availe file type from the File Type Dropdown.`,
+            message:`Please select a file type for the upload.`,
             type: 'warning',
           });
 
