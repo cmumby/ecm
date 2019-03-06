@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import CaseService from '../CaseService';
 import CaseStructure from '../structures/CaseStructure';
 import { connect } from "react-redux";
+import Alerts from './Alerts';
+
 const dateFormat = require('dateformat');
 
 
@@ -19,6 +21,7 @@ class Attachments extends Component {
         expanded: false,
         mode: 'display',
         upload: false,
+        uploadType:0,
         alerts:[]
     });
     this.setState({"markedItems":[]})
@@ -44,34 +47,66 @@ class Attachments extends Component {
   }
   
   //FORM OPERATIONS
+
+  /**  handles the from events for the upload dialog *
+  * File input, File Type and File Comments
+  **/
   handleUpload(event, name){
     if(name === 'select'){
         this.setState({
         selectedFile:event.target.files[0]
       });
+
     } else if (name === 'submit'){
-        this.caseService.upload(this.state.selectedFile, (data) => {
-          console.log("after", data);
-          if(data.statusText === "OK"){
-            let newAlertState = this.state.alerts;
-            
-            newAlertState.push({
-              exclamation:'Success!',
-              message:`${this.state.selectedFile.name} has been added to this case.`,
-              type: 'success',
-            });
 
-            this.setState({
-              alerts:newAlertState,
-              selectedFile: null,
-            });
-            this.fileInput.value = "";
+        let uStateAlerts = this.state.alerts;
             
+        //Validations   
+        if(this.state.uploadType === 0 ){
+          this.state.alerts.push({
+            exclamation:'Missing file type',
+            message:`Please select an availe file type from the File Type Dropdown.`,
+            type: 'warning',
+          });
 
-          }
-        }); 
-    }
-      
+          this.setState({
+            alerts: this.state.alerts
+          });
+        }
+        
+        if (this.fileInput.value === ''){
+          this.state.alerts.push({
+            exclamation:'Missing File',
+            message:`Please select a new file to upload to this case.`,
+            type: 'warning',
+          });
+
+          this.setState({
+            alerts: this.state.alerts
+          });
+        }
+
+        //Upload attempt if validations are cleared
+        if(this.state.uploadType !== 0 && this.fileInput.value !== '' ){
+          this.caseService.upload(this.state.selectedFile, (data) => {
+            if(data.statusText === "OK"){
+              let newAlertState = this.state.alerts;
+              
+              newAlertState.push({
+                exclamation:'Success!',
+                message:`${this.state.selectedFile.name} has been added to this case.`,
+                type: 'success',
+              });
+  
+              this.setState({
+                alerts:newAlertState,
+                selectedFile: null,
+              });
+              this.fileInput.value = "";
+            }
+          }); 
+        }
+    }    
   }
 
   updateData(data) {
@@ -83,8 +118,14 @@ class Attachments extends Component {
       this.props.attachments[key].comment = event.target.value;
     }
 
-    if(name === 'fileType'){
+    if(name === 'edit-fileType'){
       this.props.attachments[key].fileType = event.target.value;
+    }
+
+    if(name === 'upload-fileType'){
+     this.setState({
+       uploadType:event.target.value
+      });
     }
 
     if(name === 'delete'){ 
@@ -99,13 +140,13 @@ class Attachments extends Component {
       }
     }
 
-    this.setState({mode:'edit'});
+    if(name !== 'upload-fileType') {this.setState({mode:'edit'}) };
     this.props.onAttachmentsFill(this.props.attachments);
     this.updateData(this.props.attachments);
   }
   
   //COMPONENT RENDERING 
-  getFileTypeOptions(current=false,index=0){
+  getFileTypeOptions(current=false,index=0, type='edit'){
     const fileTypeOptions = [
       'Formation Documents - SOS Documentation',
       'Benficial Ownership Form',
@@ -116,7 +157,9 @@ class Attachments extends Component {
       'Customer Due Dillegence - RM Response',
     ];
 
-    return <select onChange={(e) => this.updateForm(e, 'fileType', index )} className="form-control" value={current}>
+    
+
+    return <select onChange={(e) => this.updateForm(e, `${type}-fileType`, index )}  className="form-control" value={current}>
               <option  value="0" >Select an File Type</option>
               {fileTypeOptions.map((option, index) =>
 
@@ -143,7 +186,7 @@ class Attachments extends Component {
         return <tr key={i} className={(thisRef.state.markedItems.includes(i))?'marked':''}>
             <td><img className="svg-icon" alt={`Icon for ${doc.fileName}`} src={`/dist/svg/${doc.icon.toLowerCase()}.svg`}/></td>
             <td>{ doc.fileName}</td>
-            <td>{thisRef.getFileTypeOptions(doc.fileType, i)  }</td>
+            <td>{thisRef.getFileTypeOptions(doc.fileType, i,'edit')  }</td>
             <td>{ doc.uploader }</td>
             <td>
               <textarea onChange={(e) => thisRef.updateForm(e, 'comments', i )} className="form-control" rows="1" placeholder="" value={ doc.comment }></textarea>
@@ -156,38 +199,10 @@ class Attachments extends Component {
       
   }
 
-  writeAlerts(){
-    
-    return this.state.alerts.map( function (alert, i){
-      let boxColor = "green";
-      switch(alert.type){
-        case 'success':
-          boxColor = "green"
-          break;
-        case 'failure':
-          boxColor = "red"
-          break;
-        default:
-          boxColor = "green";
-      }
-
-      return <div key={i} className={`small-box bg-${boxColor}`}>
-              <div className="inner">
-                <h3>{alert.exclamation}</h3>
-                    <p>{alert.message}</p>
-                  </div>
-                  <div className="icon">
-                    <i className="ion ion-checkmark"></i>
-                  </div>
-                <a className="small-box-footer">Close Alert <i className="fa fa-close"></i></a>
-              </div>
-      });
-  }
-
-  uploadForm(){
+  uploadForm(){ 
       return <div id="upload-form" className="box">
-            {(this.state.alerts.length > 0) && 
-              this.writeAlerts()
+            {(this.state.alerts.length !== 0) && 
+              <Alerts alerts={this.state.alerts} />
             }
               <div className="box-header">
                   <h3 className="box-title">Upload a new Document</h3>
@@ -201,7 +216,7 @@ class Attachments extends Component {
                   </div>
                   <div className="form-group">
                       <label htmlFor="exampleInputFile">File Type</label>
-                      {this.getFileTypeOptions()}
+                      {this.getFileTypeOptions(this.state.uploadType,0,'upload')}
                   </div>
                   <div className="form-group">
                       <label htmlFor="exampleInputFile">File Comments</label>
@@ -240,9 +255,7 @@ class Attachments extends Component {
               
             {(this.props.attachments.length) > 3 &&
             <button type="button" onClick={(e) => this.setExpanded(e)} className="btn btn-box-tool" ><i className={`fa ${expandIcon}`}></i>
-            </button>}
-
-              
+            </button>} 
             </div>
           </div>
           <div className={`box-body table-responsive no-padding ${expandClass}`}>
