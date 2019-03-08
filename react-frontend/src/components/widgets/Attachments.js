@@ -126,7 +126,7 @@ class Attachments extends Component {
 
     if(name === 'upload-fileType'){
      this.setState({
-       uploadType:event.target.value
+       uploadType:(event.target.value === "0")? Number(event.target.value) : event.target.value 
       });
     }
 
