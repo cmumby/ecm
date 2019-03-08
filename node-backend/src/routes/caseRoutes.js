@@ -115,7 +115,7 @@ router.route('/delete/:id').get(function (req, res) {
 router.route('/upload').post( function (req, res, next) {
 
 
- let uploadFile = req.files.file;
+  let uploadFile = req.files.file;
  
   const referrer = req.headers.referer;
   let fileName = { name: req.files.file.name , exist: null }
@@ -123,25 +123,23 @@ router.route('/upload').post( function (req, res, next) {
   const uploadPath = `${__dirname}/../../public/files/case/${caseNumber}`;
   
   while (fileName.exist !== false ){
-    console.log('while loop')
     fileName = renameIfExists(uploadPath, fileName.name);
   }
-  
-  console.log('NOW NAME IS', fileName)
-    ///directory.checkUploadPath(uploadPath); Will use on creation of case
-    uploadFile.mv(
-      `${uploadPath}/${fileName.name}`,
-      function (err) {
-        if (err) {
-          return res.status(500).send(err)
-          console.log('file error', err);
-        }
-  
-        res.json({
-          file: `public/files/case/${caseNumber}/${fileName.name}`,
-        })
+
+  ///directory.checkUploadPath(uploadPath); Will use on creation of case
+  uploadFile.mv(
+    `${uploadPath}/${fileName.name}`,
+    function (err) {
+      if (err) {
+        return res.status(500).send(err)
+        console.log('file error', err);
       }
-    ); 
+
+      res.json({
+        file: `public/files/case/${caseNumber}/${fileName.name}`,
+      })
+    }
+  ); 
 });
 
 module.exports = router;
