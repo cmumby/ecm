@@ -90,11 +90,13 @@ class Attachments extends Component {
         if(this.state.uploadType !== 0 && this.fileInput.value !== '' ){
           this.caseService.upload(this.state.selectedFile, (data) => {
             if(data.statusText === "OK"){
+              const newFileNameParts = data.data.file.split('/');
+              const newFileName = newFileNameParts[(newFileNameParts.length - 1)];
               let newAlertState = this.state.alerts;
               
               newAlertState.push({
                 exclamation:'Success!',
-                message:`${this.state.selectedFile.name} has been added to this case.`,
+                message:`${newFileName} has been added to this case.`,
                 type: 'success',
               });
   
@@ -277,7 +279,7 @@ class Attachments extends Component {
           </table>
       </div>
       <div className="box-footer clearfix">
-        <button  onClick={(e)=> this.setUpload(e)} className="btn btn-sm btn-info btn-flat pull-left">Upload New Document</button>
+        <button  onClick={(e)=> this.setUpload(e)} className="btn btn-sm btn-info btn-flat pull-left">Add New Document</button>
         <button  onClick={(e)=> this.setMode(e)} className="btn btn-sm btn-default btn-flat pull-right">{ modeMessage }</button>
         <br/>
       </div>

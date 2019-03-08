@@ -122,6 +122,10 @@ todo-list a {
 button[type="submit"] {
     margin-right: 10px;
 }
+
+.alert-action{
+    cursor: pointer;
+}
   
 
 /*.ecm-affix{

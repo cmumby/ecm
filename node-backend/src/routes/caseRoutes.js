@@ -3,7 +3,8 @@ let app = express();
 let router = express.Router();
 let Requirement = require('../models/requirements/Requirement');
 const fileUpload = require('express-fileupload');
-const directory = require('../util/directory');
+const { directory , renameIfExists } = require('../util/directory');
+const fs = require('fs')
 
 router.use(fileUpload());
 
@@ -117,13 +118,19 @@ router.route('/upload').post( function (req, res, next) {
  let uploadFile = req.files.file;
  
   const referrer = req.headers.referer;
-  const fileName = req.files.file.name;
+  let fileName = { name: req.files.file.name , exist: null }
   const caseNumber = referrer.split('/')[(referrer.split('/').length - 2)];
   const uploadPath = `${__dirname}/../../public/files/case/${caseNumber}`;
   
+  while (fileName.exist !== false ){
+    console.log('while loop')
+    fileName = renameIfExists(uploadPath, fileName.name);
+  }
+  
+  console.log('NOW NAME IS', fileName)
     ///directory.checkUploadPath(uploadPath); Will use on creation of case
     uploadFile.mv(
-      `${uploadPath}/${fileName}`,
+      `${uploadPath}/${fileName.name}`,
       function (err) {
         if (err) {
           return res.status(500).send(err)
@@ -131,7 +138,7 @@ router.route('/upload').post( function (req, res, next) {
         }
   
         res.json({
-          file: `public/files/case/${caseNumber}/${req.files.file.name}`,
+          file: `public/files/case/${caseNumber}/${fileName.name}`,
         })
       }
     ); 

@@ -50,7 +50,7 @@ export default class Alerts extends Component {
                         <div className="icon">
                           <i className={`ion ion-${boxIcon}`}></i>
                         </div>
-                      <a onClick={(e)=> thisRef.handleAlerts(e, i) } className="small-box-footer">Close Alert <i className="fa fa-close"></i></a>
+                      <a onClick={(e)=> thisRef.handleAlerts(e, i) } className="alert-action small-box-footer">Close Alert <i className="fa fa-close"></i></a>
                     </div>
         });
     }
