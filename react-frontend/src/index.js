@@ -15,7 +15,7 @@ import reducer from './store/reducers/reducer';
 import { Provider } from 'react-redux';
 
 let currentLocation = document.location.href;
-let mainSize = (currentLocation.indexOf('/requirements') >=0)?'col-md-10': 'col-md-12';
+let mainSize = (currentLocation.indexOf('/requirements') >=0)?'col-md-8 col-lg-10': 'col-md-12';
 mainSize += ' col-xs-12';
 
 const store = createStore(reducer);
@@ -33,7 +33,7 @@ ReactDOM.render(
     </div>
     <div className="row">
       <Router>
-        <div className="col-md-2 col-xs-12">
+        <div className="col-md-4 col-lg-2 col-xs-12">
           <Route path='/case/:ecmId/requirements' component={CaseMenu} />
         </div>
       </Router>
