@@ -15,8 +15,8 @@ import reducer from './store/reducers/reducer';
 import { Provider } from 'react-redux';
 
 let currentLocation = document.location.href;
-let mainSize = (currentLocation.indexOf('/requirements') >=0)?'col-md-8 col-lg-10': 'col-md-12';
-mainSize += ' col-xs-12';
+let mainSize = `${(currentLocation.indexOf('/requirements') >=0)?'col-md-8 col-lg-10': 'col-md-12'} col-xs-12`;
+
 
 const store = createStore(reducer);
 
