@@ -742,7 +742,8 @@
                     "customer": "",
                     "divison": "",
                     "rcbo": "",
-                    "div": ""
+                    "div": "",
+                    "complete": true
                 },
                 "sectionComplete": true
             }
@@ -911,7 +912,7 @@
                 "icon": "PDF",
                 "fileName": "BOBS_BURGERS_RM_RESPONSE",
                 "filePath": "pulblic/files/case-123/BOBS_BURGERS_RM_RESPONSE.pdf",
-                "fileType": "Formation Documents - SOS Documentation",
+                "fileType": "Customer Due Dillegence - RM Response",
                 "uploader": "u616323",
                 "comment": "Uploaded By Case RA",
                 "date": "2018-05-25T16:00:00.000Z"
@@ -954,7 +955,7 @@
             },
             {
                 "icon": "PDF",
-                "fileName": "17868 CHV(M)-DAH(M) 123",
+                "fileName": "17868 CHV(M)-DAH(M) 123-2",
                 "filePath": "pulblic/files/case-123/17868 CHV(M)-DAH(M) 123-2.pdf",
                 "fileType": "Screening Report",
                 "uploader": "u616323",
