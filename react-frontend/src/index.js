@@ -9,7 +9,7 @@ import AddTodo from './components/AddTodo';
 import ListCase from './components/ListCase';
 import UpdateTodo from './components/UpdateTodo';
 import Case from './components/Case';
-import Attachments from './components/widgets/Attachments';
+import Attachments from './components/widgets/Attachments/Attachments';
 import CaseMenu from './components/CaseMenu';
 import reducer from './store/reducers/reducer';
 import { Provider } from 'react-redux';
