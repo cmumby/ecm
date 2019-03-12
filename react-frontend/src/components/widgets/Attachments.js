@@ -59,11 +59,48 @@ class Attachments extends Component {
 
     } else if (name === 'submit'){
 
-        let uStateAlerts = this.state.alerts;
+        let stateAlerts = this.state.alerts;
+        const ACCEPTED_FILE_TYPES = [
+          "application/msword", //.doc
+          "application/pdf",
+          "application/vnd.ms-excel",
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", // .xslx
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document", // .docx
+          "image/jpeg",
+          "image/png",
+          "text/plain", //.txt
+        ]
+
+        const FILE_SIZE_LIMIT = 5000000;
             
         //Validations   
+        if(!ACCEPTED_FILE_TYPES.includes(this.state.selectedFile.type )){
+          stateAlerts.push({
+            exclamation:'Document Format Not Supported',
+            message:`Please upload a document with one of the following extensions: (.doc, .docx, .jpg, .pdf, .png, .txt, .xsl, .xslx )`,
+            type: 'warning',
+          });
+
+          this.setState({
+            alerts: this.state.alerts
+          });
+        }
+
+
+        if(this.state.selectedFile.size > FILE_SIZE_LIMIT){
+          stateAlerts.push({
+            exclamation:'Document Too Large',
+            message:`Please upload smaller document. The upload file size limit is 5MB.`,
+            type: 'warning',
+          });
+
+          this.setState({
+            alerts: this.state.alerts
+          });
+        }
+
         if(this.state.uploadType === 0 ){
-          this.state.alerts.push({
+          stateAlerts.push({
             exclamation:'Missing file type',
             message:`Please select a file type for the upload.`,
             type: 'warning',
@@ -75,14 +112,14 @@ class Attachments extends Component {
         }
         
         if (this.fileInput.value === ''){
-          this.state.alerts.push({
+          stateAlerts.push({
             exclamation:'Missing File',
             message:`Please select a new file to upload to this case.`,
             type: 'warning',
           });
 
           this.setState({
-            alerts: this.state.alerts
+            alerts: stateAlerts
           });
         }
 
@@ -111,25 +148,30 @@ class Attachments extends Component {
     }    
   }
 
+  //send the updated case attachment list to the database
   updateData(data) {
       this.caseService.updateAttachments(data, this.props.ecmId, (data) => {});
   }
-
+  
+  //handle state changes in upload form.
   updateForm = (event, name, key=0) => {
     if(name === 'comments'){
       this.props.attachments[key].comment = event.target.value;
     }
 
+    //file type per item in attachment list
     if(name === 'edit-fileType'){
       this.props.attachments[key].fileType = event.target.value;
     }
 
+    // file type of new document upload
     if(name === 'upload-fileType'){
      this.setState({
        uploadType:(event.target.value === "0")? Number(event.target.value) : event.target.value 
       });
     }
 
+    //Mark for deletion if trash icon is clicked. Delete if item is marked.
     if(name === 'delete'){ 
       if(event.target.value === true){ 
         this.props.attachments.splice(key,1);
@@ -203,31 +245,31 @@ class Attachments extends Component {
 
   uploadForm(){ 
       return <div id="upload-form" className="box">
-            {(this.state.alerts.length !== 0) && 
-              <Alerts alerts={this.state.alerts} />
-            }
-              <div className="box-header">
-                  <h3 className="box-title">Upload a new Document</h3>
-              </div>
-              <div className="proxyrr box-body">
-                  <div className="form-group">
-                      <label htmlFor="exampleInputFile">File input</label>
-                      <input onChange={(e) => this.handleUpload(e,'select')} type="file" ref={ref=> this.fileInput = ref} id="exampleInputFile" />
+              {(this.state.alerts.length !== 0) && 
+                <Alerts alerts={this.state.alerts} />
+              }
+                <div className="box-header">
+                    <h3 className="box-title">Upload a new Document</h3>
+                </div>
+                <div className="proxyrr box-body">
+                    <div className="form-group">
+                        <label htmlFor="exampleInputFile">File input</label>
+                        <input onChange={(e) => this.handleUpload(e,'select')} type="file" ref={ref=> this.fileInput = ref} id="exampleInputFile" />
 
-                      <p className="help-block">Select a document to upload to this case.</p>
-                  </div>
-                  <div className="form-group">
-                      <label htmlFor="exampleInputFile">File Type</label>
-                      {this.getFileTypeOptions(this.state.uploadType,0,'upload')}
-                  </div>
-                  <div className="form-group">
-                      <label htmlFor="exampleInputFile">File Comments</label>
-                      <p className="help-block">Add comments to help describe this document.</p>
-                      <textarea className="form-control" rows="3" placeholder="" ></textarea>
-                  </div>
-                  <button onClick={(e) => this.handleUpload(e,'submit')} className="btn btn-sm btn-info btn-flat pull-left">Submit and Upload</button>
-                  <button onClick={(e) => this.setUpload(e)} className="btn btn-sm btn-danger btn-flat pull-right">Close Dialog</button>
-              </div>
+                        <p className="help-block">Select a document to upload to this case.</p>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleInputFile">File Type</label>
+                        {this.getFileTypeOptions(this.state.uploadType,0,'upload')}
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleInputFile">File Comments</label>
+                        <p className="help-block">Add comments to help describe this document.</p>
+                        <textarea className="form-control" rows="3" placeholder="" ></textarea>
+                    </div>
+                    <button onClick={(e) => this.handleUpload(e,'submit')} className="btn btn-sm btn-info btn-flat pull-left">Submit and Upload</button>
+                    <button onClick={(e) => this.setUpload(e)} className="btn btn-sm btn-danger btn-flat pull-right">Close Dialog</button>
+                </div>
               </div>
   }
 
