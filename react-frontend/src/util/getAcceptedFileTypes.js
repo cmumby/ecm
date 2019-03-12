@@ -1,4 +1,4 @@
-export function getAcceptedFileTypes(data){
+export default function getAcceptedFileTypes(data){
    
    return [
     "application/msword", //.doc

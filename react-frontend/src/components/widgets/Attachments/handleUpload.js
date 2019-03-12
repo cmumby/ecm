@@ -1,3 +1,5 @@
+import getAcceptedFileTypes from '../../../util/getAcceptedFileTypes';
+
 export default function handleUpload(event, name, _this={} ){
     if(name === 'select'){
         _this.setState({
@@ -6,16 +8,7 @@ export default function handleUpload(event, name, _this={} ){
 
     } else if (name === 'submit'){
         let stateAlerts = _this.state.alerts;
-        const ACCEPTED_FILE_TYPES = [
-          "application/msword", //.doc
-          "application/pdf",
-          "application/vnd.ms-excel",
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", // .xslx
-          "application/vnd.openxmlformats-officedocument.wordprocessingml.document", // .docx
-          "image/jpeg",
-          "image/png",
-          "text/plain", //.txt
-        ]
+        const ACCEPTED_FILE_TYPES = getAcceptedFileTypes();
 
         const FILE_SIZE_LIMIT = 5000000;
             
