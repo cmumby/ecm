@@ -1,6 +1,7 @@
 import getAcceptedFileTypes from '../../../util/getAcceptedFileTypes';
 
 export default function handleUpload(event, name, _this={} ){
+    let attemptUpload = true;
     if(name === 'select'){
         _this.setState({
         selectedFile:event.target.files[0]
@@ -9,7 +10,6 @@ export default function handleUpload(event, name, _this={} ){
     } else if (name === 'submit'){
         let stateAlerts = _this.state.alerts;
         const ACCEPTED_FILE_TYPES = getAcceptedFileTypes();
-
         const FILE_SIZE_LIMIT = 5000000;
             
         //Validations   
@@ -23,6 +23,7 @@ export default function handleUpload(event, name, _this={} ){
           _this.setState({
             alerts: _this.state.alerts
           });
+          attemptUpload = false;
         }
 
 
@@ -36,6 +37,7 @@ export default function handleUpload(event, name, _this={} ){
           _this.setState({
             alerts: _this.state.alerts
           });
+          attemptUpload = false;
         }
 
         if(_this.state.uploadType === 0 ){
@@ -48,6 +50,7 @@ export default function handleUpload(event, name, _this={} ){
           _this.setState({
             alerts: _this.state.alerts
           });
+          attemptUpload = false;
         }
         
         if (_this.fileInput.value === ''){
@@ -60,10 +63,11 @@ export default function handleUpload(event, name, _this={} ){
           _this.setState({
             alerts: stateAlerts
           });
+          attemptUpload = false;
         }
 
         //Upload attempt if validations are cleared
-        if(_this.state.uploadType !== 0 && _this.fileInput.value !== '' ){
+        if(attemptUpload === true){
           _this.caseService.upload(_this.state.selectedFile, (data) => {
             if(data.statusText === "OK"){
               const newFileNameParts = data.data.file.split('/');

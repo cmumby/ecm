@@ -17,7 +17,7 @@ export default function fileTypeOptions(current=false,index=0, type='edit', _thi
     
 
     return <select onChange={(e) => updateForm(e, `${type}-fileType`, index, _this)}  className="form-control" value={current}>
-              <option  value="0" >Select an File Type</option>
+              <option  value="0" >Select a File Type</option>
               {fileTypeOptions.map((option, index) =>
 
                   <option  key={index} value={option} >{option}</option>
