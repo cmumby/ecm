@@ -26,7 +26,7 @@ export default function uploadDocumentForm(alerts, uploadType, _this={}){
                 <div className="form-group">
                     <label htmlFor="exampleInputFile">File Comments</label>
                     <p className="help-block">Add comments to help describe this document.</p>
-                    <textarea className="form-control" rows="3" placeholder="" ></textarea>
+                    <textarea onChange={(e) => handleUpload(e,'comment', _this)} className="form-control" rows="3" placeholder="" value={_this.state.uploadComment}></textarea>
                 </div>
                 <button onClick={(e) => handleUpload(e,'submit', _this)} className="btn btn-sm btn-info btn-flat pull-left">Submit and Upload</button>
                 <button onClick={(e) => _this.setUpload(e)} className="btn btn-sm btn-danger btn-flat pull-right">Close Dialog</button>

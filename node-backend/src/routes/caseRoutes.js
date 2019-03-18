@@ -5,6 +5,7 @@ let Requirement = require('../models/requirements/Requirement');
 const fileUpload = require('express-fileupload');
 const { directory , renameIfExists } = require('../util/directory');
 const fs = require('fs')
+const dateFormat = require('dateformat');
 
 router.use(fileUpload());
 
@@ -116,11 +117,12 @@ router.route('/upload').post( function (req, res, next) {
 
 
   let uploadFile = req.files.file;
- 
   const referrer = req.headers.referer;
   let fileName = { name: req.files.file.name , exist: null }
   const caseNumber = referrer.split('/')[(referrer.split('/').length - 2)];
   const uploadPath = `${__dirname}/../../public/files/case/${caseNumber}`;
+  
+  let attachmentList = [];
   
   while (fileName.exist !== false ){
     fileName = renameIfExists(uploadPath, fileName.name);
@@ -134,10 +136,33 @@ router.route('/upload').post( function (req, res, next) {
         return res.status(500).send(err)
         console.log('file error', err);
       }
-
-      res.json({
-        file: `public/files/case/${caseNumber}/${fileName.name}`,
-      })
+      
+      Case.find({ 'ecmId': caseNumber }, function (err, item) {
+       const nItem = item[0];
+       const iconType = fileName.name.split('.')[(fileName.name.split('.').length - 1)];
+       const newAttachment = {
+          icon: `${iconType.toUpperCase()}`,
+          fileName: `${fileName.name}`,
+          filePath: `public/files/case/${caseNumber}/${fileName.name}`,
+          fileType: `${req.body.uploadType}`,
+          uploader: "u616323", // TODO: Update with actuall usesr once implemented
+          comment: `${req.body.uploadComment}`,
+          date: dateFormat(Date.now(), "isoDateTime"),
+        }
+        nItem.attachments.push(newAttachment);
+        attachmentList = nItem.attachments;
+        
+        
+        nItem.markModified('attachments');
+        nItem.save().then(item => {
+          res.json({
+              file: `public/files/case/${caseNumber}/${fileName.name}`,
+              attachments: attachmentList
+            });
+        }).catch(err => {
+          return res.status(500).send(err)
+        });
+      });  
     }
   ); 
 });

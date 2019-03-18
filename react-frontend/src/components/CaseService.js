@@ -79,7 +79,9 @@ export default class CaseService {
 
     upload(data, callback) {
         const formData = new FormData();
-        formData.append('file',data);
+        formData.append('file',data.selectedFile);
+        formData.append('uploadType', data.uploadType);
+        formData.append('uploadComment', data.uploadComment);
         const config = {
             headers: {
                 'content-type': 'multipart/form-data'

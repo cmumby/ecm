@@ -12,6 +12,7 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
+    "dateformat": "^3.0.3",
     "express": "^4.16.2",
     "express-fileupload": "^1.1.1-alpha.3",
     "mongoose": "^4.13.7"

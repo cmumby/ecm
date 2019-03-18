@@ -6,7 +6,7 @@ import uploadDocumentForm from './uploadDocumentForm';
 
 class Attachments extends Component {
 
-  constructor(props) {
+  constructor(props) { 
       super(props);
       this.caseService = new CaseService();
   }
@@ -17,6 +17,7 @@ class Attachments extends Component {
         mode: 'display',
         upload: false,
         uploadType:0,
+        uploadComment: '',
         alerts:[],
         markedItems: []
     });

@@ -6,14 +6,17 @@ export default function handleUpload(event, name, _this={} ){
         _this.setState({
         selectedFile:event.target.files[0]
       });
-
+    } else if (name === 'comment'){
+      _this.setState({
+        uploadComment:event.target.value
+      });
     } else if (name === 'submit'){
         let stateAlerts = _this.state.alerts;
         const ACCEPTED_FILE_TYPES = getAcceptedFileTypes();
         const FILE_SIZE_LIMIT = 5000000;
             
         //Validations   
-        if(_this.state.hasOwnProperty('selectedFile') && !ACCEPTED_FILE_TYPES.includes(_this.state.selectedFile.type )){
+        if(_this.state.hasOwnProperty('selectedFile') && _this.state.selectedFile != null && !ACCEPTED_FILE_TYPES.includes(_this.state.selectedFile.type )){
           stateAlerts.push({
             exclamation:'Document Format Not Supported',
             message:`Please upload a document with one of the following extensions: (.doc, .docx, .jpg, .pdf, .png, .txt, .xsl, .xslx )`,
@@ -27,7 +30,7 @@ export default function handleUpload(event, name, _this={} ){
         }
 
 
-        if(_this.state.hasOwnProperty('selectedFile') && _this.state.selectedFile.size > FILE_SIZE_LIMIT){
+        if(_this.state.hasOwnProperty('selectedFile') && _this.state.selectedFile !=null && _this.state.selectedFile.size > FILE_SIZE_LIMIT){
           stateAlerts.push({
             exclamation:'Document Too Large',
             message:`Please upload smaller document. The upload file size limit is 5MB.`,
@@ -68,8 +71,8 @@ export default function handleUpload(event, name, _this={} ){
 
         //Upload attempt if validations are cleared
         if(attemptUpload === true){
-          _this.caseService.upload(_this.state.selectedFile, (data) => {
-            if(data.statusText === "OK"){
+          _this.caseService.upload(_this.state, (data) => {
+            if(data.statusText === "OK"){ 
               const newFileNameParts = data.data.file.split('/');
               const newFileName = newFileNameParts[(newFileNameParts.length - 1)];
               let newAlertState = _this.state.alerts;
@@ -83,8 +86,10 @@ export default function handleUpload(event, name, _this={} ){
               _this.setState({
                 alerts:newAlertState,
                 selectedFile: null,
+                attachments: data.data.attachments,
               });
               _this.fileInput.value = "";
+              _this.props.onAttachmentsFill(data.data.attachments);
             }
           }); 
         }

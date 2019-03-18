@@ -22,6 +22,7 @@ let Case = new Schema({
   
 
 }, {
-    collection: 'Cases'
+    collection: 'Cases',
+    usePushEach: true
 });
 module.exports = mongoose.model('Case', Case);
