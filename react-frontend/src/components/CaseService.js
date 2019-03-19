@@ -106,4 +106,15 @@ export default class CaseService {
                 callback();
             });
     }
+
+    deleteAttachment(data , callback) {
+        axios.post(`http://localhost:6200/ecm/delete/${data.id}/attachment`, {data: data})
+            .then(function (response) {
+                callback(response);
+            })
+            .catch(function (response) {
+                console.log('Error deleting');
+                callback();
+            });
+    }
 }

@@ -167,4 +167,20 @@ router.route('/upload').post( function (req, res, next) {
   ); 
 });
 
+router.route('/delete/:id/attachment').post( function (req, res, next) {
+  const uploadPath = `${__dirname}/../../${req.body.data.filePath}`;
+  fs.unlink(req.body.data.filePath , function (err) {
+    if (err){ 
+      throw err;
+    } else {
+      res.json({
+        msg: 'ok',
+      });
+       // if no error, file has been deleted successfully
+    console.log('File deleted!');
+    }
+   
+  }); 
+});
+
 module.exports = router;
