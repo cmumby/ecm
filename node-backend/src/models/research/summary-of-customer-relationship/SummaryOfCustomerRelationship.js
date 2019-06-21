@@ -1,7 +1,7 @@
-let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-let SummaryOfCustomerRelationship = new Schema({
+const SummaryOfCustomerRelationship = new Schema({
     customerBusinessModel: String,
     wcisRelationship: String,
     customerRelationship: String

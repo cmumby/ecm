@@ -1,7 +1,7 @@
-let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-let ForProgramUseOnly = new Schema({
+const ForProgramUseOnly = new Schema({
     disputeTo: String,
     dateDisupteRaised: Date,
     dateDisputeSettled: Date,

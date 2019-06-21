@@ -1,8 +1,8 @@
-let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
-let Attachment = require('../../Attachment');
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const Attachment = require('../../Attachment');
 
-let ParticipationPurchased = new Schema({
+const ParticipationPurchased = new Schema({
     isPurchased: Boolean,
     attachments: [Attachment],
     raCorrectionRequired: Boolean,

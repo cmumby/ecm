@@ -1,7 +1,7 @@
-let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-let CrcRejectReason = new Schema({
+const CrcRejectReason = new Schema({
     administrative: Boolean,
     ccdNotMet: Boolean,
     missingBo: Boolean,

@@ -1,7 +1,7 @@
-let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-let DueDiligenceUpdate = new Schema({
+const DueDiligenceUpdate = new Schema({
     unusualActivitiy: String,
     totalNumberofUnusualActivity: String,
     pep: String,

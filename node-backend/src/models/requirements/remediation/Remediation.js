@@ -1,23 +1,23 @@
-let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
-let InvestmentVechiclesFunds = require('./InvestmentVechiclesFunds');
-let CustomerDetails = require('./CustomerDetails');
-let AccountRelationship = require('./AccountRelationship');
-let LegalFormation = require('./LegalFormation');
-let CustomerStructure = require('./CustomerStructure');
-let SourceOfWealth = require('./SourceOfWealth');
-let GeneralDescriptionOfBusiness = require('./GeneralDescriptionOfBusiness');
-let SourceOfFunds = require('./SourceOfFunds');
-let ParticipationPurchased = require('./ParticipationPurchased');
-let CipNotice = require('./CipNotice');
-let InternetGambling = require('./InternetGambling');
-let ProhibitedCustomers = require('./ProhibitedCustomers');
-let RelationshipManager = require('./RelationshipManager');
-let CipCddApprovedDate = require('./CipCddApprovedDate');
-let Submitter = require('./Submitter');
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const InvestmentVechiclesFunds = require('./InvestmentVechiclesFunds');
+const CustomerDetails = require('./CustomerDetails');
+const AccountRelationship = require('./AccountRelationship');
+const LegalFormation = require('./LegalFormation');
+const CustomerStructure = require('./CustomerStructure');
+const SourceOfWealth = require('./SourceOfWealth');
+const GeneralDescriptionOfBusiness = require('./GeneralDescriptionOfBusiness');
+const SourceOfFunds = require('./SourceOfFunds');
+const ParticipationPurchased = require('./ParticipationPurchased');
+const CipNotice = require('./CipNotice');
+const InternetGambling = require('./InternetGambling');
+const ProhibitedCustomers = require('./ProhibitedCustomers');
+const RelationshipManager = require('./RelationshipManager');
+const CipCddApprovedDate = require('./CipCddApprovedDate');
+const Submitter = require('./Submitter');
 
 
-let Remediation = new Schema({
+const Remediation = new Schema({
     investmentVechiclesFunds: InvestmentVechiclesFunds,
     customerDetails: CustomerDetails,
     accountRelationship: AccountRelationship,

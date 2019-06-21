@@ -1,14 +1,14 @@
 //Case.js
 
-let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
-let Requirement = require('./requirements/Requirement');
-let Research = require('./research/Research');
-let Attachment = require('./Attachment');
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const Requirement = require('./requirements/Requirement');
+const Research = require('./research/Research');
+const Attachment = require('./Attachment');
 
 
 //schema
-let Case = new Schema({ 
+const Case = new Schema({ 
   ecmId: Number,
   assignee: String,
   type: String,

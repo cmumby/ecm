@@ -1,7 +1,7 @@
-let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-let LobFlags = new Schema({
+const LobFlags = new Schema({
     pepEscalation: Boolean,
     sarfNegativeNews: Boolean,
     systemOfRecordUpdateRequired: Boolean,

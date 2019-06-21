@@ -1,7 +1,7 @@
-let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-let MiddleOfficeFlags = new Schema({
+const MiddleOfficeFlags = new Schema({
     raiseQuestion: Boolean,
     generalScopeQuestion: Boolean,
     lobDispute: Boolean,

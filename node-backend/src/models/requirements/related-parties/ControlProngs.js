@@ -1,9 +1,9 @@
-let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
-let Attachment = require('../../Attachment');
-let BeneficialOwner = require('./BeneficialOwner');
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const Attachment = require('../../Attachment');
+const BeneficialOwner = require('./BeneficialOwner');
 
-let ControlProngs = new Schema({
+const ControlProngs = new Schema({
     beneficialOwners: [BeneficialOwner],
     attachments: [Attachment],
     raCorrectionRequired: Boolean,

@@ -1,8 +1,8 @@
-let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
-let Attachment = require('../../Attachment');
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const Attachment = require('../../Attachment');
 
-let sourceOfFunds = new Schema({
+const sourceOfFunds = new Schema({
     wealthSource: String,
     attachments: [Attachment],
     raCorrectionRequired: Boolean,

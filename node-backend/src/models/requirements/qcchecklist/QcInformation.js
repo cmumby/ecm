@@ -1,8 +1,8 @@
-let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
-let Attachment = require('../../Attachment');
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const Attachment = require('../../Attachment');
 
-let QcInformation = new Schema({
+const QcInformation = new Schema({
     qcName: String,
     dateReceived: Date,
     firstReview: Boolean,

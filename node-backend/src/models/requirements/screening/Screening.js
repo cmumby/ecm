@@ -1,11 +1,11 @@
-let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
-let CddiTaskRequest = require('./CddiTaskRequest');
-let Reports = require('./Reports');
-let ScreeningCustomer = require('./ScreeningCustomer');
-let ScreeningParty = require('./ScreeningParty');
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const CddiTaskRequest = require('./CddiTaskRequest');
+const Reports = require('./Reports');
+const ScreeningCustomer = require('./ScreeningCustomer');
+const ScreeningParty = require('./ScreeningParty');
 
-let Screening = new Schema({
+const Screening = new Schema({
     cddiTaskRequest: CddiTaskRequest,
     reports: Reports,
     screeningCustomer: ScreeningCustomer,

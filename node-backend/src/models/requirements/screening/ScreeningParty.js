@@ -1,9 +1,9 @@
-let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
-let Attachment = require('../../Attachment');
-let ScreeningCustomer = require('./ScreeningCustomer');
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const Attachment = require('../../Attachment');
+const ScreeningCustomer = require('./ScreeningCustomer');
 
-let screeningParty = new Schema({
+const screeningParty = new Schema({
     parties: [ScreeningCustomer],
     attachments: [Attachment],
     raCorrectionRequired: Boolean,

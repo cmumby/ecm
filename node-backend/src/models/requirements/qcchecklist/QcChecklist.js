@@ -1,9 +1,9 @@
-let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
-let QcInformation = require('./QcInformation');
-let QcReview = require('./QcReview');
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const QcInformation = require('./QcInformation');
+const QcReview = require('./QcReview');
 
-let QcChecklist = new Schema({
+const QcChecklist = new Schema({
     qcInformation: QcInformation,
     qcReview: QcReview,
     sectionComplete: Boolean

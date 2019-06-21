@@ -1,10 +1,10 @@
 //TodoList.js
 
-let mongoose = require('mongoose');
-let Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 //schema
-let TodoList = new Schema({
+const TodoList = new Schema({
   desc: {
     type: String
   },

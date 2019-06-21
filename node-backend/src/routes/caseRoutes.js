@@ -1,7 +1,7 @@
-let express = require('express');
-let app = express();
-let router = express.Router();
-let Requirement = require('../models/requirements/Requirement');
+const express = require('express');
+const app = express();
+const router = express.Router();
+const Requirement = require('../models/requirements/Requirement');
 const fileUpload = require('express-fileupload');
 const { directory , renameIfExists } = require('../util/directory');
 const fs = require('fs')
@@ -11,13 +11,13 @@ router.use(fileUpload());
 
 
 //Schema
-let TodoList = require('../models/TodoList');
-let Case = require('../models/Case');
-let Naics = require('../models/Naics');
+const TodoList = require('../models/TodoList');
+const Case = require('../models/Case');
+const Naics = require('../models/Naics');
 
 // Get Specific
 router.route('/:id').get(function (req, res) {
-  let id = req.params.id;
+  const id = req.params.id;
   Case.find({ 'ecmId': id }, function (err, item) {
     res.json(item[0]);
   });
@@ -56,7 +56,7 @@ router.route('/naics/list').get(function (req, res) {
 
 // Add item
 router.route('/add').post(function (req, res) {
-  let item = new TodoList(req.body);
+  const item = new TodoList(req.body);
   item.save()
     .then(item => {
 
@@ -86,7 +86,7 @@ router.route('/update/:id').post(function (req, res) {
 });
 
 router.route('/update/:id/attachments').post(function (req, res) {
-  let id = req.params.id; 
+  const id = req.params.id; 
   Case.findById(id ,  function (err, item) {
     if (!item) {
       return false;//res.status(400).send("Could not load Document");
@@ -116,9 +116,9 @@ router.route('/delete/:id').get(function (req, res) {
 router.route('/upload').post( function (req, res, next) {
 
 
-  let uploadFile = req.files.file;
+  const uploadFile = req.files.file;
   const referrer = req.headers.referer;
-  let fileName = { name: req.files.file.name , exist: null }
+  const fileName = { name: req.files.file.name , exist: null }
   const caseNumber = referrer.split('/')[(referrer.split('/').length - 2)];
   const uploadPath = `${__dirname}/../../public/files/case/${caseNumber}`;
   

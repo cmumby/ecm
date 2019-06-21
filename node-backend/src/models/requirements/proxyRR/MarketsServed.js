@@ -1,8 +1,8 @@
-let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
-let Attachment = require('../../Attachment');
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const Attachment = require('../../Attachment');
 
-let MarketsServed = new Schema({
+const MarketsServed = new Schema({
     countries: Array,
     attachments: [Attachment],
     raCorrectionRequired: Boolean,

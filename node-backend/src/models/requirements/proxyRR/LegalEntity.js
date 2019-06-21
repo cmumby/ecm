@@ -1,8 +1,8 @@
-let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
-let Attachment = require('../../Attachment');
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const Attachment = require('../../Attachment');
 
-let LegalEntity = new Schema({
+const LegalEntity = new Schema({
     entityType: String,
     attachments: [Attachment],
     raCorrectionRequired: Boolean,

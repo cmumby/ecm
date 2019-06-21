@@ -1,9 +1,9 @@
-let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
-let Attachment = require('../../Attachment');
-let InvestagationIds = require('./InvestagationIds');
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const Attachment = require('../../Attachment');
+const InvestagationIds = require('./InvestagationIds');
 
-let Reports = new Schema({
+const Reports = new Schema({
     investagationIds: [InvestagationIds],
     attachments: [Attachment],
     raCorrectionRequired: Boolean,

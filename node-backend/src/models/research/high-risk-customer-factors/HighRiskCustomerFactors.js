@@ -1,7 +1,7 @@
-let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-let HighRiskCustomerFactors = new Schema({
+const HighRiskCustomerFactors = new Schema({
     countryRisk: String,
     highRiskCustomerFactors: String,
     industryRisk: String,

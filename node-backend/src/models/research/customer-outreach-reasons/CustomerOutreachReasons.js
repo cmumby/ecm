@@ -1,7 +1,7 @@
-let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-let CustomerOutreachReasons = new Schema({
+const CustomerOutreachReasons = new Schema({
     reason: String,
     extension: String
 }); 
