@@ -9,7 +9,7 @@ let basePath = '/ecm';
 let port = 6200;
 
 // Connection to DB
-mongoose.connect('mongodb://mongodb')
+mongoose.connect('mongodb://mongodb/ecm')
     .then(() => {
       console.log('Backend Started');
     })
